@@ -11,7 +11,14 @@ published papers into an Excel workbook and plotted on interactive maps. Work
 is ongoing; coordinates are being added region by region (Americas first, then
 Asia).
 
-Authors of the analysis: Natalia Palou and Caleb Pacheco.
+Georeferencing: Natalia Palou, Caleb Pacheco and Naan Lamoso. All three are
+students adding lat/long, and they contribute EQUALLY -- always credit them as
+one group, never split them into tiers.
+
+Source database: compiled by James D. Ackerman and colleagues, archived on Zenodo
+(doi:10.5281/zenodo.7263689, CC BY 4.0) and published as Ackerman et al. (2023),
+Bot. J. Linn. Soc. 202: 295-324. This project adds the georeferencing. Cite the
+Zenodo record and the paper in anything derived from these data.
 
 ## Pipeline (read this first)
 

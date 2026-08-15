@@ -7,7 +7,17 @@ the pollinator taxa themselves — are compiled from published papers into an
 Excel workbook and plotted on interactive maps. Work is ongoing: coordinates are
 being added region by region, Americas first, then Asia.
 
-Analysis by **Natalia Palou** and **Caleb Pacheco**.
+Coordinates compiled from the primary literature by **Natalia Palou**,
+**Caleb Pacheco** and **Naan Lamoso** — the three share the work equally.
+
+The pollination records come from the global orchid pollination database compiled
+by **James D. Ackerman** and colleagues, archived on Zenodo
+([doi:10.5281/zenodo.7263689](https://doi.org/10.5281/zenodo.7263689), CC BY 4.0)
+and published as Ackerman *et al.* (2023), *Beyond the various contrivances by
+which orchids are pollinated: global patterns in orchid pollination biology*,
+[Botanical Journal of the Linnean Society](https://academic.oup.com/botlinnean/article/202/3/295/7076252)
+**202**: 295–324. The work in this repository adds georeferencing to that
+database so the records can be mapped.
 
 ## Pipeline
 
