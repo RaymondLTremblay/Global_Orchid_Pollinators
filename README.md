@@ -87,6 +87,24 @@ Packages: `readxl`, `openxlsx`, `dplyr`, `tidyr`, `stringr`, `purrr`, `leaflet`,
 
 ## Sharing
 
+**The public site** — <https://raymondltremblay.github.io/Global_Orchid_Pollinators/>
+
+Served by GitHub Pages from `docs/`. `docs/index.html` is a hand-written landing
+page; `docs/mapa_final_static.html` is the rendered map it links to. To refresh
+the site after the data changes:
+
+```r
+quarto::quarto_render("mapa_final_static.qmd")
+file.copy("mapa_final_static.html", "docs/mapa_final_static.html", overwrite = TRUE)
+```
+
+then commit and push. Note that `.gitignore` excludes `/mapa_final_static.html`
+at the repo root but **not** the copy under `docs/` — that anchoring is
+deliberate, so don't drop the leading slash.
+
+The summary figures on the landing page are typed in by hand, so update them
+there too when the counts move.
+
 **A single file to email** — no server, no R on the other end:
 
 ```r

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!--
+  Landing page for the Global Orchid Pollinators project.
+  Served by GitHub Pages from the /docs folder of the repository.
+
+  ============================================================================
+  TO ADD THE SHINY APP LINK: search for  SHINY_APP_URL  below (two places --
+  the href and the class on that same <a>). Replace the href with your
+  shinyapps.io / Connect Cloud URL and delete  card--pending  from the class.
+  ============================================================================
+
+  Regenerate the map this page links to with:
+      quarto::quarto_render("mapa_final_static.qmd")
+      file.copy("mapa_final_static.html", "docs/mapa_final_static.html",
+                overwrite = TRUE)
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Global Orchid Pollinators</title>
+<style>
+  :root {
+    --bg: #ffffff; --panel: #f7f7f5; --line: #e2e2dd;
+    --ink: #1a1a18; --ink-2: #5c5c56; --ink-3: #86867e;
+    --accent: #0072B2;
+    /* Okabe-Ito -- the same palette the maps use, so colours mean the same
+       thing here as they do on the points. */
+    --bees: #E69F00; --diptera: #56B4E9; --wasps: #D55E00;
+    --coleoptera: #009E73; --lepidoptera: #CC79A7; --aves: #0072B2;
+    --unassigned: #8C6D31; --none: #BBBBBB;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#16161a; --panel:#1e1e23; --line:#32323a;
+            --ink:#f0f0ee; --ink-2:#b6b6b0; --ink-3:#8a8a84; --accent:#5BA9DC; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 56px 24px 80px; }
+  header { border-bottom: 1px solid var(--line); padding-bottom: 28px; margin-bottom: 36px; }
+  h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 10px; letter-spacing: -0.02em; }
+  .sub { color: var(--ink-2); margin: 0 0 14px; max-width: 58ch; }
+  .byline { color: var(--ink-3); font-size: 0.875rem; margin: 0; }
+  h2 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em;
+       color: var(--ink-3); margin: 44px 0 16px; font-weight: 600; }
+
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 640px) { .cards { grid-template-columns: 1fr; } }
+  .card {
+    display: block; text-decoration: none; color: inherit;
+    border: 1px solid var(--line); border-radius: 10px; padding: 22px 22px 20px;
+    background: var(--panel); transition: border-color .15s, transform .15s;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .card h3 { margin: 0 0 6px; font-size: 1.0625rem; }
+  .card p { margin: 0; color: var(--ink-2); font-size: 0.9rem; line-height: 1.5; }
+  .card .go { display: inline-block; margin-top: 14px; font-size: 0.85rem;
+              font-weight: 600; color: var(--accent); }
+  .card--pending { opacity: .55; pointer-events: none; }
+  .card--pending .go { color: var(--ink-3); }
+  .card--pending .go::after { content: " — not yet deployed"; font-weight: 400; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+           background: var(--line); border: 1px solid var(--line); border-radius: 10px;
+           overflow: hidden; }
+  @media (max-width: 640px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+  .stat { background: var(--bg); padding: 18px 16px; }
+  .stat b { display: block; font-size: 1.5rem; font-weight: 650; letter-spacing: -0.02em;
+            font-variant-numeric: tabular-nums; }
+  .stat span { display: block; font-size: 0.78rem; color: var(--ink-3); margin-top: 2px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th { text-align: left; font-weight: 600; color: var(--ink-3); font-size: 0.78rem;
+       text-transform: uppercase; letter-spacing: 0.05em;
+       padding: 0 10px 8px 0; border-bottom: 1px solid var(--line); }
+  th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td { padding: 9px 10px 9px 0; border-bottom: 1px solid var(--line); }
+  tr:last-child td { border-bottom: 0; }
+  .bar { height: 7px; border-radius: 4px; background: var(--accent); min-width: 3px; }
+  .track { background: var(--line); border-radius: 4px; width: 100%; }
+  .swatch { display: inline-block; width: 11px; height: 11px; border-radius: 50%;
+            border: 1px solid rgba(0,0,0,.28); margin-right: 8px; vertical-align: -1px; }
+  .note { color: var(--ink-2); font-size: 0.9rem; max-width: 62ch; }
+  .none { color: var(--ink-3); }
+  footer { margin-top: 52px; padding-top: 22px; border-top: 1px solid var(--line);
+           color: var(--ink-3); font-size: 0.84rem; }
+  footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Global Orchid Pollinators</h1>
+    <p class="sub">Mapping the global distribution of orchid pollinators. Pollination
+    records are compiled from the published literature into a single workbook, then
+    georeferenced species by species and plotted.</p>
+    <p class="byline">Natalia Palou &amp; Caleb Pacheco · University of Puerto Rico</p>
+  </header>
+
+  <div class="cards">
+    <a class="card" href="mapa_final_static.html">
+      <h3>Distribution maps</h3>
+      <p>Every georeferenced record on one map, plus a map per subfamily. Click any
+      point for the species, locality, traits and named pollinators.</p>
+      <span class="go">Open the maps →</span>
+    </a>
+    <!-- SHINY_APP_URL: replace href, then delete card--pending from the class -->
+    <a class="card card--pending" href="#SHINY_APP_URL">
+      <h3>Interactive explorer</h3>
+      <p>Filter by subfamily and drill down through the pollinators — group, then
+      family, then genus — with the map redrawing as you go.</p>
+      <span class="go">Launch the app</span>
+    </a>
+  </div>
+
+  <h2>Where the data stands</h2>
+  <div class="stats">
+    <div class="stat"><b>171</b><span>georeferenced records</span></div>
+    <div class="stat"><b>167</b><span>orchid species mapped</span></div>
+    <div class="stat"><b>1,036</b><span>pollinator genera recorded</span></div>
+    <div class="stat"><b>3,109</b><span>species in the workbook</span></div>
+  </div>
+  <p class="note" style="margin-top:14px">Georeferencing is ongoing, Americas first and
+  Asia to follow, so most of the workbook has no coordinates yet. That is the current
+  state of the work, not a gap in the underlying records.</p>
+
+  <h2>Coverage by subfamily</h2>
+  <table>
+    <thead><tr><th>Subfamily</th><th style="width:42%">Georeferenced</th><th class="num">Mapped</th><th class="num">In workbook</th></tr></thead>
+    <tbody>
+      <tr><td>Epidendroideae</td><td><div class="track"><div class="bar" style="width:6.3%"></div></div></td><td class="num">123</td><td class="num">1,937</td></tr>
+      <tr><td>Cypripedioideae</td><td><div class="track"><div class="bar" style="width:61.8%"></div></div></td><td class="num">34</td><td class="num">55</td></tr>
+      <tr><td>Orchidoideae</td><td><div class="track"><div class="bar" style="width:0.6%"></div></div></td><td class="num">6</td><td class="num">1,052</td></tr>
+      <tr><td>Apostasioideae</td><td><div class="track"><div class="bar" style="width:100%"></div></div></td><td class="num">4</td><td class="num">4</td></tr>
+      <tr><td class="none">Vanilloideae</td><td><div class="track"><div class="bar" style="width:0"></div></div></td><td class="num none">0</td><td class="num none">61</td></tr>
+    </tbody>
+  </table>
+  <p class="note" style="margin-top:14px">Vanilloideae has 61 species in the workbook and
+  none georeferenced yet, which is why the subfamily is absent from the maps entirely. It
+  is first in the current collection round.</p>
+
+  <h2>Pollinators of the mapped records</h2>
+  <table>
+    <thead><tr><th>Group</th><th style="width:42%"></th><th class="num">Records</th></tr></thead>
+    <tbody>
+      <tr><td><span class="swatch" style="background:var(--bees)"></span>Bees</td><td><div class="track"><div class="bar" style="width:100%;background:var(--bees)"></div></div></td><td class="num">68</td></tr>
+      <tr><td><span class="swatch" style="background:var(--diptera)"></span>Diptera</td><td><div class="track"><div class="bar" style="width:54.4%;background:var(--diptera)"></div></div></td><td class="num">37</td></tr>
+      <tr><td><span class="swatch" style="background:var(--lepidoptera)"></span>Lepidoptera</td><td><div class="track"><div class="bar" style="width:11.8%;background:var(--lepidoptera)"></div></div></td><td class="num">8</td></tr>
+      <tr><td><span class="swatch" style="background:var(--wasps)"></span>Wasps</td><td><div class="track"><div class="bar" style="width:10.3%;background:var(--wasps)"></div></div></td><td class="num">7</td></tr>
+      <tr><td><span class="swatch" style="background:var(--aves)"></span>Aves</td><td><div class="track"><div class="bar" style="width:5.9%;background:var(--aves)"></div></div></td><td class="num">4</td></tr>
+      <tr><td><span class="swatch" style="background:var(--unassigned)"></span>Hymenoptera, unassigned</td><td><div class="track"><div class="bar" style="width:2.9%;background:var(--unassigned)"></div></div></td><td class="num">2</td></tr>
+      <tr><td><span class="swatch" style="background:var(--coleoptera)"></span>Coleoptera</td><td><div class="track"><div class="bar" style="width:1.5%;background:var(--coleoptera)"></div></div></td><td class="num">1</td></tr>
+      <tr><td class="none"><span class="swatch" style="background:var(--none)"></span>Not reported</td><td><div class="track"><div class="bar" style="width:64.7%;background:var(--none)"></div></div></td><td class="num none">44</td></tr>
+    </tbody>
+  </table>
+  <p class="note" style="margin-top:14px">Records are counted by their first pollinator
+  group; many have several, and the map popups list them all. <em>Not reported</em> means
+  no pollinator is recorded anywhere in that row — bars are scaled against the largest
+  group, not against the 171 total.</p>
+
+  <footer>
+    Code and data: <a href="https://github.com/RaymondLTremblay/Global_Orchid_Pollinators">github.com/RaymondLTremblay/Global_Orchid_Pollinators</a><br>
+    Figures reflect the enriched workbook of 15 August 2026.
+  </footer>
+
+</div>
+</body>
+</html>
