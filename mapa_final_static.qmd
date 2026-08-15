@@ -1,0 +1,376 @@
+---
+title: "Orchid Pollinators — Global Distribution"
+author: "Natalia Palou and Caleb Pacheco"
+date: "2025-11-18"
+format:
+  html:
+    toc: true
+    toc-location: left
+    theme: flatly
+    df-print: paged
+    code-fold: true          # code chunks start collapsed...
+    code-summary: "Show code" # ...with this label to expand them
+    code-tools: true         # global button to show/hide all code
+    embed-resources: true    # inline every JS/CSS asset -> ONE portable .html
+lang: en
+---
+
+<!--
+  STATIC, SELF-CONTAINED version of `mapa_final.qmd`, for sharing by email.
+
+  Differences from `mapa_final.qmd`:
+    * no `server: shiny` -> renders with a plain `quarto render`, no live R
+      session needed to view it;
+    * `embed-resources: true` -> every JS/CSS asset is inlined, so the output
+      is ONE .html file with no `_files/` folder beside it;
+    * the Shiny drill-down app at the end is removed (it cannot exist in a
+      static file). The static map and the per-subfamily maps are unchanged and
+      fully interactive: pan, zoom, click a point for its popup, and toggle
+      pollinator groups with the checkboxes.
+
+  Render with:  quarto render mapa_final_static.qmd
+  Then email `mapa_final_static.html` on its own. Do NOT send the workbook --
+  the data is baked into the file.
+
+  NOTE: the base map tiles (OpenStreetMap + Esri satellite) stream from the web,
+  so the recipient needs an internet connection when they open it. Everything
+  else -- points, popups, data -- is inside the file.
+
+  Data source: the ENRICHED workbook produced by `pollinators_wrangling.qmd`.
+  Run that document first. The map uses the `species` sheet; the popups use
+  `pollinators_long`.
+-->
+
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+## What we did this semester
+
+This semester was dedicated to continuing the search through the papers for
+latitudes and longitudes in the Americas to complete the workbook, and so keep
+advancing the compilation and analysis of the data.
+
+The document is organized into: data preparation, a general **map**, and a set
+of **maps by subfamily**. Every map is built from the same data and the same
+function, so there is no duplicated code.
+
+The maps below are interactive — pan, zoom, click any point for the species,
+locality, traits and named pollinators, and use the checkboxes at the top right
+to show or hide each pollinator group. The Shiny drill-down application
+(pollinator group → family → genus) lives in `mapa_final.qmd` and needs a live
+R session, so it is not part of this shareable file.
+
+***
+
+## Packages
+
+```{r}
+#| label: packages
+library(readxl)   # read Excel files (.xlsx, .xls)
+library(openxlsx) # read the enriched workbook's sheets
+library(dplyr)    # data manipulation: filter, mutate, count, the %>% pipe
+library(tidyr)    # tidyr::fill() -- carries a value down into blank rows
+library(stringr)  # text/pattern helpers, mainly str_detect()
+library(leaflet)  # interactive maps
+```
+
+***
+
+## Loading and preparing the data
+
+We read the `species` sheet of the enriched workbook and clean the column names.
+
+```{r}
+#| label: load-data
+# Path to the enriched workbook. This is the ONLY place the file name lives:
+# if it is renamed, change just this line.
+data_path <- "Pollination_List_pollinators_enriched.xlsx"
+
+# The `species` sheet drives the map; `pollinators_long` drives the drill-down.
+data      <- read.xlsx(data_path, sheet = "species")
+poll_long <- read.xlsx(data_path, sheet = "pollinators_long")
+
+# Why clean the column names:
+# the headers can have inconsistent capitalization and stray trailing spaces.
+# We trim and lowercase once here so the rest of the code relies on tidy names.
+colnames(data) <- tolower(trimws(colnames(data)))
+
+# A stable row id per record, matching pollinators_long$row (same sheet order).
+data$row <- seq_len(nrow(data))
+```
+
+We detect the relevant columns **by their name**, not by their position. The
+sheet grows and is reordered between semesters; searching by name keeps the
+code from breaking if a column moves.
+
+```{r}
+#| label: detect-columns
+# Helper: given all column names and a search pattern, return the FIRST
+# column name that matches, or NA if none matches.
+find_col <- function(col_names, pattern) {
+  found <- col_names[str_detect(col_names, pattern)]
+  if (length(found) == 0) NA_character_ else found[1]
+}
+
+col_names <- names(data)
+lat_col   <- find_col(col_names, "lat")              # e.g. "latitud"
+lon_col   <- find_col(col_names, "lon")              # e.g. "longitud"
+# Two pollinator columns, and the order matters -- see the note in the next
+# chunk. `poll_groups` is the one derived by the wrangling doc from the
+# free-text `pollinators` cell; `pollinator_type` is the older hand-typed column.
+grp_col   <- find_col(col_names, "^poll_groups$")    # preferred: the parsed groups
+poll_col  <- find_col(col_names, "^pollinator_type$")# fallback: the legacy column
+if (is.na(poll_col)) poll_col <- find_col(col_names, "pollinator_type")
+loc_col   <- find_col(col_names, "locality|localidad|sitio|lugar")
+spec_col  <- find_col(col_names, "^species$|especie|taxon")
+# "^genus$" matches the column named EXACTLY "genus". A loose "genus" pattern
+# would also catch "genus count", which is a different column.
+genus_col <- find_col(col_names, "^genus$")
+subf_col  <- find_col(col_names, "^subfamily$")
+
+# Coordinates are essential. If they are missing, stop now with a clear message.
+if (is.na(lat_col) || is.na(lon_col)) {
+  stop("No latitude/longitude columns were found in the 'species' sheet.")
+}
+
+cat("Latitude column:  ", lat_col,   "\n")
+cat("Longitude column: ", lon_col,   "\n")
+cat("Pollinator group column (preferred):", grp_col,  "\n")
+cat("Pollinator type column (fallback):  ", poll_col, "\n")
+cat("Genus column:     ", genus_col, "\n")
+cat("Subfamily column: ", subf_col,  "\n")
+```
+
+We build the map dataset.
+
+```{r}
+#| label: prepare-data
+# Coordinates arrive as TEXT, sometimes with stray spaces or a comma as the
+# decimal separator ("18,234"). This helper turns that text into clean numbers.
+to_number <- function(x) {
+  x <- gsub("\\s+", "", x)  # remove any spaces
+  x <- gsub(",", ".", x)    # comma -> dot, because R needs a dot decimal
+  suppressWarnings(as.numeric(x))
+}
+
+# Carry `genus`/`subfamily` down into their blank rows (idempotent if already
+# filled). MUST run before filtering, so the original row order stays intact.
+fill_down <- function(df, col) {
+  if (is.na(col)) return(df)
+  v <- trimws(as.character(df[[col]]))
+  df[[col]] <- ifelse(v == "" | is.na(v), NA_character_, v)
+  tidyr::fill(df, all_of(col), .direction = "down")
+}
+
+data <- data %>% fill_down(genus_col) %>% fill_down(subf_col)
+
+map_data <- data %>%
+  mutate(
+    lat = to_number(.data[[lat_col]]),
+    lon = to_number(.data[[lon_col]]),
+
+    # Every pollinator group recorded for this record, e.g. "Bees; Diptera".
+    #
+    # WHY `poll_groups` AND NOT `pollinator_type`:
+    # `pollinator_type` is the old hand-typed column and it was only ever filled
+    # in for 99 of the 3,161 rows (64 of the 171 georeferenced ones). Reading it
+    # alone labelled 107 of the 171 mapped points "Not reported" -- but 65 of
+    # those 107 records DO name their pollinators, by species, in the free-text
+    # `pollinators` column. `poll_groups` is what the wrangling doc derives by
+    # parsing that free text, so it covers 126 of the 171. We read it first and
+    # keep `pollinator_type` only as a fallback for the handful of rows the
+    # parser could not resolve.
+    pollinator_all = {
+      g <- if (!is.na(grp_col)) trimws(as.character(.data[[grp_col]])) else NA_character_
+      ifelse(is.na(g) | g %in% c("", "NA"), NA_character_, g)
+    },
+
+    # The single group used for the point colour and its map layer. A record
+    # with several groups is plotted under the FIRST one, so every point belongs
+    # to exactly one layer; the popup still lists all of them.
+    pollinator = {
+      primary <- sub(";.*$", "", pollinator_all)
+
+      # Fallback: the legacy column, standardized to full taxonomic names.
+      v <- tolower(trimws(as.character(.data[[poll_col]])))
+      recode_poll <- c(bees = "Bees", diptera = "Diptera", wasp = "Wasps",
+                       wasps = "Wasps", butterfly = "Lepidoptera",
+                       lepid = "Lepidoptera", coleo = "Coleoptera")
+      legacy <- unname(recode_poll[v])                                             # known labels
+      legacy <- ifelse(is.na(legacy) & !is.na(v) & nzchar(v), str_to_title(v), legacy)
+
+      out <- ifelse(!is.na(primary), primary, legacy)
+      # "Not reported" now means what it says: no pollinator recorded anywhere.
+      ifelse(is.na(out), "Not reported", out)
+    },
+
+    # Full scientific name = genus + epithet (genus was filled down above;
+    # the `species` column holds only the epithet).
+    sci_name = {
+      gen <- if (!is.na(genus_col)) as.character(.data[[genus_col]]) else NA_character_
+      epi <- if (!is.na(spec_col))  as.character(.data[[spec_col]])  else NA_character_
+      trimws(paste(ifelse(is.na(gen), "", gen), ifelse(is.na(epi), "", epi)))
+    },
+    locality = if (!is.na(loc_col)) as.character(.data[[loc_col]]) else NA_character_,
+
+    subfamily_label = {
+      s <- if (!is.na(subf_col)) as.character(.data[[subf_col]]) else NA_character_
+      ifelse(is.na(s) | s == "", "No subfamily", s)
+    }
+  ) %>%
+  filter(!is.na(lat), !is.na(lon))
+
+# Keep only the pollinator rows that belong to a georeferenced (mapped) record,
+# so the drill-down menus only offer pollinators that actually appear on the map.
+poll_long <- poll_long %>% filter(row %in% map_data$row)
+
+# For each mapped record, an HTML block listing its pollinator SPECIES, grouped
+# by family, so the popup shows the named pollinators when available.
+poll_popup <- poll_long %>%
+  mutate(name = case_when(
+    rank == "taxon" ~ paste0("<i>", poll_taxon, "</i>"),
+    rank == "genus" ~ paste0("<i>", poll_genus, "</i> sp."),
+    TRUE            ~ verbatim)) %>%
+  group_by(row, poll_family) %>%
+  summarise(line = paste0(ifelse(is.na(poll_family[1]), "", paste0(poll_family[1], ": ")),
+                          paste(unique(name), collapse = ", ")), .groups = "drop_last") %>%
+  summarise(poll_species = paste(line, collapse = "<br>"), .groups = "drop")
+
+map_data <- map_data %>% left_join(poll_popup, by = "row")
+
+# Build the popup. A trait row is shown only when that trait is recorded.
+trait_row <- function(label, value) ifelse(is.na(value), "",
+  paste0("<b>", label, ":</b> ", value, "<br>"))
+
+map_data <- map_data %>%
+  mutate(popup_info = paste0(
+    "<div style='font-size:13px;max-width:330px'>",
+    "<div style='font-size:15px;margin-bottom:2px'><b><i>", sci_name, "</i></b></div>",
+    "<b>Subfamily:</b> ", subfamily_label, "<br>",
+    "<b>Locality:</b> ", ifelse(is.na(locality), "—", locality), "<br>",
+    "<b>Coordinates:</b> ", round(lat, 4), " , ", round(lon, 4), "<br>",
+    trait_row("Growth form",     growth_form),
+    trait_row("Climate",         climate),
+    trait_row("Compatibility",   compatibility),
+    trait_row("Breeding system", breeding_system),
+    trait_row("Reward",          reward),
+    trait_row("Deception",       deception),
+    ifelse(is.na(mycoheterotrophic), "", paste0("<b>", mycoheterotrophic, "</b><br>")),
+    # Show the full group list only when there is more than one, since a single
+    # group is already obvious from the point's colour.
+    ifelse(is.na(pollinator_all) | !grepl(";", pollinator_all), "",
+           paste0("<b>Pollinator groups:</b> ", gsub("; *", ", ", pollinator_all), "<br>")),
+    "<b>Pollinators:</b> ",
+    ifelse(is.na(poll_species) | poll_species == "",
+           paste0(pollinator, " <span style='color:#888'>(no species recorded)</span>"),
+           paste0("<br>", poll_species)),
+    "</div>"
+  ))
+```
+
+### Quick summary
+
+```{r}
+#| label: summary
+cat("Records with valid coordinates:", nrow(map_data), "\n")
+cat("Distinct pollinator types:     ", dplyr::n_distinct(map_data$pollinator), "\n")
+```
+
+```{r}
+#| label: pollinator-table
+map_data %>%
+  count(pollinator, name = "records") %>%
+  arrange(desc(records)) %>%
+  knitr::kable(caption = "Records by pollinator type")
+```
+
+***
+
+## How the maps are built
+
+We define a single colour palette and a single function, `build_map()`, used by
+every map below, so the map is described in just one place.
+
+```{r}
+#| label: map-function
+# Fixed colour per pollinator group (colourblind-friendly Okabe-Ito), the SAME
+# palette as pollinator_map.qmd so both maps look alike. Each group's colour is
+# used for its map points AND for the coloured dot on its layer-control
+# checkbox, so the checkboxes double as the legend (no separate legend box).
+group_colors <- c(Bees = "#E69F00", Diptera = "#56B4E9", Wasps = "#D55E00",
+                  Coleoptera = "#009E73", Lepidoptera = "#CC79A7", Aves = "#0072B2",
+                  Hemiptera = "#F0E442", "Hymenoptera (unassigned)" = "#8C6D31",
+                  "Not reported" = "#BBBBBB")
+color_of <- function(g) unname(ifelse(g %in% names(group_colors), group_colors[g], "#999999"))
+
+# build_map(): takes a prepared data frame and returns a Leaflet map. Defining
+# it once means the overall map and the per-subfamily maps cannot drift apart.
+build_map <- function(df) {
+  groups <- sort(unique(df$pollinator))
+
+  # Each layer's label is a coloured dot (same colour as its points) followed
+  # by the group name; used as BOTH the marker group and the checkbox label.
+  swatch <- function(g) sprintf(
+    "<span style='display:inline-block;width:11px;height:11px;border-radius:50%%;background:%s;border:1px solid #444;margin-right:5px;vertical-align:middle'></span>%s",
+    color_of(g), g)
+  labels <- setNames(vapply(groups, swatch, character(1)), groups)
+
+  m <- leaflet(df) %>%
+    addTiles() %>%                                  # standard street base map
+    addProviderTiles(providers$Esri.WorldImagery)   # satellite imagery on top
+
+  # One marker layer per pollinator group, each in its own colour. The layer
+  # name (`group=`) is the coloured HTML label, which the layer control renders.
+  for (pol in groups) {
+    m <- m %>%
+      addCircleMarkers(
+        data = df %>% filter(pollinator == pol),
+        lng = ~lon, lat = ~lat,
+        popup = ~popup_info,
+        radius = 5, stroke = TRUE, weight = 1, fillOpacity = 0.7,
+        color = color_of(pol),
+        group = labels[[pol]]
+      )
+  }
+
+  # The control box (top-right): a coloured, toggleable checkbox per group.
+  m %>%
+    addLayersControl(
+      overlayGroups = unname(labels[groups]),
+      position = "topright",
+      options = layersControlOptions(collapsed = FALSE)
+    )
+}
+```
+
+## Map of all records
+
+Each point is a locality with its reported pollinator type.
+
+```{r}
+#| label: overall-map
+build_map(map_data)
+```
+
+## Maps by subfamily
+
+One map per subfamily that has georeferenced records. The colours still
+represent the pollinator type, just like the general map, so the maps are
+comparable with one another.
+
+```{r}
+#| label: subfamily-maps
+htmltools::tagList(
+  lapply(sort(unique(map_data$subfamily_label)), function(sf) {
+    htmltools::tagList(
+      htmltools::h4(sf),
+      build_map(filter(map_data, subfamily_label == sf))
+    )
+  })
+)
+```
+
+***

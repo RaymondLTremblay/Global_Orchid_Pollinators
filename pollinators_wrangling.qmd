@@ -1,0 +1,556 @@
+---
+title: "Cleaning and structuring the *pollinators* column"
+subtitle: "Global Orchid Pollinators — preparing the data for search and Leaflet"
+author: "Natalia Palou and Caleb Pacheco"
+date: "2026-08-13"
+format:
+  html:
+    toc: true
+    toc-float: true
+    theme: flatly
+    df-print: paged
+    code-fold: show
+lang: en
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+## Goal
+
+The **`pollinators`** column (column AF in the Excel) stores the pollinators as
+free text, following a fairly consistent grammar:
+
+```
+ORDER:  Genus species, G. species2 (Family); Genus2 species (Family2).  ORDER2:  ...
+```
+
+That is: one or more **orders** in UPPERCASE followed by `:`; within each order,
+a comma-separated list of taxa (often abbreviated after the first mention,
+`Trigona melanocephala, T. minangkabau`), grouped into `(Family)`; families are
+separated by `;` and orders by `.`.
+
+The challenge we wanted to solve is twofold and seemingly contradictory: when a
+record has **more than one pollinator** we need to be able to **separate** them
+(to search by a specific genus or family) and at the same time **amalgamate**
+them (so each point on the map can show a summary). The solution is to do a
+**single parse** and derive **two views** from it:
+
+1. A **long table** (`pollinators_long`): one row per *orchid × pollinator
+   taxon*. This is the *separated* view, searchable at any rank (order, family,
+   genus, species).
+2. A set of **wide columns** (`poll_*`) joined back onto each orchid row. This
+   is the *amalgamated* view, and it feeds the map popup and filters. They are
+   generated **from** the long table, so the two never fall out of sync.
+
+The original `pollinators` column is **left untouched**: it is the raw source.
+All cleaning (including order and family typos) lives here, in the code — the
+same philosophy `mapa_final.rmd` already uses with the `wasp → wasps` recode.
+
+***
+
+## Packages
+
+```{r libraries}
+library(readxl)    # read the Excel
+library(dplyr)     # data manipulation
+library(tidyr)     # fill(), unnest()
+library(stringr)   # regular expressions
+library(purrr)     # map()
+library(openxlsx)  # write the enriched workbook (multiple sheets)
+```
+
+## Loading the data
+
+We read the `species` sheet of the merged workbook and clean the column names,
+just like the main analysis.
+
+```{r load}
+# The only line with the file name: if it is renamed, change it here.
+ruta_datos <- "Pollination_List_Thru_1 2024_merged26_08_13.xlsx"
+
+data <- read_excel(ruta_datos, sheet = "species")
+colnames(data) <- tolower(trimws(colnames(data)))
+
+# Clean data-entry errors in `subfamily` BEFORE carrying it down. Orchidaceae
+# has exactly five subfamilies; everything else here is an error:
+#   "2"           -> Epidendroideae  (those rows are Bulbophyllum)
+#   "Orchidaceae" -> Orchidoideae    (those rows are Sirindhornia)
+#   "5" / "subfamily" -> NA          (junk header rows, genus == "genus")
+subf_fix <- c("2" = "Epidendroideae", "Orchidaceae" = "Orchidoideae",
+              "5" = NA_character_, "subfamily" = NA_character_)
+sv <- trimws(as.character(data$subfamily))
+data$subfamily <- ifelse(sv %in% names(subf_fix), unname(subf_fix[sv]), sv)
+
+# Carry `genus` and `subfamily` down (they are written only once). This must
+# run before any row filtering so the original row order stays intact.
+fill_down <- function(df, col) {
+  v <- trimws(as.character(df[[col]]))
+  df[[col]] <- ifelse(v == "" | is.na(v), NA_character_, v)
+  tidyr::fill(df, all_of(col), .direction = "down")
+}
+data <- data %>% fill_down("genus") %>% fill_down("subfamily")
+
+# Full scientific name (genus + epithet) and a row id to rejoin on later.
+data$orchid <- str_squish(paste(ifelse(is.na(data$genus), "", data$genus),
+                                ifelse(is.na(data$species), "", data$species)))
+data$.rowid <- seq_len(nrow(data))
+```
+
+## Species traits
+
+The workbook also carries many one-hot trait columns (a `1` marks the trait,
+blank means absent): growth form, climate zone, breeding system, and floral
+rewards / deception strategy. We turn those scattered flags into a few
+readable, searchable columns. Absent traits stay `NA` rather than "0", so
+"unknown" and "recorded absent" are not confused.
+
+```{r traits}
+# TRUE only when a flag cell literally holds 1 / TRUE.
+is_present <- function(x) tolower(trimws(as.character(x))) %in% c("1", "true")
+flag <- function(name) if (name %in% names(data)) is_present(data[[name]]) else rep(FALSE, nrow(data))
+
+# Combine several flag columns into one "A; B" label column (NA if none set).
+combine_flags <- function(specs) {           # specs: c(Label = "column_name", ...)
+  out <- rep("", nrow(data))
+  for (k in seq_along(specs)) {
+    on <- flag(unname(specs[k]))
+    out <- ifelse(on, ifelse(out == "", names(specs)[k], paste(out, names(specs)[k], sep = "; ")), out)
+  }
+  ifelse(out == "", NA_character_, out)
+}
+
+data$growth_form   <- combine_flags(c(Epiphytic = "epi", Terrestrial = "terr",
+                                      Rupicolous = "rupic", Climbing = "vine"))
+data$climate       <- combine_flags(c(Tropical = "trop", Subtropical = "subtr",
+                                      Temperate = "temp"))
+data$compatibility <- combine_flags(c(`Self-incompatible` = "si", `Self-compatible` = "sc"))
+data$breeding_system <- combine_flags(c(Chasmogamous = "chasmogamous",
+                                       `Mixed mating` = "mixed mating",
+                                       `Autonomous selfing/agamospermy` = "autonomous selfing/agagamospermy"))
+data$reward        <- combine_flags(c(Nectar = "nectar", Pollen = "pollen",
+                                     Fragrance = "fragr", `Oils/lipids` = "lipids",
+                                     Pseudopollen = "trichomes/pseudo-pollen",
+                                     `Sleeping site` = "sleep sites", Resins = "polyphenols resins"))
+data$deception     <- combine_flags(c(`Food deception` = "food dec",
+                                      `Sexual deception` = "sex dec",
+                                      `Brood-site deception` = "brood site dec"))
+data$mycoheterotrophic <- ifelse(flag("achlorophyllous"), "Mycoheterotrophic", NA_character_)
+
+# How many records carry each derived trait (a quick fill check).
+sapply(c("growth_form","climate","compatibility","breeding_system",
+         "reward","deception","mycoheterotrophic"),
+       function(c) sum(!is.na(data[[c]])))
+```
+
+## Recode maps (typos)
+
+Orders have ~10 real values but ~20 different spellings; families have similar
+typos. We fix them with two small dictionaries that are easy to extend as new
+variants appear.
+
+```{r recodes}
+order_recode <- c(
+  DIPERA = "DIPTERA", HYEMNOPTERA = "HYMENOPTERA", HHYMENOPTERA = "HYMENOPTERA",
+  HYMENOTERA = "HYMENOPTERA", HYMENOTPERA = "HYMENOPTERA",
+  LEPIODOPTERA = "LEPIDOPTERA", LEPTIDOPTERA = "LEPIDOPTERA", HEMPTERIA = "HEMIPTERA")
+
+family_recode <- c(
+  Andrinidae = "Andrenidae", Aipdae = "Apidae", Mellitidae = "Melittidae",
+  Anthomyidae = "Anthomyiidae", Choropidae = "Chloropidae", Hesperidae = "Hesperiidae",
+  Tephrididae = "Tephritidae", Empidae = "Empididae", Papillionidae = "Papilionidae",
+  Papilioidae = "Papilionidae", Cramabidae = "Crambidae", Nymphaidae = "Nymphalidae",
+  Bombylidae = "Bombyliidae", Calliphridae = "Calliphoridae", Syriphidae = "Syrphidae",
+  Thynnindae = "Thynnidae", Thinnidae = "Thynnidae", Thyniidae = "Thynnidae",
+  Thiniidae = "Thynnidae", Pompiliidae = "Pompilidae", Pompylidae = "Pompilidae",
+  Scatophagidae = "Scathophagidae", Chrysidae = "Chrysididae", Scolidae = "Scoliidae",
+  Cullicidae = "Culicidae", Mycetophiilidae = "Mycetophilidae", Saturnidae = "Saturniidae",
+  Tabinidae = "Tabanidae", Tenthredionidae = "Tenthredinidae", Erabidae = "Erebidae",
+  Zosteropsidae = "Zosteropidae", Ullidiidae = "Ulidiidae", Apidea = "Apidae")
+
+fix_order  <- function(o) { o <- toupper(o); ifelse(o %in% names(order_recode),
+                                                    unname(order_recode[o]), o) }
+fix_family <- function(x) ifelse(!is.na(x) & x %in% names(family_recode),
+                                 unname(family_recode[x]), x)
+
+# Coarse group, using full taxonomic names (no contractions). Whole orders
+# keep the order name; HYMENOPTERA is split into Bees vs. Wasps, because that
+# distinction matters for pollination ecology.
+bee_fams <- c("Apidae","Halictidae","Andrenidae","Megachilidae","Colletidae",
+              "Melittidae","Stenotritidae")
+
+# Family is the primary signal, but many source papers name the bee without its
+# family ("HYMENOPTERA: Bombus cf. albopleuralis"), or misspell it. Falling
+# straight through to "Wasps" in that case mislabels obvious bees, so we check
+# the GENUS as a second signal before giving up. Extend this list as needed.
+bee_genera <- c("Apis","Bombus","Xylocopa","Euglossa","Eulaema","Eufriesea",
+                "Exaerete","Melipona","Trigona","Tetragonisca","Nannotrigona",
+                "Scaptotrigona","Centris","Ceratina","Tetralonia","Tetraloniella",
+                "Eucera","Anthophora","Andrena","Nomada","Lasioglossum","Halictus",
+                "Augochlora","Augochlorella","Augochloropsis","Megachile","Osmia",
+                "Colletes","Hylaeus","Melissodes","Peponapis","Xylocopinae")
+
+group_from <- function(order, family, genus = NA_character_) {
+  order <- toupper(order); if (is.na(order)) return(NA_character_)
+  switch(order,
+    DIPTERA = "Diptera", COLEOPTERA = "Coleoptera", LEPIDOPTERA = "Lepidoptera",
+    HEMIPTERA = "Hemiptera", THYSANOPTERA = "Thysanoptera", ORTHOPTERA = "Orthoptera",
+    ARANEAE = "Arachnida", ARACHNIDA = "Arachnida", AVES = "Aves",
+    HYMENOPTERA =
+      if (!is.na(family) && family %in% bee_fams) "Bees"
+      else if (!is.na(genus)  && genus  %in% bee_genera) "Bees"
+      # Neither family nor genus identifies it. "Wasps" would be a guess, so say
+      # so plainly instead -- these rows are the ones worth checking by hand.
+      else if (is.na(family) && is.na(genus)) "Hymenoptera (unassigned)"
+      else "Wasps",
+    str_to_title(tolower(order)))   # any other order -> proper-case name
+}
+```
+
+## Parsing function
+
+`parse_poll()` takes **one** `pollinators` cell and returns a table with one
+row per taxon: order, family, genus, epithet, full binomial, the original text
+(`verbatim`), the rank reached (`taxon` / `genus` / `informal`) and the coarse
+group.
+
+```{r parser}
+# Common English words that are NOT scientific names (they prevent false
+# genera/species such as "Stingless bees" or "fruit flies").
+COMMON <- c("stingless","fruit","flies","bees","wasps","moths","beetles",
+            "birds","ants","hawk","small","large")
+
+parse_poll <- function(s) {
+  if (is.na(s) || !nzchar(trimws(s))) return(tibble())
+  s <- str_squish(s)
+  # ORDER markers: an UPPERCASE word (>=4 letters) followed by ':'
+  m <- str_locate_all(s, "[A-Z]{4,}\\s*:")[[1]]
+  if (nrow(m) == 0)
+    return(tibble(order = NA_character_, family = NA_character_, genus = NA_character_,
+                  epithet = NA_character_, taxon = NA_character_, verbatim = s,
+                  rank = "informal"))
+  starts <- m[,1]; endc <- m[,2]
+  onames <- trimws(str_replace(str_sub(s, starts, endc), ":$", ""))
+  bend <- c(starts[-1] - 1, nchar(s)); last_genus <- NA_character_; out <- list()
+
+  for (i in seq_along(onames)) {
+    order <- fix_order(onames[i])
+    body  <- str_squish(str_sub(s, endc[i] + 1, bend[i]))
+    if (!nzchar(body)) next
+    # Each segment = one family. Cut after a ')' followed by ';' or '.', and
+    # also on lone ';' (taxa with no family in parentheses).
+    segs <- unlist(str_split(str_split(body, "(?<=\\))\\s*[;.]+\\s*")[[1]], ";"))
+    for (seg in segs) {
+      seg <- str_squish(str_replace(seg, "[\\.\\s]+$", ""))
+      if (!nzchar(seg)) next
+      fam <- NA_character_
+      par <- str_match(seg, "\\(([^)]*)\\)\\s*$")          # last parenthesis
+      if (!is.na(par[1,2])) fam <- fix_family(str_extract(par[1,2], "[A-Z][a-z]+dae"))
+      taxa <- str_squish(str_replace(seg, "\\([^)]*\\)\\s*$", ""))  # drop the family
+
+      for (tok in str_split(taxa, ",")[[1]]) {
+        tok <- str_squish(tok); if (!nzchar(tok)) next
+        genus <- NA_character_; epithet <- NA_character_; rank <- "taxon"
+        if (str_detect(tok, "^[A-Z]\\.\\s*")) {            # abbreviated genus "B. ..."
+          rest  <- str_squish(str_replace(tok, "^[A-Z]\\.\\s*", ""))
+          genus <- last_genus                              # expand with the last full genus
+          epithet <- str_extract(rest, "^[a-z][a-z-]+")
+        } else if (str_detect(tok, "^[A-Z][a-z]+")) {      # full genus
+          genus <- str_extract(tok, "^[A-Z][a-z]+"); last_genus <- genus
+          rest  <- str_squish(str_replace(tok, "^[A-Z][a-z]+\\s*", ""))
+          epithet <- str_extract(rest, "^[a-z][a-z-]+")
+        } else rank <- "informal"
+        # sp./spp./aff./cf. -> genus level
+        if (!is.na(epithet) && epithet %in% c("sp","spp","aff","cf","near")) epithet <- NA_character_
+        if (!is.na(epithet) && epithet %in% COMMON) { epithet <- NA_character_; rank <- "informal" }
+        if (!is.na(genus)   && tolower(genus) %in% COMMON) { genus <- NA_character_; rank <- "informal" }
+        if (is.na(genus) && rank == "taxon") rank <- "informal"
+        if (rank == "taxon" && is.na(epithet)) rank <- "genus"
+        taxon <- if (rank == "taxon") paste(genus, epithet) else if (rank == "genus") genus else NA_character_
+        out[[length(out) + 1]] <- tibble(order = order, family = fam, genus = genus,
+                                         epithet = epithet, taxon = taxon,
+                                         verbatim = tok, rank = rank)
+      }
+    }
+  }
+  if (length(out) == 0)
+    return(tibble(order = NA, family = NA, genus = NA, epithet = NA, taxon = NA,
+                  verbatim = s, rank = "informal"))
+  bind_rows(out) %>% mutate(group = pmap_chr(list(order, family, genus), group_from))
+}
+```
+
+## Long table (the *separated* view)
+
+```{r long}
+nonempty <- data %>% filter(!is.na(pollinators) & nzchar(trimws(pollinators)))
+
+long <- nonempty %>%
+  mutate(pp = map(pollinators, parse_poll)) %>%
+  transmute(row = .rowid, orchid, subfamily, pollinator_type, pollinators, pp) %>%
+  unnest(pp) %>%
+  transmute(row, orchid, subfamily, pollinator_type,
+            poll_order = order, poll_family = family, poll_genus = genus,
+            poll_epithet = epithet, poll_taxon = taxon, poll_group = group,
+            rank, verbatim)
+
+head(long, 12)
+```
+
+## Wide columns (the *amalgamated* view)
+
+These are built by grouping the long table by orchid record, so they are a
+faithful summary of the separated data.
+
+```{r wide}
+j <- function(x) paste(sort(unique(x[!is.na(x) & nzchar(x)])), collapse = "; ")
+
+wide <- long %>%
+  group_by(row) %>%
+  summarise(
+    poll_orders   = j(poll_order),
+    poll_families = j(poll_family),
+    poll_genera   = j(poll_genus),
+    poll_taxa     = j(poll_taxon),
+    poll_groups   = j(poll_group),
+    n_orders   = n_distinct(poll_order[!is.na(poll_order)]),
+    n_families = n_distinct(poll_family[!is.na(poll_family)]),
+    n_genera   = n_distinct(poll_genus[!is.na(poll_genus)]),
+    n_taxa     = n_distinct(poll_taxon[rank == "taxon"]),
+    grp_bees    = any(poll_group == "Bees"),
+    grp_diptera = any(poll_group == "Diptera"),
+    grp_wasps   = any(poll_group == "Wasps"),
+    grp_coleo   = any(poll_group == "Coleoptera"),
+    grp_lepid   = any(poll_group == "Lepidoptera"),
+    .groups = "drop")
+
+# Enriched `species` sheet = original columns + wide columns.
+species_out <- data %>%
+  left_join(wide, by = c(".rowid" = "row")) %>%
+  select(-.rowid, -orchid)
+
+head(wide, 8)
+```
+
+## Quality control
+
+```{r qc}
+cat("Long rows (taxa):", nrow(long), "\n")
+cat("Orchid records with pollinators:", nrow(wide), "\n")
+cat("Orders:", n_distinct(long$poll_order, na.rm = TRUE),
+    "| Families:", n_distinct(long$poll_family, na.rm = TRUE),
+    "| Genera:", n_distinct(long$poll_genus, na.rm = TRUE),
+    "| Full binomials:", n_distinct(long$poll_taxon[long$rank == "taxon"]), "\n\n")
+
+long %>% count(rank, name = "rows") %>% knitr::kable(caption = "Rows by rank reached")
+long %>% count(poll_group, name = "rows") %>% arrange(desc(rows)) %>%
+  knitr::kable(caption = "Rows by coarse group")
+```
+
+We compare our counts with the columns that were already tallied by hand in the
+Excel (`orders`, `families`, `genera`): a high correlation confirms the parse
+reproduces the original criterion.
+
+```{r qc-cross}
+chk <- long %>% group_by(row) %>%
+  summarise(p_ord = n_distinct(poll_order, na.rm = TRUE),
+            p_fam = n_distinct(poll_family, na.rm = TRUE),
+            p_gen = n_distinct(poll_genus, na.rm = TRUE), .groups = "drop") %>%
+  left_join(nonempty %>% transmute(row = .rowid,
+              m_ord = suppressWarnings(as.numeric(orders)),
+              m_fam = suppressWarnings(as.numeric(families)),
+              m_gen = suppressWarnings(as.numeric(genera))), by = "row")
+
+sapply(c("ord","fam","gen"), function(x) {
+  a <- chk[[paste0("p_",x)]]; b <- chk[[paste0("m_",x)]]; ok <- is.finite(a) & is.finite(b)
+  round(cor(a[ok], b[ok]), 3)
+})
+```
+
+### Records to review
+
+Informal entries (common names such as *fruit flies*, or the order alone) that
+do not resolve to a species. No data is invented: they are listed verbatim for
+review.
+
+```{r review}
+review <- long %>% filter(rank == "informal") %>%
+  distinct(row, orchid, verbatim) %>%
+  left_join(nonempty %>% transmute(row = .rowid, pollinators), by = "row") %>%
+  arrange(row)
+
+cat("Entries to review:", nrow(review), "\n")
+head(review, 15)
+```
+
+## Pollinator taxonomy repository
+
+A controlled vocabulary of the pollinators **present in this database** — the
+order → family → genus hierarchy actually recorded, with how many orchid records
+and pollinator species sit under each genus. This is the "repository of
+plausible groups" that backs the drill-down menus (which only ever show present
+taxa).
+
+```{r taxonomy}
+pollinator_taxonomy <- long %>%
+  filter(!is.na(poll_genus)) %>%
+  group_by(poll_group, poll_order, poll_family, poll_genus) %>%
+  summarise(n_orchids = n_distinct(row),
+            n_pollinator_spp = n_distinct(poll_taxon[rank == "taxon"]),
+            .groups = "drop") %>%
+  arrange(poll_group, poll_order, poll_family, poll_genus)
+
+cat("Repository rows:", nrow(pollinator_taxonomy),
+    "| orders:", n_distinct(pollinator_taxonomy$poll_order),
+    "| families:", n_distinct(pollinator_taxonomy$poll_family),
+    "| genera:", n_distinct(pollinator_taxonomy$poll_genus), "\n")
+head(pollinator_taxonomy, 10)
+```
+
+### Names to review (likely typos)
+
+We do not have an offline copy of the full world taxonomy, so instead of
+validating against an external authority we look **within the database** for
+names that are almost certainly the same: near-duplicate spellings, and genera
+recorded under more than one family. Nothing is changed automatically — these
+are flagged for a human to confirm (and, if real, added to the recode maps
+above). `adist()` is edit (Levenshtein) distance.
+
+```{r taxa-review}
+# All within-vector near-duplicate pairs (edit distance <= max_d, shared prefix).
+find_pairs <- function(v, max_d = 2, pre = 2, minlen = 5) {
+  v <- sort(unique(v[!is.na(v) & nzchar(v)]))
+  if (length(v) < 2) return(tibble(a = character(), b = character(), dist = integer()))
+  m <- adist(v); idx <- which(upper.tri(m), arr.ind = TRUE)
+  tibble(a = v[idx[,1]], b = v[idx[,2]], dist = as.integer(m[idx])) %>%
+    filter(dist <= max_d, substr(a, 1, pre) == substr(b, 1, pre),
+           pmin(nchar(a), nchar(b)) >= minlen)
+}
+gcount <- long %>% filter(!is.na(poll_genus)) %>% count(poll_genus, name = "n")
+
+# (a) genus near-duplicates within the same family; keep the rarer as the typo
+genus_dupes <- long %>% filter(!is.na(poll_genus), !is.na(poll_family)) %>%
+  distinct(poll_family, poll_genus) %>%
+  group_by(poll_family) %>% summarise(p = list(find_pairs(poll_genus)), .groups = "drop") %>%
+  unnest(p) %>%
+  left_join(gcount, by = c("a" = "poll_genus")) %>% rename(n_a = n) %>%
+  left_join(gcount, by = c("b" = "poll_genus")) %>% rename(n_b = n) %>%
+  transmute(issue = "Genus spelling (near-duplicate)", context = poll_family,
+            name_1 = a, count_1 = n_a, name_2 = b, count_2 = n_b, distance = dist,
+            suggestion = paste0("likely correct: ", ifelse(n_a >= n_b, a, b),
+                                " · likely typo: ", ifelse(n_a >= n_b, b, a)))
+
+# (b) a genus recorded under more than one family (usually a wrong family)
+genus_multi <- long %>% filter(!is.na(poll_genus), !is.na(poll_family)) %>%
+  distinct(poll_genus, poll_family) %>% add_count(poll_genus, name = "nf") %>%
+  filter(nf > 1) %>% arrange(poll_genus, poll_family) %>%
+  group_by(poll_genus) %>% summarise(families = paste(poll_family, collapse = "; "), .groups = "drop") %>%
+  transmute(issue = "Genus under multiple families", context = families,
+            name_1 = poll_genus, count_1 = NA_integer_, name_2 = NA_character_,
+            count_2 = NA_integer_, distance = NA_integer_,
+            suggestion = "verify family assignment")
+
+# (c) family near-duplicates (strict: distance 1, since real families can be close)
+family_dupes <- find_pairs(long$poll_family, max_d = 1, pre = 3, minlen = 6) %>%
+  transmute(issue = "Family spelling (near-duplicate)", context = NA_character_,
+            name_1 = a, count_1 = NA_integer_, name_2 = b, count_2 = NA_integer_,
+            distance = dist, suggestion = "verify — may be distinct families")
+
+taxa_review <- bind_rows(genus_dupes, genus_multi, family_dupes)
+cat("Flagged for review:", nrow(taxa_review),
+    " (genus near-dupes:", nrow(genus_dupes),
+    ", genus multi-family:", nrow(genus_multi),
+    ", family near-dupes:", nrow(family_dupes), ")\n")
+head(genus_dupes, 12)
+```
+
+## Optional: validate against the GBIF backbone
+
+The in-database checks above only compare names to each other. To catch typos
+that happen to be the *only* spelling in the file — and to confirm which flagged
+pairs are genuinely distinct genera (e.g. *Nomia* vs *Nomada*) — we validate the
+present genera against the **GBIF taxonomic backbone**. This needs the `rgbif`
+package and an internet connection (nothing else in this document does), so it
+is written to run on your machine and to skip cleanly if either is missing.
+Passing `kingdom = "Animalia"` avoids plant/animal homonyms (so *Agrostis* the
+grass does not mask *Agrotis* the moth). Genera that do not match **exactly**
+are written to `gbif_genus_review.csv` as strong typo/verification candidates.
+
+```{r gbif-validate}
+if (!requireNamespace("rgbif", quietly = TRUE)) {
+  message("rgbif not installed - skipping GBIF check. Run install.packages('rgbif') to enable.")
+} else {
+  genera <- sort(unique(na.omit(pollinator_taxonomy$poll_genus)))
+  res <- tryCatch(
+    rgbif::name_backbone_checklist(data.frame(name = genera, kingdom = "Animalia")),
+    error = function(e) { message("GBIF request failed: ", conditionMessage(e)); NULL })
+  if (!is.null(res)) {
+    gbif_genus_review <- dplyr::tibble(
+      genus       = genera,
+      gbif_name   = res$scientificName,
+      gbif_rank   = res$rank,
+      gbif_family = res$family,
+      match_type  = res$matchType,
+      confidence  = res$confidence) %>%
+      dplyr::mutate(flag = is.na(match_type) | match_type != "EXACT") %>%
+      dplyr::arrange(dplyr::desc(flag), genus)
+    write.csv(gbif_genus_review, "gbif_genus_review.csv", row.names = FALSE)
+    cat("GBIF checked", nrow(gbif_genus_review), "genera;",
+        sum(gbif_genus_review$flag), "were not an exact match",
+        "(written to gbif_genus_review.csv)\n")
+    print(head(dplyr::filter(gbif_genus_review, flag), 15))
+  }
+}
+```
+
+## Exporting the enriched workbook
+
+We save a **copy** with five sheets: `species` (original + wide columns),
+`pollinators_long` (the long table), `needs_review`, `pollinator_taxonomy`
+(the present order→family→genus repository) and `taxa_review` (likely typos).
+The raw workbook is not modified.
+
+```{r export}
+salida <- "Pollination_List_pollinators_enriched.xlsx"
+write.xlsx(
+  list(species = species_out, pollinators_long = long, needs_review = review,
+       pollinator_taxonomy = pollinator_taxonomy, taxa_review = taxa_review),
+  salida, overwrite = TRUE)
+cat("Written:", salida, "\n")
+```
+
+## Using it in Leaflet / Shiny
+
+The new columns make the map **searchable by pollinator**. Two complementary
+routes:
+
+**In the Shiny app** (what you already have) — add a filter populated from the
+parsed genera, alongside the existing subfamily filter:
+
+```r
+# UI: a searchable pollinator-genus selector
+selectizeInput("gen_pol", "Pollinator genus:",
+               choices = c("All", sort(unique(long$poll_genus))),
+               options = list(placeholder = "type to search..."))
+
+# server: keep the points whose poll_genera contains the chosen genus
+df <- data_mapa
+if (input$gen_pol != "All")
+  df <- df %>% filter(str_detect(poll_genera, fixed(input$gen_pol)))
+```
+
+**On the static map** — search over the markers with `leaflet.extras`, and show
+the clean list of taxa in the popup:
+
+```r
+library(leaflet.extras)
+# include poll_taxa / poll_groups in popup_info, then:
+mapa %>% addSearchFeatures(
+  targetGroups = "orchids",
+  options = searchFeaturesOptions(zoom = 6, openPopup = TRUE))
+```
+
+The `grp_bees … grp_lepid` flags are also ready for toggling layers by group,
+and `n_taxa`, `n_genera`, etc. can size or color the points by pollinator
+richness.

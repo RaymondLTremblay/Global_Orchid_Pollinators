@@ -1,0 +1,218 @@
+---
+title: "Orchid Pollinators — Interactive Map"
+subtitle: "Global Orchid Pollinators · search by orchid and by pollinator"
+author: "Natalia Palou and Caleb Pacheco"
+date: "2026-08-13"
+format:
+  html:
+    toc: false
+    theme: flatly
+    page-layout: full
+server: shiny
+lang: en
+---
+
+```{r}
+#| context: setup
+#| include: false
+library(shiny); library(leaflet); library(DT)
+library(openxlsx); library(dplyr); library(tidyr); library(stringr); library(htmltools)
+
+# ---------------------------------------------------------------------------
+# Data source: the ENRICHED workbook produced by `pollinators_wrangling.qmd`
+# (sheets `species` = original + poll_* columns, and `pollinators_long` = one
+# pollinator taxon per row). Run that document first; the parsing lives there,
+# so this map never re-parses the raw text. If the file is renamed, edit here.
+# ---------------------------------------------------------------------------
+data_path <- "Pollination_List_pollinators_enriched.xlsx"
+sp <- read.xlsx(data_path, "species")
+lg <- read.xlsx(data_path, "pollinators_long")
+
+# text coordinates ("18,23") -> numbers
+a_num <- function(x){ x <- gsub("\\s+","",x); x <- gsub(",",".",x); suppressWarnings(as.numeric(x)) }
+sp$row    <- seq_len(nrow(sp))                       # stable id == pollinators_long$row
+sp$lat    <- a_num(sp$latitud); sp$lon <- a_num(sp$longitud)
+sp$orchid <- str_squish(paste(ifelse(is.na(sp$genus),"",sp$genus),
+                              ifelse(is.na(sp$species),"",sp$species)))
+geo <- sp %>% filter(!is.na(lat) & !is.na(lon))      # only georeferenced records reach the map
+
+# per-record pollinator richness and a single "primary" group (for point colour)
+rich <- lg %>% group_by(row) %>%
+  summarise(richness = n_distinct(na.omit(dplyr::coalesce(poll_taxon, poll_genus))),
+            .groups = "drop")
+prim <- lg %>% filter(!is.na(poll_group)) %>% count(row, poll_group) %>%
+  group_by(row) %>% slice_max(n, n = 1, with_ties = FALSE) %>%
+  transmute(row, primary_group = poll_group) %>% ungroup()
+geo <- geo %>% left_join(rich, by = "row") %>% left_join(prim, by = "row") %>%
+  mutate(richness = ifelse(is.na(richness), 0, richness),
+         primary_group = ifelse(is.na(primary_group), "Not reported", primary_group))
+
+# colourblind-friendly (Okabe–Ito) palette for the coarse pollinator groups.
+# "Not reported" = a georeferenced record with no pollinator group recorded yet
+# (usually its `pollinators` cell is empty).
+group_colors <- c(Bees = "#E69F00", Diptera = "#56B4E9", Wasps = "#D55E00",
+                  Coleoptera = "#009E73", Lepidoptera = "#CC79A7", Aves = "#0072B2",
+                  Hemiptera = "#F0E442", Thysanoptera = "#7F7F7F", Arachnida = "#7F7F7F",
+                  Orthoptera = "#8C6D31", Mammalia = "#666666", Reptilia = "#8C8C8C",
+                  "Hymenoptera (unassigned)" = "#B07A2A", "Not reported" = "#BBBBBB")
+col_of <- function(g) unname(ifelse(g %in% names(group_colors), group_colors[g], "#999999"))
+pal_groups <- sort(intersect(names(group_colors), unique(geo$primary_group)))
+pal <- colorFactor(col_of(pal_groups), domain = pal_groups, na.color = "#999999")
+
+# choice vectors for the filters
+ch <- list(
+  subfamily = sort(unique(geo$subfamily)),
+  ogenus    = sort(unique(geo$genus)),
+  ospecies  = sort(unique(geo$orchid)),
+  pgroup    = sort(unique(na.omit(lg$poll_group))),
+  porder    = sort(unique(na.omit(lg$poll_order))),
+  pfamily   = sort(unique(na.omit(lg$poll_family))),
+  pgenus    = sort(unique(na.omit(lg$poll_genus))))
+
+# ---- filter engine (AND across every active control) ----
+apply_filters <- function(sub, ogen, ospp, pord, pfam, pgen, pgrp){
+  rows <- geo$row
+  if (length(sub))  rows <- intersect(rows, geo$row[geo$subfamily %in% sub])
+  if (length(ogen)) rows <- intersect(rows, geo$row[geo$genus %in% ogen])
+  if (length(ospp)) rows <- intersect(rows, geo$row[geo$orchid %in% ospp])
+  pf <- list(poll_order = pord, poll_family = pfam, poll_genus = pgen, poll_group = pgrp)
+  for (f in names(pf)) if (length(pf[[f]]))
+    rows <- intersect(rows, unique(lg$row[lg[[f]] %in% pf[[f]]]))
+  geo %>% filter(row %in% rows)
+}
+
+# ---- popup: EVERY pollinator of the record, grouped order > family > species ----
+popup_html <- function(r){
+  s <- geo[geo$row == r, ]; d <- lg %>% filter(row == r)
+  block <- ""
+  if (nrow(d)) {
+    d <- d %>% mutate(lab = case_when(
+      rank == "taxon" ~ paste0("<i>", poll_taxon, "</i>"),
+      rank == "genus" ~ paste0("<i>", poll_genus, "</i> sp."),
+      TRUE            ~ htmlEscape(verbatim))) %>% arrange(poll_order, poll_family)
+    for (ord in unique(d$poll_order)) {
+      dd <- d %>% filter(poll_order == ord | (is.na(poll_order) & is.na(ord)))
+      block <- paste0(block, "<div style='margin-top:3px'><b>",
+                      ifelse(is.na(ord), "(unspecified)", ord), "</b>")
+      for (fm in unique(dd$poll_family)) {
+        ff  <- dd %>% filter(poll_family == fm | (is.na(poll_family) & is.na(fm)))
+        lab <- ifelse(is.na(fm), "", paste0(" <span style='color:#666'>(", fm, ")</span>"))
+        block <- paste0(block, "<div style='margin-left:10px'>", lab, " ",
+                        paste(unique(ff$lab), collapse = ", "), "</div>")
+      }
+      block <- paste0(block, "</div>")
+    }
+  }
+  paste0("<div style='font-size:13px;max-width:340px'>",
+    "<div style='font-size:15px;margin-bottom:2px'><b><i>", htmlEscape(s$orchid), "</i></b></div>",
+    "<b>Subfamily:</b> ", htmlEscape(s$subfamily), "<br>",
+    "<b>Locality:</b> ", ifelse(is.na(s$locality), "—", htmlEscape(s$locality)), "<br>",
+    "<b>Coordinates:</b> ", round(s$lat, 4), " , ", round(s$lon, 4), "<br>",
+    "<b>Pollinators</b> (", s$richness, "):", block,
+    if (!is.na(s$references)) paste0("<div style='margin-top:5px;color:#888;font-size:11px'>",
+                                     htmlEscape(s$references), "</div>") else "",
+    "</div>")
+}
+```
+
+Each point is one georeferenced orchid record. Use the filters to narrow by
+**orchid** (subfamily, genus, species) and/or by **pollinator** (group, order,
+family, genus) — every control combines with AND. Point **colour** is the
+record's main pollinator group; point **size** grows with the number of
+pollinator taxa. Click a point (or a table row) to see **all** its pollinators.
+
+```{r}
+#| panel: sidebar
+#| width: 320
+tags$h5("Orchid")
+selectizeInput("subfamily", "Subfamily",      ch$subfamily, multiple = TRUE)
+selectizeInput("ogenus",    "Genus",          ch$ogenus,    multiple = TRUE)
+selectizeInput("ospecies",  "Species",        ch$ospecies,  multiple = TRUE,
+               options = list(placeholder = "type to search..."))
+tags$hr()
+tags$h5("Pollinator")
+selectizeInput("pgroup",  "Group",  ch$pgroup,  multiple = TRUE)
+selectizeInput("porder",  "Order",  ch$porder,  multiple = TRUE)
+selectizeInput("pfamily", "Family", ch$pfamily, multiple = TRUE,
+               options = list(placeholder = "type to search..."))
+selectizeInput("pgenus",  "Genus",  ch$pgenus,  multiple = TRUE,
+               options = list(placeholder = "type to search..."))
+tags$hr()
+actionButton("reset", "Reset filters", class = "btn-sm btn-outline-secondary")
+tags$div(style = "margin-top:10px;font-weight:600;", textOutput("count"))
+```
+
+```{r}
+#| panel: fill
+leafletOutput("map", height = "540px")
+tags$br()
+DTOutput("tbl")
+```
+
+```{r}
+#| context: server
+
+filtered <- reactive({
+  apply_filters(input$subfamily, input$ogenus, input$ospecies,
+                input$porder, input$pfamily, input$pgenus, input$pgroup)
+})
+
+output$count <- renderText({
+  paste0(nrow(filtered()), " of ", nrow(geo), " records shown")
+})
+
+# base map drawn once; markers are updated by proxy so filtering is fast
+output$map <- renderLeaflet({
+  leaflet() %>%
+    addTiles(group = "Street") %>%
+    addProviderTiles(providers$Esri.WorldImagery, group = "Satellite") %>%
+    addLayersControl(baseGroups = c("Street", "Satellite"),
+                     options = layersControlOptions(collapsed = TRUE)) %>%
+    addLegend("bottomright", pal = pal, values = pal_groups,
+              title = "Pollinator group", opacity = 0.9) %>%
+    fitBounds(min(geo$lon), min(geo$lat), max(geo$lon), max(geo$lat))
+})
+
+observe({
+  df <- filtered()
+  proxy <- leafletProxy("map") %>% clearGroup("pts")
+  if (nrow(df)) {
+    proxy %>% addCircleMarkers(
+      data = df, lng = ~lon, lat = ~lat, layerId = ~row, group = "pts",
+      radius = ~pmin(4 + 2.6 * sqrt(richness), 16),
+      color = "#333", weight = 0.6,
+      fillColor = ~col_of(primary_group), fillOpacity = 0.85,
+      label = ~lapply(orchid, function(x) HTML(paste0("<i>", x, "</i>"))),
+      popup = ~vapply(row, popup_html, character(1)),
+      clusterOptions = markerClusterOptions(
+        spiderfyOnMaxZoom = TRUE, disableClusteringAtZoom = 9,
+        showCoverageOnHover = FALSE))
+  }
+})
+
+# linked table -> click a row to fly to that record and open its popup
+output$tbl <- renderDT({
+  filtered() %>%
+    transmute(Orchid = orchid, Subfamily = subfamily, Locality = locality,
+              `Main group` = primary_group, `Pollinator groups` = poll_groups,
+              Taxa = richness, Lat = round(lat, 4), Lon = round(lon, 4))
+}, selection = "single", rownames = FALSE,
+   options = list(pageLength = 8, scrollX = TRUE), server = TRUE)
+
+observeEvent(input$tbl_rows_selected, {
+  i <- input$tbl_rows_selected; df <- filtered()
+  if (length(i) && i <= nrow(df)) {
+    rec <- df[i, ]
+    leafletProxy("map") %>%
+      setView(lng = rec$lon, lat = rec$lat, zoom = 8) %>%
+      clearGroup("sel") %>%
+      addPopups(rec$lon, rec$lat, popup_html(rec$row), group = "sel")
+  }
+})
+
+# reset every filter
+observeEvent(input$reset, {
+  for (id in c("subfamily","ogenus","ospecies","pgroup","porder","pfamily","pgenus"))
+    updateSelectizeInput(session, id, selected = character(0))
+})
+```
