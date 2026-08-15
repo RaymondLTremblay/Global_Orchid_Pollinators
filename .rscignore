@@ -1,20 +1,37 @@
 # Files rsconnect should NOT upload when publishing the Shiny document.
 # The deployed app only needs mapa_final.qmd and the enriched workbook; this
-# keeps the bundle at a couple of MB instead of ~14 MB.
-_archive
+# keeps the bundle to a couple of MB instead of ~14 MB.
+
+# --- rendered output and build folders --------------------------------------
+docs
 mapa_final_files
+mapa_final_static_files
+pollinator_map_files
 pollinators_wrangling_files
-.Rproj.user
 .quarto
+.Rproj.user
+.git
+mapa_final.html
+mapa_final_static.html
+pollinator_map.html
+pollinators_wrangling.html
 PROGRESS.html
-PROGRESS.md
+
+# --- other documents in the project (not part of this app) ------------------
 mapa_final.rmd
-pollinators_wrangling.qmd
-pollinator_map.qmd
 mapa_final_static.qmd
-coordinate_assignment_tracker.xlsx
+pollinator_map.qmd
+pollinators_wrangling.qmd
+PROGRESS.md
+README.md
+CLAUDE.md
 correo_estudiantes_coordenadas.md
+
+# --- data and reports the app does not read ---------------------------------
+_archive
+coordinate_assignment_tracker.xlsx
 typo_corrections_changelog.csv
+gbif_genus_review.csv
 Natalia_files_vs_master_comparison_26_08_15.xlsx
 pollinator_not_reported_audit_26_08_15.xlsx
 Pollination_List_Thru_1 2024_merged26_08_13.xlsx

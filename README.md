@@ -133,3 +133,17 @@ quarto::quarto_publish_app(server = "shinyapps.io")
 ```
 
 `.rscignore` keeps the upload down to the document plus the enriched workbook.
+
+Once it is deployed, paste the URL into the one line near the top of
+`docs/index.html`:
+
+```js
+const SHINY_URL = "https://<account>.shinyapps.io/mapa_final/";
+```
+
+That single edit activates the "Interactive explorer" card and embeds the live
+app in a section of the landing page. Left empty, the page hides the explorer
+rather than showing a dead link.
+
+Re-deploy after every `pollinators_wrangling.qmd` run — the data travels inside
+the deployed bundle, it is not read live.
