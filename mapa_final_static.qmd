@@ -147,7 +147,7 @@ cat("Subfamily column: ", subf_col,  "\n")
 We build the map dataset.
 
 ```{r}
-#| label: prepare-data
+#| label: prepare-helpers
 # Coordinates arrive as TEXT, sometimes with stray spaces or a comma as the
 # decimal separator ("18,234"). This helper turns that text into clean numbers.
 to_number <- function(x) {
@@ -166,23 +166,29 @@ fill_down <- function(df, col) {
 }
 
 data <- data %>% fill_down(genus_col) %>% fill_down(subf_col)
+```
 
+We build the map dataset itself: numeric coordinates, the pollinator group used
+for the point colour, and the labels the popup needs.
+
+A note on **which pollinator column we read**. `pollinator_type` is the old
+hand-typed column, filled in for only 99 of the 3,161 rows (64 of the 171
+georeferenced ones). Reading it alone labelled 107 of the 171 mapped points
+"Not reported" — yet 65 of those 107 records *do* name their pollinators, by
+species, in the free-text `pollinators` column. `poll_groups` is what the
+wrangling document derives by parsing that free text, and it covers 126 of the
+171. So we read `poll_groups` first and fall back to `pollinator_type` only for
+the handful of rows the parser could not resolve.
+
+```{r}
+#| label: prepare-map-data
 map_data <- data %>%
   mutate(
     lat = to_number(.data[[lat_col]]),
     lon = to_number(.data[[lon_col]]),
 
-    # Every pollinator group recorded for this record, e.g. "Bees; Diptera".
-    #
-    # WHY `poll_groups` AND NOT `pollinator_type`:
-    # `pollinator_type` is the old hand-typed column and it was only ever filled
-    # in for 99 of the 3,161 rows (64 of the 171 georeferenced ones). Reading it
-    # alone labelled 107 of the 171 mapped points "Not reported" -- but 65 of
-    # those 107 records DO name their pollinators, by species, in the free-text
-    # `pollinators` column. `poll_groups` is what the wrangling doc derives by
-    # parsing that free text, so it covers 126 of the 171. We read it first and
-    # keep `pollinator_type` only as a fallback for the handful of rows the
-    # parser could not resolve.
+    # Every group recorded for this record, e.g. "Bees; Diptera". See above for
+    # why this reads `poll_groups` first and `pollinator_type` only as a fallback.
     pollinator_all = {
       g <- if (!is.na(grp_col)) trimws(as.character(.data[[grp_col]])) else NA_character_
       ifelse(is.na(g) | g %in% c("", "NA"), NA_character_, g)
@@ -223,6 +229,13 @@ map_data <- data %>%
   ) %>%
   filter(!is.na(lat), !is.na(lon))
 
+```
+
+Next, the named pollinator taxa for each mapped record, collapsed into one HTML
+block per record.
+
+```{r}
+#| label: prepare-pollinator-names
 # Keep only the pollinator rows that belong to a georeferenced (mapped) record,
 # so the drill-down menus only offer pollinators that actually appear on the map.
 poll_long <- poll_long %>% filter(row %in% map_data$row)
@@ -241,6 +254,12 @@ poll_popup <- poll_long %>%
 
 map_data <- map_data %>% left_join(poll_popup, by = "row")
 
+```
+
+Finally the popup HTML itself.
+
+```{r}
+#| label: prepare-popup
 # Build the popup. A trait row is shown only when that trait is recorded.
 trait_row <- function(label, value) ifelse(is.na(value), "",
   paste0("<b>", label, ":</b> ", value, "<br>"))
@@ -306,6 +325,12 @@ group_colors <- c(Bees = "#E69F00", Diptera = "#56B4E9", Wasps = "#D55E00",
                   "Not reported" = "#BBBBBB")
 color_of <- function(g) unname(ifelse(g %in% names(group_colors), group_colors[g], "#999999"))
 
+```
+
+`build_map()` turns a prepared data frame into a Leaflet map.
+
+```{r}
+#| label: build-map-function
 # build_map(): takes a prepared data frame and returns a Leaflet map. Defining
 # it once means the overall map and the per-subfamily maps cannot drift apart.
 build_map <- function(df) {
