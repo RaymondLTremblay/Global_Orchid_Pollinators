@@ -104,7 +104,10 @@ chunks never execute and you get a page with no maps. Use
 `mapa_final_static.qmd` when you need a file you can send someone.
 
 Packages: `readxl`, `openxlsx`, `dplyr`, `tidyr`, `stringr`, `purrr`, `leaflet`,
-`shiny`, `DT` (and `rgbif` only for the optional GBIF check).
+`shiny`, `DT`. Three are used only by optional checks in the wrangling doc:
+`rgbif` (GBIF backbone), `maps` (coastline and country test) and `mapdata`
+(high-resolution coastline). Without `mapdata` the land test falls back to a
+coarse outline that omits small islands and reports island records as sea.
 
 ## Sharing
 

@@ -834,10 +834,31 @@ if (!requireNamespace("maps", quietly = TRUE)) {
 } else {
 
   # (c) In the sea. Grown outward in rings so we can say *how far* out.
+  #
+  # Resolution matters more here than anywhere else in this document. The
+  # low-resolution `world` outline omits small islands, and this database is
+  # full of island records: on `world` alone, Calanthe izuinsularis on
+  # Mikura-jima and Calanthe striata on Tsushima are both reported as being
+  # hundreds of kilometres out to sea. `mapdata::worldHires` has them. We use
+  # it for the land test when it is installed, and say so when it is not.
+  #
+  # The country test below deliberately stays on `world`: worldHires still
+  # carries pre-1990 country names (USSR, Yugoslavia), which would make a
+  # perfectly good European point look misplaced.
+  if (requireNamespace("mapdata", quietly = TRUE)) {
+    suppressPackageStartupMessages(library(mapdata))
+    coast_db <- "worldHires"
+  } else {
+    coast_db <- "world"
+    cat("NOTE: falling back to the low-resolution 'world' coastline, which\n",
+        "omits small islands -- expect island records to be reported as sea.\n",
+        "install.packages('mapdata') for the high-resolution outline.\n", sep = "")
+  }
+
   on_land <- function(lat, lon) {
     ok <- abs(lat) <= 90 & abs(lon) <= 180
     out <- rep(FALSE, length(lat))
-    out[ok] <- !is.na(maps::map.where("world", lon[ok], lat[ok]))
+    out[ok] <- !is.na(maps::map.where(coast_db, lon[ok], lat[ok]))
     out
   }
   # 16 bearings per ring is enough to find a coast without turning this into a
@@ -856,9 +877,11 @@ if (!requireNamespace("maps", quietly = TRUE)) {
   if (nrow(sea)) {
     sea$km_offshore <- mapply(km_offshore, sea$lat, sea$lon)
     flags$in_the_sea <- sea %>%
-      mutate(issue = ifelse(km_offshore <= 10,
-               "in water within 10 km of shore -- island, or one decimal out?",
-               paste0("in open water, roughly ", km_offshore, " km from land")))
+      mutate(issue = case_when(
+        km_offshore <= 10  ~ "in water within 10 km of shore -- island, or one decimal out?",
+        is.finite(km_offshore) ~ paste0("in open water, roughly ", km_offshore,
+                                        " km from land"),
+        TRUE ~ "in open water, more than 1000 km from land"))
   }
 
   # (d) The point contradicts the locality the record already carries.
