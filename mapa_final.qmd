@@ -83,6 +83,7 @@ library(openxlsx) # read the enriched workbook's sheets
 library(dplyr)    # data manipulation: filter, mutate, count, the %>% pipe
 library(tidyr)    # tidyr::fill() -- carries a value down into blank rows
 library(stringr)  # text/pattern helpers, mainly str_detect()
+library(ggplot2)  # the coverage / composition figure
 library(leaflet)  # interactive maps
 library(shiny)    # the interactive app at the end
 ```
@@ -304,22 +305,6 @@ map_data <- map_data %>%
   ))
 ```
 
-### Summary
-
-```{r}
-#| label: summary
-cat("Records with valid coordinates:", nrow(map_data), "\n")
-cat("Distinct pollinator types:     ", dplyr::n_distinct(map_data$pollinator), "\n")
-```
-
-```{r}
-#| label: pollinator-table
-map_data %>%
-  count(pollinator, name = "records") %>%
-  arrange(desc(records)) %>%
-  knitr::kable(caption = "Records by pollinator type")
-```
-
 ***
 
 ## Mapping
@@ -377,6 +362,30 @@ build_map <- function(df) {
       )
   }
 
+  # Frame the map explicitly. Leaflet's automatic fit zooms to the maximum level
+  # when a layer holds a single point, dropping the reader into a street-level
+  # view with no geographic context. We therefore widen the bounding box to a
+  # minimum visible extent before fitting.
+  min_km  <- 10                                   # smallest extent to display
+  deg_lat <- min_km / 111                         # 1 degree of latitude ~ 111 km
+  lat_rng <- range(df$lat, na.rm = TRUE)
+  lon_rng <- range(df$lon, na.rm = TRUE)
+
+  # A degree of longitude shrinks with latitude, so scale it by cos(latitude)
+  # to keep the window roughly square on the ground. The floor of 0.2 keeps the
+  # correction finite near the poles.
+  deg_lon <- min_km / (111 * max(cos(mean(lat_rng) * pi / 180), 0.2))
+
+  widen <- function(r, min_span) {
+    if (is.finite(diff(r)) && diff(r) >= min_span) return(r)
+    mid <- mean(r)
+    c(mid - min_span / 2, mid + min_span / 2)
+  }
+  lat_rng <- widen(lat_rng, deg_lat)
+  lon_rng <- widen(lon_rng, deg_lon)
+
+  m <- m %>% fitBounds(lon_rng[1], lat_rng[1], lon_rng[2], lat_rng[2])
+
   # The control box (top-right): a coloured, toggleable checkbox per group.
   m %>%
     addLayersControl(
@@ -414,6 +423,100 @@ htmltools::tagList(
   })
 )
 ```
+
+## Coverage and pollinator composition
+
+Georeferencing is uneven across the family. The figure below shows, for each
+subfamily, the proportion of its records that now carry coordinates, with the
+counts given alongside.
+
+```{r}
+#| label: coverage-figure
+#| fig-width: 7.2
+#| fig-height: 2.5
+#| fig-alt: "Horizontal bar chart of georeferencing coverage by orchid subfamily. Each bar shows the percentage of that subfamily's records that carry coordinates, labelled with the count of georeferenced records over the total held."
+valid_sf <- c("Apostasioideae", "Vanilloideae", "Cypripedioideae",
+              "Orchidoideae", "Epidendroideae")
+
+coverage <- data %>%
+  mutate(sf = trimws(as.character(.data[[subf_col]]))) %>%
+  filter(sf %in% valid_sf) %>%
+  group_by(subfamily = sf) %>%
+  summarise(in_database  = dplyr::n(),
+            georeferenced = sum(row %in% map_data$row),
+            .groups = "drop") %>%
+  mutate(pct = 100 * georeferenced / in_database) %>%
+  arrange(georeferenced) %>%
+  mutate(subfamily = factor(subfamily, levels = subfamily),
+         label = paste0(format(georeferenced, big.mark = ",", trim = TRUE), " / ",
+                        format(in_database,   big.mark = ",", trim = TRUE)))
+
+# Thin bars with rounded ends, drawn as round-capped segments: a recessive grey
+# track for the whole, a solid bar for the part achieved. These three constants
+# are reused by the pollinator figure below, so the two read as one system.
+bar    <- 3.4          # bar thickness, points
+track  <- "#E2E2DD"    # recessive track
+accent <- "#0072B2"    # single hue: this figure encodes magnitude, not identity
+
+ggplot(coverage, aes(y = subfamily)) +
+  geom_segment(aes(x = 0, xend = 100, yend = subfamily),
+               colour = track, linewidth = bar, lineend = "round") +
+  # Subfamilies with no coordinates yet show an empty track rather than a stub.
+  geom_segment(data = ~ subset(.x, georeferenced > 0),
+               aes(x = 0, xend = pmax(pct, 0.8), yend = subfamily),
+               colour = accent, linewidth = bar, lineend = "round") +
+  geom_text(aes(x = 104, label = label), hjust = 0, size = 3.2, colour = "grey30") +
+  scale_x_continuous(limits = c(0, 132), expand = c(0, 0)) +
+  labs(x = NULL, y = NULL,
+       caption = "Bar length is the percentage of that subfamily's records carrying coordinates; the figures give georeferenced records over records held.") +
+  theme_minimal(base_size = 12) +
+  theme(panel.grid    = element_blank(),
+        axis.text.x   = element_blank(),
+        axis.ticks    = element_blank(),
+        plot.caption  = element_text(hjust = 0, colour = "grey45", size = 8.5,
+                                     margin = margin(t = 10)),
+        plot.margin   = margin(4, 4, 4, 4))
+```
+
+Composition of the mapped records by pollinator group follows, in the same
+colours as the map points. Records with more than one recorded group are counted
+under the first; the map popups list every group for a record. *Not reported*
+means no pollinator is recorded anywhere in that row, and *Hymenoptera
+(unassigned)* marks records whose free-text entry names an order but neither a
+family nor a genus the parser could resolve.
+
+```{r}
+#| label: pollinator-composition
+#| fig-width: 7.2
+#| fig-height: 3.4
+#| fig-alt: "Horizontal bar chart of georeferenced orchid pollination records by pollinator group, ordered from most to fewest records. Each bar is labelled with its count and coloured with the same scheme used for the map points."
+comp <- map_data %>%
+  count(pollinator, name = "records") %>%
+  arrange(records) %>%
+  mutate(pollinator = factor(pollinator, levels = pollinator))
+
+ggplot(comp, aes(y = pollinator)) +
+  geom_segment(aes(x = 0, xend = max(records), yend = pollinator),
+               colour = track, linewidth = bar, lineend = "round") +
+  geom_segment(aes(x = 0, xend = records, yend = pollinator, colour = pollinator),
+               linewidth = bar, lineend = "round") +
+  # The count sits at the end of every bar, so the figure never relies on
+  # colour alone to be read.
+  geom_text(aes(x = max(records) * 1.05, label = records),
+            hjust = 0, size = 3.2, colour = "grey30") +
+  scale_colour_manual(
+    values = setNames(color_of(levels(comp$pollinator)), levels(comp$pollinator)),
+    guide  = "none") +
+  scale_x_continuous(limits = c(0, max(comp$records) * 1.16), expand = c(0, 0)) +
+  labs(x = NULL, y = NULL) +
+  theme_minimal(base_size = 12) +
+  theme(panel.grid  = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks  = element_blank(),
+        plot.margin = margin(4, 4, 4, 4))
+```
+
+***
 
 ## Interactive exploration
 
@@ -518,5 +621,4 @@ output$map <- renderLeaflet({
 ```
 
 ***
-
 
