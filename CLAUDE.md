@@ -11,9 +11,13 @@ published papers into an Excel workbook and plotted on interactive maps. Work
 is ongoing; coordinates are being added region by region (Americas first, then
 Asia).
 
+Authors (the `author:` line in every .qmd): Raymond L. Tremblay, Natalia Palou,
+Caleb Pacheco and Naan Lamoso.
 Georeferencing: Natalia Palou, Caleb Pacheco and Naan Lamoso. All three are
 students adding lat/long, and they contribute EQUALLY -- always credit them as
 one group, never split them into tiers.
+Dates: the .qmd files use `date: today`, so each render stamps itself. Do not
+hard-code a date back in.
 
 Source database: compiled by James D. Ackerman and colleagues, archived on Zenodo
 (doi:10.5281/zenodo.7263689, CC BY 4.0) and published as Ackerman et al. (2023),

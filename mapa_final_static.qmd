@@ -1,7 +1,8 @@
 ---
 title: "Orchid Pollinators — Global Distribution"
-author: "Natalia Palou and Caleb Pacheco"
-date: "2025-11-18"
+author: "Raymond L. Tremblay, Natalia Palou, Caleb Pacheco and Naan Lamoso"
+date: today
+date-format: "D MMMM YYYY"
 format:
   html:
     toc: true
@@ -47,21 +48,36 @@ lang: en
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
-## What we did this semester
+## Introduction
 
-This semester was dedicated to continuing the search through the papers for
-latitudes and longitudes in the Americas to complete the workbook, and so keep
-advancing the compilation and analysis of the data.
+Orchidaceae is among the largest families of flowering plants, and its
+pollination systems are correspondingly diverse. Records of who pollinates what,
+however, are scattered across a century of primary literature and are rarely
+tied to explicit coordinates, which makes the geography of orchid pollination
+difficult to examine directly.
 
-The document is organized into: data preparation, a general **map**, and a set
-of **maps by subfamily**. Every map is built from the same data and the same
-function, so there is no duplicated code.
+This document maps the georeferenced portion of a global compilation of orchid
+pollination records. The underlying database was assembled by Ackerman *et al.*
+(2023) and covers roughly 3,100 species; the work presented here adds
+coordinates to those records, species by species, from the localities reported
+in the source publications.
 
-The maps below are interactive — pan, zoom, click any point for the species,
-locality, traits and named pollinators, and use the checkboxes at the top right
-to show or hide each pollinator group. The Shiny drill-down application
-(pollinator group → family → genus) lives in `mapa_final.qmd` and needs a live
-R session, so it is not part of this shareable file.
+Georeferencing is in progress and proceeds by region, the Americas first and
+Asia to follow. The maps below therefore show the records resolved to date
+rather than the full database, and coverage is uneven between subfamilies.
+
+Each point is interactive: pan and zoom, click a marker for the species,
+locality, traits and named pollinators, and use the checkboxes at the upper
+right to show or hide individual pollinator groups.
+
+### Data source
+
+Pollination records are drawn from the global orchid pollination database of
+Ackerman JD, Phillips RD, Tremblay RL, Karremans A, Reiter N, Peter CI, Bogarín
+D, Pérez-Escobar OA & Liu H (2023), *Beyond the various contrivances by which
+orchids are pollinated: global patterns in orchid pollination biology*,
+**Botanical Journal of the Linnean Society** 202: 295–324, archived at
+<https://doi.org/10.5281/zenodo.7263689> under CC BY 4.0.
 
 ***
 
@@ -81,7 +97,8 @@ library(leaflet)  # interactive maps
 
 ## Loading and preparing the data
 
-We read the `species` sheet of the enriched workbook and clean the column names.
+The `species` sheet of the enriched workbook is read and its column names are
+normalised.
 
 ```{r}
 #| label: load-data
@@ -102,9 +119,9 @@ colnames(data) <- tolower(trimws(colnames(data)))
 data$row <- seq_len(nrow(data))
 ```
 
-We detect the relevant columns **by their name**, not by their position. The
-sheet grows and is reordered between semesters; searching by name keeps the
-code from breaking if a column moves.
+Columns are identified **by name rather than by position**. The workbook grows
+and is periodically reordered, so matching on name keeps the code stable when a
+column moves.
 
 ```{r}
 #| label: detect-columns
@@ -144,8 +161,6 @@ cat("Genus column:     ", genus_col, "\n")
 cat("Subfamily column: ", subf_col,  "\n")
 ```
 
-We build the map dataset.
-
 ```{r}
 #| label: prepare-helpers
 # Coordinates arrive as TEXT, sometimes with stray spaces or a comma as the
@@ -168,17 +183,16 @@ fill_down <- function(df, col) {
 data <- data %>% fill_down(genus_col) %>% fill_down(subf_col)
 ```
 
-We build the map dataset itself: numeric coordinates, the pollinator group used
-for the point colour, and the labels the popup needs.
+The map dataset is then assembled: numeric coordinates, the pollinator group
+that determines each point's colour, and the labels used in the popups.
 
-A note on **which pollinator column we read**. `pollinator_type` is the old
-hand-typed column, filled in for only 99 of the 3,161 rows (64 of the 171
-georeferenced ones). Reading it alone labelled 107 of the 171 mapped points
-"Not reported" — yet 65 of those 107 records *do* name their pollinators, by
-species, in the free-text `pollinators` column. `poll_groups` is what the
-wrangling document derives by parsing that free text, and it covers 126 of the
-171. So we read `poll_groups` first and fall back to `pollinator_type` only for
-the handful of rows the parser could not resolve.
+Two columns record the pollinator, and the choice between them matters.
+`pollinator_type` is a legacy field populated for only 99 of the 3,161 records
+(64 of the georeferenced ones). Relying on it alone leaves 107 of the mapped
+points unattributed, although 65 of those records name their pollinators to
+species in the free-text `pollinators` field. `poll_groups`, derived from that
+free text during data preparation, resolves 126 of the georeferenced records and
+is therefore read first, with `pollinator_type` retained as a fallback.
 
 ```{r}
 #| label: prepare-map-data
@@ -231,8 +245,8 @@ map_data <- data %>%
 
 ```
 
-Next, the named pollinator taxa for each mapped record, collapsed into one HTML
-block per record.
+The named pollinator taxa for each record are collapsed into a single block per
+record, grouped by family.
 
 ```{r}
 #| label: prepare-pollinator-names
@@ -256,7 +270,7 @@ map_data <- map_data %>% left_join(poll_popup, by = "row")
 
 ```
 
-Finally the popup HTML itself.
+Finally, the popup content itself.
 
 ```{r}
 #| label: prepare-popup
@@ -290,7 +304,7 @@ map_data <- map_data %>%
   ))
 ```
 
-### Quick summary
+### Summary
 
 ```{r}
 #| label: summary
@@ -308,10 +322,10 @@ map_data %>%
 
 ***
 
-## How the maps are built
+## Mapping
 
-We define a single colour palette and a single function, `build_map()`, used by
-every map below, so the map is described in just one place.
+A single colour palette and a single function, `build_map()`, serve every map in
+this document, so the cartography is defined in one place.
 
 ```{r}
 #| label: map-function
@@ -327,7 +341,7 @@ color_of <- function(g) unname(ifelse(g %in% names(group_colors), group_colors[g
 
 ```
 
-`build_map()` turns a prepared data frame into a Leaflet map.
+`build_map()` converts a prepared data frame into a Leaflet map.
 
 ```{r}
 #| label: build-map-function
@@ -371,9 +385,10 @@ build_map <- function(df) {
 }
 ```
 
-## Map of all records
+## Distribution of all georeferenced records
 
-Each point is a locality with its reported pollinator type.
+Each point marks a locality at which pollination was observed, coloured by the
+pollinator group recorded there.
 
 ```{r}
 #| label: overall-map
@@ -382,9 +397,8 @@ build_map(map_data)
 
 ## Maps by subfamily
 
-One map per subfamily that has georeferenced records. The colours still
-represent the pollinator type, just like the general map, so the maps are
-comparable with one another.
+One map per subfamily with georeferenced records. Colours follow the same
+pollinator scheme as above, so the panels are directly comparable.
 
 ```{r}
 #| label: subfamily-maps

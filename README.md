@@ -125,25 +125,45 @@ Produces one self-contained `mapa_final_static.html`. Send it on its own; the
 data is baked in. The recipient needs an internet connection only because the
 base map tiles stream from OpenStreetMap and Esri.
 
-**The interactive Shiny version** — needs a host:
+**The interactive Shiny version** — hosted on Posit Connect Cloud:
+
+<https://raymondltremblay-global-orchid-pollinators.share.connect.posit.cloud/>
+
+It deploys from this GitHub repo, so a push updates it. Regenerate the manifest
+whenever the document or the installed packages change, then commit and push:
 
 ```r
-# Run Document locally first, then:
-quarto::quarto_publish_app(server = "shinyapps.io")
+rsconnect::writeManifest()
 ```
 
-`.rscignore` keeps the upload down to the document plus the enriched workbook.
+**When publishing a new piece of content, choose `Quarto` as the framework — not
+`Shiny`.** This document is a Quarto document that happens to contain Shiny
+elements. Picking `Shiny` makes Connect Cloud treat it as a *Python* Shiny app:
+it ignores `manifest.json`, never uses R, and fails with the misleading error
+"A Python requirements.txt file is required in your project". Connect Cloud
+distinguishes R Quarto from Python Quarto by which dependency file it finds
+(`manifest.json` vs `requirements.txt`), but only within the Quarto framework.
 
-Once it is deployed, paste the URL into the one line near the top of
-`docs/index.html`:
+Two URLs, and only one of them is shareable:
+
+- `connect.posit.cloud/<user>/content/<id>` — the owner/management view. Requires
+  a login; do not send this to anyone.
+- `https://<slug>.share.connect.posit.cloud` — the public share link. This is the
+  one that goes in `SHINY_URL` and in emails.
+
+Paste the share URL into the one line near the top of `docs/index.html`:
 
 ```js
-const SHINY_URL = "https://<account>.shinyapps.io/mapa_final/";
+const SHINY_URL = "https://raymondltremblay-global-orchid-pollinators.share.connect.posit.cloud/";
 ```
 
-That single edit activates the "Interactive explorer" card and embeds the live
-app in a section of the landing page. Left empty, the page hides the explorer
-rather than showing a dead link.
+That activates the "Interactive explorer" card, which opens the app in a new tab.
+Left empty, the card stays greyed out rather than showing a dead link. The app is
+deliberately **not** embedded in the page: Connect Cloud sends frame-blocking
+headers, so an `<iframe>` pointing at it renders blank.
+
+`.rscignore` keeps any rsconnect upload down to the document plus the enriched
+workbook.
 
 Re-deploy after every `pollinators_wrangling.qmd` run — the data travels inside
 the deployed bundle, it is not read live.
