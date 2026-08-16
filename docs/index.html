@@ -28,7 +28,7 @@
        thing here as they do on the points. */
     --bees: #E69F00; --diptera: #56B4E9; --wasps: #D55E00;
     --coleoptera: #009E73; --lepidoptera: #CC79A7; --aves: #0072B2;
-    --unassigned: #8C6D31; --none: #BBBBBB;
+    --unassigned: #8C6D31; --hemiptera: #F0E442; --none: #BBBBBB;
   }
   @media (prefers-color-scheme: dark) {
     :root { --bg:#16161a; --panel:#1e1e23; --line:#32323a;
@@ -225,18 +225,19 @@
   <table>
     <thead><tr><th>Group</th><th style="width:42%"></th><th class="num">Records</th></tr></thead>
     <tbody>
-      <tr><td><span class="swatch" style="background:var(--bees)"></span>Bees</td><td><div class="track"><div class="bar" style="width:100%;background:var(--bees)"></div></div></td><td class="num">68</td></tr>
-      <tr><td><span class="swatch" style="background:var(--diptera)"></span>Diptera</td><td><div class="track"><div class="bar" style="width:54.4%;background:var(--diptera)"></div></div></td><td class="num">37</td></tr>
-      <tr><td><span class="swatch" style="background:var(--lepidoptera)"></span>Lepidoptera</td><td><div class="track"><div class="bar" style="width:11.8%;background:var(--lepidoptera)"></div></div></td><td class="num">8</td></tr>
-      <tr><td><span class="swatch" style="background:var(--wasps)"></span>Wasps</td><td><div class="track"><div class="bar" style="width:10.3%;background:var(--wasps)"></div></div></td><td class="num">7</td></tr>
-      <tr><td><span class="swatch" style="background:var(--aves)"></span>Aves</td><td><div class="track"><div class="bar" style="width:5.9%;background:var(--aves)"></div></div></td><td class="num">4</td></tr>
+      <tr><td><span class="swatch" style="background:var(--bees)"></span>Bees</td><td><div class="track"><div class="bar" style="width:100.0%;background:var(--bees)"></div></div></td><td class="num">69</td></tr>
+      <tr><td><span class="swatch" style="background:var(--diptera)"></span>Diptera</td><td><div class="track"><div class="bar" style="width:65.2%;background:var(--diptera)"></div></div></td><td class="num">45</td></tr>
+      <tr><td class="none"><span class="swatch" style="background:var(--none)"></span>Not reported</td><td><div class="track"><div class="bar" style="width:63.8%;background:var(--none)"></div></div></td><td class="num none">44</td></tr>
+      <tr><td><span class="swatch" style="background:var(--wasps)"></span>Wasps</td><td><div class="track"><div class="bar" style="width:23.2%;background:var(--wasps)"></div></div></td><td class="num">16</td></tr>
+      <tr><td><span class="swatch" style="background:var(--lepidoptera)"></span>Lepidoptera</td><td><div class="track"><div class="bar" style="width:14.5%;background:var(--lepidoptera)"></div></div></td><td class="num">10</td></tr>
+      <tr><td><span class="swatch" style="background:var(--aves)"></span>Aves</td><td><div class="track"><div class="bar" style="width:5.8%;background:var(--aves)"></div></div></td><td class="num">4</td></tr>
       <tr><td><span class="swatch" style="background:var(--unassigned)"></span>Hymenoptera, unassigned</td><td><div class="track"><div class="bar" style="width:2.9%;background:var(--unassigned)"></div></div></td><td class="num">2</td></tr>
-      <tr><td><span class="swatch" style="background:var(--coleoptera)"></span>Coleoptera</td><td><div class="track"><div class="bar" style="width:1.5%;background:var(--coleoptera)"></div></div></td><td class="num">1</td></tr>
-      <tr><td class="none"><span class="swatch" style="background:var(--none)"></span>Not reported</td><td><div class="track"><div class="bar" style="width:64.7%;background:var(--none)"></div></div></td><td class="num none">44</td></tr>
+      <tr><td><span class="swatch" style="background:var(--coleoptera)"></span>Coleoptera</td><td><div class="track"><div class="bar" style="width:2.9%;background:var(--coleoptera)"></div></div></td><td class="num">2</td></tr>
+      <tr><td><span class="swatch" style="background:var(--hemiptera)"></span>Hemiptera</td><td><div class="track"><div class="bar" style="width:2.9%;background:var(--hemiptera)"></div></div></td><td class="num">2</td></tr>
     </tbody>
   </table>
-  <p class="note" style="margin-top:14px">Records are counted by their first pollinator
-  group; many have several, and the map popups list them all. <em>Not reported</em> means
+  <p class="note" style="margin-top:14px">A record with several pollinator groups is counted
+  under each of them, as it is drawn on the map, so the bars sum to more than 171. <em>Not reported</em> means
   no pollinator is recorded anywhere in that row — bars are scaled against the largest
   group, not against the 171 total.</p>
 

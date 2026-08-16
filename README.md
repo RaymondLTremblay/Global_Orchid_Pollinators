@@ -53,6 +53,7 @@ master directly.
 | `typo_corrections_changelog.csv` | The 105 pollinator-name corrections applied to the master |
 | `genus_corrections_changelog.csv` | **Derived** — the GBIF-confirmed genus spellings the wrangling doc applies automatically |
 | `gbif_genus_review.csv` | **Derived** — every pollinator genus checked against the GBIF backbone, with how it resolved |
+| `coordinate_errors_2026-08-16.xlsx` | Coordinates flagged by the land check, for the students to re-check against the source papers |
 | `_archive/` | Superseded workbooks and backups — **local only, not in the repo** (see `.gitignore`) |
 | `PROGRESS.md` | Dated georeferencing snapshots |
 
@@ -66,6 +67,14 @@ Single sheet `species`, ~3,161 rows (3,127 real species), ~69 columns.
   type check will report hundreds of phantom differences.
 - **171 rows currently have valid coordinates** (167 distinct species, 49
   genera). The rest await data entry — that is expected, not a bug.
+- **Coordinates are sanity-checked two ways.** The wrangling doc tests every
+  georeferenced point against a coastline (an orchid is not a marine plant) and
+  against the `locality` the record already carries (`C Am` cannot be in
+  Brazil), and also flags latitude identical to longitude and coordinates
+  shared across genera. Of the current 171 points, 11 fall in open water and 20
+  contradict their locality — 25 records once the overlap is removed. Results
+  go to the `coord_review` sheet of the enriched workbook. The check only
+  reports; it never edits the master.
 - `genus` and `subfamily` are written once and left blank on the following
   rows. The code fills them down with `tidyr::fill()` **before** any filtering,
   so row order must stay intact. Full binomial = `genus` + epithet.

@@ -16,6 +16,18 @@ server: shiny
 lang: en
 ---
 
+```{=html}
+<style>
+/* Leaflet draws its own controls at z-index 1000, which puts the +/- zoom
+   buttons on top of any menu the filters above the map open. Drop the control
+   layer below the page's menus (it still sits above every map pane, so the
+   buttons stay visible over the tiles). */
+.leaflet-top, .leaflet-bottom { z-index: 700 !important; }
+.selectize-dropdown          { z-index: 2000 !important; }
+</style>
+```
+
+
 <!--
   This is the Quarto version of the original `mapa_final.rmd` (now in
   `_archive/`). It uses Shiny
@@ -245,6 +257,44 @@ map_data <- data %>%
 
 ```
 
+A single colour palette, defined once and used everywhere: the map points, the
+layer-control checkboxes that double as the legend, the summary figures, and
+the coloured dots in the popups. It is defined here, before the popups are
+built, because the popups need it.
+
+```{r}
+#| label: palette
+#| context: setup
+# Fixed colour per pollinator group (colourblind-friendly Okabe-Ito), the SAME
+# palette as pollinator_map.qmd so both maps look alike. Each group's colour is
+# used for its map points AND for the coloured dot on its layer-control
+# checkbox, so the checkboxes double as the legend (no separate legend box).
+group_colors <- c(Bees = "#E69F00", Diptera = "#56B4E9", Wasps = "#D55E00",
+                  Coleoptera = "#009E73", Lepidoptera = "#CC79A7", Aves = "#0072B2",
+                  Hemiptera = "#F0E442", "Hymenoptera (unassigned)" = "#8C6D31",
+                  "Not reported" = "#BBBBBB")
+
+# Fixed display order for the pollinator groups. Taxonomic rather than
+# frequency-based on purpose: an order derived from the data reshuffles the
+# legend every time a filter changes the counts, so the same group moves
+# position while the reader is looking at it. This vector does not move.
+# The three Hymenoptera categories stay adjacent, insects precede vertebrates,
+# and "Not reported" is pinned last so absence never sits between two real
+# groups. Any group not listed here falls to the end, alphabetically.
+group_order <- c("Bees", "Wasps", "Hymenoptera (unassigned)",
+                 "Diptera", "Lepidoptera", "Coleoptera", "Hemiptera",
+                 "Thysanoptera", "Orthoptera", "Arachnida",
+                 "Aves", "Mammalia", "Reptilia",
+                 "Not reported")
+order_groups <- function(g) {
+  g <- unique(g)
+  known <- intersect(group_order, g)
+  c(known, sort(setdiff(g, known)))
+}
+color_of <- function(g) unname(ifelse(g %in% names(group_colors), group_colors[g], "#999999"))
+
+```
+
 The named pollinator taxa for each record are collapsed into a single block per
 record, grouped by family.
 
@@ -257,15 +307,36 @@ poll_long <- poll_long %>% filter(row %in% map_data$row)
 
 # For each mapped record, an HTML block listing its pollinator SPECIES, grouped
 # by family, so the popup shows the named pollinators when available.
+# Each family line carries the coloured dot of the pollinator group it belongs
+# to -- the same colour as the point on the map and the checkbox in the legend.
+# Readers who are not entomologists have no way of knowing that Halictidae are
+# bees and Syrphidae are flies; the dot says so without a word of explanation.
+# The group name is also the dot's tooltip, for anyone who hovers.
+dot <- function(g) ifelse(
+  is.na(g), "",
+  sprintf(paste0("<span title='%s' style='display:inline-block;width:9px;",
+                 "height:9px;border-radius:50%%;background:%s;border:1px solid ",
+                 "#444;margin-right:5px;vertical-align:middle'></span>"),
+          g, color_of(g)))
+
 poll_popup <- poll_long %>%
   mutate(name = case_when(
     rank == "taxon" ~ paste0("<i>", poll_taxon, "</i>"),
     rank == "genus" ~ paste0("<i>", poll_genus, "</i> sp."),
     TRUE            ~ verbatim)) %>%
   group_by(row, poll_family) %>%
-  summarise(line = paste0(ifelse(is.na(poll_family[1]), "", paste0(poll_family[1], ": ")),
-                          paste(unique(name), collapse = ", ")), .groups = "drop_last") %>%
-  summarise(poll_species = paste(line, collapse = "<br>"), .groups = "drop")
+  summarise(grp  = if (all(is.na(poll_group))) NA_character_ else na.omit(poll_group)[1],
+            taxa = paste(unique(name), collapse = ", "), .groups = "drop") %>%
+  # List the families in the same taxonomic order as the legend, so the dots in
+  # a popup run in the order the reader has just seen in the control box.
+  arrange(row, match(grp, group_order), poll_family) %>%
+  # A hanging indent keeps a family whose species list wraps onto a second line
+  # from running back under its own dot.
+  mutate(line = paste0("<div style='padding-left:15px;text-indent:-15px'>", dot(grp),
+                       ifelse(is.na(poll_family), "", paste0(poll_family, ": ")),
+                       taxa, "</div>")) %>%
+  group_by(row) %>%
+  summarise(poll_species = paste(line, collapse = ""), .groups = "drop")
 
 map_data <- map_data %>% left_join(poll_popup, by = "row")
 
@@ -279,6 +350,15 @@ Finally, the popup content itself.
 # Build the popup. A trait row is shown only when that trait is recorded.
 trait_row <- function(label, value) ifelse(is.na(value), "",
   paste0("<b>", label, ":</b> ", value, "<br>"))
+
+# The multi-group line gets the same coloured dots as the family lines, so a
+# reader can match every group named in the popup to a colour on the map
+# without going back to the control box.
+group_chips <- function(x) vapply(
+  strsplit(ifelse(is.na(x), "", x), "\\s*;\\s*"),
+  function(v) { v <- v[nzchar(v)]
+                if (!length(v)) "" else paste0(dot(v), v, collapse = ", ") },
+  character(1))
 
 map_data <- map_data %>%
   mutate(popup_info = paste0(
@@ -297,7 +377,7 @@ map_data <- map_data %>%
     # Show the full group list only when there is more than one, since a single
     # group is already obvious from the point's colour.
     ifelse(is.na(pollinator_all) | !grepl(";", pollinator_all), "",
-           paste0("<b>Pollinator groups:</b> ", gsub("; *", ", ", pollinator_all), "<br>")),
+           paste0("<b>Pollinator groups:</b> ", group_chips(pollinator_all), "<br>")),
     "<b>Pollinators:</b> ",
     ifelse(is.na(poll_species) | poll_species == "",
            paste0(pollinator, " <span style='color:#888'>(no species recorded)</span>"),
@@ -310,25 +390,10 @@ map_data <- map_data %>%
 
 ## Mapping
 
-We define a single colour palette and a single function, `build_map()`, shared
-by the static map and the Shiny app, so the map is described in just one place.
 
-```{r}
-#| label: map-function
-#| context: setup
-# Fixed colour per pollinator group (colourblind-friendly Okabe-Ito), the SAME
-# palette as pollinator_map.qmd so both maps look alike. Each group's colour is
-# used for its map points AND for the coloured dot on its layer-control
-# checkbox, so the checkboxes double as the legend (no separate legend box).
-group_colors <- c(Bees = "#E69F00", Diptera = "#56B4E9", Wasps = "#D55E00",
-                  Coleoptera = "#009E73", Lepidoptera = "#CC79A7", Aves = "#0072B2",
-                  Hemiptera = "#F0E442", "Hymenoptera (unassigned)" = "#8C6D31",
-                  "Not reported" = "#BBBBBB")
-color_of <- function(g) unname(ifelse(g %in% names(group_colors), group_colors[g], "#999999"))
-
-```
-
-`build_map()` converts a prepared data frame into a Leaflet map.
+`build_map()` converts a prepared data frame into a Leaflet map. It is shared
+by the static maps and the Shiny app, so the map is described in one place
+and the two cannot drift apart.
 
 ```{r}
 #| label: build-map-function
@@ -336,7 +401,25 @@ color_of <- function(g) unname(ifelse(g %in% names(group_colors), group_colors[g
 # build_map(): takes a prepared data frame and returns a Leaflet map. Defining
 # it once means the static map and the Shiny app cannot drift apart.
 build_map <- function(df) {
-  groups <- sort(unique(df$pollinator))
+  # A record with several pollinator groups belongs on EVERY one of them, not
+  # just the first. Cypripedium reginae is visited by bees, a syrphid and a
+  # scarab; colouring it by its first group alone hid Diptera and Coleoptera
+  # from the legend and, worse, made the record vanish when a reader unticked
+  # Bees. So expand to one row per record x group before drawing. The point is
+  # then drawn once per group, at the same coordinates, with the same popup.
+  df_long <- df %>%
+    mutate(.grp = ifelse(is.na(pollinator_all) | pollinator_all == "",
+                         pollinator, pollinator_all)) %>%
+    tidyr::separate_rows(.grp, sep = "\\s*;\\s*") %>%
+    mutate(.grp = ifelse(is.na(.grp) | .grp == "", "Not reported", .grp))
+
+  # Two different orders, deliberately. Draw the commonest groups first so the
+  # rarer ones land on top and are not buried under a pile of bees; but LIST
+  # them in the fixed taxonomic order, so the legend does not rearrange itself
+  # when a filter changes the counts.
+  draw_order   <- names(sort(table(df_long$.grp), decreasing = TRUE))
+  legend_order <- order_groups(df_long$.grp)
+  groups <- draw_order
 
   # Each layer's label is a coloured dot (same colour as its points) followed
   # by the group name; used as BOTH the marker group and the checkbox label.
@@ -354,20 +437,27 @@ build_map <- function(df) {
   for (pol in groups) {
     m <- m %>%
       addCircleMarkers(
-        data = df %>% filter(pollinator == pol),
+        data = df_long %>% filter(.grp == pol),
         lng = ~lon, lat = ~lat,
         popup = ~popup_info,
-        radius = 5, stroke = TRUE, weight = 1, fillOpacity = 0.7,
-        color = color_of(pol),
+        radius = 5,
+        # A white ring separates markers that sit on top of one another, which
+        # now happens wherever a record carries more than one group.
+        stroke = TRUE, color = "#FFFFFF", weight = 1, opacity = 0.9,
+        fillColor = color_of(pol), fillOpacity = 0.85,
         group = labels[[pol]]
       )
   }
 
   # Frame the map explicitly. Leaflet's automatic fit zooms to the maximum level
   # when a layer holds a single point, dropping the reader into a street-level
-  # view with no geographic context. We therefore widen the bounding box to a
-  # minimum visible extent before fitting.
-  min_km  <- 10                                   # smallest extent to display
+  # view with no geographic context. Two limits are applied together: the
+  # bounding box is widened to a minimum extent, and the fit is capped at a
+  # zoom level. The cap is what actually guarantees context -- a 10 km window
+  # centred on a coastal point can still be nothing but water, which is how a
+  # single Danish record came out as a blank blue square.
+  min_km  <- 100                                  # smallest extent to display
+  max_zm  <- 8                                    # never zoom in past this
   deg_lat <- min_km / 111                         # 1 degree of latitude ~ 111 km
   lat_rng <- range(df$lat, na.rm = TRUE)
   lon_rng <- range(df$lon, na.rm = TRUE)
@@ -385,12 +475,13 @@ build_map <- function(df) {
   lat_rng <- widen(lat_rng, deg_lat)
   lon_rng <- widen(lon_rng, deg_lon)
 
-  m <- m %>% fitBounds(lon_rng[1], lat_rng[1], lon_rng[2], lat_rng[2])
+  m <- m %>% fitBounds(lon_rng[1], lat_rng[1], lon_rng[2], lat_rng[2],
+                       options = list(maxZoom = max_zm))
 
   # The control box (top-right): a coloured, toggleable checkbox per group.
   m %>%
     addLayersControl(
-      overlayGroups = unname(labels[groups]),
+      overlayGroups = unname(labels[legend_order]),
       position = "topright",
       options = layersControlOptions(collapsed = FALSE)
     )
@@ -480,19 +571,26 @@ ggplot(coverage, aes(y = subfamily)) +
 ```
 
 Composition of the mapped records by pollinator group follows, in the same
-colours as the map points. Records with more than one recorded group are counted
-under the first; the map popups list every group for a record. *Not reported*
-means no pollinator is recorded anywhere in that row, and *Hymenoptera
-(unassigned)* marks records whose free-text entry names an order but neither a
-family nor a genus the parser could resolve.
+colours as the map points. A record with several groups — *Cypripedium reginae*
+is visited by bees, a syrphid and a scarab — is counted under **each** of them,
+exactly as it is drawn on the map, so the bars sum to more than the number of
+records. *Not reported* means no pollinator is recorded anywhere in that row,
+and *Hymenoptera (unassigned)* marks records whose free-text entry names an
+order but neither a family nor a genus the parser could resolve.
 
 ```{r}
 #| label: pollinator-composition
 #| fig-width: 7.2
 #| fig-height: 3.4
 #| fig-alt: "Horizontal bar chart of georeferenced orchid pollination records by pollinator group, ordered from most to fewest records. Each bar is labelled with its count and coloured with the same scheme used for the map points."
+# Counted the same way the map draws: a record with several groups is counted
+# under each of them, so the total exceeds the number of records.
 comp <- map_data %>%
-  count(pollinator, name = "records") %>%
+  mutate(.grp = ifelse(is.na(pollinator_all) | pollinator_all == "",
+                       pollinator, pollinator_all)) %>%
+  tidyr::separate_rows(.grp, sep = "\\s*;\\s*") %>%
+  mutate(.grp = ifelse(is.na(.grp) | .grp == "", "Not reported", .grp)) %>%
+  count(pollinator = .grp, name = "records") %>%
   arrange(records) %>%
   mutate(pollinator = factor(pollinator, levels = pollinator))
 
@@ -531,7 +629,7 @@ fluidRow(
   column(3, selectInput("subfamily", "Subfamily:",
                         choices = c("All", sort(unique(map_data$subfamily_label))))),
   column(3, selectInput("pgroup", "Pollinator group:",
-                        choices = c("All", sort(unique(na.omit(poll_long$poll_group)))))),
+                        choices = c("All", order_groups(na.omit(poll_long$poll_group))))),
   # Family and genus start already populated with every present value, and are
   # narrowed by the selection(s) above them (see the server cascade).
   column(3, selectInput("pfamily", "Pollinator family:",
@@ -569,7 +667,7 @@ poll_base <- reactive({
 observeEvent(input$subfamily, {
   pl <- poll_base()
   updateSelectInput(session, "pgroup",
-    choices = c("All", sort(unique(na.omit(pl$poll_group)))),  selected = "All")
+    choices = c("All", order_groups(na.omit(pl$poll_group))),  selected = "All")
   updateSelectInput(session, "pfamily",
     choices = c("All", sort(unique(na.omit(pl$poll_family)))), selected = "All")
   updateSelectInput(session, "pgenus",

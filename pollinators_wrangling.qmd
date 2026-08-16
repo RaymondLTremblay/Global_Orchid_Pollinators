@@ -772,19 +772,242 @@ if (exists("gbif_genus_review")) {
 }
 ```
 
+## Coordinate sanity checks
+
+Coordinates are typed in by hand from the primary literature, so the failure
+modes are typing failures: a sign dropped, latitude and longitude transposed,
+one cell copied into the row below, a gazetteer returning the first place that
+matched the name. None of these produce an obviously wrong number — they
+produce a plausible number in the wrong place, which no range check will catch.
+Two tests do catch them, and both use information the record already carries.
+
+The first is the organism: **an orchid is not a marine plant**, so a point in
+open water is wrong. Land is tested against the `maps` world outline, and a
+point in water is then grown outward in rings until it reaches land, which
+gives an approximate distance offshore. That distance separates two very
+different failures — a few kilometres of water usually means a small island the
+coastline file omits or a rounded decimal place, whereas hundreds of kilometres
+means the number is simply wrong.
+
+The second is the record's own `locality` field. If it reads `S Am Ecu Per` the
+point has to be in South America; if it reads `C Am` the point cannot be in
+Brazil. This is the stronger test of the two, because it catches the error the
+coastline cannot — a point on perfectly good dry land, on the wrong continent.
+The locality strings are terse and abbreviated, so they are matched with a
+lookup table of the abbreviations actually used in this workbook; anything that
+matches nothing is skipped rather than guessed at.
+
+Nothing here edits the master. The flags are written to the `coord_review`
+sheet for the person who entered the record to resolve against the source
+paper.
+
+```{r coord-checks, message = TRUE}
+lat_col <- grep("^latitud",  names(data), value = TRUE)[1]
+lon_col <- grep("^longitud", names(data), value = TRUE)[1]
+
+# The coordinate columns are text: they mix real numbers with free-text notes
+# from the students. as.numeric() is the coercion, and the NAs it makes are
+# expected (rows not yet georeferenced), not a failure.
+geo <- data %>%
+  transmute(row = .rowid + 1L, orchid, genus,
+            locality = if ("locality" %in% names(data)) locality else NA_character_,
+            lat = suppressWarnings(as.numeric(.data[[lat_col]])),
+            lon = suppressWarnings(as.numeric(.data[[lon_col]]))) %>%
+  filter(is.finite(lat), is.finite(lon))
+
+cat("Georeferenced records:", nrow(geo), "\n")
+
+flags <- list()
+
+# (a) Impossible values.
+bad <- geo %>% filter(abs(lat) > 90 | abs(lon) > 180)
+if (nrow(bad)) flags$out_of_range <- bad %>% mutate(issue = "outside -90..90 / -180..180")
+
+# (b) Latitude identical to longitude -- one cell copied into the other.
+same <- geo %>% filter(lat == lon)
+if (nrow(same)) flags$lat_eq_lon <- same %>%
+  mutate(issue = "latitude and longitude are identical")
+
+if (!requireNamespace("maps", quietly = TRUE)) {
+  cat("SKIPPED the land and locality checks: the 'maps' package is not",
+      "installed. Run install.packages('maps') to enable them.\n")
+} else {
+
+  # (c) In the sea. Grown outward in rings so we can say *how far* out.
+  on_land <- function(lat, lon) {
+    ok <- abs(lat) <= 90 & abs(lon) <= 180
+    out <- rep(FALSE, length(lat))
+    out[ok] <- !is.na(maps::map.where("world", lon[ok], lat[ok]))
+    out
+  }
+  # 16 bearings per ring is enough to find a coast without turning this into a
+  # real distance computation.
+  km_offshore <- function(lat, lon, rings = c(5, 10, 25, 50, 100, 250, 500, 1000)) {
+    brg <- seq(0, 2 * pi, length.out = 17)[-17]
+    for (r in rings) {
+      dlat <- r / 111
+      dlon <- r / (111 * max(cos(lat * pi / 180), 0.2))
+      if (any(on_land(lat + dlat * cos(brg), lon + dlon * sin(brg)))) return(r)
+    }
+    Inf
+  }
+
+  sea <- geo %>% filter(!on_land(lat, lon))
+  if (nrow(sea)) {
+    sea$km_offshore <- mapply(km_offshore, sea$lat, sea$lon)
+    flags$in_the_sea <- sea %>%
+      mutate(issue = ifelse(km_offshore <= 10,
+               "in water within 10 km of shore -- island, or one decimal out?",
+               paste0("in open water, roughly ", km_offshore, " km from land")))
+  }
+
+  # (d) The point contradicts the locality the record already carries.
+  #
+  # `maps::map.where()` names countries; Central America and the West Indies
+  # are regions, so they are spelled out. Names are those the `maps` world
+  # database uses ("USA", "UK"), not ISO names.
+  CAM <- c("Guatemala", "Belize", "Honduras", "El Salvador", "Nicaragua",
+           "Costa Rica", "Panama")
+  WI  <- c("Cuba", "Jamaica", "Haiti", "Dominican Republic", "Puerto Rico",
+           "Trinidad", "Tobago", "Bahamas", "Dominica", "Saint Lucia", "Barbados",
+           "Grenada", "Antigua", "Saint Vincent", "Saint Kitts", "Virgin Islands",
+           "Guadeloupe", "Martinique", "Anguilla", "Montserrat", "Cayman Islands",
+           "Aruba", "Curacao", "Bonaire", "Saint Martin", "Barbuda", "Nevis")
+  SAM <- c("Brazil", "Argentina", "Chile", "Peru", "Ecuador", "Colombia",
+           "Venezuela", "Bolivia", "Paraguay", "Uruguay", "Guyana", "Suriname",
+           "French Guiana")
+  NAM <- c("USA", "Canada", "Mexico", "Greenland", CAM, WI)
+  EUR <- c("UK", "Ireland", "France", "Spain", "Portugal", "Germany", "Poland",
+           "Denmark", "Norway", "Sweden", "Finland", "Estonia", "Latvia",
+           "Lithuania", "Belarus", "Ukraine", "Russia", "Netherlands", "Belgium",
+           "Luxembourg", "Switzerland", "Austria", "Czech Republic", "Slovakia",
+           "Hungary", "Slovenia", "Croatia", "Bosnia and Herzegovina", "Serbia",
+           "Montenegro", "Albania", "Greece", "Bulgaria", "Romania", "Moldova",
+           "Italy", "Iceland", "North Macedonia")
+  MAL <- c("Malaysia", "Indonesia", "Brunei", "Singapore", "Philippines",
+           "Papua New Guinea", "Timor-Leste")
+  ASIA <- c(MAL, "Thailand", "Vietnam", "Laos", "Cambodia", "Myanmar", "China",
+            "Japan", "South Korea", "North Korea", "Taiwan", "India", "Nepal",
+            "Bhutan", "Bangladesh", "Sri Lanka", "Pakistan", "Russia", "Mongolia")
+  AFR <- c("Zimbabwe", "South Africa", "Kenya", "Tanzania", "Uganda", "Madagascar",
+           "Mauritius", "Reunion", "Mozambique", "Zambia", "Malawi", "Angola",
+           "Nigeria", "Ghana", "Cameroon", "Ethiopia", "Gabon",
+           "Democratic Republic of the Congo")
+
+  # Each rule: the abbreviations as they appear in `locality`, a readable label
+  # for the report, and the countries the point is then allowed to fall in.
+  rules <- list(
+    list("\\bbra\\b|brasil|amazon|minas|bahia|parana|rio de jan|rio grande", "Brazil", "Brazil"),
+    list("\\becu\\b|ecuador", "Ecuador", "Ecuador"),
+    list("\\bper\\b|\\bperu\\b", "Peru", "Peru"),
+    list("\\bcol\\b|colombia", "Colombia", "Colombia"),
+    list("\\bven\\b|venezuela", "Venezuela", "Venezuela"),
+    list("chile", "Chile", "Chile"),
+    list("\\bs\\s*am\\b|south america|guian|argentin|boliv|paraguay", "South America", SAM),
+    list("\\bmex\\b|mexico", "Mexico", "Mexico"),
+    list("\\bc\\s*am\\b|central america|costa rica|panama|guatemala|honduras|nicaragua|belize",
+         "Central America", CAM),
+    list("\\bwi\\b|west indies|antill|carib|trinidad|cuba|jamaica|hispaniol|puerto rico",
+         "the West Indies", WI),
+    list("\\bn\\s*am\\b|\\bnam\\b|north america", "North America", NAM),
+    list("canada|alberta", "Canada", "Canada"),
+    list("florida|\\bore\\b|\\bwisc|united states|\\busa\\b", "the United States", "USA"),
+    list("\\beur\\b|europe", "Europe", EUR),
+    list("afr|madagas|mascaren|reunion|mauritius", "Africa", AFR),
+    list("japan|hokkaido|chiba|honshu|kyushu|ryukyu|amami|okinawa", "Japan", "Japan"),
+    list("china|yunnan|sichuan|hubei|guangdong|jiangxi|guangxi|guizhou|tibet|hainan",
+         "China", "China"),
+    list("korea", "Korea", c("South Korea", "North Korea")),
+    list("nepal", "Nepal", "Nepal"),
+    list("bhutan|buhtan", "Bhutan", "Bhutan"),
+    list("india|nagaland|sikkim|assam|meghalaya", "India", "India"),
+    list("bangladesh", "Bangladesh", "Bangladesh"),
+    list("malaysia|sarawak|sabah", "Malaysia", "Malaysia"),
+    list("singapore", "Singapore", "Singapore"),
+    list("borneo", "Borneo", c("Malaysia", "Indonesia", "Brunei")),
+    list("sumatra|\\bjava\\b|indonesi|sulawesi|moluc", "Indonesia", "Indonesia"),
+    list("philippin", "the Philippines", "Philippines"),
+    list("males", "Malesia", MAL),
+    list("new guinea|papua", "New Guinea", c("Papua New Guinea", "Indonesia")),
+    list("austral|queensland|\\bnsw\\b", "Australia", "Australia"),
+    list("\\basia|thai|vietnam|laos|myanmar|burma|taiwan|cambodia", "Asia", ASIA)
+  )
+
+  matched <- function(loc) {
+    if (is.na(loc) || !nzchar(trimws(loc))) return(NULL)
+    hit <- Filter(function(r) grepl(r[[1]], tolower(loc)), rules)
+    if (!length(hit)) NULL else hit
+  }
+
+  geo$country <- sub(":.*$", "", maps::map.where("world", geo$lon, geo$lat))
+
+  wrong <- lapply(seq_len(nrow(geo)), function(i) {
+    hit <- matched(geo$locality[i])
+    if (is.null(hit)) return(NULL)
+    allowed <- unique(unlist(lapply(hit, `[[`, 3)))
+    here <- geo$country[i]
+    if (!is.na(here) && here %in% allowed) return(NULL)
+    geo[i, ] %>% mutate(issue = paste0(
+      "point falls in ", ifelse(is.na(here), "open water", here),
+      "; the locality says ",
+      paste(unique(vapply(hit, `[[`, "", 2)), collapse = " / ")))
+  })
+  wrong <- bind_rows(wrong)
+  if (nrow(wrong)) flags$wrong_region <- wrong
+
+  cat("Localities too vague or unrecognised to test:",
+      sum(vapply(geo$locality, function(l) is.null(matched(l)), logical(1))), "\n")
+}
+
+# (e) One coordinate pair shared by several genera. Often legitimate -- one
+# study site, several orchids -- so this is reported, never treated as an error.
+shared <- geo %>%
+  mutate(pair = paste(round(lat, 5), round(lon, 5), sep = ", ")) %>%
+  group_by(pair) %>%
+  filter(n() > 1, n_distinct(genus) > 1) %>%
+  ungroup() %>%
+  mutate(issue = "coordinate shared by more than one genus (may be one site)") %>%
+  select(-pair)
+
+# One row per record, with every issue it triggered joined into one string.
+cr <- if (length(flags)) bind_rows(flags) else
+  geo[0, ] %>% mutate(issue = character(0))
+if (!"km_offshore" %in% names(cr)) cr$km_offshore <- NA_real_
+
+coord_review <- cr %>%
+  group_by(row) %>%
+  summarise(orchid = first(orchid), locality = first(locality),
+            lat = first(lat), lon = first(lon),
+            km_offshore = suppressWarnings(min(km_offshore, na.rm = TRUE)),
+            issue = paste(issue, collapse = "; "), .groups = "drop") %>%
+  mutate(km_offshore = ifelse(is.finite(km_offshore), km_offshore, NA_real_)) %>%
+  arrange(row)
+
+cat("Coordinates that cannot be right as entered:", nrow(coord_review), "of",
+    nrow(geo), "\n")
+cat("Coordinates shared across genera (informational):",
+    n_distinct(shared$row), "\n")
+
+coord_review %>%
+  select(row, orchid, locality, lat, lon, issue) %>%
+  knitr::kable(caption = "Coordinates that cannot be right as entered")
+```
+
 ## Exporting the enriched workbook
 
 We save a **copy** with five sheets: `species` (original + wide columns),
 `pollinators_long` (the long table), `needs_review`, `pollinator_taxonomy`
-(the present order→family→genus repository) and `taxa_review` (flagged names, each
-carrying the `gbif_status` and `gbif_evidence` columns added above).
-The raw workbook is not modified.
+(the present order→family→genus repository), `taxa_review` (flagged names, each
+carrying the `gbif_status` and `gbif_evidence` columns added above) and
+`coord_review` (the coordinates flagged above). The raw workbook is not
+modified.
 
 ```{r export}
 salida <- "Pollination_List_pollinators_enriched.xlsx"
 write.xlsx(
   list(species = species_out, pollinators_long = long, needs_review = review,
-       pollinator_taxonomy = pollinator_taxonomy, taxa_review = taxa_review),
+       pollinator_taxonomy = pollinator_taxonomy, taxa_review = taxa_review,
+       coord_review = coord_review),
   salida, overwrite = TRUE)
 cat("Written:", salida, "\n")
 ```
