@@ -43,8 +43,8 @@ So after the master changes (e.g. new coordinates), re-run
   Leaflet map, one static map per subfamily, and a Shiny app with a subfamily
   filter plus a **subfamily → pollinator group → family → genus** drill-down.
   Code chunks are folded (`code-fold`). Point colours double as the legend via
-  coloured layer-control checkboxes. Replaces the old `mapa_final.rmd`
-  (Spanish, R Markdown), which is superseded — archive it.
+  coloured layer-control checkboxes. Replaced the old `mapa_final.rmd`
+  (Spanish, R Markdown), now in `_archive/`.
 - `pollinators_wrangling.qmd` — data-prep (English, Quarto). Parses the free-text
   `pollinators` column into a tidy long table + wide roll-up columns, derives
   species-trait fields, cleans the subfamily column, and writes the enriched
@@ -53,9 +53,10 @@ So after the master changes (e.g. new coordinates), re-run
 - `pollinator_map.qmd` — standalone Shiny search map: search points by orchid
   and by pollinator (group/family/genus), clustered/coloured/sized markers,
   all-pollinators popups, and a linked DT table.
-- `Pollination_List_Thru_1 2024_merged26_08_13.xlsx` — **master workbook**
-  (sheet `species`); the raw source `pollinators_wrangling.qmd` reads. It
-  merged the prior main file with Caleb's coordinate additions (144 → 171
+- `Pollination_List_MASTER.xlsx` — **master workbook**
+  (sheet `species`); the raw source `pollinators_wrangling.qmd` reads. Renamed from `Pollination_List_Thru_1 2024_merged26_08_13.xlsx` on
+  2026-08-16; the name is undated on purpose, since the file is edited in place.
+  It merged the prior main file with Caleb's coordinate additions (144 → 171
   points), restored the *Cremastra appendiculata* (Japan) record, fixed a
   *Stelis quadrifida* citation, and had 105 pollinator-name typos corrected in
   the `pollinators` column (see `typo_corrections_changelog.csv`).
@@ -68,7 +69,9 @@ So after the master changes (e.g. new coordinates), re-run
   the three students (Naan, Natalia, Caleb), with source references per species
   and an auto-tallying Progress tab.
 - `Global_Orchid_Pollinators.Rproj` — RStudio project file; open this first.
-- `_archive/` — superseded workbooks and backups.
+- `_archive/` — superseded workbooks, old documents and backups. Local only:
+  `.gitignore` keeps it out of the repo. `mapa_final.rmd` (the original Spanish
+  R Markdown) lives here now.
 - `PROGRESS.md` — dated georeferencing snapshots.
 
 ## Data
@@ -92,8 +95,15 @@ So after the master changes (e.g. new coordinates), re-run
 
 - **Keep the master workbook as the raw source of truth**, but confirmed
   spelling typos have been corrected in it, and the wrangling doc keeps
-  `order_recode` / `family_recode` maps (and a small vetted genus list) as a
-  backstop. New variants: add to those maps rather than trusting free text.
+  `order_recode` / `family_recode` / `genus_recode` maps (and a small vetted
+  genus list) as a backstop. New variants: add to those maps rather than
+  trusting free text.
+- `genus_recode` holds ONLY corrections GBIF confirmed without inference — both
+  spellings resolving to one accepted name, or one placed and the other
+  unplaceable. Corrections that rest on the family-consistency rule are held
+  back pending a specialist, and suprageneric or informal names (`Anthophorid`,
+  `Halictid`, `Meliponids`) are excluded on purpose: promoting them to a genus
+  asserts precision the source never gave.
 - `genus` and `subfamily` are written once and left blank on following rows;
   the code fills them down (`tidyr::fill`) BEFORE any filtering, so row order
   must stay intact. Full binomial = genus + epithet.

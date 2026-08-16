@@ -1,8 +1,9 @@
 ---
 title: "Cleaning and structuring the *pollinators* column"
 subtitle: "Global Orchid Pollinators — preparing the data for search and Leaflet"
-author: "Natalia Palou and Caleb Pacheco"
-date: "2026-08-13"
+author: "Raymond L. Tremblay, Natalia Palou, Caleb Pacheco and Naan Lamoso"
+date: today
+date-format: "D MMMM YYYY"
 format:
   html:
     toc: true
@@ -46,7 +47,7 @@ them (so each point on the map can show a summary). The solution is to do a
 
 The original `pollinators` column is **left untouched**: it is the raw source.
 All cleaning (including order and family typos) lives here, in the code — the
-same philosophy `mapa_final.rmd` already uses with the `wasp → wasps` recode.
+same philosophy `mapa_final.qmd` uses with the `wasp → wasps` recode.
 
 ***
 
@@ -63,14 +64,16 @@ library(openxlsx)  # write the enriched workbook (multiple sheets)
 
 ## Loading the data
 
-We read the `species` sheet of the merged workbook and clean the column names,
+We read the `species` sheet of the master workbook and clean the column names,
 just like the main analysis.
 
 ```{r load}
 # The only line with the file name: if it is renamed, change it here.
-ruta_datos <- "Pollination_List_Thru_1 2024_merged26_08_13.xlsx"
+# The name carries no date on purpose -- the master is updated in place, so the
+# path stays valid and nothing downstream has to be edited again.
+master_path <- "Pollination_List_MASTER.xlsx"
 
-data <- read_excel(ruta_datos, sheet = "species")
+data <- read_excel(master_path, sheet = "species")
 colnames(data) <- tolower(trimws(colnames(data)))
 
 # Clean data-entry errors in `subfamily` BEFORE carrying it down. Orchidaceae
@@ -208,6 +211,62 @@ group_from <- function(order, family, genus = NA_character_) {
 }
 ```
 
+## Genus spellings confirmed by GBIF
+
+`order_recode` and `family_recode` above fix typos we identified by eye. This map
+does the same at genus rank, but every entry was confirmed against the GBIF
+backbone rather than judged here: in each case GBIF resolved both spellings to
+the same accepted name, or placed one spelling and could not place the other at
+all. No inference was involved, so these are applied automatically.
+
+Corrections that depended on *reasoning* — the family-consistency rule, which
+assumes the family a record was published under is correct — are deliberately
+**not** here. They are listed in the report under "Automatic corrections that
+overrode a real name" and are held until a specialist confirms them.
+
+Suprageneric and informal names are also excluded on purpose. `Anthophorid`,
+`Halictid` and `Meliponids` mean "a bee of that family"; GBIF will happily
+resolve them to *Anthophora*, *Halictus* and so on, but recording them as a
+genus would assert precision the source never gave.
+
+```{r genus-recode}
+genus_recode <- c(
+  "Adscrita" = "Adscita", "Aeroptetes" = "Aeropetes",
+  "Agaostemon" = "Agapostemon", "Agopostemon" = "Agapostemon",
+  "Alllodape" = "Allodape", "Amastas" = "Amastus",
+  "Amazalia" = "Amazilia", "Amazilla" = "Amazilia",
+  "Amegella" = "Amegilla", "Andrenia" = "Andrena",
+  "Apamaea" = "Apamea", "Atricelaphinis" = "Atrichelaphinis",
+  "Atrichelaphinus" = "Atrichelaphinis", "Auglochloropsis" = "Augochloropsis",
+  "Augochora" = "Augochlora", "Basiotha" = "Basiothia",
+  "Bombu" = "Bombus", "Campsomesiella" = "Campsomeriella",
+  "Chaliocodoma" = "Chalicodoma", "Cheilosa" = "Cheilosia",
+  "Chysura" = "Chrysura", "Cochinella" = "Coccinella",
+  "Costacovexa" = "Costaconvexa", "Cytothyrea" = "Cyrtothyrea",
+  "Dolichvespula" = "Dolichovespula", "Entepheria" = "Entephria",
+  "Entephtia" = "Entephria", "Entriphria" = "Entephria",
+  "Eparygyreus" = "Epargyreus", "Erisalis" = "Eristalis",
+  "Eufrisea" = "Eufriesea", "Eugloaa" = "Euglossa",
+  "Euremea" = "Eurema", "Euriesea" = "Eufriesea",
+  "Exarete" = "Exaerete", "Exomalopsiis" = "Exomalopsis",
+  "Gnophuos" = "Gnophos", "Halictis" = "Halictus",
+  "Heliothus" = "Heliothis", "Helphilus" = "Helophilus",
+  "Hemipepis" = "Hemipepsis", "Ischioden" = "Ischiodon",
+  "Ishiodon" = "Ischiodon", "Leptothoras" = "Leptothorax",
+  "Maroglossum" = "Macroglossum", "Megahile" = "Megachile",
+  "Oedemeria" = "Oedemera", "Parabolybia" = "Parapolybia",
+  "Parapoolybia" = "Parapolybia", "Paratetrapaedia" = "Paratetrapedia",
+  "Peritichia" = "Peritrichia", "Procoeca" = "Prosoeca",
+  "Scatophagia" = "Scatophaga", "Syrrita" = "Syritta",
+  "Tachinia" = "Tachina", "Tetrpedia" = "Tetrapedia",
+  "Thynoides" = "Thynnoides", "Trchoplusia" = "Trichoplusia",
+  "Xyphanes" = "Xylophanes", "Zasipilothynnus" = "Zaspilothynnus")
+
+fix_genus <- function(x) ifelse(!is.na(x) & x %in% names(genus_recode),
+                               unname(genus_recode[x]), x)
+cat("Genus spellings corrected from GBIF:", length(genus_recode), "\n")
+```
+
 ## Parsing function
 
 `parse_poll()` takes **one** `pollinators` cell and returns a table with one
@@ -257,7 +316,7 @@ parse_poll <- function(s) {
           genus <- last_genus                              # expand with the last full genus
           epithet <- str_extract(rest, "^[a-z][a-z-]+")
         } else if (str_detect(tok, "^[A-Z][a-z]+")) {      # full genus
-          genus <- str_extract(tok, "^[A-Z][a-z]+"); last_genus <- genus
+          genus <- fix_genus(str_extract(tok, "^[A-Z][a-z]+")); last_genus <- genus
           rest  <- str_squish(str_replace(tok, "^[A-Z][a-z]+\\s*", ""))
           epithet <- str_extract(rest, "^[a-z][a-z-]+")
         } else rank <- "informal"
@@ -410,12 +469,15 @@ head(pollinator_taxonomy, 10)
 
 ### Names to review (likely typos)
 
-We do not have an offline copy of the full world taxonomy, so instead of
-validating against an external authority we look **within the database** for
-names that are almost certainly the same: near-duplicate spellings, and genera
-recorded under more than one family. Nothing is changed automatically — these
-are flagged for a human to confirm (and, if real, added to the recode maps
-above). `adist()` is edit (Levenshtein) distance.
+First we look **within the database** for names that are almost certainly the
+same: near-duplicate spellings, and genera recorded under more than one family.
+This pass is deliberately generous — it flags anything that *might* be an error,
+and it has no external authority to consult, so the list below is a starting
+point rather than a verdict. `adist()` is edit (Levenshtein) distance.
+
+Most of these are settled a few sections down, once the names have been checked
+against the GBIF backbone; see **What the GBIF check settles**. Nothing is
+changed automatically at any stage.
 
 ```{r taxa-review}
 # All within-vector near-duplicate pairs (edit distance <= max_d, shared prefix).
@@ -472,35 +534,241 @@ that happen to be the *only* spelling in the file — and to confirm which flagg
 pairs are genuinely distinct genera (e.g. *Nomia* vs *Nomada*) — we validate the
 present genera against the **GBIF taxonomic backbone**. This needs the `rgbif`
 package and an internet connection (nothing else in this document does), so it
-is written to run on your machine and to skip cleanly if either is missing.
-Passing `kingdom = "Animalia"` avoids plant/animal homonyms (so *Agrostis* the
-grass does not mask *Agrotis* the moth). Genera that do not match **exactly**
-are written to `gbif_genus_review.csv` as strong typo/verification candidates.
+is written to run on your machine and to report loudly if either is missing.
 
-```{r gbif-validate}
+GBIF will not choose between equally-good homonyms — it returns their lowest
+common ancestor instead. *Anthophora* matches the bee genus (Apidae) and a
+stony coral (Pocilloporidae) at identical confidence, so the plain matcher
+answers "Animalia" and the name appears unresolvable. We therefore query each
+genus verbosely and, when the direct match lands above genus rank, take the best
+genus-rank candidate belonging to a class that could actually pollinate an
+orchid. Those cases are labelled `disambiguated` rather than `direct`, so the
+inference is visible instead of buried. Only rows marked `unresolved` need a
+human decision; they are written to `gbif_genus_review.csv`.
+
+```{r gbif-validate, message = TRUE, warning = TRUE}
+# NOTE: report with cat(), not message(). `opts_chunk$set(message = FALSE)` at
+# the top of this document hides message() output, which once let this chunk
+# skip in silence and leave a stale gbif_genus_review.csv on disk.
 if (!requireNamespace("rgbif", quietly = TRUE)) {
-  message("rgbif not installed - skipping GBIF check. Run install.packages('rgbif') to enable.")
+  cat("SKIPPED: rgbif is not installed. Run install.packages('rgbif') to enable",
+      "the GBIF check; gbif_genus_review.csv has NOT been updated.\n")
 } else {
   genera <- sort(unique(na.omit(pollinator_taxonomy$poll_genus)))
-  res <- tryCatch(
-    rgbif::name_backbone_checklist(data.frame(name = genera, kingdom = "Animalia")),
-    error = function(e) { message("GBIF request failed: ", conditionMessage(e)); NULL })
-  if (!is.null(res)) {
-    gbif_genus_review <- dplyr::tibble(
-      genus       = genera,
-      gbif_name   = res$scientificName,
-      gbif_rank   = res$rank,
-      gbif_family = res$family,
-      match_type  = res$matchType,
-      confidence  = res$confidence) %>%
-      dplyr::mutate(flag = is.na(match_type) | match_type != "EXACT") %>%
-      dplyr::arrange(dplyr::desc(flag), genus)
-    write.csv(gbif_genus_review, "gbif_genus_review.csv", row.names = FALSE)
-    cat("GBIF checked", nrow(gbif_genus_review), "genera;",
-        sum(gbif_genus_review$flag), "were not an exact match",
-        "(written to gbif_genus_review.csv)\n")
-    print(head(dplyr::filter(gbif_genus_review, flag), 15))
+
+  # Classes a pollinator of an orchid can plausibly belong to. Used only to
+  # break homonym ties -- see below.
+  poll_classes <- c("Insecta", "Arachnida", "Aves", "Mammalia", "Reptilia")
+
+  # WHY THIS IS DONE ONE NAME AT A TIME, AND VERBOSELY.
+  #
+  # GBIF's matcher refuses to guess between equally-good homonyms: it returns
+  # the lowest common ancestor instead. `Anthophora` matches both the bee genus
+  # (Apidae, Insecta) and a stony coral (Pocilloporidae, Anthozoa), each at
+  # confidence 92, so the plain matcher answers "Animalia" and the name looks
+  # unresolvable. It is not -- the candidates are in the verbose response.
+  # Passing `rank`/`kingdom` does not help; the tie is what stops it.
+  #
+  # So: take the direct match when it lands at genus rank, and otherwise pick
+  # the best genus-rank alternative that sits in a class capable of pollinating
+  # an orchid. A coral is not a pollinator; that is the whole of the judgement
+  # being applied here, and every such case is labelled "disambiguated" in the
+  # output so it can be audited rather than trusted.
+  resolve_genus <- function(g) {
+    out <- dplyr::tibble(genus = g, gbif_name = NA_character_,
+                         gbif_rank = NA_character_, gbif_family = NA_character_,
+                         gbif_class = NA_character_, match_type = NA_character_,
+                         confidence = NA_integer_, resolution = "unresolved")
+    nb <- tryCatch(rgbif::name_backbone_verbose(name = g, kingdom = "Animalia"),
+                   error = function(e) NULL)
+    if (is.null(nb)) return(out)
+
+    d <- nb$data
+    if (!is.null(d) && nrow(d) > 0 && !is.na(d$rank[1]) && d$rank[1] == "GENUS") {
+      out$gbif_name   <- d$scientificName[1]
+      out$gbif_rank   <- "GENUS"
+      out$gbif_family <- if ("family" %in% names(d)) d$family[1] else NA_character_
+      out$gbif_class  <- if ("class"  %in% names(d)) d$class[1]  else NA_character_
+      out$match_type  <- d$matchType[1]
+      out$confidence  <- d$confidence[1]
+      out$resolution  <- "direct"
+      return(out)
+    }
+
+    a <- nb$alternatives
+    if (!is.null(a) && nrow(a) > 0 && all(c("rank", "class") %in% names(a))) {
+      cand <- a %>%
+        dplyr::filter(rank == "GENUS", class %in% poll_classes) %>%
+        # an accepted name beats a synonym; then highest confidence
+        dplyr::mutate(.accepted = as.integer(status == "ACCEPTED")) %>%
+        dplyr::arrange(dplyr::desc(.accepted), dplyr::desc(confidence))
+      if (nrow(cand) > 0) {
+        out$gbif_name   <- cand$scientificName[1]
+        out$gbif_rank   <- "GENUS"
+        out$gbif_family <- cand$family[1]
+        out$gbif_class  <- cand$class[1]
+        out$match_type  <- "DISAMBIGUATED"
+        out$confidence  <- cand$confidence[1]
+        # more than one plausible pollinator genus == still worth a human look
+        out$resolution  <- if (dplyr::n_distinct(cand$family) > 1)
+          "disambiguated (several candidate families)" else "disambiguated"
+      }
+    }
+    out
   }
+
+  cat("Querying GBIF for", length(genera), "genera, one at a time.",
+      "This takes a few minutes.\n")
+  gbif_genus_review <- purrr::map_dfr(genera, resolve_genus) %>%
+    dplyr::mutate(flag = resolution != "direct") %>%
+    dplyr::arrange(match(resolution, c("unresolved",
+                                       "disambiguated (several candidate families)",
+                                       "disambiguated", "direct")), genus)
+
+  write.csv(gbif_genus_review, "gbif_genus_review.csv", row.names = FALSE)
+  cat("\nGBIF resolution of", nrow(gbif_genus_review), "genera:\n")
+  print(table(gbif_genus_review$resolution))
+  cat("\nWritten to gbif_genus_review.csv.",
+      "Only the 'unresolved' rows need a human decision.\n\n")
+  print(head(dplyr::filter(gbif_genus_review, resolution != "direct"), 15))
+}
+```
+
+### What the genus corrections actually changed
+
+```{r genus-recode-effect, message = TRUE}
+applied <- long %>%
+  dplyr::filter(!is.na(poll_genus)) %>%
+  dplyr::count(poll_genus, name = "rows_now") %>%
+  dplyr::filter(poll_genus %in% unname(genus_recode))
+changed <- tibble::tibble(
+  wrong_spelling = names(genus_recode),
+  corrected_to   = unname(genus_recode))
+write.csv(changed, "genus_corrections_changelog.csv", row.names = FALSE)
+cat("Applied", nrow(changed), "GBIF-confirmed genus spellings;",
+    "written to genus_corrections_changelog.csv\n")
+knitr::kable(changed, caption = "Genus spellings corrected automatically, each confirmed against GBIF.")
+```
+
+## What the GBIF check settles
+
+The flagged list above is deliberately generous — it is looking for anything that
+*might* be an error. Most of it is not a judgement call once the names are put to
+an external authority. Here we join the GBIF result back onto `taxa_review` and
+split it in two: what is settled, and what still needs a taxonomist.
+
+A GBIF match is accepted only when the family it returns **agrees with the family
+the record was published under**. That second condition matters more than it
+looks. Several typos happen to match a real animal elsewhere in the tree —
+`Megasella` resolves to a brachiopod, `Scaria` to a grasshopper, `Bombis` to a
+moth — and without the family check those would be waved through as valid names.
+
+The rule has a known weakness, stated here because it is invisible otherwise: it
+assumes the recorded family is correct. Where an orchid genuinely has an
+unexpected visitor, this would quietly correct it away. Rows where a rejected
+spelling was itself a real genus are therefore listed separately below, so the
+inference is visible rather than buried.
+
+```{r taxa-review-status, message = TRUE}
+if (!exists("gbif_genus_review")) {
+  cat("No GBIF results in this session — every flagged name is still open.\n")
+  taxa_review$gbif_status   <- NA_character_
+  taxa_review$gbif_evidence <- NA_character_
+} else {
+  gb <- gbif_genus_review %>%
+    dplyr::transmute(name = genus,
+                     gen  = ifelse(is.na(gbif_rank), NA_character_, sub(" .*$", "", gbif_name)),
+                     fam  = gbif_family)
+  look <- function(x, col) { i <- match(x, gb$name); ifelse(is.na(i), NA_character_, gb[[col]][i]) }
+
+  # Every family a genus is ACTUALLY recorded under, across the whole database.
+  #
+  # This must not be taken from the flagged pair's `context`, which is only the
+  # single family in which the two names happened to collide. `Nomada` appears
+  # under Apidae 19 times and Halictidae once; judged against Halictidae alone it
+  # looks like a misspelling of `Nomia` and all 20 records would have been
+  # renamed. Both are real bee genera.
+  fam_of <- long %>%
+    dplyr::filter(!is.na(poll_genus), !is.na(poll_family)) %>%
+    dplyr::distinct(poll_genus, poll_family)
+  recorded_families <- function(g) fam_of$poll_family[fam_of$poll_genus == g]
+
+  classify <- function(issue, context, name_1, count_1, name_2, count_2) {
+    if (identical(issue, "Genus spelling (near-duplicate)")) {
+      n1 <- ifelse(is.na(count_1), 0, count_1); n2 <- ifelse(is.na(count_2), 0, count_2)
+      common <- if (n1 >= n2) name_1 else name_2
+      rare   <- if (n1 >= n2) name_2 else name_1
+      kC <- look(common, "gen"); kR <- look(rare, "gen")
+      fC <- look(common, "fam"); fR <- look(rare, "fam")
+      if (!is.na(kC) && !is.na(kR) && kC == kR)
+        return(c("Resolved", paste0("both spellings resolve to ", kC)))
+      if (!is.na(kC) && is.na(kR))
+        return(c("Resolved", paste0("'", common, "' = ", kC, " (", fC, "); '", rare, "' matches no genus")))
+      if (is.na(kC) && !is.na(kR))
+        return(c("Resolved", paste0("'", rare, "' = ", kR, " (", fR, "); '", common, "' matches no genus")))
+      if (!is.na(kC) && !is.na(kR)) {
+        okC <- !is.na(fC) && fC %in% recorded_families(common)
+        okR <- !is.na(fR) && fR %in% recorded_families(rare)
+        if (okC && !okR)
+          return(c("Resolved", paste0("'", rare, "' matches ", kR, " in ", fR,
+                                      ", a family it is never recorded under — fuzzy collision")))
+        if (okR && !okC)
+          return(c("Resolved", paste0("'", common, "' matches ", kC, " in ", fC,
+                                      ", a family it is never recorded under")))
+        return(c("Needs review",
+                 paste0("both are real genera consistent with their own records: ",
+                        kC, " (", fC, ") vs ", kR, " (", fR, ")")))
+      }
+      return(c("Needs review", "GBIF places neither spelling at genus rank"))
+    }
+    if (identical(issue, "Genus under multiple families")) {
+      k <- look(name_1, "gen"); f <- look(name_1, "fam")
+      rec <- trimws(unlist(strsplit(ifelse(is.na(context), "", context), ";")))
+      if (is.na(k)) return(c("Needs review", "GBIF places this name at no genus rank"))
+      if (!is.na(f) && f %in% rec)
+        return(c("Resolved", paste0("GBIF: ", f, "; the other families in our records are errors")))
+      return(c("Needs review", paste0("GBIF: ", f, ", which is not among the families our records use")))
+    }
+    c("Needs review", "family-level name — the GBIF genus check does not apply")
+  }
+
+  st <- purrr::pmap(list(taxa_review$issue, taxa_review$context, taxa_review$name_1,
+                         taxa_review$count_1, taxa_review$name_2, taxa_review$count_2),
+                    classify)
+  taxa_review$gbif_status   <- vapply(st, `[`, character(1), 1)
+  taxa_review$gbif_evidence <- vapply(st, `[`, character(1), 2)
+
+  cat("Of", nrow(taxa_review), "flagged names, GBIF settles",
+      sum(taxa_review$gbif_status == "Resolved"), "and leaves",
+      sum(taxa_review$gbif_status == "Needs review"), "for a taxonomist.\n")
+}
+```
+
+### Still unresolved — these need a specialist
+
+```{r taxa-unresolved}
+taxa_unresolved <- taxa_review %>% dplyr::filter(gbif_status == "Needs review")
+taxa_unresolved %>%
+  dplyr::select(issue, context, name_1, count_1, name_2, count_2, gbif_evidence) %>%
+  knitr::kable(caption = paste0("The ", nrow(taxa_unresolved),
+    " flagged names GBIF cannot settle. Everything else in `taxa_review` is resolved."))
+```
+
+### Automatic corrections that overrode a real name
+
+Each row below is a spelling we treated as an error even though it matches a real
+genus somewhere else. Most are plainly fuzzy collisions, but "plainly" is doing
+work that only a specialist can check, so they are surfaced rather than assumed.
+
+```{r taxa-overrides}
+if (exists("gbif_genus_review")) {
+  overrides <- taxa_review %>%
+    dplyr::filter(issue == "Genus spelling (near-duplicate)", gbif_status == "Resolved",
+                  grepl("fuzzy collision|outside the recorded family", gbif_evidence)) %>%
+    dplyr::transmute(recorded_family = context, name_1, count_1, name_2, count_2,
+                     what_we_concluded = gbif_evidence)
+  knitr::kable(overrides, caption = paste0(nrow(overrides),
+    " corrections that discarded a spelling which is itself a valid genus elsewhere."))
 }
 ```
 
@@ -508,7 +776,8 @@ if (!requireNamespace("rgbif", quietly = TRUE)) {
 
 We save a **copy** with five sheets: `species` (original + wide columns),
 `pollinators_long` (the long table), `needs_review`, `pollinator_taxonomy`
-(the present order→family→genus repository) and `taxa_review` (likely typos).
+(the present order→family→genus repository) and `taxa_review` (flagged names, each
+carrying the `gbif_status` and `gbif_evidence` columns added above).
 The raw workbook is not modified.
 
 ```{r export}

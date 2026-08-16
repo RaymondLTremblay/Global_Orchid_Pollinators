@@ -1,1037 +1,978 @@
-"genus","gbif_name","gbif_rank","gbif_family","match_type","confidence","flag"
-"Acraea","Acraea Fabricius, 1807","GENUS","Nymphalidae","HIGHERRANK",95,TRUE
-"Adscrita","Adscita Retzius, 1783","GENUS","Zygaenidae","VARIANT",85,TRUE
-"Aeroptetes","Aeropetes Billberg, 1820","GENUS","Nymphalidae","VARIANT",84,TRUE
-"Agaostemon","Agapostemon Guérin-Méneville, 1844","GENUS","Halictidae","VARIANT",83,TRUE
-"Agopostemon","Agapostemon Guérin-Méneville, 1844","GENUS","Halictidae","VARIANT",83,TRUE
-"Agrostis","Insecta","CLASS",NA,"HIGHERRANK",80,TRUE
-"Agrynnis","Argynnis Fabricius, 1807","GENUS","Nymphalidae","HIGHERRANK",80,TRUE
-"Alastor","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Alllodape","Allodape Lepeletier & Serville, 1825","GENUS","Apidae","VARIANT",80,TRUE
-"Allodapini","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Amastas","Amastus Walker, 1855","GENUS","Erebidae","VARIANT",80,TRUE
-"Amauronematus","Amauronematus Konow, 1890","GENUS","Tenthredinidae","HIGHERRANK",95,TRUE
-"Amazalia","Chordata","PHYLUM",NA,"HIGHERRANK",80,TRUE
-"Amazilla","Animalia","KINGDOM",NA,"HIGHERRANK",80,TRUE
-"Amegella","Amegilla Friese, 1897","GENUS","Apidae","HIGHERRANK",80,TRUE
-"Amegilla","Amegilla Friese, 1897","GENUS","Apidae","HIGHERRANK",95,TRUE
-"Anaitis","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Anaspis","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Ancistrocerus","Arthropoda","PHYLUM",NA,"HIGHERRANK",95,TRUE
-"Andrena","Andrena Fabricius, 1775","GENUS","Andrenidae","HIGHERRANK",95,TRUE
-"Andrenia","Animalia","KINGDOM",NA,"HIGHERRANK",80,TRUE
-"Anomala","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Anthidium","Anthidium Fabricius, 1804","GENUS","Megachilidae","HIGHERRANK",95,TRUE
-"Anthophora","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Anthophorid","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Anthophorini","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Anthous","Animalia","KINGDOM",NA,"HIGHERRANK",80,TRUE
-"Apamaea","Apamea Ochsenheimer, 1816","GENUS","Noctuidae","VARIANT",83,TRUE
-"Apidae","Apidae","FAMILY","Apidae","HIGHERRANK",95,TRUE
-"Apis","Apis Linnaeus, 1758","GENUS","Apidae","HIGHERRANK",95,TRUE
-"Apphua","Apphia Distant, 1918","GENUS","Cicadellidae","VARIANT",85,TRUE
-"Arge","Arge Schrank, 1802","GENUS","Argidae","HIGHERRANK",95,TRUE
-"Argynnis","Argynnis Fabricius, 1807","GENUS","Nymphalidae","HIGHERRANK",95,TRUE
-"Aricia","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Astylus","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Atricelaphinis","Atrichelaphinis Kraatz, 1898","GENUS","Scarabaeidae","VARIANT",85,TRUE
-"Atrichelaphinus","Atrichelaphinis Kraatz, 1898","GENUS","Scarabaeidae","VARIANT",85,TRUE
-"Atrichelapinus","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Atrichopogon","Atrichopogon Kieffer, 1906","GENUS","Ceratopogonidae","HIGHERRANK",95,TRUE
-"Auglochloropsis","Augochloropsis Cockerell, 1897","GENUS","Halictidae","VARIANT",85,TRUE
-"Augochlorine","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Augochlorini","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Augochora","Augochlora Smith, 1853","GENUS","Halictidae","VARIANT",80,TRUE
-"Baccha","Baccha Fabricius, 1805","GENUS","Syrphidae","HIGHERRANK",95,TRUE
-"Basiotha","Basiothia Walker, 1856","GENUS","Sphingidae","VARIANT",80,TRUE
-"Bassania","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Biio","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Bolithophila","Bolitophila Meigen, 1818","GENUS","Bolitophilidae","VARIANT",85,TRUE
-"Bombioxylocopa","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Bombis","Arthropoda","PHYLUM",NA,"HIGHERRANK",80,TRUE
-"Bombu","Animalia","KINGDOM",NA,"HIGHERRANK",80,TRUE
-"Bombus","Bombus Latreille, 1802","GENUS","Apidae","HIGHERRANK",95,TRUE
-"Bombylius","Bombylius Linnaeus, 1758","GENUS","Bombyliidae","HIGHERRANK",95,TRUE
-"Bracnoidae","Braconidae","FAMILY","Braconidae","VARIANT",80,TRUE
-"Bracon","Bracon Fabricius, 1804","GENUS","Braconidae","HIGHERRANK",95,TRUE
-"Bradysia","Bradysia Winnertz, 1867","GENUS","Sciaridae","HIGHERRANK",95,TRUE
-"Cabro","Animalia","KINGDOM",NA,"HIGHERRANK",80,TRUE
-"Calodesmia","Calodesma Hübner, 1820","GENUS","Erebidae","VARIANT",85,TRUE
-"Camponotus","Camponotus Mayr, 1861","GENUS","Formicidae","HIGHERRANK",95,TRUE
-"Campopletis","Campoletis Förster, 1868","GENUS","Ichneumonidae","VARIANT",85,TRUE
-"Campsomesiella","Campsomeriella Betrem, 1941","GENUS","Scoliidae","VARIANT",85,TRUE
-"Cantharis","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Catopsilia","Catopsilia Hübner, 1819","GENUS","Pieridae","HIGHERRANK",95,TRUE
-"Cecidomyiidae","Cecidomyiidae","FAMILY","Cecidomyiidae","HIGHERRANK",95,TRUE
-"Celaenorrhinus","Celaenorrhinus Hübner, 1819","GENUS","Hesperiidae","HIGHERRANK",95,TRUE
-"Ceraptery","Cerapteryx Curtis, 1833","GENUS","Noctuidae","VARIANT",85,TRUE
-"Ceratina","Arthropoda","PHYLUM",NA,"HIGHERRANK",95,TRUE
-"Chaenohalictus","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Chalicodima","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Chaliocodoma","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Cheilosa","Cheilosia Meigen, 1822","GENUS","Syrphidae","VARIANT",83,TRUE
-"Chelostoma","Chelostoma Latreille, 1809","GENUS","Megachilidae","HIGHERRANK",95,TRUE
-"Chlorotyse","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Chloryalictis","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Choaspes","Choaspes Moore, 1881","GENUS","Hesperiidae","HIGHERRANK",95,TRUE
-"Chrysaspidea","Chrysaspidia Hübner","GENUS","Noctuidae","VARIANT",84,TRUE
-"Chrysis","Chrysis Linnaeus, 1761","GENUS","Chrysididae","HIGHERRANK",95,TRUE
-"Chrysomya","Chrysomya Robineau-Desvoidy, 1830","GENUS","Calliphoridae","HIGHERRANK",95,TRUE
-"Chrysura","Chrysura Dahlbom, 1845","GENUS","Chrysididae","HIGHERRANK",95,TRUE
-"Chysura","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Closyne","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Coccinella","Coccinella Linnaeus, 1758","GENUS","Coccinellidae","HIGHERRANK",95,TRUE
-"Cochinella","Animalia","KINGDOM",NA,"HIGHERRANK",80,TRUE
-"Coelichneumon","Coelichneumon Thomson, 1893","GENUS","Ichneumonidae","HIGHERRANK",95,TRUE
-"Coelioxys","Coelioxys Latreille, 1809","GENUS","Megachilidae","HIGHERRANK",95,TRUE
-"Coenonymha","Insecta","CLASS",NA,"HIGHERRANK",80,TRUE
-"Colias","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Colletes","Colletes Latreille, 1802","GENUS","Colletidae","HIGHERRANK",95,TRUE
-"Corynura","Arthropoda","PHYLUM",NA,"HIGHERRANK",95,TRUE
-"Cosmopepla","Cosmopepla Stål, 1867","GENUS","Pentatomidae","HIGHERRANK",95,TRUE
-"Costacovexa","Costaconvexa Agenjo, 1949","GENUS","Geometridae","VARIANT",85,TRUE
-"Creora","Cleora Curtis, 1825","GENUS","Geometridae","VARIANT",80,TRUE
-"Cucullia","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Culex","Culex Linnaeus, 1758","GENUS","Culicidae","HIGHERRANK",95,TRUE
-"Curculio","Curculio C.Linnaeus, 1758","GENUS","Curculionidae","HIGHERRANK",95,TRUE
-"Cyclophora","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Cytothyrea","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Dasypoda","Dasypoda Latreille, 1802","GENUS","Melittidae","HIGHERRANK",95,TRUE
-"Decinia","Animalia","KINGDOM",NA,"HIGHERRANK",80,TRUE
-"Delta","Delta Saussure, 1855","GENUS","Eumenidae","HIGHERRANK",95,TRUE
-"Diapriidsae","Diapriidae","FAMILY","Diapriidae","VARIANT",85,TRUE
-"Dioxina","Dioxyna Frey, 1945","GENUS","Tephritidae","VARIANT",80,TRUE
-"Dioxys","Dioxys Lepeletier & Serville, 1825","GENUS","Megachilidae","HIGHERRANK",95,TRUE
-"Diplazon","Diplazon Nees, 1818","GENUS","Ichneumonidae","HIGHERRANK",95,TRUE
-"Dolerus","Dolerus Jurine, 1807","GENUS","Tenthredinidae","HIGHERRANK",95,TRUE
-"Dolichvespula","Dolichovespula Rohwer, 1916","GENUS","Vespidae","VARIANT",85,TRUE
-"Drosophilae","Drosophila Fallen, 1823","GENUS","Drosophilidae","VARIANT",80,TRUE
-"Dufourea","Dufourea Lepeletier, 1841","GENUS","Halictidae","HIGHERRANK",95,TRUE
-"Dynshtid","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Ef","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Eg","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Eillema","Eilema Hübner, 1819","GENUS","Erebidae","VARIANT",83,TRUE
-"El","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Empis","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Entepheria","Entephria Hübner","GENUS","Geometridae","VARIANT",80,TRUE
-"Entephtia","Entephria Hübner","GENUS","Geometridae","VARIANT",80,TRUE
-"Entriphria","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Eparygyreus","Epargyreus Hübner, 1819","GENUS","Hesperiidae","VARIANT",85,TRUE
-"Epeolus","Epeolus Latreille, 1802","GENUS","Apidae","HIGHERRANK",95,TRUE
-"Erisalis","Eristalis Latreille, 1804","GENUS","Syrphidae","VARIANT",80,TRUE
-"Esoneura","Exoneura Smith, 1854","GENUS","Apidae","VARIANT",85,TRUE
-"Eucera","Eucera Scopoli, 1770","GENUS","Apidae","HIGHERRANK",95,TRUE
-"Eucereaon","Eucereon Hübner, 1819","GENUS","Erebidae","HIGHERRANK",80,TRUE
-"Eucereon","Eucereon Hübner, 1819","GENUS","Erebidae","HIGHERRANK",95,TRUE
-"Eufrisea","Eufriesea Cockerell, 1908","GENUS","Apidae","VARIANT",85,TRUE
-"Eugloaa","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Euglossines","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Eulalia","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Eumenes","Eumenes Latreille, 1802","GENUS","Vespidae","HIGHERRANK",95,TRUE
-"Eumerus","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Euodynerus","Euodynerus Blüthgen, 1938","GENUS","Eumenidae","HIGHERRANK",95,TRUE
-"Eupavlovskia","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Euphora","Animalia","KINGDOM",NA,"HIGHERRANK",80,TRUE
-"Euploea","Euploea Fabricius, 1807","GENUS","Nymphalidae","HIGHERRANK",95,TRUE
-"Eurema","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Euremea","Animalia","KINGDOM",NA,"HIGHERRANK",80,TRUE
-"Euriesea","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Eurybia","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Ex","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Exarete","Exaerete Hoffmannsegg, 1817","GENUS","Apidae","VARIANT",80,TRUE
-"Exomalopsiis","Exomalopsis Spinola, 1853","GENUS","Apidae","VARIANT",85,TRUE
-"Fannia","Diptera","ORDER",NA,"HIGHERRANK",95,TRUE
-"Forcipomyia","Forcipomyia Meigen, 1818","GENUS","Ceratopogonidae","HIGHERRANK",95,TRUE
-"Formica","Formica Linnaeus, 1758","GENUS","Formicidae","HIGHERRANK",95,TRUE
-"Gelechioidea","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Glycopsyche","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Gnophuos","Gnophos Treitschke, 1825","GENUS","Geometridae","VARIANT",80,TRUE
-"Gronocera","Gronoceras Cockerell, 1907","GENUS","Megachilidae","VARIANT",85,TRUE
-"Gymnettis","Gymnetis MacLeay, 1819","GENUS","Scarabaeidae","VARIANT",85,TRUE
-"Haemmorhagis","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Halictid","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Halictis","Animalia","KINGDOM",NA,"HIGHERRANK",80,TRUE
-"Halictus","Halictus Latreille, 1804","GENUS","Halictidae","HIGHERRANK",95,TRUE
-"Harmonia","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Helina","Helina Robineau-Desvoidy, 1830","GENUS","Muscidae","HIGHERRANK",95,TRUE
-"Heliothus","Heliothis Ochsenheimer, 1816","GENUS","Noctuidae","VARIANT",80,TRUE
-"Helphilus","Helophilus Meigen, 1822","GENUS","Syrphidae","VARIANT",80,TRUE
-"Hemipepis","Animalia","KINGDOM",NA,"HIGHERRANK",80,TRUE
-"Heriades","Heriades Spinola, 1808","GENUS","Megachilidae","HIGHERRANK",95,TRUE
-"Hesperiinae","Hesperiidae","FAMILY","Hesperiidae","VARIANT",85,TRUE
-"Heterochelius","Animalia","KINGDOM",NA,"HIGHERRANK",80,TRUE
-"Heteropelma","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Holiini","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Holopyga","Holopyga Dahlbom, 1845","GENUS","Chrysididae","HIGHERRANK",95,TRUE
-"Homoeoxipha","Homoeoxipha Saussure, 1874","GENUS","Trigonidiidae","HIGHERRANK",95,TRUE
-"Hoplitis","Hoplitis Klug, 1807","GENUS","Megachilidae","HIGHERRANK",95,TRUE
-"Hylaeus","Hylaeus Fabricius, 1793","GENUS","Colletidae","HIGHERRANK",95,TRUE
-"Hypothyris","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Ichneumon","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Ichneumonid","Ichneumonia Blyth, 1840","GENUS","Herpestidae","VARIANT",84,TRUE
-"Idiella","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Ischioden","Animalia","KINGDOM",NA,"HIGHERRANK",80,TRUE
-"Ischiodon","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Ishiodon","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Itoplectis","Itoplectis Förster, 1868","GENUS","Ichneumonidae","HIGHERRANK",95,TRUE
-"Lacodrosophila","Laccodrosophila Duda, 1927","GENUS","Drosophilidae","VARIANT",85,TRUE
-"Lamprotes","Animalia","KINGDOM",NA,"HIGHERRANK",94,TRUE
-"Lasioglossum","Lasioglossum Curtis, 1833","GENUS","Halictidae","HIGHERRANK",95,TRUE
-"Leptothoras","Leptothorax Mayr, 1855","GENUS","Formicidae","HIGHERRANK",80,TRUE
-"Leptothorax","Leptothorax Mayr, 1855","GENUS","Formicidae","HIGHERRANK",95,TRUE
-"Leucania","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Liocinella","Lioscinella Duda, 1929","GENUS","Chloropidae","VARIANT",80,TRUE
-"Lissonota","Lissonota Gravenhorst, 1829","GENUS","Ichneumonidae","HIGHERRANK",95,TRUE
-"Lonchaiedae","Lonchaeidae","FAMILY","Lonchaeidae","VARIANT",85,TRUE
-"Lucilia","Lucilia Robineau-Desvoidy, 1830","GENUS","Calliphoridae","HIGHERRANK",95,TRUE
-"Lycodrosophila","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Lycoria","Diptera","ORDER",NA,"HIGHERRANK",94,TRUE
-"Lygaeus","Lygaeus Fabricius, 1794","GENUS","Lygaeidae","HIGHERRANK",95,TRUE
-"Lyiopygia","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Macroglossum","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Malachius","Malachius Fabricius, 1775","GENUS","Melyridae","HIGHERRANK",95,TRUE
-"Maroglossum","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Megachile","Megachile Latreille, 1802","GENUS","Megachilidae","HIGHERRANK",95,TRUE
-"Megahile","Megachile Latreille, 1802","GENUS","Megachilidae","HIGHERRANK",80,TRUE
-"Melanostoma","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Melecta","Melecta Latreille, 1802","GENUS","Apidae","HIGHERRANK",95,TRUE
-"Meliponids","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Meliponines","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Melissoodes","Melissodes Latreille, 1829","GENUS","Apidae","VARIANT",83,TRUE
-"Melitaea","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Metriorrhynchus","Animalia","KINGDOM",NA,"HIGHERRANK",94,TRUE
-"Microdon","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Microgaster","Arthropoda","PHYLUM",NA,"HIGHERRANK",95,TRUE
-"Monomorium","Monomorium Mayr, 1855","GENUS","Formicidae","HIGHERRANK",95,TRUE
-"Morellia","Morellia Robineau-Desvoidy, 1830","GENUS","Muscidae","HIGHERRANK",95,TRUE
-"Musca","Musca Linnaeus, 1758","GENUS","Muscidae","HIGHERRANK",95,TRUE
-"Mycetophildae","Mycetophilidae","FAMILY","Mycetophilidae","VARIANT",83,TRUE
-"Mycetophyllidae","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Mycteromia","Mycteromyia Philippi, 1865","GENUS","Tabanidae","VARIANT",80,TRUE
-"Myrmecia","Arthropoda","PHYLUM",NA,"HIGHERRANK",95,TRUE
-"Nebula","Arthropoda","PHYLUM",NA,"HIGHERRANK",95,TRUE
-"Nectarinia","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Netelia","Netelia Gray, 1860","GENUS","Ichneumonidae","HIGHERRANK",95,TRUE
-"Neurratellia","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Noctua","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Nomada","Nomada Scopoli, 1770","GENUS","Apidae","HIGHERRANK",95,TRUE
-"Nomia","Nomia Latreille, 1804","GENUS","Halictidae","HIGHERRANK",95,TRUE
-"Nomioides","Nomioides Schenck, 1867","GENUS","Halictidae","HIGHERRANK",95,TRUE
-"Notocrypta","Notocrypta de Nicéville, 1889","GENUS","Hesperiidae","HIGHERRANK",95,TRUE
-"Ochlodes","Ochlodes Scudder, 1872","GENUS","Hesperiidae","HIGHERRANK",95,TRUE
-"Ocydia","Animalia","KINGDOM",NA,"HIGHERRANK",80,TRUE
-"Ocyptamus","Ocyptamus Macquart, 1834","GENUS","Syrphidae","HIGHERRANK",95,TRUE
-"Odynerus","Odynerus Latreille, 1802","GENUS","Vespidae","HIGHERRANK",95,TRUE
-"Oedemeria","Oedemera Olivier, 1789","GENUS","Oedemeridae","VARIANT",80,TRUE
-"Orphelia","Orihelia Chabaud & Bain, 1976","GENUS","Onchocercidae","VARIANT",84,TRUE
-"Osmia","Osmia Panzer, 1806","GENUS","Megachilidae","HIGHERRANK",95,TRUE
-"Pachyprotasis","Pachyprotasis Hartig, 1837","GENUS","Tenthredinidae","HIGHERRANK",95,TRUE
-"Pantrope","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Papilio","Papilio Linnaeus, 1758","GENUS","Papilionidae","HIGHERRANK",95,TRUE
-"Parabolybia","Parapolybia Saussure, 1854","GENUS","Vespidae","VARIANT",85,TRUE
-"Parapoolybia","Parapolybia Saussure, 1854","GENUS","Vespidae","VARIANT",85,TRUE
-"Parataea","Arthropoda","PHYLUM",NA,"HIGHERRANK",80,TRUE
-"Paratetrapaedia","Paratetrapedia Moure, 1941","GENUS","Apidae","VARIANT",85,TRUE
-"Paratrechina","Paratrechina Motschoulsky, 1863","GENUS","Formicidae","HIGHERRANK",95,TRUE
-"Parnara","Parnara Moore","GENUS","Hesperiidae","HIGHERRANK",95,TRUE
-"Pelopidas","Pelopidas Walker, 1870","GENUS","Hesperiidae","HIGHERRANK",95,TRUE
-"Perilampus","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Peritichia","Animalia","KINGDOM",NA,"HIGHERRANK",80,TRUE
-"Pesudaletia","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Phaonia","Phaonia Robineau-Desvoidy, 1830","GENUS","Muscidae","HIGHERRANK",95,TRUE
-"Phebis","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Phoridae","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Phronia","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Phygadeun","Phygadeuon Gravenhorst, 1829","GENUS","Ichneumonidae","VARIANT",80,TRUE
-"Pimpla","Pimpla Fabricius, 1804","GENUS","Ichneumonidae","HIGHERRANK",95,TRUE
-"Pirene","Animalia","KINGDOM",NA,"HIGHERRANK",94,TRUE
-"Plagiognathus","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Polia","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Polistes","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Polistinae","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Politmus","Polytmus Brisson, 1760","GENUS","Trochilidae","VARIANT",85,TRUE
-"Polybidae","Polybiidae","FAMILY","Polybiidae","VARIANT",85,TRUE
-"Polyommatus","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Polyrhachis","Polyrhachis Smith, 1857","GENUS","Formicidae","HIGHERRANK",95,TRUE
-"Polytremis","Polytremis Mabille, 1904","GENUS","Hesperiidae","HIGHERRANK",95,TRUE
-"Pompilid","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Ponerinae","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Pontia","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Procoeca","Prosoeca Schiner, 1867","GENUS","Nemestrinidae","VARIANT",80,TRUE
-"Proseca","Insecta","CLASS",NA,"HIGHERRANK",80,TRUE
-"Pseudoagapostemon","Pseudagapostemon Schrottky, 1909","GENUS","Halictidae","VARIANT",85,TRUE
-"Pseudoaugochlora","Pseudaugochlora Michener, 1954","GENUS","Halictidae","VARIANT",85,TRUE
-"Pseudoaugochloropsis","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Pteris","Animalia","KINGDOM",NA,"HIGHERRANK",80,TRUE
-"Pygidialis","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Pyrgus","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Rhamphomyia","Rhamphomyia Meigen, 1822","GENUS","Empididae","HIGHERRANK",95,TRUE
-"Rhinophora","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Rhynchium","Rhynchium Spinola, 1806","GENUS","Eumenidae","HIGHERRANK",95,TRUE
-"Sacrophagidae","Sarcophagidae","FAMILY","Sarcophagidae","VARIANT",85,TRUE
-"Sarcophaga","Sarcophaga Meigen, 1826","GENUS","Sarcophagidae","HIGHERRANK",95,TRUE
-"Sarcophagid","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Scatophagia","Scatophaga Meigen, 1803","GENUS","Scathophagidae","VARIANT",83,TRUE
-"Schrankia","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Sciara","Sciara Meigen, 1803","GENUS","Sciaridae","HIGHERRANK",95,TRUE
-"Sciarid","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Sciaridae","Sciaridae","FAMILY","Sciaridae","HIGHERRANK",95,TRUE
-"Scolid","Scolia J.C.Fabricius, 1775","GENUS","Scoliidae","HIGHERRANK",80,TRUE
-"Scymnus","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Selasphorous","Selasphorus Swainson, 1832","GENUS","Trochilidae","VARIANT",85,TRUE
-"Siona","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Sioona","Animalia","KINGDOM",NA,"HIGHERRANK",80,TRUE
-"Sodontomyia","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Sp","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Sphaerophata","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Sphecodes","Sphecodes Latreille, 1804","GENUS","Halictidae","HIGHERRANK",95,TRUE
-"Sphex","Sphex Linnaeus, 1758","GENUS","Sphecidae","HIGHERRANK",95,TRUE
-"Sphinx","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Spialia","Spialia Swinhoe, 1912","GENUS","Hesperiidae","HIGHERRANK",95,TRUE
-"Spilostethus","Spilostethus Stal, 1868","GENUS","Lygaeidae","HIGHERRANK",95,TRUE
-"Stomorhina","Stomorhina Rondani, 1861","GENUS","Calliphoridae","HIGHERRANK",95,TRUE
-"Strymon","Strymon Hübner, 1818","GENUS","Lycaenidae","HIGHERRANK",95,TRUE
-"Synagris","Perciformes","ORDER",NA,"HIGHERRANK",94,TRUE
-"Synectes","Syneches Walker, 1852","GENUS","Hybotidae","VARIANT",80,TRUE
-"Syrphus","Syrphus Fabricius, 1775","GENUS","Syrphidae","HIGHERRANK",95,TRUE
-"Syrrita","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Tachinia","Animalia","KINGDOM",NA,"HIGHERRANK",80,TRUE
-"Tachynomia","Tachynomyia Guérin-Méneville, 1842","GENUS","Tiphiidae","VARIANT",85,TRUE
-"Temestrinidae","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Tenthredo","Tenthredo Linnaeus, 1758","GENUS","Tenthredinidae","HIGHERRANK",95,TRUE
-"Tenthredopsis","Tenthredopsis Costa, 1859","GENUS","Tenthredinidae","HIGHERRANK",95,TRUE
-"Tetralona","Animalia","KINGDOM",NA,"HIGHERRANK",80,TRUE
-"Tetrpedia","Tetrapedia Klug, 1810","GENUS","Apidae","VARIANT",85,TRUE
-"Thrichostoma","Thrinchostoma Saussure, 1890","GENUS","Halictidae","VARIANT",85,TRUE
-"Thrips","Thrips Linnaeus, 1758","GENUS","Thripidae","HIGHERRANK",95,TRUE
-"Thynnine","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Thynoides","Thynnoides Guérin-Méneville, 1838","GENUS","Tiphiidae","VARIANT",85,TRUE
-"Thyreus","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Tiphia","Tiphia J.C.Fabricius, 1775","GENUS","Tiphiidae","HIGHERRANK",95,TRUE
-"Tipula","Tipula Linnaeus, 1758","GENUS","Tipulidae","HIGHERRANK",95,TRUE
-"Toxomerus","Toxomerus Macquart, 1855","GENUS","Syrphidae","HIGHERRANK",95,TRUE
-"Trachysiphonella","Trachysiphonella Enderlain, 1936","GENUS","Chloropidae","HIGHERRANK",95,TRUE
-"Trchoplusia","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Trichophtalma","Trichophthalma Westwood, 1835","GENUS","Nemestrinidae","VARIANT",85,TRUE
-"Trigona","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Triumala","Tirumala Moore","GENUS","Nymphalidae","VARIANT",85,TRUE
-"Trychosis","Trychosis Förster, 1869","GENUS","Ichneumonidae","HIGHERRANK",95,TRUE
-"Tryphon","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Unidentified","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Vanessa","Vanessa Fabricius, 1807","GENUS","Nymphalidae","HIGHERRANK",95,TRUE
-"Vespa","Vespa Linnaeus, 1758","GENUS","Vespidae","HIGHERRANK",95,TRUE
-"Volucella","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Xylocopa","Xylocopa Latreille, 1802","GENUS","Apidae","HIGHERRANK",95,TRUE
-"Xyphanes","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Zasipilothynnus","Zaspilothynnus Ashmead, 1903","GENUS","Tiphiidae","VARIANT",85,TRUE
-"Zygaena","Animalia","KINGDOM",NA,"HIGHERRANK",95,TRUE
-"Zygopilothynnus","Animalia","KINGDOM",NA,"HIGHERRANK",99,TRUE
-"Abrostola","Abrostola Ochsenheimer, 1816","GENUS","Noctuidae","EXACT",96,FALSE
-"Acmaeops","Acmaeops LeConte, 1850","GENUS","Cerambycidae","EXACT",95,FALSE
-"Acontia","Acontia Ochsenheimer, 1816","GENUS","Noctuidae","EXACT",95,FALSE
-"Acroclita","Acroclita Lederer, 1859","GENUS","Tortricidae","EXACT",96,FALSE
-"Acrosticta","Acrosticta Loew, 1868","GENUS","Ulidiidae","EXACT",96,FALSE
-"Actebia","Actebia Stephens, 1829","GENUS","Noctuidae","EXACT",96,FALSE
-"Actenicerus","Actenicerus Kiesenwetter, 1858","GENUS","Elateridae","EXACT",96,FALSE
-"Adelocera","Adelocera Latreille, 1829","GENUS","Elateridae","EXACT",96,FALSE
-"Adrastus","Adrastus Eschscholtz, 1829","GENUS","Elateridae","EXACT",96,FALSE
-"Adscita","Adscita Retzius, 1783","GENUS","Zygaenidae","EXACT",96,FALSE
-"Aedes","Aedes Meigen, 1818","GENUS","Culicidae","EXACT",96,FALSE
-"Aeolothynnus","Aeolothynnus Ashmead, 1903","GENUS","Tiphiidae","EXACT",96,FALSE
-"Aeropetes","Aeropetes Billberg, 1820","GENUS","Nymphalidae","EXACT",96,FALSE
-"Aethecerus","Aethecerus Wesmael, 1845","GENUS","Ichneumonidae","EXACT",95,FALSE
-"Aethopyga","Aethopyga Cabanis, 1850","GENUS","Nectariniidae","EXACT",96,FALSE
-"Afrodryas","Afrodryas Stoneham, 1957","GENUS","Pieridae","EXACT",94,FALSE
-"Agelaia","Agelaia Lepeletier de Saint Fargeau, 1836","GENUS","Vespidae","EXACT",96,FALSE
-"Aglais","Aglais Dalman, 1816","GENUS","Nymphalidae","EXACT",96,FALSE
-"Aglaostigma","Aglaostigma Kirby, 1882","GENUS","Tenthredinidae","EXACT",96,FALSE
-"Aglia","Aglia Ochsenheimer, 1810","GENUS","Saturniidae","EXACT",96,FALSE
-"Agraulis","Agraulis Boisduval & Le Conte, 1835","GENUS","Nymphalidae","EXACT",94,FALSE
-"Agriotes","Agriotes Eschscholtz, 1829","GENUS","Elateridae","EXACT",95,FALSE
-"Agrius","Agrius Hübner","GENUS","Sphingidae","EXACT",95,FALSE
-"Agrotis","Agrotis Ochsenheimer, 1816","GENUS","Noctuidae","EXACT",95,FALSE
-"Agrypon","Agrypon Förster, 1860","GENUS","Ichneumonidae","EXACT",96,FALSE
-"Aletia","Aletia Hübner, 1821","GENUS","Noctuidae","EXACT",96,FALSE
-"Allagrapha","Allagrapha Franclemont, 1964","GENUS","Noctuidae","EXACT",96,FALSE
-"Allobaccha","Allobaccha Curran, 1928","GENUS","Syrphidae","EXACT",96,FALSE
-"Allodape","Allodape Lepeletier & Serville, 1825","GENUS","Apidae","EXACT",95,FALSE
-"Allodia","Allodia Winnertz, 1863","GENUS","Mycetophilidae","EXACT",96,FALSE
-"Allograpta","Allograpta Osten Sacken, 1875","GENUS","Syrphidae","EXACT",96,FALSE
-"Alomya","Alomya Panzer, 1806","GENUS","Ichneumonidae","EXACT",96,FALSE
-"Alosterna","Alosterna Mulsant, 1863","GENUS","Cerambycidae","EXACT",96,FALSE
-"Amastus","Amastus Walker, 1855","GENUS","Erebidae","EXACT",95,FALSE
-"Amata","Amata Fabricius, 1807","GENUS","Erebidae","EXACT",96,FALSE
-"Amazilia","Amazilia R.Lesson, 1843","GENUS","Trochilidae","EXACT",96,FALSE
-"Amerila","Amerila Walker, 1855","GENUS","Erebidae","EXACT",96,FALSE
-"Ametalla","Ametalla Hope, 1840","GENUS","Chrysomelidae","EXACT",94,FALSE
-"Ammophila","Ammophila W.Kirby, 1798","GENUS","Sphecidae","EXACT",96,FALSE
-"Amphidrina","Amphidrina Staudinger","GENUS","Noctuidae","EXACT",96,FALSE
-"Anageshna","Anageshna Munroe, 1956","GENUS","Crambidae","EXACT",96,FALSE
-"Anagoga","Anagoga Hübner","GENUS","Geometridae","EXACT",96,FALSE
-"Anagrapha","Anagrapha McDunnough, 1944","GENUS","Noctuidae","EXACT",96,FALSE
-"Anarta","Anarta Ochsenheimer, 1816","GENUS","Noctuidae","EXACT",96,FALSE
-"Anartia","Anartia Hübner, 1819","GENUS","Nymphalidae","EXACT",96,FALSE
-"Anastrangalia","Anastrangalia Casey, 1924","GENUS","Cerambycidae","EXACT",96,FALSE
-"Andrenidae","Andrenidae","FAMILY","Andrenidae","EXACT",96,FALSE
-"Anolis","Anolis Daudin, 1802","GENUS","Dactyloidae","EXACT",96,FALSE
-"Anopheles","Anopheles Meigen, 1818","GENUS","Culicidae","EXACT",96,FALSE
-"Anoplius","Anoplius Dufour, 1834","GENUS","Pompilidae","EXACT",96,FALSE
-"Anoplodera","Anoplodera Mulsant, 1839","GENUS","Cerambycidae","EXACT",96,FALSE
-"Antepirrhoe","Antepirrhoe Warren, 1905","GENUS","Geometridae","EXACT",96,FALSE
-"Anthepiscopus","Anthepiscopus Becker, 1891","GENUS","Iteaphilidae","EXACT",96,FALSE
-"Anthocharis","Anthocharis Boisduval, Rambur, Duméril & Graslin, 1833","GENUS","Pieridae","EXACT",96,FALSE
-"Anthodioctes","Anthodioctes Holmberg, 1903","GENUS","Megachilidae","EXACT",96,FALSE
-"Anthomyiidae","Anthomyiidae","FAMILY","Anthomyiidae","EXACT",96,FALSE
-"Anticarsia","Anticarsia Hübner, 1818","GENUS","Erebidae","EXACT",96,FALSE
-"Antichloris","Antichloris Hübner, 1818","GENUS","Erebidae","EXACT",96,FALSE
-"Apallates","Apallates Sabrosky, 1980","GENUS","Chloropidae","EXACT",96,FALSE
-"Apamea","Apamea Ochsenheimer, 1816","GENUS","Noctuidae","EXACT",95,FALSE
-"Aplocera","Aplocera Stephens, 1827","GENUS","Geometridae","EXACT",96,FALSE
-"Apodynerus","Apodynerus Giordani Soika, 1993","GENUS","Eumenidae","EXACT",96,FALSE
-"Aporia","Aporia Hübner, 1819","GENUS","Pieridae","EXACT",95,FALSE
-"Aprostocetus","Aprostocetus Westwood, 1833","GENUS","Eulophidae","EXACT",96,FALSE
-"Aptesis","Aptesis Förster, 1850","GENUS","Ichneumonidae","EXACT",96,FALSE
-"Arachnospila","Arachnospila Kincaid, 1900","GENUS","Pompilidae","EXACT",96,FALSE
-"Arbela","Arbela Stål, 1865","GENUS","Nabidae","EXACT",95,FALSE
-"Archilochus","Archilochus Reichenbach, 1854","GENUS","Trochilidae","EXACT",95,FALSE
-"Archonias","Archonias Hübner, 1827","GENUS","Pieridae","EXACT",96,FALSE
-"Arctodium","Arctodium Burmeister, 1844","GENUS","Scarabaeidae","EXACT",95,FALSE
-"Argogorytes","Argogorytes Ashmead, 1899","GENUS","Crabronidae","EXACT",96,FALSE
-"Arhysoceble","Arhysoceble Moure, 1948","GENUS","Apidae","EXACT",96,FALSE
-"Aritranis","Aritranis Förster, 1869","GENUS","Ichneumonidae","EXACT",96,FALSE
-"Arthrothynnus","Arthrothynnus Brown, 1996","GENUS","Tiphiidae","EXACT",96,FALSE
-"Artogeia","Artogeia","GENUS","Pieridae","EXACT",96,FALSE
-"Ascia","Ascia Scopoli, 1777","GENUS","Pieridae","EXACT",95,FALSE
-"Ascotis","Ascotis Hübner","GENUS","Geometridae","EXACT",96,FALSE
-"Astraptes","Astraptes Hübner, 1819","GENUS","Hesperiidae","EXACT",96,FALSE
-"Athous","Athous Eschscholtz, 1829","GENUS","Elateridae","EXACT",96,FALSE
-"Atrichelaphinis","Atrichelaphinis Kraatz, 1898","GENUS","Scarabaeidae","EXACT",96,FALSE
-"Aucklandella","Aucklandella Cameron, 1909","GENUS","Ichneumonidae","EXACT",96,FALSE
-"Augochlora","Augochlora Smith, 1853","GENUS","Halictidae","EXACT",95,FALSE
-"Augochlorella","Augochlorella Sandhouse, 1937","GENUS","Halictidae","EXACT",96,FALSE
-"Augochloropsis","Augochloropsis Cockerell, 1897","GENUS","Halictidae","EXACT",96,FALSE
-"Aulacothynnus","Aulacothynnus Turner, 1910","GENUS","Tiphiidae","EXACT",96,FALSE
-"Australoechus","Australoechus Greathead, 1995","GENUS","Bombyliidae","EXACT",96,FALSE
-"Austrosciara","Austrosciara Schmitz & Mjöberg, 1924","GENUS","Sciaridae","EXACT",96,FALSE
-"Autographa","Autographa Hübner","GENUS","Noctuidae","EXACT",96,FALSE
-"Bactrocera","Bactrocera Macquart, 1835","GENUS","Tephritidae","EXACT",95,FALSE
-"Basiothia","Basiothia Walker, 1856","GENUS","Sphingidae","EXACT",96,FALSE
-"Bathythrix","Bathythrix Förster, 1869","GENUS","Ichneumonidae","EXACT",96,FALSE
-"Battus","Battus Scopoli, 1777","GENUS","Papilionidae","EXACT",95,FALSE
-"Belenois","Belenois Hübner, 1819","GENUS","Pieridae","EXACT",96,FALSE
-"Betasyrphus","Betasyrphus Matsumura, 1917","GENUS","Syrphidae","EXACT",96,FALSE
-"Bibio","Bibio Geoffroy, 1762","GENUS","Bibionidae","EXACT",95,FALSE
-"Billaea","Billaea Robineau-Desvoidy, 1830","GENUS","Tachinidae","EXACT",96,FALSE
-"Blacus","Blacus Nees, 1818","GENUS","Braconidae","EXACT",96,FALSE
-"Blitopertha","Blitopertha Reitter, 1903","GENUS","Scarabaeidae","EXACT",96,FALSE
-"Boloria","Boloria Moore, 1900","GENUS","Nymphalidae","EXACT",95,FALSE
-"Braconidae","Braconidae","FAMILY","Braconidae","EXACT",96,FALSE
-"Braunsapis","Braunsapis Michener, 1969","GENUS","Apidae","EXACT",96,FALSE
-"Bruchus","Bruchus Linnaeus, 1767","GENUS","Chrysomelidae","EXACT",95,FALSE
-"Cadeguala","Cadeguala Reed, 1892","GENUS","Colletidae","EXACT",96,FALSE
-"Cadrema","Cadrema Walker, 1859","GENUS","Chloropidae","EXACT",96,FALSE
-"Caenohalictus","Caenohalictus Cameron, 1903","GENUS","Halictidae","EXACT",96,FALSE
-"Calliphlox","Calliphlox F.Boie, 1831","GENUS","Trochilidae","EXACT",96,FALSE
-"Calliphora","Calliphora Robineau-Desvoidy, 1830","GENUS","Calliphoridae","EXACT",96,FALSE
-"Calliphoridae","Calliphoridae","FAMILY","Calliphoridae","EXACT",96,FALSE
-"Callopistria","Callopistria Hübner","GENUS","Noctuidae","EXACT",95,FALSE
-"Calopompilus","Calopompilus Ashmead, 1900","GENUS","Pompilidae","EXACT",96,FALSE
-"Campsomeriella","Campsomeriella Betrem, 1941","GENUS","Scoliidae","EXACT",96,FALSE
-"Campsomeris","Campsomeris Guérin-Méneville, 1838","GENUS","Scoliidae","EXACT",95,FALSE
-"Campylothynnus","Campylothynnus Turner, 1910","GENUS","Tiphiidae","EXACT",96,FALSE
-"Caradrina","Caradrina Ochsenheimer, 1816","GENUS","Noctuidae","EXACT",96,FALSE
-"Cardiophorus","Cardiophorus Eschscholtz, 1829","GENUS","Elateridae","EXACT",96,FALSE
-"Catocheilus","Catocheilus Guérin-Méneville, 1842","GENUS","Tiphiidae","EXACT",96,FALSE
-"Catoptria","Catoptria Hübner, 1825","GENUS","Crambidae","EXACT",95,FALSE
-"Caviceps","Caviceps Malloch, 1924","GENUS","Chloropidae","EXACT",96,FALSE
-"Cechenena","Cechenena Rothschild & Jordan, 1903","GENUS","Sphingidae","EXACT",96,FALSE
-"Celerio","Celerio Agassiz, 1846","GENUS","Sphingidae","EXACT",94,FALSE
-"Centris","Centris Fabricius, 1804","GENUS","Apidae","EXACT",95,FALSE
-"Ceratopogonidae","Ceratopogonidae","FAMILY","Ceratopogonidae","EXACT",96,FALSE
-"Cerceris","Cerceris Latreille, 1802","GENUS","Crabronidae","EXACT",96,FALSE
-"Ceriana","Ceriana Rafinesque, 1815","GENUS","Syrphidae","EXACT",96,FALSE
-"Cetema","Cetema Hendel, 1907","GENUS","Chloropidae","EXACT",96,FALSE
-"Cetonia","Cetonia Fabricius, 1775","GENUS","Scarabaeidae","EXACT",95,FALSE
-"Chalcididae","Chalcididae","FAMILY","Chalcididae","EXACT",96,FALSE
-"Chalcomitra","Chalcomitra Reichenbach, 1853","GENUS","Nectariniidae","EXACT",96,FALSE
-"Chalcostigma","Chalcostigma Reichenbach, 1854","GENUS","Trochilidae","EXACT",96,FALSE
-"Chalicodoma","Chalicodoma Lepeletier, 1841","GENUS","Megachilidae","EXACT",94,FALSE
-"Chamaesphecia","Chamaesphecia Spuler, 1910","GENUS","Sesiidae","EXACT",96,FALSE
-"Charissa","Charissa Curtis, 1826","GENUS","Geometridae","EXACT",95,FALSE
-"Cheilosia","Cheilosia Meigen, 1822","GENUS","Syrphidae","EXACT",95,FALSE
-"Chersotis","Chersotis Boisduval, 1840","GENUS","Noctuidae","EXACT",96,FALSE
-"Chilothynnus","Chilothynnus Brown, 1996","GENUS","Tiphiidae","EXACT",94,FALSE
-"Chironomidae","Chironomidae","FAMILY","Chironomidae","EXACT",96,FALSE
-"Chlerogella","Chlerogella Michener, 1954","GENUS","Halictidae","EXACT",96,FALSE
-"Chloromyia","Chloromyia Duncan, 1837","GENUS","Stratiomyidae","EXACT",96,FALSE
-"Chloropidae","Chloropidae","FAMILY","Chloropidae","EXACT",96,FALSE
-"Chlorostilbon","Chlorostilbon Gould, 1853","GENUS","Trochilidae","EXACT",96,FALSE
-"Chlosyne","Chlosyne Butler, 1870","GENUS","Nymphalidae","EXACT",96,FALSE
-"Chorinaeus","Chorinaeus Holmgren, 1858","GENUS","Ichneumonidae","EXACT",95,FALSE
-"Chrysanthia","Chrysanthia Schmidt, 1846","GENUS","Oedemeridae","EXACT",96,FALSE
-"Chrysolopus","Chrysolopus E.F.Germar, 1817","GENUS","Curculionidae","EXACT",96,FALSE
-"Chrysoteuchia","Chrysoteuchia Hübner, 1825","GENUS","Crambidae","EXACT",96,FALSE
-"Chrysotoxum","Chrysotoxum Meigen, 1803","GENUS","Syrphidae","EXACT",96,FALSE
-"Cidnopus","Cidnopus Thomson, 1859","GENUS","Elateridae","EXACT",96,FALSE
-"Cimbicidae","Cimbicidae","FAMILY","Cimbicidae","EXACT",96,FALSE
-"Cinetus","Cinetus Jurine, 1807","GENUS","Diapriidae","EXACT",96,FALSE
-"Cinnyris","Cinnyris Cuvier, 1816","GENUS","Nectariniidae","EXACT",96,FALSE
-"Cisseps","Cisseps Franclemont, 1936","GENUS","Erebidae","EXACT",96,FALSE
-"Claremontia","Claremontia Rohwer, 1909","GENUS","Tenthredinidae","EXACT",96,FALSE
-"Cleogene","Cleogene Duponchel, 1829","GENUS","Geometridae","EXACT",96,FALSE
-"Clinteria","Clinteria Burmeister, 1842","GENUS","Scarabaeidae","EXACT",96,FALSE
-"Clossiana","Clossiana Reuss, 1920","GENUS","Nymphalidae","EXACT",96,FALSE
-"Closterocerus","Closterocerus Westwood, 1833","GENUS","Eulophidae","EXACT",95,FALSE
-"Clubiona","Clubiona Latreille, 1804","GENUS","Clubionidae","EXACT",95,FALSE
-"Clytus","Clytus Laicharting, 1784","GENUS","Cerambycidae","EXACT",95,FALSE
-"Coelonia","Coelonia Rothschild & Jordan, 1903","GENUS","Sphingidae","EXACT",96,FALSE
-"Coelopa","Coelopa Meigen, 1830","GENUS","Coelopidae","EXACT",96,FALSE
-"Coenonympha","Coenonympha Hübner, 1819","GENUS","Nymphalidae","EXACT",95,FALSE
-"Coereba","Coereba Vieillot, 1809","GENUS","Thraupidae","EXACT",96,FALSE
-"Colibri","Colibri von Spix, 1824","GENUS","Trochilidae","EXACT",95,FALSE
-"Colletidae","Colletidae","FAMILY","Colletidae","EXACT",96,FALSE
-"Colotis","Colotis Hübner, 1819","GENUS","Pieridae","EXACT",96,FALSE
-"Condica","Condica Walker, 1856","GENUS","Noctuidae","EXACT",96,FALSE
-"Conicera","Conicera Meigen, 1830","GENUS","Phoridae","EXACT",96,FALSE
-"Conioscinella","Conioscinella Duda, 1929","GENUS","Chloropidae","EXACT",96,FALSE
-"Coptoformica","Coptoformica Müller, 1923","GENUS",NA,"EXACT",94,FALSE
-"Cornifrons","Cornifrons Lederer, 1858","GENUS","Crambidae","EXACT",96,FALSE
-"Cornutiplusia","Cornutiplusia Kostrowicki, 1961","GENUS","Noctuidae","EXACT",96,FALSE
-"Cosmosoma","Cosmosoma Hübner, 1823","GENUS","Erebidae","EXACT",95,FALSE
-"Costaconvexa","Costaconvexa Agenjo, 1949","GENUS","Geometridae","EXACT",96,FALSE
-"Crambus","Crambus Fabricius, 1798","GENUS","Crambidae","EXACT",95,FALSE
-"Craterestra","Craterestra Hampson, 1905","GENUS","Noctuidae","EXACT",96,FALSE
-"Cratichneumon","Cratichneumon Thomson, 1893","GENUS","Ichneumonidae","EXACT",96,FALSE
-"Crepidodera","Crepidodera Chevrolat, 1836","GENUS","Chrysomelidae","EXACT",95,FALSE
-"Criorhina","Criorhina Meigen, 1822","GENUS","Syrphidae","EXACT",95,FALSE
-"Crocota","Crocota Hübner","GENUS","Geometridae","EXACT",96,FALSE
-"Ctenicera","Ctenicera Latreille, 1829","GENUS","Elateridae","EXACT",96,FALSE
-"Ctenochira","Ctenochira Förster, 1855","GENUS","Ichneumonidae","EXACT",95,FALSE
-"Ctenoplectra","Ctenoplectra Kirby, 1826","GENUS","Apidae","EXACT",95,FALSE
-"Ctenoplusia","Ctenoplusia Dufay, 1970","GENUS","Noctuidae","EXACT",96,FALSE
-"Culicidae","Culicidae","FAMILY","Culicidae","EXACT",96,FALSE
-"Cumbre","Cumbre Evans, 1955","GENUS","Hesperiidae","EXACT",96,FALSE
-"Cyanopepla","Cyanopepla Clemens, 1861","GENUS","Erebidae","EXACT",96,FALSE
-"Cylindrotoma","Cylindrotoma Macquart, 1834","GENUS","Cylindrotomidae","EXACT",96,FALSE
-"Cynipidae","Cynipidae","FAMILY","Cynipidae","EXACT",96,FALSE
-"Cyrtostomus","Cyrtostomus Cabanis, 1851","GENUS","Nectariniidae","EXACT",94,FALSE
-"Cyrtothyrea","Cyrtothyrea Kolbe, 1895","GENUS","Scarabaeidae","EXACT",96,FALSE
-"Dactylolabis","Dactylolabis Osten Sacken, 1860","GENUS","Limoniidae","EXACT",96,FALSE
-"Dalopius","Dalopius Eschscholtz, 1829","GENUS","Elateridae","EXACT",96,FALSE
-"Danaus","Danaus Kluk, 1802","GENUS","Nymphalidae","EXACT",95,FALSE
-"Daphnis","Daphnis Hübner","GENUS","Sphingidae","EXACT",96,FALSE
-"Darapsa","Darapsa Walker, 1856","GENUS","Sphingidae","EXACT",96,FALSE
-"Dascillus","Dascillus Latreille, 1796","GENUS","Dascillidae","EXACT",95,FALSE
-"Dasyscolia","Dasyscolia Bradley, 1951","GENUS","Scoliidae","EXACT",96,FALSE
-"Dasysyrphus","Dasysyrphus Enderlein, 1938","GENUS","Syrphidae","EXACT",96,FALSE
-"Dasytes","Dasytes Paykull, 1799","GENUS","Melyridae","EXACT",96,FALSE
-"Deilephila","Deilephila (Laspeyres) , 1809","GENUS","Sphingidae","EXACT",96,FALSE
-"Deileptenia","Deileptenia Hübner","GENUS","Geometridae","EXACT",96,FALSE
-"Delia","Delia Robineau-Desvoidy, 1830","GENUS","Anthomyiidae","EXACT",95,FALSE
-"Denticollis","Denticollis Piller & Mitterpacher, 1783","GENUS","Elateridae","EXACT",96,FALSE
-"Diachrysia","Diachrysia Hübner","GENUS","Noctuidae","EXACT",96,FALSE
-"Dialictus","Dialictus Robertson, 1902","GENUS","Halictidae","EXACT",96,FALSE
-"Diarsia","Diarsia Hübner","GENUS","Noctuidae","EXACT",96,FALSE
-"Diasemia","Diasemia Hübner","GENUS","Crambidae","EXACT",96,FALSE
-"Dideopsis","Dideopsis Matsumura, 1917","GENUS","Syrphidae","EXACT",96,FALSE
-"Dilophus","Dilophus Meigen, 1803","GENUS","Bibionidae","EXACT",95,FALSE
-"Dinoptera","Dinoptera Mulsant, 1863","GENUS","Cerambycidae","EXACT",96,FALSE
-"Dioprosopa","Dioprosopa Hull, 1949","GENUS","Syrphidae","EXACT",96,FALSE
-"Diphyus","Diphyus Kriechbaumer, 1890","GENUS","Ichneumonidae","EXACT",96,FALSE
-"Discestra","Discestra Hampson, 1905","GENUS","Noctuidae","EXACT",96,FALSE
-"Dixa","Dixa Meigen, 1818","GENUS","Dixidae","EXACT",96,FALSE
-"Dolba","Dolba Walker, 1856","GENUS","Sphingidae","EXACT",96,FALSE
-"Dolichovespula","Dolichovespula Rohwer, 1916","GENUS","Vespidae","EXACT",96,FALSE
-"Drepanogynis","Drepanogynis Guenée","GENUS","Geometridae","EXACT",96,FALSE
-"Drepanulatrix","Drepanulatrix Gumppenberg, 1887","GENUS","Geometridae","EXACT",96,FALSE
-"Drosophila","Drosophila Fallen, 1823","GENUS","Drosophilidae","EXACT",95,FALSE
-"Drosophilidae","Drosophilidae","FAMILY","Drosophilidae","EXACT",96,FALSE
-"Dryadula","Dryadula Michener, 1942","GENUS","Nymphalidae","EXACT",95,FALSE
-"Dryas","Dryas Hübner, 1807","GENUS","Nymphalidae","EXACT",95,FALSE
-"Dryinidae","Dryinidae","FAMILY","Dryinidae","EXACT",96,FALSE
-"Dusona","Dusona Cameron, 1901","GENUS","Ichneumonidae","EXACT",96,FALSE
-"Dysgonia","Dysgonia Hübner","GENUS","Erebidae","EXACT",96,FALSE
-"Ectemnius","Ectemnius Dahlbom, 1845","GENUS","Crabronidae","EXACT",96,FALSE
-"Eirone","Eirone Westwood, 1844","GENUS","Tiphiidae","EXACT",96,FALSE
-"Elateridae","Elateridae","FAMILY","Elateridae","EXACT",96,FALSE
-"Elephantomyia","Elephantomyia Osten Sacken, 1860","GENUS","Limoniidae","EXACT",96,FALSE
-"Elophos","Elophos Boisduval, 1840","GENUS","Geometridae","EXACT",96,FALSE
-"Elpiste","Elpiste Gumppenberg, 1887","GENUS","Geometridae","EXACT",96,FALSE
-"Elvira","Elvira Mulsant, J.Verreaux & E.Verreaux, 1866","GENUS","Trochilidae","EXACT",96,FALSE
-"Empria","Empria Lepeletier & Serville, 1828","GENUS","Tenthredinidae","EXACT",96,FALSE
-"Empusada","Empusada Hampson, 1906","GENUS","Noctuidae","EXACT",96,FALSE
-"Endasys","Endasys Förster, 1869","GENUS","Ichneumonidae","EXACT",96,FALSE
-"Entephria","Entephria Hübner","GENUS","Geometridae","EXACT",95,FALSE
-"Epargyreus","Epargyreus Hübner, 1819","GENUS","Hesperiidae","EXACT",96,FALSE
-"Epicharis","Epicharis Klug, 1807","GENUS","Apidae","EXACT",95,FALSE
-"Episauris","Episauris Rebel, 1898","GENUS","Geometridae","EXACT",96,FALSE
-"Episcada","Episcada Godman & Salvin, 1879","GENUS","Nymphalidae","EXACT",96,FALSE
-"Episyrphus","Episyrphus Matsumura & Adachi, 1917","GENUS","Syrphidae","EXACT",96,FALSE
-"Erceia","Erceia Walker, 1858","GENUS","Erebidae","EXACT",96,FALSE
-"Erebia","Erebia Dalman, 1816","GENUS","Nymphalidae","EXACT",95,FALSE
-"Eriozona","Eriozona Schiner, 1860","GENUS","Syrphidae","EXACT",96,FALSE
-"Eristalinus","Eristalinus Rondani, 1845","GENUS","Syrphidae","EXACT",96,FALSE
-"Eristalis","Eristalis Latreille, 1804","GENUS","Syrphidae","EXACT",95,FALSE
-"Erisyrphus","Erisyrphus Ninomiya, 1929","GENUS","Syrphidae","EXACT",96,FALSE
-"Eronia","Eronia Hübner, 1823","GENUS","Pieridae","EXACT",96,FALSE
-"Erynnis","Erynnis Schrank, 1801","GENUS","Hesperiidae","EXACT",95,FALSE
-"Eubolia","Eubolia Duponchel, 1829","GENUS","Geometridae","EXACT",96,FALSE
-"Euchromia","Euchromia Hübner","GENUS","Erebidae","EXACT",95,FALSE
-"Euclidia","Euclidia Ochsenheimer, 1816","GENUS","Erebidae","EXACT",95,FALSE
-"Eudejeania","Eudejeania Townsend, 1912","GENUS","Tachinidae","EXACT",96,FALSE
-"Euderus","Euderus Haliday, 1844","GENUS","Eulophidae","EXACT",95,FALSE
-"Eudonia","Eudonia Billberg, 1820","GENUS","Crambidae","EXACT",95,FALSE
-"Eufriesea","Eufriesea Cockerell, 1908","GENUS","Apidae","EXACT",96,FALSE
-"Euglossa","Euglossa Latreille, 1802","GENUS","Apidae","EXACT",95,FALSE
-"Eulaema","Eulaema Lepeletier, 1841","GENUS","Apidae","EXACT",96,FALSE
-"Eumenidae","Eumenidae","FAMILY","Eumenidae","EXACT",96,FALSE
-"Eumorpha","Eumorpha Hübner","GENUS","Sphingidae","EXACT",95,FALSE
-"Eupanacra","Eupanacra Cadiou & Holloway, 1989","GENUS","Sphingidae","EXACT",96,FALSE
-"Eupeodes","Eupeodes Osten-Sacken, 1877","GENUS","Syrphidae","EXACT",96,FALSE
-"Euphydryas","Euphydryas Scudder, 1872","GENUS","Nymphalidae","EXACT",96,FALSE
-"Euphyes","Euphyes Scudder, 1872","GENUS","Hesperiidae","EXACT",96,FALSE
-"Eupithecia","Eupithecia Curtis, 1825","GENUS","Geometridae","EXACT",95,FALSE
-"Euryglossina","Euryglossina Cockerell, 1910","GENUS","Colletidae","EXACT",95,FALSE
-"Euryproctus","Euryproctus Holmgren, 1857","GENUS","Ichneumonidae","EXACT",96,FALSE
-"Eurys","Eurys Newman, 1841","GENUS","Pergidae","EXACT",96,FALSE
-"Eurytides","Eurytides Hübner, 1821","GENUS","Papilionidae","EXACT",96,FALSE
-"Eusphalerum","Eusphalerum Kraatz, 1857","GENUS","Staphylinidae","EXACT",96,FALSE
-"Eustroma","Eustroma Hübner","GENUS","Geometridae","EXACT",95,FALSE
-"Eutomostethus","Eutomostethus Enslin, 1914","GENUS","Tenthredinidae","EXACT",96,FALSE
-"Evergestis","Evergestis Hübner, 1825","GENUS","Crambidae","EXACT",96,FALSE
-"Exaerete","Exaerete Hoffmannsegg, 1817","GENUS","Apidae","EXACT",96,FALSE
-"Exechia","Exechia Winnertz, 1863","GENUS","Mycetophilidae","EXACT",96,FALSE
-"Exechiopsis","Exechiopsis Tuomikoski, 1966","GENUS","Mycetophilidae","EXACT",96,FALSE
-"Exetastes","Exetastes Gravenhorst, 1829","GENUS","Ichneumonidae","EXACT",96,FALSE
-"Exomalopsis","Exomalopsis Spinola, 1853","GENUS","Apidae","EXACT",96,FALSE
-"Exoneura","Exoneura Smith, 1854","GENUS","Apidae","EXACT",96,FALSE
-"Exoneurella","Exoneurella Michener, 1963","GENUS","Apidae","EXACT",96,FALSE
-"Fallenia","Fallenia Macq.","GENUS","Nemestrinidae","EXACT",95,FALSE
-"Ferdinandea","Ferdinandea Rondani, 1844","GENUS","Syrphidae","EXACT",96,FALSE
-"Formicidae","Formicidae","FAMILY","Formicidae","EXACT",95,FALSE
-"Frankliniella","Frankliniella Karny, 1910","GENUS","Thripidae","EXACT",96,FALSE
-"Gastrancistrus","Gastrancistrus Westwood, 1833","GENUS","Pteromalidae","EXACT",96,FALSE
-"Gaurotes","Gaurotes LeConte, 1850","GENUS","Cerambycidae","EXACT",95,FALSE
-"Geometridae","Geometridae","FAMILY","Geometridae","EXACT",96,FALSE
-"Gesta","Gesta Evans, 1953","GENUS","Hesperiidae","EXACT",96,FALSE
-"Glomeremus","Glomeremus Karny, 1937","GENUS","Gryllacrididae","EXACT",96,FALSE
-"Glyphicnemis","Glyphicnemis Förster, 1869","GENUS","Ichneumonidae","EXACT",96,FALSE
-"Gnophos","Gnophos Treitschke, 1825","GENUS","Geometridae","EXACT",96,FALSE
-"Gonepteryx","Gonepteryx Leach, 1815","GENUS","Pieridae","EXACT",96,FALSE
-"Goryphus","Goryphus Holmgren, 1868","GENUS","Ichneumonidae","EXACT",96,FALSE
-"Gorytes","Gorytes Latreille, 1805","GENUS","Crabronidae","EXACT",96,FALSE
-"Grammoptera","Grammoptera Audinet-Serville, 1835","GENUS","Cerambycidae","EXACT",95,FALSE
-"Graptomyza","Graptomyza Wiedemann, 1820","GENUS","Syrphidae","EXACT",96,FALSE
-"Greya","Greya Busck, 1903","GENUS","Prodoxidae","EXACT",96,FALSE
-"Gymnoscelis","Gymnoscelis Mabille, 1868","GENUS","Geometridae","EXACT",96,FALSE
-"Hada","Hada Billberg, 1820","GENUS","Noctuidae","EXACT",96,FALSE
-"Hadena","Hadena Schrank, 1802","GENUS","Noctuidae","EXACT",96,FALSE
-"Halictidae","Halictidae","FAMILY","Halictidae","EXACT",96,FALSE
-"Haplothrips","Haplothrips Amyot & Serville, 1843","GENUS","Phlaeothripidae","EXACT",96,FALSE
-"Heleomyza","Heleomyza Fallén, 1810","GENUS","Heleomyzidae","EXACT",95,FALSE
-"Heliconius","Heliconius Kluk, 1802","GENUS","Nymphalidae","EXACT",95,FALSE
-"Helicoverpa","Helicoverpa Hardwick, 1965","GENUS","Noctuidae","EXACT",96,FALSE
-"Heliopetes","Heliopetes Billberg, 1820","GENUS","Hesperiidae","EXACT",96,FALSE
-"Heliophobus","Heliophobus Boisduval, 1829","GENUS","Noctuidae","EXACT",96,FALSE
-"Heliothis","Heliothis Ochsenheimer, 1816","GENUS","Noctuidae","EXACT",95,FALSE
-"Hellinsia","Hellinsia Tutt, 1905","GENUS","Pterophoridae","EXACT",96,FALSE
-"Helophilus","Helophilus Meigen, 1822","GENUS","Syrphidae","EXACT",95,FALSE
-"Hemaris","Hemaris Dalman, 1816","GENUS","Sphingidae","EXACT",96,FALSE
-"Hemipenthes","Hemipenthes Loew, 1869","GENUS","Bombyliidae","EXACT",96,FALSE
-"Hemipepsis","Hemipepsis Dahlbom, 1844","GENUS","Pompilidae","EXACT",96,FALSE
-"Hemipyrellia","Hemipyrellia Townsend, 1918","GENUS","Calliphoridae","EXACT",96,FALSE
-"Herina","Herina Robineau-Desvoidy, 1830","GENUS","Ulidiidae","EXACT",96,FALSE
-"Hesperia","Hesperia Fabricius, 1793","GENUS","Hesperiidae","EXACT",96,FALSE
-"Hesperiidae","Hesperiidae","FAMILY","Hesperiidae","EXACT",96,FALSE
-"Heteria","Heteria Malloch, 1930","GENUS","Tachinidae","EXACT",96,FALSE
-"Hippelates","Hippelates Loew, 1863","GENUS","Chloropidae","EXACT",96,FALSE
-"Hippotion","Hippotion Hübner","GENUS","Sphingidae","EXACT",96,FALSE
-"Homalictus","Homalictus Cockerell, 1919","GENUS","Halictidae","EXACT",96,FALSE
-"Hoplia","Hoplia Illiger, 1803","GENUS","Scarabaeidae","EXACT",96,FALSE
-"Hoplocampa","Hoplocampa Hartig, 1837","GENUS","Tenthredinidae","EXACT",96,FALSE
-"Hoplosmia","Hoplosmia Thomson, 1872","GENUS","Megachilidae","EXACT",96,FALSE
-"Hybos","Hybos Meigen, 1803","GENUS","Hybotidae","EXACT",95,FALSE
-"Hybovalgus","Hybovalgus Kolbe, 1904","GENUS","Scarabaeidae","EXACT",96,FALSE
-"Hydriomena","Hydriomena Hübner","GENUS","Geometridae","EXACT",96,FALSE
-"Hydrophoria","Hydrophoria Robineau-Desvoidy, 1830","GENUS","Anthomyiidae","EXACT",96,FALSE
-"Hylemyia","Hylemyia","GENUS","Anthomyiidae","EXACT",94,FALSE
-"Hyles","Hyles Hübner","GENUS","Sphingidae","EXACT",96,FALSE
-"Hyperbatus","Hyperbatus Förster, 1869","GENUS","Ichneumonidae","EXACT",96,FALSE
-"Hyppa","Hyppa Duponchel","GENUS","Noctuidae","EXACT",96,FALSE
-"Ichneumonidae","Ichneumonidae","FAMILY","Ichneumonidae","EXACT",96,FALSE
-"Idana","Idana Loew, 1873","GENUS","Ulidiidae","EXACT",96,FALSE
-"Ideopsis","Ideopsis Horsfield, 1858","GENUS","Nymphalidae","EXACT",96,FALSE
-"Idiodes","Idiodes Guenée","GENUS","Geometridae","EXACT",96,FALSE
-"Idiolispa","Idiolispa Förster, 1869","GENUS","Ichneumonidae","EXACT",96,FALSE
-"Immanthidium","Immanthidium Pasteels, 1969","GENUS","Megachilidae","EXACT",94,FALSE
-"Incodynerus","Incodynerus Willink, 1968","GENUS","Eumenidae","EXACT",96,FALSE
-"Iphiclides","Iphiclides Hübner, 1819","GENUS","Papilionidae","EXACT",95,FALSE
-"Iridomyrmex","Iridomyrmex Mayr, 1862","GENUS","Formicidae","EXACT",96,FALSE
-"Ischnomera","Ischnomera Stephens, 1832","GENUS","Oedemeridae","EXACT",96,FALSE
-"Ischnus","Ischnus Gravenhorst, 1829","GENUS","Ichneumonidae","EXACT",96,FALSE
-"Isomira","Isomira Mulsant, 1856","GENUS","Tenebrionidae","EXACT",96,FALSE
-"Iswaroides","Iswaroides Ashmead, 1899","GENUS","Tiphiidae","EXACT",96,FALSE
-"Judolia","Judolia Mulsant, 1863","GENUS","Cerambycidae","EXACT",96,FALSE
-"Keroplatidae","Keroplatidae","FAMILY","Keroplatidae","EXACT",96,FALSE
-"Kleidotoma","Kleidotoma Westwood, 1833","GENUS","Figitidae","EXACT",96,FALSE
-"Korinchia","Korinchia Edwards, 1919","GENUS","Syrphidae","EXACT",96,FALSE
-"Laccodrosophila","Laccodrosophila Duda, 1927","GENUS","Drosophilidae","EXACT",96,FALSE
-"Lachnopus","Lachnopus Schoenherr, 1840","GENUS","Curculionidae","EXACT",95,FALSE
-"Lampornis","Lampornis Swainson, 1827","GENUS","Trochilidae","EXACT",96,FALSE
-"Lampronia","Lampronia Stephens, 1829","GENUS","Incurvariidae","EXACT",96,FALSE
-"Lampropteryx","Lampropteryx Stephens, 1831","GENUS","Geometridae","EXACT",96,FALSE
-"Lasionycta","Lasionycta Aurivillius, 1892","GENUS","Noctuidae","EXACT",96,FALSE
-"Lasius","Lasius Fabricius, 1804","GENUS","Formicidae","EXACT",95,FALSE
-"Lauxaniidae","Lauxaniidae","FAMILY","Lauxaniidae","EXACT",96,FALSE
-"Leioproctus","Leioproctus Smith, 1853","GENUS","Colletidae","EXACT",96,FALSE
-"Lejogaster","Lejogaster Rondani, 1857","GENUS","Syrphidae","EXACT",96,FALSE
-"Lema","Lema Fabricius, 1798","GENUS","Chrysomelidae","EXACT",95,FALSE
-"Lepithrix","Lepithrix Le Peletier & Serville, 1828","GENUS","Scarabaeidae","EXACT",95,FALSE
-"Leptura","Leptura Linnaeus, 1758","GENUS","Cerambycidae","EXACT",96,FALSE
-"Lepturobosca","Lepturobosca Reitter, 1913","GENUS","Cerambycidae","EXACT",96,FALSE
-"Lestricothynnus","Lestricothynnus Turner, 1910","GENUS","Tiphiidae","EXACT",96,FALSE
-"Leucocelis","Leucocelis Burmeister, 1842","GENUS","Scarabaeidae","EXACT",96,FALSE
-"Leucochloris","Leucochloris Reichenbach, 1854","GENUS","Trochilidae","EXACT",96,FALSE
-"Leucophenga","Leucophenga Mik, 1886","GENUS","Drosophilidae","EXACT",95,FALSE
-"Lieinix","Lieinix Gray, 1832","GENUS","Pieridae","EXACT",96,FALSE
-"Limnophila","Limnophila Macquart, 1834","GENUS","Limoniidae","EXACT",96,FALSE
-"Lintneria","Lintneria Butler, 1876","GENUS","Sphingidae","EXACT",95,FALSE
-"Liotrigona","Liotrigona Moure, 1961","GENUS","Apidae","EXACT",96,FALSE
-"Lipotriches","Lipotriches Gerstäcker, 1858","GENUS","Halictidae","EXACT",96,FALSE
-"Lissopimpla","Lissopimpla Kriechbaumer, 1889","GENUS","Ichneumonidae","EXACT",96,FALSE
-"Lithosia","Lithosia Fabricius, 1798","GENUS","Erebidae","EXACT",95,FALSE
-"Loderus","Loderus Konow, 1890","GENUS","Tenthredinidae","EXACT",96,FALSE
-"Loewia","Loewia Egger, 1856","GENUS","Tachinidae","EXACT",95,FALSE
-"Lonchaeidae","Lonchaeidae","FAMILY","Lonchaeidae","EXACT",96,FALSE
-"Lophocheilus","Lophocheilus Guérin-Méneville, 1842","GENUS","Tiphiidae","EXACT",96,FALSE
-"Lophopedia","Lophopedia Michener & Moure, 1957","GENUS","Apidae","EXACT",94,FALSE
-"Lophyrotoma","Lophyrotoma Ashmead, 1898","GENUS","Pergidae","EXACT",96,FALSE
-"Lycaena","Lycaena Fabricius, 1807","GENUS","Lycaenidae","EXACT",95,FALSE
-"Lycaenidae","Lycaenidae","FAMILY","Lycaenidae","EXACT",96,FALSE
-"Lychnuchoides","Lychnuchoides Godman, 1901","GENUS","Hesperiidae","EXACT",96,FALSE
-"Lychnuchus","Lychnuchus Hübner, 1827","GENUS","Hesperiidae","EXACT",95,FALSE
-"Lycus","Lycus Fabricius, 1787","GENUS","Lycidae","EXACT",95,FALSE
-"Lymexylidae","Lymexylidae","FAMILY","Lymexylidae","EXACT",96,FALSE
-"Lymire","Lymire Walker, 1854","GENUS","Erebidae","EXACT",96,FALSE
-"Lysandra","Lysandra Hemming, 1933","GENUS","Lycaenidae","EXACT",95,FALSE
-"Macdunnoughia","Macdunnoughia Kostrowicki, 1961","GENUS","Noctuidae","EXACT",96,FALSE
-"Macquartia","Macquartia Robineau-Desvoidy, 1830","GENUS","Tachinidae","EXACT",95,FALSE
-"Macrogalea","Macrogalea Cockerell, 1930","GENUS","Apidae","EXACT",96,FALSE
-"Macroglenes","Macroglenes Westwood, 1832","GENUS","Pteromalidae","EXACT",96,FALSE
-"Macrophya","Macrophya Dahlbom, 1835","GENUS","Tenthredinidae","EXACT",95,FALSE
-"Macrothynnus","Macrothynnus Turner, 1908","GENUS","Tiphiidae","EXACT",96,FALSE
-"Mallomus","Mallomus Blanchard, 1852","GENUS","Geometridae","EXACT",96,FALSE
-"Malthodes","Malthodes Kiesenwetter, 1852","GENUS","Cantharidae","EXACT",96,FALSE
-"Manduca","Manduca Hübner","GENUS","Sphingidae","EXACT",96,FALSE
-"Maniola","Maniola Schrank, 1801","GENUS","Nymphalidae","EXACT",96,FALSE
-"Megacampsomeris","Megacampsomeris Betrem, 1928","GENUS","Scoliidae","EXACT",96,FALSE
-"Megaselia","Megaselia Rondani, 1856","GENUS","Phoridae","EXACT",96,FALSE
-"Megasella","Megasella Paetel, 1875","GENUS","Terebratellidae","EXACT",96,FALSE
-"Melanagromyza","Melanagromyza Hendel, 1920","GENUS","Agromyzidae","EXACT",96,FALSE
-"Melanargia","Melanargia Meigen, 1828","GENUS","Nymphalidae","EXACT",96,FALSE
-"Melangyna","Melangyna Verrall, 1901","GENUS","Syrphidae","EXACT",96,FALSE
-"Meligethes","Meligethes Stephens, 1830","GENUS","Nitidulidae","EXACT",96,FALSE
-"Melinaea","Melinaea Hübner, 1816","GENUS","Nymphalidae","EXACT",95,FALSE
-"Meliphagidae","Meliphagidae","FAMILY","Meliphagidae","EXACT",96,FALSE
-"Melipona","Melipona Illiger, 1806","GENUS","Apidae","EXACT",96,FALSE
-"Meliscaeva","Meliscaeva Frey, 1946","GENUS","Syrphidae","EXACT",96,FALSE
-"Meneris","Meneris Westwood, 1850","GENUS","Nymphalidae","EXACT",96,FALSE
-"Meranoplus","Meranoplus Smith, 1853","GENUS","Formicidae","EXACT",95,FALSE
-"Mesoleptus","Mesoleptus Gravenhorst, 1829","GENUS","Ichneumonidae","EXACT",96,FALSE
-"Mesoleuca","Mesoleuca Hübner","GENUS","Geometridae","EXACT",95,FALSE
-"Mesopolobus","Mesopolobus Westwood, 1833","GENUS","Pteromalidae","EXACT",96,FALSE
-"Metasyrphus","Metasyrphus Matsumura, 1917","GENUS","Syrphidae","EXACT",96,FALSE
-"Methona","Methona Doubleday, 1847","GENUS","Nymphalidae","EXACT",96,FALSE
-"Micraphis","Micraphis Takahashi, 1931","GENUS","Aphididae","EXACT",96,FALSE
-"Micraspis","Micraspis Chevrolat, 1837","GENUS","Coccinellidae","EXACT",95,FALSE
-"Microchelonus","Microchelonus Szépligeti, 1908","GENUS","Braconidae","EXACT",96,FALSE
-"Micromeriella","Micromeriella Betrem, 1972","GENUS","Scoliidae","EXACT",96,FALSE
-"Microplitis","Microplitis Förster, 1862","GENUS","Braconidae","EXACT",95,FALSE
-"Milanion","Milanion Godman & Salvin, 1895","GENUS","Hesperiidae","EXACT",96,FALSE
-"Milichiidae","Milichiidae","FAMILY","Milichiidae","EXACT",96,FALSE
-"Miltomiges","Miltomiges Mabille, 1903","GENUS","Hesperiidae","EXACT",96,FALSE
-"Mimesa","Mimesa Shuckard, 1837","GENUS","Crabronidae","EXACT",96,FALSE
-"Minucia","Minucia Moore","GENUS","Erebidae","EXACT",96,FALSE
-"Misumena","Misumena Latreille, 1804","GENUS","Thomisidae","EXACT",96,FALSE
-"Mniotype","Mniotype Franclemont, 1941","GENUS","Noctuidae","EXACT",96,FALSE
-"Moegistorhynchus","Moegistorhynchus Macquart, 1841","GENUS","Nemestrinidae","EXACT",96,FALSE
-"Monoctenus","Monoctenus Dahlbom, 1835","GENUS","Diprionidae","EXACT",96,FALSE
-"Montella","Montella G.Bondar, 1948","GENUS","Curculionidae","EXACT",96,FALSE
-"Morganiella","Morganiella Tonnoir, 1927","GENUS","Mycetophilidae","EXACT",95,FALSE
-"Morinia","Morinia Robineau-Desvoidy, 1830","GENUS","Polleniidae","EXACT",95,FALSE
-"Morpholeria","Morpholeria C.B.Garrett, 1921","GENUS","Heleomyzidae","EXACT",96,FALSE
-"Muscidae","Muscidae","FAMILY","Muscidae","EXACT",96,FALSE
-"Mycetophila","Mycetophila Meigen, 1803","GENUS","Mycetophilidae","EXACT",95,FALSE
-"Mycetophilidae","Mycetophilidae","FAMILY","Mycetophilidae","EXACT",95,FALSE
-"Mycomya","Mycomya Rondani, 1856","GENUS","Mycetophilidae","EXACT",96,FALSE
-"Mycomyia","Mycomyia Edwards","GENUS","Mycetophilidae","EXACT",94,FALSE
-"Myopa","Myopa Fabricius, 1775","GENUS","Conopidae","EXACT",96,FALSE
-"Myrmica","Myrmica Latreille, 1804","GENUS","Formicidae","EXACT",95,FALSE
-"Mythimna","Mythimna Ochsenheimer, 1816","GENUS","Noctuidae","EXACT",95,FALSE
-"Myzinum","Myzinum Latreille, 1803","GENUS","Tiphiidae","EXACT",96,FALSE
-"Nacerda","Nacerda Stephens, 1839","GENUS","Oedemeridae","EXACT",94,FALSE
-"Nannotrigona","Nannotrigona Cockerell, 1922","GENUS","Apidae","EXACT",96,FALSE
-"Necremnus","Necremnus Thomson, 1878","GENUS","Eulophidae","EXACT",96,FALSE
-"Nemestrinidae","Nemestrinidae","FAMILY","Nemestrinidae","EXACT",96,FALSE
-"Neoascia","Neoascia Williston, 1886","GENUS","Syrphidae","EXACT",96,FALSE
-"Neocorynura","Neocorynura Schrottky, 1879","GENUS","Halictidae","EXACT",96,FALSE
-"Neophyllotocus","Neophyllotocus Blackburn, 1898","GENUS","Scarabaeidae","EXACT",96,FALSE
-"Neozeleboria","Neozeleboria Rohwer, 1910","GENUS","Tiphiidae","EXACT",96,FALSE
-"Nephele","Nephele Hübner","GENUS","Sphingidae","EXACT",95,FALSE
-"New","New Genus","GENUS","Braconidae","EXACT",96,FALSE
-"Niconiades","Niconiades Hübner, 1821","GENUS","Hesperiidae","EXACT",96,FALSE
-"Noctuidae","Noctuidae","FAMILY","Noctuidae","EXACT",96,FALSE
-"Nuneches","Nuneches Förster, 1869","GENUS","Ichneumonidae","EXACT",96,FALSE
-"Nupedia","Nupedia Karl, 1930","GENUS","Anthomyiidae","EXACT",96,FALSE
-"Nymphalidae","Nymphalidae","FAMILY","Nymphalidae","EXACT",96,FALSE
-"Ocreatus","Ocreatus Gould, 1846","GENUS","Trochilidae","EXACT",96,FALSE
-"Odezia","Odezia Boisduval, 1840","GENUS","Geometridae","EXACT",96,FALSE
-"Odontomyia","Odontomyia Meigen, 1803","GENUS","Stratiomyidae","EXACT",96,FALSE
-"Odontopera","Odontopera Stephens, 1831","GENUS","Geometridae","EXACT",95,FALSE
-"Oedemera","Oedemera Olivier, 1789","GENUS","Oedemeridae","EXACT",96,FALSE
-"Oedemeridae","Oedemeridae","FAMILY","Oedemeridae","EXACT",96,FALSE
-"Oedemeronia","Oedemeronia Seidlitz, 1899","GENUS","Oedemeridae","EXACT",96,FALSE
-"Oidaematophorus","Oidaematophorus Wallengren, 1862","GENUS","Pterophoridae","EXACT",96,FALSE
-"Oligographa","Oligographa Rothschild & Jordan, 1903","GENUS","Sphingidae","EXACT",96,FALSE
-"Omphale","Omphale Haliday, 1833","GENUS","Eulophidae","EXACT",96,FALSE
-"Oncocera","Oncocera Stephens, 1829","GENUS","Pyralidae","EXACT",96,FALSE
-"Oncomera","Oncomera Stephens, 1829","GENUS","Oedemeridae","EXACT",94,FALSE
-"Onesia","Onesia Robineau-Desvoidy, 1830","GENUS","Calliphoridae","EXACT",96,FALSE
-"Opomyza","Opomyza Fallén, 1820","GENUS","Opomyzidae","EXACT",95,FALSE
-"Opsolasia","Opsolasia Coquillett, 1910","GENUS","Muscidae","EXACT",95,FALSE
-"Ornidia","Ornidia Lepeletier de Saint Fargeau & Audinet-Serville, 1828","GENUS","Syrphidae","EXACT",96,FALSE
-"Orsodacne","Orsodacne Latreille, 1802","GENUS","Orsodacnidae","EXACT",96,FALSE
-"Orthellia","Orthellia Robineau-Desvoidy, 1863","GENUS","Muscidae","EXACT",96,FALSE
-"Orthosia","Orthosia Ochsenheimer, 1816","GENUS","Noctuidae","EXACT",95,FALSE
-"Oscinella","Oscinella Becker, 1910","GENUS","Chloropidae","EXACT",96,FALSE
-"Osiris","Osiris Smith, 1854","GENUS","Apidae","EXACT",96,FALSE
-"Ourapteryx","Ourapteryx Leach, 1814","GENUS","Geometridae","EXACT",96,FALSE
-"Oxyna","Oxyna Robineau-Desvoidy, 1830","GENUS","Tephritidae","EXACT",96,FALSE
-"Oxythyrea","Oxythyrea Mulsant, 1842","GENUS","Scarabaeidae","EXACT",96,FALSE
-"Pachylia","Pachylia Walker, 1856","GENUS","Sphingidae","EXACT",95,FALSE
-"Pachytodes","Pachytodes Pic, 1891","GENUS","Cerambycidae","EXACT",96,FALSE
-"Pangonius","Pangonius Latreille, 1802","GENUS","Tabanidae","EXACT",96,FALSE
-"Panogena","Panogena Rothschild & Jordan, 1903","GENUS","Sphingidae","EXACT",96,FALSE
-"Papestra","Papestra Sukhareva, 1973","GENUS","Noctuidae","EXACT",96,FALSE
-"Paracolletes","Paracolletes Smith, 1853","GENUS","Colletidae","EXACT",96,FALSE
-"Paracorymbia","Paracorymbia Miroshnikov, 1998","GENUS","Cerambycidae","EXACT",96,FALSE
-"Paragus","Paragus Latreille, 1804","GENUS","Syrphidae","EXACT",96,FALSE
-"Paragymnomma","Paragymnomma Brauer & Bergenstamm, 1891","GENUS","Tachinidae","EXACT",94,FALSE
-"Parapolybia","Parapolybia Saussure, 1854","GENUS","Vespidae","EXACT",96,FALSE
-"Parasarcophaga","Parasarcophaga Johnston & Tiegs, 1922","GENUS","Sarcophagidae","EXACT",96,FALSE
-"Paratetrapedia","Paratetrapedia Moure, 1941","GENUS","Apidae","EXACT",96,FALSE
-"Paratrigona","Paratrigona Schwarz, 1938","GENUS","Apidae","EXACT",96,FALSE
-"Parides","Parides Hübner, 1819","GENUS","Papilionidae","EXACT",96,FALSE
-"Passaloecus","Passaloecus Shuckard, 1837","GENUS","Crabronidae","EXACT",96,FALSE
-"Patellapis","Patellapis Friese, 1909","GENUS","Halictidae","EXACT",96,FALSE
-"Pegohylemyia","Pegohylemyia Schnabl & Dziedzicki, 1911","GENUS","Anthomyiidae","EXACT",96,FALSE
-"Pegoplata","Pegoplata Schnabl & Dziedzicki, 1911","GENUS","Anthomyiidae","EXACT",96,FALSE
-"Pelecomalium","Pelecomalium Casey, 1886","GENUS","Staphylinidae","EXACT",96,FALSE
-"Pemphredon","Pemphredon Latreille, 1796","GENUS","Crabronidae","EXACT",96,FALSE
-"Pepsis","Pepsis Fabricius, 1805","GENUS","Pompilidae","EXACT",96,FALSE
-"Peridroma","Peridroma Hübner","GENUS","Noctuidae","EXACT",96,FALSE
-"Perilissus","Perilissus Förster, 1855","GENUS","Ichneumonidae","EXACT",95,FALSE
-"Peritrichia","Peritrichia Burmeister, 1844","GENUS","Scarabaeidae","EXACT",96,FALSE
-"Perizoma","Perizoma Hübner","GENUS","Geometridae","EXACT",96,FALSE
-"Phaethornis","Phaethornis Swainson, 1827","GENUS","Trochilidae","EXACT",95,FALSE
-"Phaetornis","Phaetornis Cuvier, 1829","GENUS","Trochilidae","EXACT",96,FALSE
-"Philaethria","Philaethria Billberg, 1820","GENUS","Nymphalidae","EXACT",96,FALSE
-"Philodromus","Philodromus Walckenaer, 1826","GENUS","Philodromidae","EXACT",95,FALSE
-"Philoliche","Philoliche Wiedemann, 1828","GENUS","Tabanidae","EXACT",96,FALSE
-"Philopota","Philopota Wiedemann, 1830","GENUS","Acroceridae","EXACT",96,FALSE
-"Philoros","Philoros Walker, 1854","GENUS","Erebidae","EXACT",96,FALSE
-"Phlogophora","Phlogophora Treitschke, 1825","GENUS","Noctuidae","EXACT",95,FALSE
-"Phoebis","Phoebis Hübner, 1819","GENUS","Pieridae","EXACT",96,FALSE
-"Phoenicoprocta","Phoenicoprocta Druce, 1898","GENUS","Erebidae","EXACT",96,FALSE
-"Pholeomyia","Pholeomyia Bilimek, 1867","GENUS","Milichiidae","EXACT",95,FALSE
-"Phorocera","Phorocera Robineau-Desvoidy, 1830","GENUS","Tachinidae","EXACT",95,FALSE
-"Phryxe","Phryxe Robineau-Desvoidy, 1830","GENUS","Tachinidae","EXACT",96,FALSE
-"Phthinia","Phthinia Winnertz, 1863","GENUS","Mycetophilidae","EXACT",96,FALSE
-"Phyciodes","Phyciodes Hübner, 1819","GENUS","Nymphalidae","EXACT",96,FALSE
-"Phyllodromia","Phyllodromia Zetterstedt, 1837","GENUS","Empididae","EXACT",95,FALSE
-"Phyllopertha","Phyllopertha Stephens, 1830","GENUS","Scarabaeidae","EXACT",96,FALSE
-"Phymatothynnus","Phymatothynnus Turner, 1908","GENUS","Tiphiidae","EXACT",96,FALSE
-"Phyprosopus","Phyprosopus Grote, 1872","GENUS","Erebidae","EXACT",96,FALSE
-"Phytometra","Phytometra Haworth, 1809","GENUS","Erebidae","EXACT",96,FALSE
-"Pidonia","Pidonia Mulsant, 1863","GENUS","Cerambycidae","EXACT",96,FALSE
-"Pieridae","Pieridae","FAMILY","Pieridae","EXACT",96,FALSE
-"Pieris","Pieris Hübner, 1819","GENUS","Pieridae","EXACT",95,FALSE
-"Pipiza","Pipiza Fallén, 1810","GENUS","Syrphidae","EXACT",96,FALSE
-"Placidula","Placidula d'Almeida, 1922","GENUS","Nymphalidae","EXACT",96,FALSE
-"Plateumaris","Plateumaris Thomson, 1859","GENUS","Chrysomelidae","EXACT",95,FALSE
-"Platycheirus","Platycheirus Lepeletier & Serville, 1828","GENUS","Syrphidae","EXACT",96,FALSE
-"Platyptilia","Platyptilia Hübner, 1825","GENUS","Pterophoridae","EXACT",95,FALSE
-"Platystomatidae","Platystomatidae","FAMILY","Platystomatidae","EXACT",96,FALSE
-"Plebeia","Plebeia Schwarz, 1938","GENUS","Apidae","EXACT",96,FALSE
-"Plebejus","Plebejus Kluk, 1780","GENUS","Lycaenidae","EXACT",95,FALSE
-"Plesioneura","Plesioneura C.Felder & R.Felder, 1862","GENUS","Hesperiidae","EXACT",96,FALSE
-"Plusia","Plusia Ochsenheimer, 1816","GENUS","Noctuidae","EXACT",95,FALSE
-"Plutella","Plutella Schrank, 1802","GENUS","Plutellidae","EXACT",96,FALSE
-"Podalonia","Podalonia Fernald, 1927","GENUS","Sphecidae","EXACT",95,FALSE
-"Podistra","Podistra Motschulsky, 1839","GENUS","Cantharidae","EXACT",95,FALSE
-"Pogonothynnus","Pogonothynnus Turner, 1910","GENUS","Tiphiidae","EXACT",96,FALSE
-"Polites","Polites Scudder, 1872","GENUS","Hesperiidae","EXACT",96,FALSE
-"Polybia","Polybia Lepeletier de Saint Fargeau, 1836","GENUS","Eumenidae","EXACT",95,FALSE
-"Polybioides","Polybioides Buysson, 1913","GENUS","Vespidae","EXACT",96,FALSE
-"Polychrysia","Polychrysia Hübner","GENUS","Noctuidae","EXACT",96,FALSE
-"Priocnemis","Priocnemis Schiødte, 1837","GENUS","Pompilidae","EXACT",95,FALSE
-"Prionyx","Prionyx Vander Linden, 1827","GENUS","Sphecidae","EXACT",96,FALSE
-"Proplebeia","Proplebeia Michener, 1982","GENUS","Apidae","EXACT",96,FALSE
-"Propylea","Propylea Mulsant, 1846","GENUS","Coccinellidae","EXACT",96,FALSE
-"Prosoeca","Prosoeca Schiner, 1867","GENUS","Nemestrinidae","EXACT",96,FALSE
-"Protaetia","Protaetia Burmeister, 1842","GENUS","Scarabaeidae","EXACT",96,FALSE
-"Protambulix","Protambulix Wood, 1907","GENUS","Sphingidae","EXACT",96,FALSE
-"Protoboarmia","Protoboarmia McDunnough, 1920","GENUS","Geometridae","EXACT",96,FALSE
-"Provespa","Provespa Ashmead, 1903","GENUS","Vespidae","EXACT",96,FALSE
-"Pseudaletia","Pseudaletia Franclemont, 1951","GENUS","Noctuidae","EXACT",94,FALSE
-"Pseudosciara","Pseudosciara Schiner, 1866","GENUS","Sciaridae","EXACT",96,FALSE
-"Pseudosphinx","Pseudosphinx Burmeister, 1855","GENUS","Sphingidae","EXACT",96,FALSE
-"Pseudothyatira","Pseudothyatira Grote, 1864","GENUS","Drepanidae","EXACT",96,FALSE
-"Pseudotorynorrhina","Pseudotorynorrhina Mikšić, 1967","GENUS","Scarabaeidae","EXACT",96,FALSE
-"Pseudovadonia","Pseudovadonia Lobanov, Danilevsky & Murzin, 1981","GENUS","Cerambycidae","EXACT",96,FALSE
-"Psilidae","Psilidae","FAMILY","Psilidae","EXACT",96,FALSE
-"Psilocerea","Psilocerea Saalmüller, 1880","GENUS","Geometridae","EXACT",96,FALSE
-"Pterocormus","Pterocormus Förster, 1850","GENUS","Ichneumonidae","EXACT",96,FALSE
-"Pterophoridae","Pterophoridae","FAMILY","Pterophoridae","EXACT",96,FALSE
-"Ptiloglossa","Ptiloglossa Smith, 1853","GENUS","Colletidae","EXACT",96,FALSE
-"Pyralid","Pyralid","GENUS",NA,"EXACT",96,FALSE
-"Pyralidae","Pyralidae","FAMILY","Pyralidae","EXACT",96,FALSE
-"Pyrausta","Pyrausta Schrank, 1802","GENUS","Crambidae","EXACT",95,FALSE
-"Pyrochroa","Pyrochroa Müller, 1764","GENUS","Pyrochroidae","EXACT",95,FALSE
-"Pyrrhia","Pyrrhia Hübner","GENUS","Noctuidae","EXACT",96,FALSE
-"Rachiplusia","Rachiplusia Hampson, 1913","GENUS","Noctuidae","EXACT",96,FALSE
-"Ramphodon","Ramphodon R.Lesson, 1830","GENUS","Trochilidae","EXACT",96,FALSE
-"Rattus","Rattus Fischer, 1803","GENUS","Muridae","EXACT",95,FALSE
-"Rediviva","Rediviva Friese, 1911","GENUS","Melittidae","EXACT",96,FALSE
-"Rhagastis","Rhagastis Rothschild & Jordan","GENUS","Sphingidae","EXACT",96,FALSE
-"Rhagigaster","Rhagigaster Guérin-Méneville, 1838","GENUS","Tiphiidae","EXACT",94,FALSE
-"Rhagonycha","Rhagonycha Eschscholtz, 1830","GENUS","Cantharidae","EXACT",96,FALSE
-"Rhegmoclema","Rhegmoclema Enderlein, 1912","GENUS","Scatopsidae","EXACT",96,FALSE
-"Rhogogaster","Rhogogaster Konow, 1884","GENUS","Tenthredinidae","EXACT",96,FALSE
-"Rhomborrhina","Rhomborrhina","GENUS","Scarabaeidae","EXACT",96,FALSE
-"Rhopalum","Rhopalum Stephens, 1829","GENUS","Crabronidae","EXACT",96,FALSE
-"Rhorus","Rhorus Förster, 1869","GENUS","Ichneumonidae","EXACT",96,FALSE
-"Rhyacia","Rhyacia Hübner","GENUS","Noctuidae","EXACT",95,FALSE
-"Rhynchophorus","Rhynchophorus J.F.W.Herbst, 1795","GENUS","Dryophthoridae","EXACT",95,FALSE
-"Rhytidoponera","Rhytidoponera Mayr, 1862","GENUS","Formicidae","EXACT",96,FALSE
-"Richardidae","Richardidae","FAMILY","Richardidae","EXACT",96,FALSE
-"Rivula","Rivula Guenée","GENUS","Erebidae","EXACT",95,FALSE
-"Ropalidia","Ropalidia Guérin-Méneville, 1831","GENUS","Vespidae","EXACT",96,FALSE
-"Rubrica","Rubrica J.Parker, 1929","GENUS","Crabronidae","EXACT",96,FALSE
-"Ruizantheda","Ruizantheda Moure, 1964","GENUS","Halictidae","EXACT",96,FALSE
-"Rutpela","Rutpela Nakane & Ohbayashi, 1957","GENUS","Cerambycidae","EXACT",96,FALSE
-"Salpingogaster","Salpingogaster Schiner, 1868","GENUS","Syrphidae","EXACT",96,FALSE
-"Sarcophagidae","Sarcophagidae","FAMILY","Sarcophagidae","EXACT",96,FALSE
-"Satyrium","Satyrium Scudder, 1876","GENUS","Lycaenidae","EXACT",96,FALSE
-"Scaptia","Scaptia","GENUS","Tabanidae","EXACT",95,FALSE
-"Scaptodrosophila","Scaptodrosophila Fallén, 1823","GENUS","Drosophilidae","EXACT",95,FALSE
-"Scaptotrigona","Scaptotrigona Moure, 1942","GENUS","Apidae","EXACT",96,FALSE
-"Scarabaeidae","Scarabaeidae","FAMILY","Scarabaeidae","EXACT",96,FALSE
-"Scaria","Scaria Bolívar, 1887","GENUS","Tetrigidae","EXACT",96,FALSE
-"Scathophaga","Scathophaga Meigen, 1803","GENUS","Scathophagidae","EXACT",95,FALSE
-"Scatophaga","Scatophaga Meigen, 1803","GENUS","Scathophagidae","EXACT",95,FALSE
-"Scatopsidae","Scatopsidae","FAMILY","Scatopsidae","EXACT",96,FALSE
-"Sceliphron","Sceliphron Klug, 1801","GENUS","Sphecidae","EXACT",95,FALSE
-"Scoliidae","Scoliidae","FAMILY","Scoliidae","EXACT",96,FALSE
-"Semiothisa","Semiothisa Hübner, 1818","GENUS","Geometridae","EXACT",96,FALSE
-"Sepedon","Sepedon Latreille, 1804","GENUS","Sciomyzidae","EXACT",95,FALSE
-"Sepsis","Sepsis Fallén, 1810","GENUS","Sepsidae","EXACT",96,FALSE
-"Shargacucullia","Shargacucullia Ronkay & Ronkay, 1992","GENUS","Noctuidae","EXACT",96,FALSE
-"Sicus","Sicus Scopoli, 1763","GENUS","Conopidae","EXACT",95,FALSE
-"Sideridis","Sideridis Hübner","GENUS","Noctuidae","EXACT",96,FALSE
-"Silba","Silba Macquart, 1851","GENUS","Lonchaeidae","EXACT",96,FALSE
-"Smaragdina","Smaragdina Chevrolat, 1836","GENUS","Chrysomelidae","EXACT",95,FALSE
-"Spermophagus","Spermophagus Schönherr, 1833","GENUS","Chrysomelidae","EXACT",96,FALSE
-"Speyeria","Speyeria Scudder, 1872","GENUS","Nymphalidae","EXACT",96,FALSE
-"Sphaerophoria","Sphaerophoria Lepeletier & Serville, 1828","GENUS","Syrphidae","EXACT",96,FALSE
-"Sphecidae","Sphecidae","FAMILY","Sphecidae","EXACT",96,FALSE
-"Sphingidae","Sphingidae","FAMILY","Sphingidae","EXACT",96,FALSE
-"Spilodes","Spilodes Guenée, 1849","GENUS","Crambidae","EXACT",96,FALSE
-"Stelopolybia","Stelopolybia Ducke, 1910","GENUS","Vespidae","EXACT",96,FALSE
-"Stemorrhages","Stemorrhages Lederer, 1863","GENUS","Crambidae","EXACT",96,FALSE
-"Stenobasipteron","Stenobasipteron Lichtwardt, 1910","GENUS","Nemestrinidae","EXACT",96,FALSE
-"Stenurella","Stenurella Villiers, 1974","GENUS","Cerambycidae","EXACT",96,FALSE
-"Stephanoxis","Stephanoxis Simon, 1897","GENUS","Trochilidae","EXACT",96,FALSE
-"Sterictiphora","Sterictiphora Billberg, 1820","GENUS","Argidae","EXACT",96,FALSE
-"Stomosis","Stomosis Melander, 1913","GENUS","Milichiidae","EXACT",96,FALSE
-"Strangalia","Strangalia Audinet-Serville, 1835","GENUS","Cerambycidae","EXACT",95,FALSE
-"Stratiomys","Stratiomys Geoffroy, 1762","GENUS","Stratiomyidae","EXACT",96,FALSE
-"Svastrides","Svastrides Michener, LaBerge & Moure, 1955","GENUS","Apidae","EXACT",96,FALSE
-"Swammerdamella","Swammerdamella Enderlein, 1912","GENUS","Scatopsidae","EXACT",96,FALSE
-"Symmorphus","Symmorphus Wesmael, 1836","GENUS","Eumenidae","EXACT",95,FALSE
-"Sympherta","Sympherta Förster, 1869","GENUS","Ichneumonidae","EXACT",95,FALSE
-"Syngrapha","Syngrapha Hübner","GENUS","Noctuidae","EXACT",96,FALSE
-"Syritta","Syritta Lepeletier & Serville, 1828","GENUS","Syrphidae","EXACT",96,FALSE
-"Syrphidae","Syrphidae","FAMILY","Syrphidae","EXACT",96,FALSE
-"Tabanidae","Tabanidae","FAMILY","Tabanidae","EXACT",96,FALSE
-"Tachina","Tachina Meigen, 1803","GENUS","Tachinidae","EXACT",96,FALSE
-"Tachinidae","Tachinidae","FAMILY","Tachinidae","EXACT",96,FALSE
-"Telenomus","Telenomus Haliday, 1833","GENUS","Scelionidae","EXACT",95,FALSE
-"Temnosoma","Temnosoma Smith, 1853","GENUS","Halictidae","EXACT",96,FALSE
-"Temnothorax","Temnothorax Mayr, 1861","GENUS","Formicidae","EXACT",96,FALSE
-"Tephritidae","Tephritidae","FAMILY","Tephritidae","EXACT",96,FALSE
-"Tetragoneura","Tetragoneura Winnertz, 1846","GENUS","Mycetophilidae","EXACT",95,FALSE
-"Tetragonisca","Tetragonisca Moure, 1946","GENUS","Apidae","EXACT",96,FALSE
-"Tetragonula","Tetragonula Moure, 1961","GENUS","Apidae","EXACT",96,FALSE
-"Tetralonia","Tetralonia Spinola, 1838","GENUS","Apidae","EXACT",96,FALSE
-"Tetraloniella","Tetraloniella Ashmead, 1900","GENUS","Apidae","EXACT",96,FALSE
-"Tetrapedia","Tetrapedia Klug, 1810","GENUS","Apidae","EXACT",96,FALSE
-"Tetrastichus","Tetrastichus Walker, 1844","GENUS","Eulophidae","EXACT",95,FALSE
-"Thallophaga","Thallophaga Hulst, 1896","GENUS","Geometridae","EXACT",96,FALSE
-"Thalurania","Thalurania Gould, 1848","GENUS","Trochilidae","EXACT",96,FALSE
-"Theretra","Theretra Hübner","GENUS","Sphingidae","EXACT",96,FALSE
-"Thinopteryx","Thinopteryx Butler, 1883","GENUS","Geometridae","EXACT",96,FALSE
-"Thricops","Thricops Rondani, 1856","GENUS","Muscidae","EXACT",96,FALSE
-"Thygater","Thygater Holmberg, 1884","GENUS","Apidae","EXACT",96,FALSE
-"Thymelicus","Thymelicus Hübner, 1819","GENUS","Hesperiidae","EXACT",96,FALSE
-"Thynnidae","Thynnidae","FAMILY","Thynnidae","EXACT",96,FALSE
-"Thynnoides","Thynnoides Guérin-Méneville, 1838","GENUS","Tiphiidae","EXACT",96,FALSE
-"Thynnoturneria","Thynnoturneria Rohwer, 1910","GENUS","Tiphiidae","EXACT",96,FALSE
-"Thysanoplusia","Thysanoplusia Ichinosé, 1973","GENUS","Noctuidae","EXACT",96,FALSE
-"Tiphiidae","Tiphiidae","FAMILY","Tiphiidae","EXACT",96,FALSE
-"Tipulidae","Tipulidae","FAMILY","Tipulidae","EXACT",96,FALSE
-"Torymus","Torymus Dalman, 1820","GENUS","Torymidae","EXACT",95,FALSE
-"Townesia","Townesia Ozols, 1962","GENUS","Ichneumonidae","EXACT",96,FALSE
-"Toxocampa","Toxocampa Guenée, 1841","GENUS","Erebidae","EXACT",96,FALSE
-"Trichiotinus","Trichiotinus Casey, 1915","GENUS","Scarabaeidae","EXACT",96,FALSE
-"Trichius","Trichius Fabricius, 1775","GENUS","Scarabaeidae","EXACT",96,FALSE
-"Trichocolletes","Trichocolletes Cockerell, 1912","GENUS","Colletidae","EXACT",96,FALSE
-"Trichomalus","Trichomalus Thomson, 1878","GENUS","Pteromalidae","EXACT",95,FALSE
-"Trichoplusia","Trichoplusia McDunnough, 1944","GENUS","Noctuidae","EXACT",96,FALSE
-"Trichordestra","Trichordestra McCabe, 1980","GENUS","Noctuidae","EXACT",96,FALSE
-"Trichosia","Trichosia Winnertz, 1867","GENUS","Sciaridae","EXACT",96,FALSE
-"Tricimba","Tricimba Lioy, 1864","GENUS","Chloropidae","EXACT",96,FALSE
-"Trigonopedia","Trigonopedia Moure, 1941","GENUS","Apidae","EXACT",96,FALSE
-"Trochilidae","Trochilidae","FAMILY","Trochilidae","EXACT",96,FALSE
-"Trogoderma","Trogoderma Dejean, 1821","GENUS","Dermestidae","EXACT",95,FALSE
-"Tropidodynerus","Tropidodynerus Blüthgen, 1939","GENUS","Eumenidae","EXACT",96,FALSE
-"Tropinota","Tropinota Mulsant, 1842","GENUS","Scarabaeidae","EXACT",96,FALSE
-"Tycomarptes","Tycomarptes Fletcher, 1961","GENUS","Noctuidae","EXACT",96,FALSE
-"Tyta","Tyta Billberg, 1820","GENUS","Erebidae","EXACT",96,FALSE
-"Tytthaspis","Tytthaspis Crotch, 1874","GENUS","Coccinellidae","EXACT",96,FALSE
-"Udea","Udea Guenée","GENUS","Crambidae","EXACT",96,FALSE
-"Ulidiidae","Ulidiidae","FAMILY","Ulidiidae","EXACT",96,FALSE
-"Urbanus","Urbanus Hübner, 1807","GENUS","Hesperiidae","EXACT",96,FALSE
-"Vacciniina","Vacciniina Tutt, 1909","GENUS","Lycaenidae","EXACT",96,FALSE
-"Valgus","Valgus Scriba, 1790","GENUS","Scarabaeidae","EXACT",96,FALSE
-"Vehilius","Vehilius Godman, 1900","GENUS","Hesperiidae","EXACT",96,FALSE
-"Vespidae","Vespidae","FAMILY","Vespidae","EXACT",96,FALSE
-"Vespula","Vespula Thomson, 1869","GENUS","Vespidae","EXACT",94,FALSE
-"Vettius","Vettius Godman, 1901","GENUS","Hesperiidae","EXACT",96,FALSE
-"Vietteania","Vietteania Rungs, 1955","GENUS","Noctuidae","EXACT",96,FALSE
-"Vulgichneumon","Vulgichneumon Heinrich, 1961","GENUS","Ichneumonidae","EXACT",95,FALSE
-"Xanthandrus","Xanthandrus Verrall, 1901","GENUS","Syrphidae","EXACT",96,FALSE
-"Xanthopan","Xanthopan Rothschild & Jordan, 1903","GENUS","Sphingidae","EXACT",96,FALSE
-"Xanthorhoe","Xanthorhoe Hübner","GENUS","Geometridae","EXACT",96,FALSE
-"Xylophanes","Xylophanes Hübner","GENUS","Sphingidae","EXACT",96,FALSE
-"Zapriothrica","Zapriothrica Wheeler, 1956","GENUS","Drosophilidae","EXACT",96,FALSE
-"Zaraea","Zaraea Leach, 1817","GENUS","Cimbicidae","EXACT",96,FALSE
-"Zaspilothynnus","Zaspilothynnus Ashmead, 1903","GENUS","Tiphiidae","EXACT",96,FALSE
-"Zealandotachina","Zealandotachina Malloch, 1938","GENUS","Tachinidae","EXACT",96,FALSE
-"Zeleboria","Zeleboria Saussure, 1867","GENUS","Tiphiidae","EXACT",96,FALSE
-"Zeugodacus","Zeugodacus Hendel, 1927","GENUS","Tephritidae","EXACT",95,FALSE
-"Zophomyia","Zophomyia Macquart, 1835","GENUS","Tachinidae","EXACT",96,FALSE
-"Zosterops","Zosterops Vigors & Horsfield, 1827","GENUS","Zosteropidae","EXACT",96,FALSE
-"Zygomyia","Zygomyia Winnertz, 1863","GENUS","Mycetophilidae","EXACT",96,FALSE
-"Zygoneura","Zygoneura Meigen, 1830","GENUS","Sciaridae","EXACT",96,FALSE
-"Zygothrica","Zygothrica Wiedemann, 1830","GENUS","Drosophilidae","EXACT",96,FALSE
+"genus","gbif_name","gbif_rank","gbif_family","gbif_class","match_type","confidence","resolution","flag"
+"Allodapini",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Andrenidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Anthomyiidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Anthophorini",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Augochlorine",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Augochlorini",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Bracnoidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Braconidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Calliphoridae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Ceratopogonidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Chironomidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Cimbicidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Colletidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Culicidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Cynipidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Diapriidsae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Drosophilidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Dryinidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Dynshtid",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"El",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Elateridae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Euglossines",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Eumenidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Eupavlovskia",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Gelechioidea",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Haemmorhagis",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Halictid",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Halictidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Hesperiidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Hesperiinae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Holiini",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Keroplatidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Lauxaniidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Lonchaeidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Lonchaiedae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Lycaenidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Lymexylidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Meliphagidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Meliponids",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Milichiidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Nemestrinidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Noctuidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Nymphalidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Phoridae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Pieridae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Platystomatidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Polistinae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Polybidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Pompilid",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Ponerinae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Psilidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Pterophoridae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Pygidialis",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Pyralidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Sacrophagidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Scatopsidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Sciarid",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Scoliidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Sodontomyia",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Sphecidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Sphingidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Syrphidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Tabanidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Tachinidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Temestrinidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Tephritidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Thynnine",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Tiphiidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Ulidiidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Unidentified",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Vespidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Zygopilothynnus",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
+"Agrostis","Agrostes Marshall, 1944","GENUS","Curculionidae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
+"Alastor","Alastor Lepeletier de Saint Fargeau, 1841","GENUS","Eumenidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Anaitis","Anatis Mulsant, 1846","GENUS","Coccinellidae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
+"Anaspis","Anaspis Geoffroy, 1762","GENUS","Scraptiidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Ancistrocerus","Ancistrocerus Wesmael, 1836","GENUS","Vespidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Anomala","Anomala Samouelle, 1819","GENUS","Scarabaeidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Anthous","Anthops Thomas, 1888","GENUS","Hipposideridae","Mammalia","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
+"Aricia","Arica Walker, 1863","GENUS","Pyralidae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
+"Astylus","Astylus Laporte, 1836","GENUS","Melyridae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Bassania","Bassania Walker, 1860","GENUS","Geometridae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Biio","Bibio Geoffroy, 1762","GENUS","Bibionidae","Insecta","DISAMBIGUATED",3,"disambiguated (several candidate families)",TRUE
+"Bombis","Bombia Warren, 1906","GENUS","Geometridae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
+"Cabro","Carbo Lacepède, 1799","GENUS","Phalacrocoracidae","Aves","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
+"Cantharis","Cantharis Linnaeus, 1758","GENUS","Cantharidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Ceratina","Ceratina Latreille, 1802","GENUS","Apidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Chalicodima","Chalcomima Meyrick, 1929","GENUS","Gelechiidae","Insecta","DISAMBIGUATED",60,"disambiguated (several candidate families)",TRUE
+"Coenonymha","Coenonycha Horn, 1876","GENUS","Scarabaeidae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
+"Colias","Colias Fabricius, 1807","GENUS","Pieridae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Corynura","Corynura Spinola, 1851","GENUS","Halictidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Cucullia","Cucullia Schrank, 1802","GENUS","Noctuidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Cyclophora","Cyclophora Hübner, 1822","GENUS","Geometridae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Decinia","Decidia Stål, 1875","GENUS","Pseudophasmatidae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
+"Eg","Ea Distant, 1911","GENUS","Acanthosomatidae","Insecta","DISAMBIGUATED",0,"disambiguated (several candidate families)",TRUE
+"Empis","Empis Linnaeus, 1758","GENUS","Empididae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Eulalia","Eudalia Laporte, 1867","GENUS","Carabidae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
+"Eumerus","Eumerus Meigen, 1822","GENUS","Syrphidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Euphora","Euphara Loew, 1867","GENUS","Ulidiidae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
+"Eurema","Eurema Hübner, 1819","GENUS","Pieridae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Eurybia","Eurysia F.P.Pascoe, 1885","GENUS","Curculionidae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
+"Fannia","Fannia Robineau-Desvoidy, 1830","GENUS","Fanniidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Geometridae","Geometrine","GENUS","Geometridae","Insecta","DISAMBIGUATED",60,"disambiguated (several candidate families)",TRUE
+"Glycopsyche","Glyphopsyche Banks, 1904","GENUS","Limnephilidae","Insecta","DISAMBIGUATED",65,"disambiguated (several candidate families)",TRUE
+"Harmonia","Harmonia Mulsant, 1846","GENUS","Coccinellidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Heterochelius","Heterochelus Burmeister, 1844","GENUS","Scarabaeidae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
+"Heteropelma","Heteropelma Wesmael, 1849","GENUS","Ichneumonidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Hypothyris","Hypothyris Hübner, 1821","GENUS","Nymphalidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Ichneumon","Ichneumon Linnaeus, 1758","GENUS","Ichneumonidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Ichneumonidae","Ichneumonine","GENUS","Ichneumonidae","Insecta","DISAMBIGUATED",60,"disambiguated (several candidate families)",TRUE
+"Idiella","Idiella Brauer & Von Bergenstamm, 1889","GENUS","Calliphoridae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Ischiodon","Ischiodon Sack","GENUS","Syrphidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Lamprotes","Lamprotes Heinemann, 1870","GENUS","Gelechiidae","Insecta","DISAMBIGUATED",94,"disambiguated (several candidate families)",TRUE
+"Leucania","Leucania Ochsenheimer, 1816","GENUS","Noctuidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Lycoria","Lycorea Doubleday, 1847","GENUS","Nymphalidae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
+"Macroglossum","Macroglossum Scopoli, 1777","GENUS","Sphingidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Melanostoma","Melanostoma Schiner, 1860","GENUS","Syrphidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Melitaea","Melitaea Fabricius, 1807","GENUS","Nymphalidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Metriorrhynchus","Meotiorrhynchus","GENUS","Curculionidae","Insecta","DISAMBIGUATED",0,"disambiguated (several candidate families)",TRUE
+"Microdon","Microdon Meigen, 1803","GENUS","Syrphidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Microgaster","Microgaster Latreille, 1804","GENUS","Braconidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Muscidae","Muscidea Girault, 1915","GENUS","Pteromalidae","Insecta","DISAMBIGUATED",79,"disambiguated (several candidate families)",TRUE
+"Myrmecia","Myrmecia Fabricius, 1804","GENUS","Formicidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Nebula","Nebula Bruand, 1846","GENUS","Geometridae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Nectarinia","Nectarinia Illiger, 1811","GENUS","Nectariniidae","Aves","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Noctua","Noctua Linnaeus, 1758","GENUS","Noctuidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Ocydia","Ocydina Meyrick, 1936","GENUS","Pyralidae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
+"Parataea","Paralaea Guest, 1887","GENUS","Geometridae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
+"Pesudaletia","Pseudalecia Théry, 1922","GENUS","Buprestidae","Insecta","DISAMBIGUATED",60,"disambiguated (several candidate families)",TRUE
+"Phronia","Phronia Winnertz, 1863","GENUS","Mycetophilidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Pirene","Pirene Haliday, 1833","GENUS","Pteromalidae","Insecta","DISAMBIGUATED",94,"disambiguated (several candidate families)",TRUE
+"Plagiognathus","Plagiognathus Fieber, 1858","GENUS","Miridae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Polistes","Polistes Latreille, 1802","GENUS","Eumenidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Polyommatus","Polyommatus Latreille, 1804","GENUS","Lycaenidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Pontia","Pontia Fabricius, 1807","GENUS","Pieridae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Proseca","Promeca Brunner von Wattenwyl, 1895","GENUS","Tettigoniidae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
+"Pteris","Pieris Hübner, 1819","GENUS","Pieridae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
+"Pyrgus","Pyrgus Hübner, 1819","GENUS","Hesperiidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Rhinophora","Rhinophora Robineau-Desvoidy, 1830","GENUS","Calliphoridae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Richardidae","Richardia Robineau-Desvoidy, 1830","GENUS","Richardiidae","Insecta","DISAMBIGUATED",60,"disambiguated (several candidate families)",TRUE
+"Sarcophagid","Sarcophaga Meigen, 1826","GENUS","Sarcophagidae","Insecta","DISAMBIGUATED",60,"disambiguated (several candidate families)",TRUE
+"Scymnus","Scymnus Kugelann, 1794","GENUS","Coccinellidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Siona","Siona Duponchel, 1829","GENUS","Geometridae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Sioona","Simona Moulds, 2012","GENUS","Cicadidae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
+"Sp","Lutzomiops Sp.","GENUS","Corethrellidae","Insecta","DISAMBIGUATED",-6,"disambiguated (several candidate families)",TRUE
+"Sphaerophata","Sphaerophora Zetterstedt, 1849","GENUS","Sphaeroceridae","Insecta","DISAMBIGUATED",59,"disambiguated (several candidate families)",TRUE
+"Sphinx","Sphinx Linnaeus, 1758","GENUS","Sphingidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Synagris","Synargis Hübner, 1819","GENUS","Riodinidae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
+"Tetralona","Tetragona Lepeletier & Audinet-Serville, 1828","GENUS","Apidae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
+"Thyreus","Thyreus Panzer, 1806","GENUS","Apidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Trigona","Trigona Jurine, 1807","GENUS","Apidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Tryphon","Tryphon Fallén, 1813","GENUS","Ichneumonidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Volucella","Volucella Geoffroy, 1762","GENUS","Syrphidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Zygaena","Zygaena Fabricius, 1775","GENUS","Zygaenidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
+"Anthophora","Anthophora Latreille, 1803","GENUS","Apidae","Insecta","DISAMBIGUATED",95,"disambiguated",TRUE
+"Anthophorid","Anthophora Latreille, 1803","GENUS","Apidae","Insecta","DISAMBIGUATED",60,"disambiguated",TRUE
+"Apidae","Apidae","GENUS","Apidae","Insecta","DISAMBIGUATED",95,"disambiguated",TRUE
+"Atrichelapinus","Atrichelaphinis Kraatz, 1898","GENUS","Scarabaeidae","Insecta","DISAMBIGUATED",65,"disambiguated",TRUE
+"Bombioxylocopa","Bomboixylocopa Maa, 1939","GENUS",NA,"Insecta","DISAMBIGUATED",79,"disambiguated",TRUE
+"Cecidomyiidae","Cecidomyiidae CecidInt","GENUS","Cecidomyiidae","Insecta","DISAMBIGUATED",95,"disambiguated",TRUE
+"Chaenohalictus","Caenohalictus Cameron, 1903","GENUS","Halictidae","Insecta","DISAMBIGUATED",5,"disambiguated",TRUE
+"Chalcididae","Chalcidica Hübner","GENUS","Cossidae","Insecta","DISAMBIGUATED",60,"disambiguated",TRUE
+"Chloropidae","Chloropeda Hartlaub, 1855","GENUS","Acrocephalidae","Aves","DISAMBIGUATED",59,"disambiguated",TRUE
+"Chlorotyse","Chorotyse","GENUS","Cerambycidae","Insecta","DISAMBIGUATED",-6,"disambiguated",TRUE
+"Chloryalictis","Chloralictus Robertson, 1902","GENUS","Halictidae","Insecta","DISAMBIGUATED",59,"disambiguated",TRUE
+"Closyne","Chlosyne Butler, 1870","GENUS","Nymphalidae","Insecta","DISAMBIGUATED",5,"disambiguated",TRUE
+"Ef","Ea Distant, 1911","GENUS","Acanthosomatidae","Insecta","DISAMBIGUATED",5,"disambiguated",TRUE
+"Ex","Ea Distant, 1911","GENUS","Acanthosomatidae","Insecta","DISAMBIGUATED",5,"disambiguated",TRUE
+"Formicidae","Formicidae","GENUS","Formicidae","Insecta","DISAMBIGUATED",92,"disambiguated",TRUE
+"Lycodrosophila","Laccodrosophila Duda, 1927","GENUS","Drosophilidae","Insecta","DISAMBIGUATED",0,"disambiguated",TRUE
+"Lyiopygia","Liopygia Enderlein, 1928","GENUS","Sarcophagidae","Insecta","DISAMBIGUATED",5,"disambiguated",TRUE
+"Meliponines","Meliponiden","GENUS","Apidae","Insecta","DISAMBIGUATED",59,"disambiguated",TRUE
+"Mycetophildae","Mycetophila Meigen, 1803","GENUS","Mycetophilidae","Insecta","DISAMBIGUATED",60,"disambiguated",TRUE
+"Mycetophilidae","Mycetophilidae MyceoIntGen","GENUS","Mycetophilidae","Insecta","DISAMBIGUATED",92,"disambiguated",TRUE
+"Mycetophyllidae","Mycetophilidae MyceoIntGen","GENUS","Mycetophilidae","Insecta","DISAMBIGUATED",54,"disambiguated",TRUE
+"Neurratellia","Neuratelia Rondani, 1856","GENUS","Mycetophilidae","Insecta","DISAMBIGUATED",65,"disambiguated",TRUE
+"Oedemeridae","Oedemerina A.Costa, 1852","GENUS","Oedemeridae","Insecta","DISAMBIGUATED",59,"disambiguated",TRUE
+"Pantrope","Pantropa Förster, 1868","GENUS",NA,"Insecta","DISAMBIGUATED",79,"disambiguated",TRUE
+"Perilampus","Perilampus Latreille, 1809","GENUS","Perilampidae","Insecta","DISAMBIGUATED",95,"disambiguated",TRUE
+"Phebis","Phoebis Hübner, 1819","GENUS","Pieridae","Insecta","DISAMBIGUATED",5,"disambiguated",TRUE
+"Polia","Polia Ochsenheimer, 1816","GENUS","Noctuidae","Insecta","DISAMBIGUATED",95,"disambiguated",TRUE
+"Pseudoaugochloropsis","Pseudaugochloropsis Schrottky, 1906","GENUS","Halictidae","Insecta","DISAMBIGUATED",79,"disambiguated",TRUE
+"Sarcophagidae","Sarcophagina Cresson, 1928","GENUS","Sarcophagidae","Insecta","DISAMBIGUATED",54,"disambiguated",TRUE
+"Scarabaeidae","Scarabaeides Germar, 1839","GENUS","Belostomatidae","Insecta","DISAMBIGUATED",60,"disambiguated",TRUE
+"Schrankia","Schrankia Hübner","GENUS","Erebidae","Insecta","DISAMBIGUATED",95,"disambiguated",TRUE
+"Sciaridae","Sciaridae","GENUS","Sciaridae","Insecta","DISAMBIGUATED",95,"disambiguated",TRUE
+"Thynnidae","Thynnidea Ashmead, 1903","GENUS",NA,"Insecta","DISAMBIGUATED",74,"disambiguated",TRUE
+"Tipulidae","Tipulidea Scudder, 1894","GENUS",NA,"Insecta","DISAMBIGUATED",74,"disambiguated",TRUE
+"Trochilidae","Trochilia Speyer & Speyer, 1858","GENUS","Sesiidae","Insecta","DISAMBIGUATED",59,"disambiguated",TRUE
+"Abrostola","Abrostola Ochsenheimer, 1816","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Acmaeops","Acmaeops LeConte, 1850","GENUS","Cerambycidae","Insecta","EXACT",95,"direct",FALSE
+"Acontia","Acontia Ochsenheimer, 1816","GENUS","Noctuidae","Insecta","EXACT",95,"direct",FALSE
+"Acraea","Acraea Fabricius, 1807","GENUS","Nymphalidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Acroclita","Acroclita Lederer, 1859","GENUS","Tortricidae","Insecta","EXACT",96,"direct",FALSE
+"Acrosticta","Acrosticta Loew, 1868","GENUS","Ulidiidae","Insecta","EXACT",96,"direct",FALSE
+"Actebia","Actebia Stephens, 1829","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Actenicerus","Actenicerus Kiesenwetter, 1858","GENUS","Elateridae","Insecta","EXACT",96,"direct",FALSE
+"Adelocera","Adelocera Latreille, 1829","GENUS","Elateridae","Insecta","EXACT",96,"direct",FALSE
+"Adrastus","Adrastus Eschscholtz, 1829","GENUS","Elateridae","Insecta","EXACT",96,"direct",FALSE
+"Adscita","Adscita Retzius, 1783","GENUS","Zygaenidae","Insecta","EXACT",96,"direct",FALSE
+"Aedes","Aedes Meigen, 1818","GENUS","Culicidae","Insecta","EXACT",96,"direct",FALSE
+"Aeolothynnus","Aeolothynnus Ashmead, 1903","GENUS","Tiphiidae","Insecta","EXACT",96,"direct",FALSE
+"Aeropetes","Aeropetes Billberg, 1820","GENUS","Nymphalidae","Insecta","EXACT",96,"direct",FALSE
+"Aethecerus","Aethecerus Wesmael, 1845","GENUS","Ichneumonidae","Insecta","EXACT",95,"direct",FALSE
+"Aethopyga","Aethopyga Cabanis, 1850","GENUS","Nectariniidae","Aves","EXACT",96,"direct",FALSE
+"Afrodryas","Afrodryas Stoneham, 1957","GENUS","Pieridae","Insecta","EXACT",94,"direct",FALSE
+"Agapostemon","Agapostemon Guérin-Méneville, 1844","GENUS","Halictidae","Insecta","EXACT",95,"direct",FALSE
+"Agelaia","Agelaia Lepeletier de Saint Fargeau, 1836","GENUS","Vespidae","Insecta","EXACT",96,"direct",FALSE
+"Aglais","Aglais Dalman, 1816","GENUS","Nymphalidae","Insecta","EXACT",96,"direct",FALSE
+"Aglaostigma","Aglaostigma Kirby, 1882","GENUS","Tenthredinidae","Insecta","EXACT",96,"direct",FALSE
+"Aglia","Aglia Ochsenheimer, 1810","GENUS","Saturniidae","Insecta","EXACT",96,"direct",FALSE
+"Agraulis","Agraulis Boisduval & Le Conte, 1835","GENUS","Nymphalidae","Insecta","EXACT",94,"direct",FALSE
+"Agriotes","Agriotes Eschscholtz, 1829","GENUS","Elateridae","Insecta","EXACT",95,"direct",FALSE
+"Agrius","Agrius Hübner","GENUS","Sphingidae","Insecta","EXACT",95,"direct",FALSE
+"Agrotis","Agrotis Ochsenheimer, 1816","GENUS","Noctuidae","Insecta","EXACT",95,"direct",FALSE
+"Agrynnis","Argynnis Fabricius, 1807","GENUS","Nymphalidae","Insecta","HIGHERRANK",80,"direct",FALSE
+"Agrypon","Agrypon Förster, 1860","GENUS","Ichneumonidae","Insecta","EXACT",96,"direct",FALSE
+"Aletia","Aletia Hübner, 1821","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Allagrapha","Allagrapha Franclemont, 1964","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Allobaccha","Allobaccha Curran, 1928","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Allodape","Allodape Lepeletier & Serville, 1825","GENUS","Apidae","Insecta","EXACT",95,"direct",FALSE
+"Allodia","Allodia Winnertz, 1863","GENUS","Mycetophilidae","Insecta","EXACT",96,"direct",FALSE
+"Allograpta","Allograpta Osten Sacken, 1875","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Alomya","Alomya Panzer, 1806","GENUS","Ichneumonidae","Insecta","EXACT",96,"direct",FALSE
+"Alosterna","Alosterna Mulsant, 1863","GENUS","Cerambycidae","Insecta","EXACT",96,"direct",FALSE
+"Amastus","Amastus Walker, 1855","GENUS","Erebidae","Insecta","EXACT",95,"direct",FALSE
+"Amata","Amata Fabricius, 1807","GENUS","Erebidae","Insecta","EXACT",96,"direct",FALSE
+"Amauronematus","Amauronematus Konow, 1890","GENUS","Tenthredinidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Amazilia","Amazilia R.Lesson, 1843","GENUS","Trochilidae","Aves","EXACT",96,"direct",FALSE
+"Amegilla","Amegilla Friese, 1897","GENUS","Apidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Amerila","Amerila Walker, 1855","GENUS","Erebidae","Insecta","EXACT",96,"direct",FALSE
+"Ametalla","Ametalla Hope, 1840","GENUS","Chrysomelidae","Insecta","EXACT",94,"direct",FALSE
+"Ammophila","Ammophila W.Kirby, 1798","GENUS","Sphecidae","Insecta","EXACT",96,"direct",FALSE
+"Amphidrina","Amphidrina Staudinger","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Anageshna","Anageshna Munroe, 1956","GENUS","Crambidae","Insecta","EXACT",96,"direct",FALSE
+"Anagoga","Anagoga Hübner","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Anagrapha","Anagrapha McDunnough, 1944","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Anarta","Anarta Ochsenheimer, 1816","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Anartia","Anartia Hübner, 1819","GENUS","Nymphalidae","Insecta","EXACT",96,"direct",FALSE
+"Anastrangalia","Anastrangalia Casey, 1924","GENUS","Cerambycidae","Insecta","EXACT",96,"direct",FALSE
+"Andrena","Andrena Fabricius, 1775","GENUS","Andrenidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Anolis","Anolis Daudin, 1802","GENUS","Dactyloidae","Squamata","EXACT",96,"direct",FALSE
+"Anopheles","Anopheles Meigen, 1818","GENUS","Culicidae","Insecta","EXACT",96,"direct",FALSE
+"Anoplius","Anoplius Dufour, 1834","GENUS","Pompilidae","Insecta","EXACT",96,"direct",FALSE
+"Anoplodera","Anoplodera Mulsant, 1839","GENUS","Cerambycidae","Insecta","EXACT",96,"direct",FALSE
+"Antepirrhoe","Antepirrhoe Warren, 1905","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Anthepiscopus","Anthepiscopus Becker, 1891","GENUS","Iteaphilidae","Insecta","EXACT",96,"direct",FALSE
+"Anthidium","Anthidium Fabricius, 1804","GENUS","Megachilidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Anthocharis","Anthocharis Boisduval, Rambur, Duméril & Graslin, 1833","GENUS","Pieridae","Insecta","EXACT",96,"direct",FALSE
+"Anthodioctes","Anthodioctes Holmberg, 1903","GENUS","Megachilidae","Insecta","EXACT",96,"direct",FALSE
+"Anticarsia","Anticarsia Hübner, 1818","GENUS","Erebidae","Insecta","EXACT",96,"direct",FALSE
+"Antichloris","Antichloris Hübner, 1818","GENUS","Erebidae","Insecta","EXACT",96,"direct",FALSE
+"Apallates","Apallates Sabrosky, 1980","GENUS","Chloropidae","Insecta","EXACT",96,"direct",FALSE
+"Apamea","Apamea Ochsenheimer, 1816","GENUS","Noctuidae","Insecta","EXACT",95,"direct",FALSE
+"Apis","Apis Linnaeus, 1758","GENUS","Apidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Aplocera","Aplocera Stephens, 1827","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Apodynerus","Apodynerus Giordani Soika, 1993","GENUS","Eumenidae","Insecta","EXACT",96,"direct",FALSE
+"Aporia","Aporia Hübner, 1819","GENUS","Pieridae","Insecta","EXACT",95,"direct",FALSE
+"Apphua","Apphia Distant, 1918","GENUS","Cicadellidae","Insecta","VARIANT",85,"direct",FALSE
+"Aprostocetus","Aprostocetus Westwood, 1833","GENUS","Eulophidae","Insecta","EXACT",96,"direct",FALSE
+"Aptesis","Aptesis Förster, 1850","GENUS","Ichneumonidae","Insecta","EXACT",96,"direct",FALSE
+"Arachnospila","Arachnospila Kincaid, 1900","GENUS","Pompilidae","Insecta","EXACT",96,"direct",FALSE
+"Arbela","Arbela Stål, 1865","GENUS","Nabidae","Insecta","EXACT",95,"direct",FALSE
+"Archilochus","Archilochus Reichenbach, 1854","GENUS","Trochilidae","Aves","EXACT",95,"direct",FALSE
+"Archonias","Archonias Hübner, 1827","GENUS","Pieridae","Insecta","EXACT",96,"direct",FALSE
+"Arctodium","Arctodium Burmeister, 1844","GENUS","Scarabaeidae","Insecta","EXACT",95,"direct",FALSE
+"Arge","Arge Schrank, 1802","GENUS","Argidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Argogorytes","Argogorytes Ashmead, 1899","GENUS","Crabronidae","Insecta","EXACT",96,"direct",FALSE
+"Argynnis","Argynnis Fabricius, 1807","GENUS","Nymphalidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Arhysoceble","Arhysoceble Moure, 1948","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Aritranis","Aritranis Förster, 1869","GENUS","Ichneumonidae","Insecta","EXACT",96,"direct",FALSE
+"Arthrothynnus","Arthrothynnus Brown, 1996","GENUS","Tiphiidae","Insecta","EXACT",96,"direct",FALSE
+"Artogeia","Artogeia","GENUS","Pieridae","Insecta","EXACT",96,"direct",FALSE
+"Ascia","Ascia Scopoli, 1777","GENUS","Pieridae","Insecta","EXACT",95,"direct",FALSE
+"Ascotis","Ascotis Hübner","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Astraptes","Astraptes Hübner, 1819","GENUS","Hesperiidae","Insecta","EXACT",96,"direct",FALSE
+"Athous","Athous Eschscholtz, 1829","GENUS","Elateridae","Insecta","EXACT",96,"direct",FALSE
+"Atrichelaphinis","Atrichelaphinis Kraatz, 1898","GENUS","Scarabaeidae","Insecta","EXACT",96,"direct",FALSE
+"Atrichopogon","Atrichopogon Kieffer, 1906","GENUS","Ceratopogonidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Aucklandella","Aucklandella Cameron, 1909","GENUS","Ichneumonidae","Insecta","EXACT",96,"direct",FALSE
+"Augochlora","Augochlora Smith, 1853","GENUS","Halictidae","Insecta","EXACT",95,"direct",FALSE
+"Augochlorella","Augochlorella Sandhouse, 1937","GENUS","Halictidae","Insecta","EXACT",96,"direct",FALSE
+"Augochloropsis","Augochloropsis Cockerell, 1897","GENUS","Halictidae","Insecta","EXACT",96,"direct",FALSE
+"Aulacothynnus","Aulacothynnus Turner, 1910","GENUS","Tiphiidae","Insecta","EXACT",96,"direct",FALSE
+"Australoechus","Australoechus Greathead, 1995","GENUS","Bombyliidae","Insecta","EXACT",96,"direct",FALSE
+"Austrosciara","Austrosciara Schmitz & Mjöberg, 1924","GENUS","Sciaridae","Insecta","EXACT",96,"direct",FALSE
+"Autographa","Autographa Hübner","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Baccha","Baccha Fabricius, 1805","GENUS","Syrphidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Bactrocera","Bactrocera Macquart, 1835","GENUS","Tephritidae","Insecta","EXACT",95,"direct",FALSE
+"Basiothia","Basiothia Walker, 1856","GENUS","Sphingidae","Insecta","EXACT",96,"direct",FALSE
+"Bathythrix","Bathythrix Förster, 1869","GENUS","Ichneumonidae","Insecta","EXACT",96,"direct",FALSE
+"Battus","Battus Scopoli, 1777","GENUS","Papilionidae","Insecta","EXACT",95,"direct",FALSE
+"Belenois","Belenois Hübner, 1819","GENUS","Pieridae","Insecta","EXACT",96,"direct",FALSE
+"Betasyrphus","Betasyrphus Matsumura, 1917","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Bibio","Bibio Geoffroy, 1762","GENUS","Bibionidae","Insecta","EXACT",95,"direct",FALSE
+"Billaea","Billaea Robineau-Desvoidy, 1830","GENUS","Tachinidae","Insecta","EXACT",96,"direct",FALSE
+"Blacus","Blacus Nees, 1818","GENUS","Braconidae","Insecta","EXACT",96,"direct",FALSE
+"Blitopertha","Blitopertha Reitter, 1903","GENUS","Scarabaeidae","Insecta","EXACT",96,"direct",FALSE
+"Bolithophila","Bolitophila Meigen, 1818","GENUS","Bolitophilidae","Insecta","VARIANT",85,"direct",FALSE
+"Boloria","Boloria Moore, 1900","GENUS","Nymphalidae","Insecta","EXACT",95,"direct",FALSE
+"Bombus","Bombus Latreille, 1802","GENUS","Apidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Bombylius","Bombylius Linnaeus, 1758","GENUS","Bombyliidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Bracon","Bracon Fabricius, 1804","GENUS","Braconidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Bradysia","Bradysia Winnertz, 1867","GENUS","Sciaridae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Braunsapis","Braunsapis Michener, 1969","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Bruchus","Bruchus Linnaeus, 1767","GENUS","Chrysomelidae","Insecta","EXACT",95,"direct",FALSE
+"Cadeguala","Cadeguala Reed, 1892","GENUS","Colletidae","Insecta","EXACT",96,"direct",FALSE
+"Cadrema","Cadrema Walker, 1859","GENUS","Chloropidae","Insecta","EXACT",96,"direct",FALSE
+"Caenohalictus","Caenohalictus Cameron, 1903","GENUS","Halictidae","Insecta","EXACT",96,"direct",FALSE
+"Calliphlox","Calliphlox F.Boie, 1831","GENUS","Trochilidae","Aves","EXACT",96,"direct",FALSE
+"Calliphora","Calliphora Robineau-Desvoidy, 1830","GENUS","Calliphoridae","Insecta","EXACT",96,"direct",FALSE
+"Callopistria","Callopistria Hübner","GENUS","Noctuidae","Insecta","EXACT",95,"direct",FALSE
+"Calodesmia","Calodesma Hübner, 1820","GENUS","Erebidae","Insecta","VARIANT",85,"direct",FALSE
+"Calopompilus","Calopompilus Ashmead, 1900","GENUS","Pompilidae","Insecta","EXACT",96,"direct",FALSE
+"Camponotus","Camponotus Mayr, 1861","GENUS","Formicidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Campopletis","Campoletis Förster, 1868","GENUS","Ichneumonidae","Insecta","VARIANT",85,"direct",FALSE
+"Campsomeriella","Campsomeriella Betrem, 1941","GENUS","Scoliidae","Insecta","EXACT",96,"direct",FALSE
+"Campsomeris","Campsomeris Guérin-Méneville, 1838","GENUS","Scoliidae","Insecta","EXACT",95,"direct",FALSE
+"Campylothynnus","Campylothynnus Turner, 1910","GENUS","Tiphiidae","Insecta","EXACT",96,"direct",FALSE
+"Caradrina","Caradrina Ochsenheimer, 1816","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Cardiophorus","Cardiophorus Eschscholtz, 1829","GENUS","Elateridae","Insecta","EXACT",96,"direct",FALSE
+"Catocheilus","Catocheilus Guérin-Méneville, 1842","GENUS","Tiphiidae","Insecta","EXACT",96,"direct",FALSE
+"Catopsilia","Catopsilia Hübner, 1819","GENUS","Pieridae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Catoptria","Catoptria Hübner, 1825","GENUS","Crambidae","Insecta","EXACT",95,"direct",FALSE
+"Caviceps","Caviceps Malloch, 1924","GENUS","Chloropidae","Insecta","EXACT",96,"direct",FALSE
+"Cechenena","Cechenena Rothschild & Jordan, 1903","GENUS","Sphingidae","Insecta","EXACT",96,"direct",FALSE
+"Celaenorrhinus","Celaenorrhinus Hübner, 1819","GENUS","Hesperiidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Celerio","Celerio Agassiz, 1846","GENUS","Sphingidae","Insecta","EXACT",94,"direct",FALSE
+"Centris","Centris Fabricius, 1804","GENUS","Apidae","Insecta","EXACT",95,"direct",FALSE
+"Ceraptery","Cerapteryx Curtis, 1833","GENUS","Noctuidae","Insecta","VARIANT",85,"direct",FALSE
+"Cerceris","Cerceris Latreille, 1802","GENUS","Crabronidae","Insecta","EXACT",96,"direct",FALSE
+"Ceriana","Ceriana Rafinesque, 1815","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Cetema","Cetema Hendel, 1907","GENUS","Chloropidae","Insecta","EXACT",96,"direct",FALSE
+"Cetonia","Cetonia Fabricius, 1775","GENUS","Scarabaeidae","Insecta","EXACT",95,"direct",FALSE
+"Chalcomitra","Chalcomitra Reichenbach, 1853","GENUS","Nectariniidae","Aves","EXACT",96,"direct",FALSE
+"Chalcostigma","Chalcostigma Reichenbach, 1854","GENUS","Trochilidae","Aves","EXACT",96,"direct",FALSE
+"Chalicodoma","Chalicodoma Lepeletier, 1841","GENUS","Megachilidae","Insecta","EXACT",94,"direct",FALSE
+"Chamaesphecia","Chamaesphecia Spuler, 1910","GENUS","Sesiidae","Insecta","EXACT",96,"direct",FALSE
+"Charissa","Charissa Curtis, 1826","GENUS","Geometridae","Insecta","EXACT",95,"direct",FALSE
+"Cheilosia","Cheilosia Meigen, 1822","GENUS","Syrphidae","Insecta","EXACT",95,"direct",FALSE
+"Chelostoma","Chelostoma Latreille, 1809","GENUS","Megachilidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Chersotis","Chersotis Boisduval, 1840","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Chilothynnus","Chilothynnus Brown, 1996","GENUS","Tiphiidae","Insecta","EXACT",94,"direct",FALSE
+"Chlerogella","Chlerogella Michener, 1954","GENUS","Halictidae","Insecta","EXACT",96,"direct",FALSE
+"Chloromyia","Chloromyia Duncan, 1837","GENUS","Stratiomyidae","Insecta","EXACT",96,"direct",FALSE
+"Chlorostilbon","Chlorostilbon Gould, 1853","GENUS","Trochilidae","Aves","EXACT",96,"direct",FALSE
+"Chlosyne","Chlosyne Butler, 1870","GENUS","Nymphalidae","Insecta","EXACT",96,"direct",FALSE
+"Choaspes","Choaspes Moore, 1881","GENUS","Hesperiidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Chorinaeus","Chorinaeus Holmgren, 1858","GENUS","Ichneumonidae","Insecta","EXACT",95,"direct",FALSE
+"Chrysanthia","Chrysanthia Schmidt, 1846","GENUS","Oedemeridae","Insecta","EXACT",96,"direct",FALSE
+"Chrysaspidea","Chrysaspidia Hübner","GENUS","Noctuidae","Insecta","VARIANT",84,"direct",FALSE
+"Chrysis","Chrysis Linnaeus, 1761","GENUS","Chrysididae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Chrysolopus","Chrysolopus E.F.Germar, 1817","GENUS","Curculionidae","Insecta","EXACT",96,"direct",FALSE
+"Chrysomya","Chrysomya Robineau-Desvoidy, 1830","GENUS","Calliphoridae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Chrysoteuchia","Chrysoteuchia Hübner, 1825","GENUS","Crambidae","Insecta","EXACT",96,"direct",FALSE
+"Chrysotoxum","Chrysotoxum Meigen, 1803","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Chrysura","Chrysura Dahlbom, 1845","GENUS","Chrysididae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Cidnopus","Cidnopus Thomson, 1859","GENUS","Elateridae","Insecta","EXACT",96,"direct",FALSE
+"Cinetus","Cinetus Jurine, 1807","GENUS","Diapriidae","Insecta","EXACT",96,"direct",FALSE
+"Cinnyris","Cinnyris Cuvier, 1816","GENUS","Nectariniidae","Aves","EXACT",96,"direct",FALSE
+"Cisseps","Cisseps Franclemont, 1936","GENUS","Erebidae","Insecta","EXACT",96,"direct",FALSE
+"Claremontia","Claremontia Rohwer, 1909","GENUS","Tenthredinidae","Insecta","EXACT",96,"direct",FALSE
+"Cleogene","Cleogene Duponchel, 1829","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Clinteria","Clinteria Burmeister, 1842","GENUS","Scarabaeidae","Insecta","EXACT",96,"direct",FALSE
+"Clossiana","Clossiana Reuss, 1920","GENUS","Nymphalidae","Insecta","EXACT",96,"direct",FALSE
+"Closterocerus","Closterocerus Westwood, 1833","GENUS","Eulophidae","Insecta","EXACT",95,"direct",FALSE
+"Clubiona","Clubiona Latreille, 1804","GENUS","Clubionidae","Arachnida","EXACT",95,"direct",FALSE
+"Clytus","Clytus Laicharting, 1784","GENUS","Cerambycidae","Insecta","EXACT",95,"direct",FALSE
+"Coccinella","Coccinella Linnaeus, 1758","GENUS","Coccinellidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Coelichneumon","Coelichneumon Thomson, 1893","GENUS","Ichneumonidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Coelioxys","Coelioxys Latreille, 1809","GENUS","Megachilidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Coelonia","Coelonia Rothschild & Jordan, 1903","GENUS","Sphingidae","Insecta","EXACT",96,"direct",FALSE
+"Coelopa","Coelopa Meigen, 1830","GENUS","Coelopidae","Insecta","EXACT",96,"direct",FALSE
+"Coenonympha","Coenonympha Hübner, 1819","GENUS","Nymphalidae","Insecta","EXACT",95,"direct",FALSE
+"Coereba","Coereba Vieillot, 1809","GENUS","Thraupidae","Aves","EXACT",96,"direct",FALSE
+"Colibri","Colibri von Spix, 1824","GENUS","Trochilidae","Aves","EXACT",95,"direct",FALSE
+"Colletes","Colletes Latreille, 1802","GENUS","Colletidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Colotis","Colotis Hübner, 1819","GENUS","Pieridae","Insecta","EXACT",96,"direct",FALSE
+"Condica","Condica Walker, 1856","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Conicera","Conicera Meigen, 1830","GENUS","Phoridae","Insecta","EXACT",96,"direct",FALSE
+"Conioscinella","Conioscinella Duda, 1929","GENUS","Chloropidae","Insecta","EXACT",96,"direct",FALSE
+"Coptoformica","Coptoformica Müller, 1923","GENUS",NA,"Insecta","EXACT",94,"direct",FALSE
+"Cornifrons","Cornifrons Lederer, 1858","GENUS","Crambidae","Insecta","EXACT",96,"direct",FALSE
+"Cornutiplusia","Cornutiplusia Kostrowicki, 1961","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Cosmopepla","Cosmopepla Stål, 1867","GENUS","Pentatomidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Cosmosoma","Cosmosoma Hübner, 1823","GENUS","Erebidae","Insecta","EXACT",95,"direct",FALSE
+"Costaconvexa","Costaconvexa Agenjo, 1949","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Crambus","Crambus Fabricius, 1798","GENUS","Crambidae","Insecta","EXACT",95,"direct",FALSE
+"Craterestra","Craterestra Hampson, 1905","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Cratichneumon","Cratichneumon Thomson, 1893","GENUS","Ichneumonidae","Insecta","EXACT",96,"direct",FALSE
+"Creora","Cleora Curtis, 1825","GENUS","Geometridae","Insecta","VARIANT",80,"direct",FALSE
+"Crepidodera","Crepidodera Chevrolat, 1836","GENUS","Chrysomelidae","Insecta","EXACT",95,"direct",FALSE
+"Criorhina","Criorhina Meigen, 1822","GENUS","Syrphidae","Insecta","EXACT",95,"direct",FALSE
+"Crocota","Crocota Hübner","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Ctenicera","Ctenicera Latreille, 1829","GENUS","Elateridae","Insecta","EXACT",96,"direct",FALSE
+"Ctenochira","Ctenochira Förster, 1855","GENUS","Ichneumonidae","Insecta","EXACT",95,"direct",FALSE
+"Ctenoplectra","Ctenoplectra Kirby, 1826","GENUS","Apidae","Insecta","EXACT",95,"direct",FALSE
+"Ctenoplusia","Ctenoplusia Dufay, 1970","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Culex","Culex Linnaeus, 1758","GENUS","Culicidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Cumbre","Cumbre Evans, 1955","GENUS","Hesperiidae","Insecta","EXACT",96,"direct",FALSE
+"Curculio","Curculio C.Linnaeus, 1758","GENUS","Curculionidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Cyanopepla","Cyanopepla Clemens, 1861","GENUS","Erebidae","Insecta","EXACT",96,"direct",FALSE
+"Cylindrotoma","Cylindrotoma Macquart, 1834","GENUS","Cylindrotomidae","Insecta","EXACT",96,"direct",FALSE
+"Cyrtostomus","Cyrtostomus Cabanis, 1851","GENUS","Nectariniidae","Aves","EXACT",94,"direct",FALSE
+"Cyrtothyrea","Cyrtothyrea Kolbe, 1895","GENUS","Scarabaeidae","Insecta","EXACT",96,"direct",FALSE
+"Dactylolabis","Dactylolabis Osten Sacken, 1860","GENUS","Limoniidae","Insecta","EXACT",96,"direct",FALSE
+"Dalopius","Dalopius Eschscholtz, 1829","GENUS","Elateridae","Insecta","EXACT",96,"direct",FALSE
+"Danaus","Danaus Kluk, 1802","GENUS","Nymphalidae","Insecta","EXACT",95,"direct",FALSE
+"Daphnis","Daphnis Hübner","GENUS","Sphingidae","Insecta","EXACT",96,"direct",FALSE
+"Darapsa","Darapsa Walker, 1856","GENUS","Sphingidae","Insecta","EXACT",96,"direct",FALSE
+"Dascillus","Dascillus Latreille, 1796","GENUS","Dascillidae","Insecta","EXACT",95,"direct",FALSE
+"Dasypoda","Dasypoda Latreille, 1802","GENUS","Melittidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Dasyscolia","Dasyscolia Bradley, 1951","GENUS","Scoliidae","Insecta","EXACT",96,"direct",FALSE
+"Dasysyrphus","Dasysyrphus Enderlein, 1938","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Dasytes","Dasytes Paykull, 1799","GENUS","Melyridae","Insecta","EXACT",96,"direct",FALSE
+"Deilephila","Deilephila (Laspeyres) , 1809","GENUS","Sphingidae","Insecta","EXACT",96,"direct",FALSE
+"Deileptenia","Deileptenia Hübner","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Delia","Delia Robineau-Desvoidy, 1830","GENUS","Anthomyiidae","Insecta","EXACT",95,"direct",FALSE
+"Delta","Delta Saussure, 1855","GENUS","Eumenidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Denticollis","Denticollis Piller & Mitterpacher, 1783","GENUS","Elateridae","Insecta","EXACT",96,"direct",FALSE
+"Diachrysia","Diachrysia Hübner","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Dialictus","Dialictus Robertson, 1902","GENUS","Halictidae","Insecta","EXACT",96,"direct",FALSE
+"Diarsia","Diarsia Hübner","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Diasemia","Diasemia Hübner","GENUS","Crambidae","Insecta","EXACT",96,"direct",FALSE
+"Dideopsis","Dideopsis Matsumura, 1917","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Dilophus","Dilophus Meigen, 1803","GENUS","Bibionidae","Insecta","EXACT",95,"direct",FALSE
+"Dinoptera","Dinoptera Mulsant, 1863","GENUS","Cerambycidae","Insecta","EXACT",96,"direct",FALSE
+"Dioprosopa","Dioprosopa Hull, 1949","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Dioxina","Dioxyna Frey, 1945","GENUS","Tephritidae","Insecta","VARIANT",80,"direct",FALSE
+"Dioxys","Dioxys Lepeletier & Serville, 1825","GENUS","Megachilidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Diphyus","Diphyus Kriechbaumer, 1890","GENUS","Ichneumonidae","Insecta","EXACT",96,"direct",FALSE
+"Diplazon","Diplazon Nees, 1818","GENUS","Ichneumonidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Discestra","Discestra Hampson, 1905","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Dixa","Dixa Meigen, 1818","GENUS","Dixidae","Insecta","EXACT",96,"direct",FALSE
+"Dolba","Dolba Walker, 1856","GENUS","Sphingidae","Insecta","EXACT",96,"direct",FALSE
+"Dolerus","Dolerus Jurine, 1807","GENUS","Tenthredinidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Dolichovespula","Dolichovespula Rohwer, 1916","GENUS","Vespidae","Insecta","EXACT",96,"direct",FALSE
+"Drepanogynis","Drepanogynis Guenée","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Drepanulatrix","Drepanulatrix Gumppenberg, 1887","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Drosophila","Drosophila Fallen, 1823","GENUS","Drosophilidae","Insecta","EXACT",95,"direct",FALSE
+"Drosophilae","Drosophila Fallen, 1823","GENUS","Drosophilidae","Insecta","VARIANT",80,"direct",FALSE
+"Dryadula","Dryadula Michener, 1942","GENUS","Nymphalidae","Insecta","EXACT",95,"direct",FALSE
+"Dryas","Dryas Hübner, 1807","GENUS","Nymphalidae","Insecta","EXACT",95,"direct",FALSE
+"Dufourea","Dufourea Lepeletier, 1841","GENUS","Halictidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Dusona","Dusona Cameron, 1901","GENUS","Ichneumonidae","Insecta","EXACT",96,"direct",FALSE
+"Dysgonia","Dysgonia Hübner","GENUS","Erebidae","Insecta","EXACT",96,"direct",FALSE
+"Ectemnius","Ectemnius Dahlbom, 1845","GENUS","Crabronidae","Insecta","EXACT",96,"direct",FALSE
+"Eillema","Eilema Hübner, 1819","GENUS","Erebidae","Insecta","VARIANT",83,"direct",FALSE
+"Eirone","Eirone Westwood, 1844","GENUS","Tiphiidae","Insecta","EXACT",96,"direct",FALSE
+"Elephantomyia","Elephantomyia Osten Sacken, 1860","GENUS","Limoniidae","Insecta","EXACT",96,"direct",FALSE
+"Elophos","Elophos Boisduval, 1840","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Elpiste","Elpiste Gumppenberg, 1887","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Elvira","Elvira Mulsant, J.Verreaux & E.Verreaux, 1866","GENUS","Trochilidae","Aves","EXACT",96,"direct",FALSE
+"Empria","Empria Lepeletier & Serville, 1828","GENUS","Tenthredinidae","Insecta","EXACT",96,"direct",FALSE
+"Empusada","Empusada Hampson, 1906","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Endasys","Endasys Förster, 1869","GENUS","Ichneumonidae","Insecta","EXACT",96,"direct",FALSE
+"Entephria","Entephria Hübner","GENUS","Geometridae","Insecta","EXACT",95,"direct",FALSE
+"Epargyreus","Epargyreus Hübner, 1819","GENUS","Hesperiidae","Insecta","EXACT",96,"direct",FALSE
+"Epeolus","Epeolus Latreille, 1802","GENUS","Apidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Epicharis","Epicharis Klug, 1807","GENUS","Apidae","Insecta","EXACT",95,"direct",FALSE
+"Episauris","Episauris Rebel, 1898","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Episcada","Episcada Godman & Salvin, 1879","GENUS","Nymphalidae","Insecta","EXACT",96,"direct",FALSE
+"Episyrphus","Episyrphus Matsumura & Adachi, 1917","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Erceia","Erceia Walker, 1858","GENUS","Erebidae","Insecta","EXACT",96,"direct",FALSE
+"Erebia","Erebia Dalman, 1816","GENUS","Nymphalidae","Insecta","EXACT",95,"direct",FALSE
+"Eriozona","Eriozona Schiner, 1860","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Eristalinus","Eristalinus Rondani, 1845","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Eristalis","Eristalis Latreille, 1804","GENUS","Syrphidae","Insecta","EXACT",95,"direct",FALSE
+"Erisyrphus","Erisyrphus Ninomiya, 1929","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Eronia","Eronia Hübner, 1823","GENUS","Pieridae","Insecta","EXACT",96,"direct",FALSE
+"Erynnis","Erynnis Schrank, 1801","GENUS","Hesperiidae","Insecta","EXACT",95,"direct",FALSE
+"Esoneura","Exoneura Smith, 1854","GENUS","Apidae","Insecta","VARIANT",85,"direct",FALSE
+"Eubolia","Eubolia Duponchel, 1829","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Eucera","Eucera Scopoli, 1770","GENUS","Apidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Eucereaon","Eucereon Hübner, 1819","GENUS","Erebidae","Insecta","HIGHERRANK",80,"direct",FALSE
+"Eucereon","Eucereon Hübner, 1819","GENUS","Erebidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Euchromia","Euchromia Hübner","GENUS","Erebidae","Insecta","EXACT",95,"direct",FALSE
+"Euclidia","Euclidia Ochsenheimer, 1816","GENUS","Erebidae","Insecta","EXACT",95,"direct",FALSE
+"Eudejeania","Eudejeania Townsend, 1912","GENUS","Tachinidae","Insecta","EXACT",96,"direct",FALSE
+"Euderus","Euderus Haliday, 1844","GENUS","Eulophidae","Insecta","EXACT",95,"direct",FALSE
+"Eudonia","Eudonia Billberg, 1820","GENUS","Crambidae","Insecta","EXACT",95,"direct",FALSE
+"Eufriesea","Eufriesea Cockerell, 1908","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Euglossa","Euglossa Latreille, 1802","GENUS","Apidae","Insecta","EXACT",95,"direct",FALSE
+"Eulaema","Eulaema Lepeletier, 1841","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Eumenes","Eumenes Latreille, 1802","GENUS","Vespidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Eumorpha","Eumorpha Hübner","GENUS","Sphingidae","Insecta","EXACT",95,"direct",FALSE
+"Euodynerus","Euodynerus Blüthgen, 1938","GENUS","Eumenidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Eupanacra","Eupanacra Cadiou & Holloway, 1989","GENUS","Sphingidae","Insecta","EXACT",96,"direct",FALSE
+"Eupeodes","Eupeodes Osten-Sacken, 1877","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Euphydryas","Euphydryas Scudder, 1872","GENUS","Nymphalidae","Insecta","EXACT",96,"direct",FALSE
+"Euphyes","Euphyes Scudder, 1872","GENUS","Hesperiidae","Insecta","EXACT",96,"direct",FALSE
+"Eupithecia","Eupithecia Curtis, 1825","GENUS","Geometridae","Insecta","EXACT",95,"direct",FALSE
+"Euploea","Euploea Fabricius, 1807","GENUS","Nymphalidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Euryglossina","Euryglossina Cockerell, 1910","GENUS","Colletidae","Insecta","EXACT",95,"direct",FALSE
+"Euryproctus","Euryproctus Holmgren, 1857","GENUS","Ichneumonidae","Insecta","EXACT",96,"direct",FALSE
+"Eurys","Eurys Newman, 1841","GENUS","Pergidae","Insecta","EXACT",96,"direct",FALSE
+"Eurytides","Eurytides Hübner, 1821","GENUS","Papilionidae","Insecta","EXACT",96,"direct",FALSE
+"Eusphalerum","Eusphalerum Kraatz, 1857","GENUS","Staphylinidae","Insecta","EXACT",96,"direct",FALSE
+"Eustroma","Eustroma Hübner","GENUS","Geometridae","Insecta","EXACT",95,"direct",FALSE
+"Eutomostethus","Eutomostethus Enslin, 1914","GENUS","Tenthredinidae","Insecta","EXACT",96,"direct",FALSE
+"Evergestis","Evergestis Hübner, 1825","GENUS","Crambidae","Insecta","EXACT",96,"direct",FALSE
+"Exaerete","Exaerete Hoffmannsegg, 1817","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Exechia","Exechia Winnertz, 1863","GENUS","Mycetophilidae","Insecta","EXACT",96,"direct",FALSE
+"Exechiopsis","Exechiopsis Tuomikoski, 1966","GENUS","Mycetophilidae","Insecta","EXACT",96,"direct",FALSE
+"Exetastes","Exetastes Gravenhorst, 1829","GENUS","Ichneumonidae","Insecta","EXACT",96,"direct",FALSE
+"Exomalopsis","Exomalopsis Spinola, 1853","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Exoneura","Exoneura Smith, 1854","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Exoneurella","Exoneurella Michener, 1963","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Fallenia","Fallenia Macq.","GENUS","Nemestrinidae","Insecta","EXACT",95,"direct",FALSE
+"Ferdinandea","Ferdinandea Rondani, 1844","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Forcipomyia","Forcipomyia Meigen, 1818","GENUS","Ceratopogonidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Formica","Formica Linnaeus, 1758","GENUS","Formicidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Frankliniella","Frankliniella Karny, 1910","GENUS","Thripidae","Insecta","EXACT",96,"direct",FALSE
+"Gastrancistrus","Gastrancistrus Westwood, 1833","GENUS","Pteromalidae","Insecta","EXACT",96,"direct",FALSE
+"Gaurotes","Gaurotes LeConte, 1850","GENUS","Cerambycidae","Insecta","EXACT",95,"direct",FALSE
+"Gesta","Gesta Evans, 1953","GENUS","Hesperiidae","Insecta","EXACT",96,"direct",FALSE
+"Glomeremus","Glomeremus Karny, 1937","GENUS","Gryllacrididae","Insecta","EXACT",96,"direct",FALSE
+"Glyphicnemis","Glyphicnemis Förster, 1869","GENUS","Ichneumonidae","Insecta","EXACT",96,"direct",FALSE
+"Gnophos","Gnophos Treitschke, 1825","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Gonepteryx","Gonepteryx Leach, 1815","GENUS","Pieridae","Insecta","EXACT",96,"direct",FALSE
+"Goryphus","Goryphus Holmgren, 1868","GENUS","Ichneumonidae","Insecta","EXACT",96,"direct",FALSE
+"Gorytes","Gorytes Latreille, 1805","GENUS","Crabronidae","Insecta","EXACT",96,"direct",FALSE
+"Grammoptera","Grammoptera Audinet-Serville, 1835","GENUS","Cerambycidae","Insecta","EXACT",95,"direct",FALSE
+"Graptomyza","Graptomyza Wiedemann, 1820","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Greya","Greya Busck, 1903","GENUS","Prodoxidae","Insecta","EXACT",96,"direct",FALSE
+"Gronocera","Gronoceras Cockerell, 1907","GENUS","Megachilidae","Insecta","VARIANT",85,"direct",FALSE
+"Gymnettis","Gymnetis MacLeay, 1819","GENUS","Scarabaeidae","Insecta","VARIANT",85,"direct",FALSE
+"Gymnoscelis","Gymnoscelis Mabille, 1868","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Hada","Hada Billberg, 1820","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Hadena","Hadena Schrank, 1802","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Halictus","Halictus Latreille, 1804","GENUS","Halictidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Haplothrips","Haplothrips Amyot & Serville, 1843","GENUS","Phlaeothripidae","Insecta","EXACT",96,"direct",FALSE
+"Heleomyza","Heleomyza Fallén, 1810","GENUS","Heleomyzidae","Insecta","EXACT",95,"direct",FALSE
+"Heliconius","Heliconius Kluk, 1802","GENUS","Nymphalidae","Insecta","EXACT",95,"direct",FALSE
+"Helicoverpa","Helicoverpa Hardwick, 1965","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Helina","Helina Robineau-Desvoidy, 1830","GENUS","Muscidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Heliopetes","Heliopetes Billberg, 1820","GENUS","Hesperiidae","Insecta","EXACT",96,"direct",FALSE
+"Heliophobus","Heliophobus Boisduval, 1829","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Heliothis","Heliothis Ochsenheimer, 1816","GENUS","Noctuidae","Insecta","EXACT",95,"direct",FALSE
+"Hellinsia","Hellinsia Tutt, 1905","GENUS","Pterophoridae","Insecta","EXACT",96,"direct",FALSE
+"Helophilus","Helophilus Meigen, 1822","GENUS","Syrphidae","Insecta","EXACT",95,"direct",FALSE
+"Hemaris","Hemaris Dalman, 1816","GENUS","Sphingidae","Insecta","EXACT",96,"direct",FALSE
+"Hemipenthes","Hemipenthes Loew, 1869","GENUS","Bombyliidae","Insecta","EXACT",96,"direct",FALSE
+"Hemipepsis","Hemipepsis Dahlbom, 1844","GENUS","Pompilidae","Insecta","EXACT",96,"direct",FALSE
+"Hemipyrellia","Hemipyrellia Townsend, 1918","GENUS","Calliphoridae","Insecta","EXACT",96,"direct",FALSE
+"Heriades","Heriades Spinola, 1808","GENUS","Megachilidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Herina","Herina Robineau-Desvoidy, 1830","GENUS","Ulidiidae","Insecta","EXACT",96,"direct",FALSE
+"Hesperia","Hesperia Fabricius, 1793","GENUS","Hesperiidae","Insecta","EXACT",96,"direct",FALSE
+"Heteria","Heteria Malloch, 1930","GENUS","Tachinidae","Insecta","EXACT",96,"direct",FALSE
+"Hippelates","Hippelates Loew, 1863","GENUS","Chloropidae","Insecta","EXACT",96,"direct",FALSE
+"Hippotion","Hippotion Hübner","GENUS","Sphingidae","Insecta","EXACT",96,"direct",FALSE
+"Holopyga","Holopyga Dahlbom, 1845","GENUS","Chrysididae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Homalictus","Homalictus Cockerell, 1919","GENUS","Halictidae","Insecta","EXACT",96,"direct",FALSE
+"Homoeoxipha","Homoeoxipha Saussure, 1874","GENUS","Trigonidiidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Hoplia","Hoplia Illiger, 1803","GENUS","Scarabaeidae","Insecta","EXACT",96,"direct",FALSE
+"Hoplitis","Hoplitis Klug, 1807","GENUS","Megachilidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Hoplocampa","Hoplocampa Hartig, 1837","GENUS","Tenthredinidae","Insecta","EXACT",96,"direct",FALSE
+"Hoplosmia","Hoplosmia Thomson, 1872","GENUS","Megachilidae","Insecta","EXACT",96,"direct",FALSE
+"Hybos","Hybos Meigen, 1803","GENUS","Hybotidae","Insecta","EXACT",95,"direct",FALSE
+"Hybovalgus","Hybovalgus Kolbe, 1904","GENUS","Scarabaeidae","Insecta","EXACT",96,"direct",FALSE
+"Hydriomena","Hydriomena Hübner","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Hydrophoria","Hydrophoria Robineau-Desvoidy, 1830","GENUS","Anthomyiidae","Insecta","EXACT",96,"direct",FALSE
+"Hylaeus","Hylaeus Fabricius, 1793","GENUS","Colletidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Hylemyia","Hylemyia","GENUS","Anthomyiidae","Insecta","EXACT",94,"direct",FALSE
+"Hyles","Hyles Hübner","GENUS","Sphingidae","Insecta","EXACT",96,"direct",FALSE
+"Hyperbatus","Hyperbatus Förster, 1869","GENUS","Ichneumonidae","Insecta","EXACT",96,"direct",FALSE
+"Hyppa","Hyppa Duponchel","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Ichneumonid","Ichneumonia Blyth, 1840","GENUS","Herpestidae","Mammalia","VARIANT",84,"direct",FALSE
+"Idana","Idana Loew, 1873","GENUS","Ulidiidae","Insecta","EXACT",96,"direct",FALSE
+"Ideopsis","Ideopsis Horsfield, 1858","GENUS","Nymphalidae","Insecta","EXACT",96,"direct",FALSE
+"Idiodes","Idiodes Guenée","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Idiolispa","Idiolispa Förster, 1869","GENUS","Ichneumonidae","Insecta","EXACT",96,"direct",FALSE
+"Immanthidium","Immanthidium Pasteels, 1969","GENUS","Megachilidae","Insecta","EXACT",94,"direct",FALSE
+"Incodynerus","Incodynerus Willink, 1968","GENUS","Eumenidae","Insecta","EXACT",96,"direct",FALSE
+"Iphiclides","Iphiclides Hübner, 1819","GENUS","Papilionidae","Insecta","EXACT",95,"direct",FALSE
+"Iridomyrmex","Iridomyrmex Mayr, 1862","GENUS","Formicidae","Insecta","EXACT",96,"direct",FALSE
+"Ischnomera","Ischnomera Stephens, 1832","GENUS","Oedemeridae","Insecta","EXACT",96,"direct",FALSE
+"Ischnus","Ischnus Gravenhorst, 1829","GENUS","Ichneumonidae","Insecta","EXACT",96,"direct",FALSE
+"Isomira","Isomira Mulsant, 1856","GENUS","Tenebrionidae","Insecta","EXACT",96,"direct",FALSE
+"Iswaroides","Iswaroides Ashmead, 1899","GENUS","Tiphiidae","Insecta","EXACT",96,"direct",FALSE
+"Itoplectis","Itoplectis Förster, 1868","GENUS","Ichneumonidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Judolia","Judolia Mulsant, 1863","GENUS","Cerambycidae","Insecta","EXACT",96,"direct",FALSE
+"Kleidotoma","Kleidotoma Westwood, 1833","GENUS","Figitidae","Insecta","EXACT",96,"direct",FALSE
+"Korinchia","Korinchia Edwards, 1919","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Laccodrosophila","Laccodrosophila Duda, 1927","GENUS","Drosophilidae","Insecta","EXACT",96,"direct",FALSE
+"Lachnopus","Lachnopus Schoenherr, 1840","GENUS","Curculionidae","Insecta","EXACT",95,"direct",FALSE
+"Lacodrosophila","Laccodrosophila Duda, 1927","GENUS","Drosophilidae","Insecta","VARIANT",85,"direct",FALSE
+"Lampornis","Lampornis Swainson, 1827","GENUS","Trochilidae","Aves","EXACT",96,"direct",FALSE
+"Lampronia","Lampronia Stephens, 1829","GENUS","Incurvariidae","Insecta","EXACT",96,"direct",FALSE
+"Lampropteryx","Lampropteryx Stephens, 1831","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Lasioglossum","Lasioglossum Curtis, 1833","GENUS","Halictidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Lasionycta","Lasionycta Aurivillius, 1892","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Lasius","Lasius Fabricius, 1804","GENUS","Formicidae","Insecta","EXACT",95,"direct",FALSE
+"Leioproctus","Leioproctus Smith, 1853","GENUS","Colletidae","Insecta","EXACT",96,"direct",FALSE
+"Lejogaster","Lejogaster Rondani, 1857","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Lema","Lema Fabricius, 1798","GENUS","Chrysomelidae","Insecta","EXACT",95,"direct",FALSE
+"Lepithrix","Lepithrix Le Peletier & Serville, 1828","GENUS","Scarabaeidae","Insecta","EXACT",95,"direct",FALSE
+"Leptothorax","Leptothorax Mayr, 1855","GENUS","Formicidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Leptura","Leptura Linnaeus, 1758","GENUS","Cerambycidae","Insecta","EXACT",96,"direct",FALSE
+"Lepturobosca","Lepturobosca Reitter, 1913","GENUS","Cerambycidae","Insecta","EXACT",96,"direct",FALSE
+"Lestricothynnus","Lestricothynnus Turner, 1910","GENUS","Tiphiidae","Insecta","EXACT",96,"direct",FALSE
+"Leucocelis","Leucocelis Burmeister, 1842","GENUS","Scarabaeidae","Insecta","EXACT",96,"direct",FALSE
+"Leucochloris","Leucochloris Reichenbach, 1854","GENUS","Trochilidae","Aves","EXACT",96,"direct",FALSE
+"Leucophenga","Leucophenga Mik, 1886","GENUS","Drosophilidae","Insecta","EXACT",95,"direct",FALSE
+"Lieinix","Lieinix Gray, 1832","GENUS","Pieridae","Insecta","EXACT",96,"direct",FALSE
+"Limnophila","Limnophila Macquart, 1834","GENUS","Limoniidae","Insecta","EXACT",96,"direct",FALSE
+"Lintneria","Lintneria Butler, 1876","GENUS","Sphingidae","Insecta","EXACT",95,"direct",FALSE
+"Liocinella","Lioscinella Duda, 1929","GENUS","Chloropidae","Insecta","VARIANT",80,"direct",FALSE
+"Liotrigona","Liotrigona Moure, 1961","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Lipotriches","Lipotriches Gerstäcker, 1858","GENUS","Halictidae","Insecta","EXACT",96,"direct",FALSE
+"Lissonota","Lissonota Gravenhorst, 1829","GENUS","Ichneumonidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Lissopimpla","Lissopimpla Kriechbaumer, 1889","GENUS","Ichneumonidae","Insecta","EXACT",96,"direct",FALSE
+"Lithosia","Lithosia Fabricius, 1798","GENUS","Erebidae","Insecta","EXACT",95,"direct",FALSE
+"Loderus","Loderus Konow, 1890","GENUS","Tenthredinidae","Insecta","EXACT",96,"direct",FALSE
+"Loewia","Loewia Egger, 1856","GENUS","Tachinidae","Insecta","EXACT",95,"direct",FALSE
+"Lophocheilus","Lophocheilus Guérin-Méneville, 1842","GENUS","Tiphiidae","Insecta","EXACT",96,"direct",FALSE
+"Lophopedia","Lophopedia Michener & Moure, 1957","GENUS","Apidae","Insecta","EXACT",94,"direct",FALSE
+"Lophyrotoma","Lophyrotoma Ashmead, 1898","GENUS","Pergidae","Insecta","EXACT",96,"direct",FALSE
+"Lucilia","Lucilia Robineau-Desvoidy, 1830","GENUS","Calliphoridae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Lycaena","Lycaena Fabricius, 1807","GENUS","Lycaenidae","Insecta","EXACT",95,"direct",FALSE
+"Lychnuchoides","Lychnuchoides Godman, 1901","GENUS","Hesperiidae","Insecta","EXACT",96,"direct",FALSE
+"Lychnuchus","Lychnuchus Hübner, 1827","GENUS","Hesperiidae","Insecta","EXACT",95,"direct",FALSE
+"Lycus","Lycus Fabricius, 1787","GENUS","Lycidae","Insecta","EXACT",95,"direct",FALSE
+"Lygaeus","Lygaeus Fabricius, 1794","GENUS","Lygaeidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Lymire","Lymire Walker, 1854","GENUS","Erebidae","Insecta","EXACT",96,"direct",FALSE
+"Lysandra","Lysandra Hemming, 1933","GENUS","Lycaenidae","Insecta","EXACT",95,"direct",FALSE
+"Macdunnoughia","Macdunnoughia Kostrowicki, 1961","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Macquartia","Macquartia Robineau-Desvoidy, 1830","GENUS","Tachinidae","Insecta","EXACT",95,"direct",FALSE
+"Macrogalea","Macrogalea Cockerell, 1930","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Macroglenes","Macroglenes Westwood, 1832","GENUS","Pteromalidae","Insecta","EXACT",96,"direct",FALSE
+"Macrophya","Macrophya Dahlbom, 1835","GENUS","Tenthredinidae","Insecta","EXACT",95,"direct",FALSE
+"Macrothynnus","Macrothynnus Turner, 1908","GENUS","Tiphiidae","Insecta","EXACT",96,"direct",FALSE
+"Malachius","Malachius Fabricius, 1775","GENUS","Melyridae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Mallomus","Mallomus Blanchard, 1852","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Malthodes","Malthodes Kiesenwetter, 1852","GENUS","Cantharidae","Insecta","EXACT",96,"direct",FALSE
+"Manduca","Manduca Hübner","GENUS","Sphingidae","Insecta","EXACT",96,"direct",FALSE
+"Maniola","Maniola Schrank, 1801","GENUS","Nymphalidae","Insecta","EXACT",96,"direct",FALSE
+"Megacampsomeris","Megacampsomeris Betrem, 1928","GENUS","Scoliidae","Insecta","EXACT",96,"direct",FALSE
+"Megachile","Megachile Latreille, 1802","GENUS","Megachilidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Megaselia","Megaselia Rondani, 1856","GENUS","Phoridae","Insecta","EXACT",96,"direct",FALSE
+"Megasella","Megasella Paetel, 1875","GENUS","Terebratellidae","Rhynchonellata","EXACT",96,"direct",FALSE
+"Melanagromyza","Melanagromyza Hendel, 1920","GENUS","Agromyzidae","Insecta","EXACT",96,"direct",FALSE
+"Melanargia","Melanargia Meigen, 1828","GENUS","Nymphalidae","Insecta","EXACT",96,"direct",FALSE
+"Melangyna","Melangyna Verrall, 1901","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Melecta","Melecta Latreille, 1802","GENUS","Apidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Meligethes","Meligethes Stephens, 1830","GENUS","Nitidulidae","Insecta","EXACT",96,"direct",FALSE
+"Melinaea","Melinaea Hübner, 1816","GENUS","Nymphalidae","Insecta","EXACT",95,"direct",FALSE
+"Melipona","Melipona Illiger, 1806","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Meliscaeva","Meliscaeva Frey, 1946","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Melissoodes","Melissodes Latreille, 1829","GENUS","Apidae","Insecta","VARIANT",83,"direct",FALSE
+"Meneris","Meneris Westwood, 1850","GENUS","Nymphalidae","Insecta","EXACT",96,"direct",FALSE
+"Meranoplus","Meranoplus Smith, 1853","GENUS","Formicidae","Insecta","EXACT",95,"direct",FALSE
+"Mesoleptus","Mesoleptus Gravenhorst, 1829","GENUS","Ichneumonidae","Insecta","EXACT",96,"direct",FALSE
+"Mesoleuca","Mesoleuca Hübner","GENUS","Geometridae","Insecta","EXACT",95,"direct",FALSE
+"Mesopolobus","Mesopolobus Westwood, 1833","GENUS","Pteromalidae","Insecta","EXACT",96,"direct",FALSE
+"Metasyrphus","Metasyrphus Matsumura, 1917","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Methona","Methona Doubleday, 1847","GENUS","Nymphalidae","Insecta","EXACT",96,"direct",FALSE
+"Micraphis","Micraphis Takahashi, 1931","GENUS","Aphididae","Insecta","EXACT",96,"direct",FALSE
+"Micraspis","Micraspis Chevrolat, 1837","GENUS","Coccinellidae","Insecta","EXACT",95,"direct",FALSE
+"Microchelonus","Microchelonus Szépligeti, 1908","GENUS","Braconidae","Insecta","EXACT",96,"direct",FALSE
+"Micromeriella","Micromeriella Betrem, 1972","GENUS","Scoliidae","Insecta","EXACT",96,"direct",FALSE
+"Microplitis","Microplitis Förster, 1862","GENUS","Braconidae","Insecta","EXACT",95,"direct",FALSE
+"Milanion","Milanion Godman & Salvin, 1895","GENUS","Hesperiidae","Insecta","EXACT",96,"direct",FALSE
+"Miltomiges","Miltomiges Mabille, 1903","GENUS","Hesperiidae","Insecta","EXACT",96,"direct",FALSE
+"Mimesa","Mimesa Shuckard, 1837","GENUS","Crabronidae","Insecta","EXACT",96,"direct",FALSE
+"Minucia","Minucia Moore","GENUS","Erebidae","Insecta","EXACT",96,"direct",FALSE
+"Misumena","Misumena Latreille, 1804","GENUS","Thomisidae","Arachnida","EXACT",96,"direct",FALSE
+"Mniotype","Mniotype Franclemont, 1941","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Moegistorhynchus","Moegistorhynchus Macquart, 1841","GENUS","Nemestrinidae","Insecta","EXACT",96,"direct",FALSE
+"Monoctenus","Monoctenus Dahlbom, 1835","GENUS","Diprionidae","Insecta","EXACT",96,"direct",FALSE
+"Monomorium","Monomorium Mayr, 1855","GENUS","Formicidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Montella","Montella G.Bondar, 1948","GENUS","Curculionidae","Insecta","EXACT",96,"direct",FALSE
+"Morellia","Morellia Robineau-Desvoidy, 1830","GENUS","Muscidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Morganiella","Morganiella Tonnoir, 1927","GENUS","Mycetophilidae","Insecta","EXACT",95,"direct",FALSE
+"Morinia","Morinia Robineau-Desvoidy, 1830","GENUS","Polleniidae","Insecta","EXACT",95,"direct",FALSE
+"Morpholeria","Morpholeria C.B.Garrett, 1921","GENUS","Heleomyzidae","Insecta","EXACT",96,"direct",FALSE
+"Musca","Musca Linnaeus, 1758","GENUS","Muscidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Mycetophila","Mycetophila Meigen, 1803","GENUS","Mycetophilidae","Insecta","EXACT",95,"direct",FALSE
+"Mycomya","Mycomya Rondani, 1856","GENUS","Mycetophilidae","Insecta","EXACT",96,"direct",FALSE
+"Mycomyia","Mycomyia Edwards","GENUS","Mycetophilidae","Insecta","EXACT",94,"direct",FALSE
+"Mycteromia","Mycteromyia Philippi, 1865","GENUS","Tabanidae","Insecta","VARIANT",80,"direct",FALSE
+"Myopa","Myopa Fabricius, 1775","GENUS","Conopidae","Insecta","EXACT",96,"direct",FALSE
+"Myrmica","Myrmica Latreille, 1804","GENUS","Formicidae","Insecta","EXACT",95,"direct",FALSE
+"Mythimna","Mythimna Ochsenheimer, 1816","GENUS","Noctuidae","Insecta","EXACT",95,"direct",FALSE
+"Myzinum","Myzinum Latreille, 1803","GENUS","Tiphiidae","Insecta","EXACT",96,"direct",FALSE
+"Nacerda","Nacerda Stephens, 1839","GENUS","Oedemeridae","Insecta","EXACT",94,"direct",FALSE
+"Nannotrigona","Nannotrigona Cockerell, 1922","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Necremnus","Necremnus Thomson, 1878","GENUS","Eulophidae","Insecta","EXACT",96,"direct",FALSE
+"Neoascia","Neoascia Williston, 1886","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Neocorynura","Neocorynura Schrottky, 1879","GENUS","Halictidae","Insecta","EXACT",96,"direct",FALSE
+"Neophyllotocus","Neophyllotocus Blackburn, 1898","GENUS","Scarabaeidae","Insecta","EXACT",96,"direct",FALSE
+"Neozeleboria","Neozeleboria Rohwer, 1910","GENUS","Tiphiidae","Insecta","EXACT",96,"direct",FALSE
+"Nephele","Nephele Hübner","GENUS","Sphingidae","Insecta","EXACT",95,"direct",FALSE
+"Netelia","Netelia Gray, 1860","GENUS","Ichneumonidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"New","New Genus","GENUS","Braconidae","Insecta","EXACT",96,"direct",FALSE
+"Niconiades","Niconiades Hübner, 1821","GENUS","Hesperiidae","Insecta","EXACT",96,"direct",FALSE
+"Nomada","Nomada Scopoli, 1770","GENUS","Apidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Nomia","Nomia Latreille, 1804","GENUS","Halictidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Nomioides","Nomioides Schenck, 1867","GENUS","Halictidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Notocrypta","Notocrypta de Nicéville, 1889","GENUS","Hesperiidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Nuneches","Nuneches Förster, 1869","GENUS","Ichneumonidae","Insecta","EXACT",96,"direct",FALSE
+"Nupedia","Nupedia Karl, 1930","GENUS","Anthomyiidae","Insecta","EXACT",96,"direct",FALSE
+"Ochlodes","Ochlodes Scudder, 1872","GENUS","Hesperiidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Ocreatus","Ocreatus Gould, 1846","GENUS","Trochilidae","Aves","EXACT",96,"direct",FALSE
+"Ocyptamus","Ocyptamus Macquart, 1834","GENUS","Syrphidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Odezia","Odezia Boisduval, 1840","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Odontomyia","Odontomyia Meigen, 1803","GENUS","Stratiomyidae","Insecta","EXACT",96,"direct",FALSE
+"Odontopera","Odontopera Stephens, 1831","GENUS","Geometridae","Insecta","EXACT",95,"direct",FALSE
+"Odynerus","Odynerus Latreille, 1802","GENUS","Vespidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Oedemera","Oedemera Olivier, 1789","GENUS","Oedemeridae","Insecta","EXACT",96,"direct",FALSE
+"Oedemeronia","Oedemeronia Seidlitz, 1899","GENUS","Oedemeridae","Insecta","EXACT",96,"direct",FALSE
+"Oidaematophorus","Oidaematophorus Wallengren, 1862","GENUS","Pterophoridae","Insecta","EXACT",96,"direct",FALSE
+"Oligographa","Oligographa Rothschild & Jordan, 1903","GENUS","Sphingidae","Insecta","EXACT",96,"direct",FALSE
+"Omphale","Omphale Haliday, 1833","GENUS","Eulophidae","Insecta","EXACT",96,"direct",FALSE
+"Oncocera","Oncocera Stephens, 1829","GENUS","Pyralidae","Insecta","EXACT",96,"direct",FALSE
+"Oncomera","Oncomera Stephens, 1829","GENUS","Oedemeridae","Insecta","EXACT",94,"direct",FALSE
+"Onesia","Onesia Robineau-Desvoidy, 1830","GENUS","Calliphoridae","Insecta","EXACT",96,"direct",FALSE
+"Opomyza","Opomyza Fallén, 1820","GENUS","Opomyzidae","Insecta","EXACT",95,"direct",FALSE
+"Opsolasia","Opsolasia Coquillett, 1910","GENUS","Muscidae","Insecta","EXACT",95,"direct",FALSE
+"Ornidia","Ornidia Lepeletier de Saint Fargeau & Audinet-Serville, 1828","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Orphelia","Orihelia Chabaud & Bain, 1976","GENUS","Onchocercidae","Chromadorea","VARIANT",84,"direct",FALSE
+"Orsodacne","Orsodacne Latreille, 1802","GENUS","Orsodacnidae","Insecta","EXACT",96,"direct",FALSE
+"Orthellia","Orthellia Robineau-Desvoidy, 1863","GENUS","Muscidae","Insecta","EXACT",96,"direct",FALSE
+"Orthosia","Orthosia Ochsenheimer, 1816","GENUS","Noctuidae","Insecta","EXACT",95,"direct",FALSE
+"Oscinella","Oscinella Becker, 1910","GENUS","Chloropidae","Insecta","EXACT",96,"direct",FALSE
+"Osiris","Osiris Smith, 1854","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Osmia","Osmia Panzer, 1806","GENUS","Megachilidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Ourapteryx","Ourapteryx Leach, 1814","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Oxyna","Oxyna Robineau-Desvoidy, 1830","GENUS","Tephritidae","Insecta","EXACT",96,"direct",FALSE
+"Oxythyrea","Oxythyrea Mulsant, 1842","GENUS","Scarabaeidae","Insecta","EXACT",96,"direct",FALSE
+"Pachylia","Pachylia Walker, 1856","GENUS","Sphingidae","Insecta","EXACT",95,"direct",FALSE
+"Pachyprotasis","Pachyprotasis Hartig, 1837","GENUS","Tenthredinidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Pachytodes","Pachytodes Pic, 1891","GENUS","Cerambycidae","Insecta","EXACT",96,"direct",FALSE
+"Pangonius","Pangonius Latreille, 1802","GENUS","Tabanidae","Insecta","EXACT",96,"direct",FALSE
+"Panogena","Panogena Rothschild & Jordan, 1903","GENUS","Sphingidae","Insecta","EXACT",96,"direct",FALSE
+"Papestra","Papestra Sukhareva, 1973","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Papilio","Papilio Linnaeus, 1758","GENUS","Papilionidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Paracolletes","Paracolletes Smith, 1853","GENUS","Colletidae","Insecta","EXACT",96,"direct",FALSE
+"Paracorymbia","Paracorymbia Miroshnikov, 1998","GENUS","Cerambycidae","Insecta","EXACT",96,"direct",FALSE
+"Paragus","Paragus Latreille, 1804","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Paragymnomma","Paragymnomma Brauer & Bergenstamm, 1891","GENUS","Tachinidae","Insecta","EXACT",94,"direct",FALSE
+"Parapolybia","Parapolybia Saussure, 1854","GENUS","Vespidae","Insecta","EXACT",96,"direct",FALSE
+"Parasarcophaga","Parasarcophaga Johnston & Tiegs, 1922","GENUS","Sarcophagidae","Insecta","EXACT",96,"direct",FALSE
+"Paratetrapedia","Paratetrapedia Moure, 1941","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Paratrechina","Paratrechina Motschoulsky, 1863","GENUS","Formicidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Paratrigona","Paratrigona Schwarz, 1938","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Parides","Parides Hübner, 1819","GENUS","Papilionidae","Insecta","EXACT",96,"direct",FALSE
+"Parnara","Parnara Moore","GENUS","Hesperiidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Passaloecus","Passaloecus Shuckard, 1837","GENUS","Crabronidae","Insecta","EXACT",96,"direct",FALSE
+"Patellapis","Patellapis Friese, 1909","GENUS","Halictidae","Insecta","EXACT",96,"direct",FALSE
+"Pegohylemyia","Pegohylemyia Schnabl & Dziedzicki, 1911","GENUS","Anthomyiidae","Insecta","EXACT",96,"direct",FALSE
+"Pegoplata","Pegoplata Schnabl & Dziedzicki, 1911","GENUS","Anthomyiidae","Insecta","EXACT",96,"direct",FALSE
+"Pelecomalium","Pelecomalium Casey, 1886","GENUS","Staphylinidae","Insecta","EXACT",96,"direct",FALSE
+"Pelopidas","Pelopidas Walker, 1870","GENUS","Hesperiidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Pemphredon","Pemphredon Latreille, 1796","GENUS","Crabronidae","Insecta","EXACT",96,"direct",FALSE
+"Pepsis","Pepsis Fabricius, 1805","GENUS","Pompilidae","Insecta","EXACT",96,"direct",FALSE
+"Peridroma","Peridroma Hübner","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Perilissus","Perilissus Förster, 1855","GENUS","Ichneumonidae","Insecta","EXACT",95,"direct",FALSE
+"Peritrichia","Peritrichia Burmeister, 1844","GENUS","Scarabaeidae","Insecta","EXACT",96,"direct",FALSE
+"Perizoma","Perizoma Hübner","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Phaethornis","Phaethornis Swainson, 1827","GENUS","Trochilidae","Aves","EXACT",95,"direct",FALSE
+"Phaetornis","Phaetornis Cuvier, 1829","GENUS","Trochilidae","Aves","EXACT",96,"direct",FALSE
+"Phaonia","Phaonia Robineau-Desvoidy, 1830","GENUS","Muscidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Philaethria","Philaethria Billberg, 1820","GENUS","Nymphalidae","Insecta","EXACT",96,"direct",FALSE
+"Philodromus","Philodromus Walckenaer, 1826","GENUS","Philodromidae","Arachnida","EXACT",95,"direct",FALSE
+"Philoliche","Philoliche Wiedemann, 1828","GENUS","Tabanidae","Insecta","EXACT",96,"direct",FALSE
+"Philopota","Philopota Wiedemann, 1830","GENUS","Acroceridae","Insecta","EXACT",96,"direct",FALSE
+"Philoros","Philoros Walker, 1854","GENUS","Erebidae","Insecta","EXACT",96,"direct",FALSE
+"Phlogophora","Phlogophora Treitschke, 1825","GENUS","Noctuidae","Insecta","EXACT",95,"direct",FALSE
+"Phoebis","Phoebis Hübner, 1819","GENUS","Pieridae","Insecta","EXACT",96,"direct",FALSE
+"Phoenicoprocta","Phoenicoprocta Druce, 1898","GENUS","Erebidae","Insecta","EXACT",96,"direct",FALSE
+"Pholeomyia","Pholeomyia Bilimek, 1867","GENUS","Milichiidae","Insecta","EXACT",95,"direct",FALSE
+"Phorocera","Phorocera Robineau-Desvoidy, 1830","GENUS","Tachinidae","Insecta","EXACT",95,"direct",FALSE
+"Phryxe","Phryxe Robineau-Desvoidy, 1830","GENUS","Tachinidae","Insecta","EXACT",96,"direct",FALSE
+"Phthinia","Phthinia Winnertz, 1863","GENUS","Mycetophilidae","Insecta","EXACT",96,"direct",FALSE
+"Phyciodes","Phyciodes Hübner, 1819","GENUS","Nymphalidae","Insecta","EXACT",96,"direct",FALSE
+"Phygadeun","Phygadeuon Gravenhorst, 1829","GENUS","Ichneumonidae","Insecta","VARIANT",80,"direct",FALSE
+"Phyllodromia","Phyllodromia Zetterstedt, 1837","GENUS","Empididae","Insecta","EXACT",95,"direct",FALSE
+"Phyllopertha","Phyllopertha Stephens, 1830","GENUS","Scarabaeidae","Insecta","EXACT",96,"direct",FALSE
+"Phymatothynnus","Phymatothynnus Turner, 1908","GENUS","Tiphiidae","Insecta","EXACT",96,"direct",FALSE
+"Phyprosopus","Phyprosopus Grote, 1872","GENUS","Erebidae","Insecta","EXACT",96,"direct",FALSE
+"Phytometra","Phytometra Haworth, 1809","GENUS","Erebidae","Insecta","EXACT",96,"direct",FALSE
+"Pidonia","Pidonia Mulsant, 1863","GENUS","Cerambycidae","Insecta","EXACT",96,"direct",FALSE
+"Pieris","Pieris Hübner, 1819","GENUS","Pieridae","Insecta","EXACT",95,"direct",FALSE
+"Pimpla","Pimpla Fabricius, 1804","GENUS","Ichneumonidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Pipiza","Pipiza Fallén, 1810","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Placidula","Placidula d'Almeida, 1922","GENUS","Nymphalidae","Insecta","EXACT",96,"direct",FALSE
+"Plateumaris","Plateumaris Thomson, 1859","GENUS","Chrysomelidae","Insecta","EXACT",95,"direct",FALSE
+"Platycheirus","Platycheirus Lepeletier & Serville, 1828","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Platyptilia","Platyptilia Hübner, 1825","GENUS","Pterophoridae","Insecta","EXACT",95,"direct",FALSE
+"Plebeia","Plebeia Schwarz, 1938","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Plebejus","Plebejus Kluk, 1780","GENUS","Lycaenidae","Insecta","EXACT",95,"direct",FALSE
+"Plesioneura","Plesioneura C.Felder & R.Felder, 1862","GENUS","Hesperiidae","Insecta","EXACT",96,"direct",FALSE
+"Plusia","Plusia Ochsenheimer, 1816","GENUS","Noctuidae","Insecta","EXACT",95,"direct",FALSE
+"Plutella","Plutella Schrank, 1802","GENUS","Plutellidae","Insecta","EXACT",96,"direct",FALSE
+"Podalonia","Podalonia Fernald, 1927","GENUS","Sphecidae","Insecta","EXACT",95,"direct",FALSE
+"Podistra","Podistra Motschulsky, 1839","GENUS","Cantharidae","Insecta","EXACT",95,"direct",FALSE
+"Pogonothynnus","Pogonothynnus Turner, 1910","GENUS","Tiphiidae","Insecta","EXACT",96,"direct",FALSE
+"Polites","Polites Scudder, 1872","GENUS","Hesperiidae","Insecta","EXACT",96,"direct",FALSE
+"Politmus","Polytmus Brisson, 1760","GENUS","Trochilidae","Aves","VARIANT",85,"direct",FALSE
+"Polybia","Polybia Lepeletier de Saint Fargeau, 1836","GENUS","Eumenidae","Insecta","EXACT",95,"direct",FALSE
+"Polybioides","Polybioides Buysson, 1913","GENUS","Vespidae","Insecta","EXACT",96,"direct",FALSE
+"Polychrysia","Polychrysia Hübner","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Polyrhachis","Polyrhachis Smith, 1857","GENUS","Formicidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Polytremis","Polytremis Mabille, 1904","GENUS","Hesperiidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Priocnemis","Priocnemis Schiødte, 1837","GENUS","Pompilidae","Insecta","EXACT",95,"direct",FALSE
+"Prionyx","Prionyx Vander Linden, 1827","GENUS","Sphecidae","Insecta","EXACT",96,"direct",FALSE
+"Proplebeia","Proplebeia Michener, 1982","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Propylea","Propylea Mulsant, 1846","GENUS","Coccinellidae","Insecta","EXACT",96,"direct",FALSE
+"Prosoeca","Prosoeca Schiner, 1867","GENUS","Nemestrinidae","Insecta","EXACT",96,"direct",FALSE
+"Protaetia","Protaetia Burmeister, 1842","GENUS","Scarabaeidae","Insecta","EXACT",96,"direct",FALSE
+"Protambulix","Protambulix Wood, 1907","GENUS","Sphingidae","Insecta","EXACT",96,"direct",FALSE
+"Protoboarmia","Protoboarmia McDunnough, 1920","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Provespa","Provespa Ashmead, 1903","GENUS","Vespidae","Insecta","EXACT",96,"direct",FALSE
+"Pseudaletia","Pseudaletia Franclemont, 1951","GENUS","Noctuidae","Insecta","EXACT",94,"direct",FALSE
+"Pseudoagapostemon","Pseudagapostemon Schrottky, 1909","GENUS","Halictidae","Insecta","VARIANT",85,"direct",FALSE
+"Pseudoaugochlora","Pseudaugochlora Michener, 1954","GENUS","Halictidae","Insecta","VARIANT",85,"direct",FALSE
+"Pseudosciara","Pseudosciara Schiner, 1866","GENUS","Sciaridae","Insecta","EXACT",96,"direct",FALSE
+"Pseudosphinx","Pseudosphinx Burmeister, 1855","GENUS","Sphingidae","Insecta","EXACT",96,"direct",FALSE
+"Pseudothyatira","Pseudothyatira Grote, 1864","GENUS","Drepanidae","Insecta","EXACT",96,"direct",FALSE
+"Pseudotorynorrhina","Pseudotorynorrhina Mikšić, 1967","GENUS","Scarabaeidae","Insecta","EXACT",96,"direct",FALSE
+"Pseudovadonia","Pseudovadonia Lobanov, Danilevsky & Murzin, 1981","GENUS","Cerambycidae","Insecta","EXACT",96,"direct",FALSE
+"Psilocerea","Psilocerea Saalmüller, 1880","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Pterocormus","Pterocormus Förster, 1850","GENUS","Ichneumonidae","Insecta","EXACT",96,"direct",FALSE
+"Ptiloglossa","Ptiloglossa Smith, 1853","GENUS","Colletidae","Insecta","EXACT",96,"direct",FALSE
+"Pyralid","Pyralid","GENUS",NA,"Insecta","EXACT",96,"direct",FALSE
+"Pyrausta","Pyrausta Schrank, 1802","GENUS","Crambidae","Insecta","EXACT",95,"direct",FALSE
+"Pyrochroa","Pyrochroa Müller, 1764","GENUS","Pyrochroidae","Insecta","EXACT",95,"direct",FALSE
+"Pyrrhia","Pyrrhia Hübner","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Rachiplusia","Rachiplusia Hampson, 1913","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Ramphodon","Ramphodon R.Lesson, 1830","GENUS","Trochilidae","Aves","EXACT",96,"direct",FALSE
+"Rattus","Rattus Fischer, 1803","GENUS","Muridae","Mammalia","EXACT",95,"direct",FALSE
+"Rediviva","Rediviva Friese, 1911","GENUS","Melittidae","Insecta","EXACT",96,"direct",FALSE
+"Rhagastis","Rhagastis Rothschild & Jordan","GENUS","Sphingidae","Insecta","EXACT",96,"direct",FALSE
+"Rhagigaster","Rhagigaster Guérin-Méneville, 1838","GENUS","Tiphiidae","Insecta","EXACT",94,"direct",FALSE
+"Rhagonycha","Rhagonycha Eschscholtz, 1830","GENUS","Cantharidae","Insecta","EXACT",96,"direct",FALSE
+"Rhamphomyia","Rhamphomyia Meigen, 1822","GENUS","Empididae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Rhegmoclema","Rhegmoclema Enderlein, 1912","GENUS","Scatopsidae","Insecta","EXACT",96,"direct",FALSE
+"Rhogogaster","Rhogogaster Konow, 1884","GENUS","Tenthredinidae","Insecta","EXACT",96,"direct",FALSE
+"Rhomborrhina","Rhomborrhina","GENUS","Scarabaeidae","Insecta","EXACT",96,"direct",FALSE
+"Rhopalum","Rhopalum Stephens, 1829","GENUS","Crabronidae","Insecta","EXACT",96,"direct",FALSE
+"Rhorus","Rhorus Förster, 1869","GENUS","Ichneumonidae","Insecta","EXACT",96,"direct",FALSE
+"Rhyacia","Rhyacia Hübner","GENUS","Noctuidae","Insecta","EXACT",95,"direct",FALSE
+"Rhynchium","Rhynchium Spinola, 1806","GENUS","Eumenidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Rhynchophorus","Rhynchophorus J.F.W.Herbst, 1795","GENUS","Dryophthoridae","Insecta","EXACT",95,"direct",FALSE
+"Rhytidoponera","Rhytidoponera Mayr, 1862","GENUS","Formicidae","Insecta","EXACT",96,"direct",FALSE
+"Rivula","Rivula Guenée","GENUS","Erebidae","Insecta","EXACT",95,"direct",FALSE
+"Ropalidia","Ropalidia Guérin-Méneville, 1831","GENUS","Vespidae","Insecta","EXACT",96,"direct",FALSE
+"Rubrica","Rubrica J.Parker, 1929","GENUS","Crabronidae","Insecta","EXACT",96,"direct",FALSE
+"Ruizantheda","Ruizantheda Moure, 1964","GENUS","Halictidae","Insecta","EXACT",96,"direct",FALSE
+"Rutpela","Rutpela Nakane & Ohbayashi, 1957","GENUS","Cerambycidae","Insecta","EXACT",96,"direct",FALSE
+"Salpingogaster","Salpingogaster Schiner, 1868","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Sarcophaga","Sarcophaga Meigen, 1826","GENUS","Sarcophagidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Satyrium","Satyrium Scudder, 1876","GENUS","Lycaenidae","Insecta","EXACT",96,"direct",FALSE
+"Scaptia","Scaptia","GENUS","Tabanidae","Insecta","EXACT",95,"direct",FALSE
+"Scaptodrosophila","Scaptodrosophila Fallén, 1823","GENUS","Drosophilidae","Insecta","EXACT",95,"direct",FALSE
+"Scaptotrigona","Scaptotrigona Moure, 1942","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Scaria","Scaria Bolívar, 1887","GENUS","Tetrigidae","Insecta","EXACT",96,"direct",FALSE
+"Scathophaga","Scathophaga Meigen, 1803","GENUS","Scathophagidae","Insecta","EXACT",95,"direct",FALSE
+"Scatophaga","Scatophaga Meigen, 1803","GENUS","Scathophagidae","Insecta","EXACT",95,"direct",FALSE
+"Sceliphron","Sceliphron Klug, 1801","GENUS","Sphecidae","Insecta","EXACT",95,"direct",FALSE
+"Sciara","Sciara Meigen, 1803","GENUS","Sciaridae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Scolid","Scolia J.C.Fabricius, 1775","GENUS","Scoliidae","Insecta","HIGHERRANK",80,"direct",FALSE
+"Selasphorous","Selasphorus Swainson, 1832","GENUS","Trochilidae","Aves","VARIANT",85,"direct",FALSE
+"Semiothisa","Semiothisa Hübner, 1818","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Sepedon","Sepedon Latreille, 1804","GENUS","Sciomyzidae","Insecta","EXACT",95,"direct",FALSE
+"Sepsis","Sepsis Fallén, 1810","GENUS","Sepsidae","Insecta","EXACT",96,"direct",FALSE
+"Shargacucullia","Shargacucullia Ronkay & Ronkay, 1992","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Sicus","Sicus Scopoli, 1763","GENUS","Conopidae","Insecta","EXACT",95,"direct",FALSE
+"Sideridis","Sideridis Hübner","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Silba","Silba Macquart, 1851","GENUS","Lonchaeidae","Insecta","EXACT",96,"direct",FALSE
+"Smaragdina","Smaragdina Chevrolat, 1836","GENUS","Chrysomelidae","Insecta","EXACT",95,"direct",FALSE
+"Spermophagus","Spermophagus Schönherr, 1833","GENUS","Chrysomelidae","Insecta","EXACT",96,"direct",FALSE
+"Speyeria","Speyeria Scudder, 1872","GENUS","Nymphalidae","Insecta","EXACT",96,"direct",FALSE
+"Sphaerophoria","Sphaerophoria Lepeletier & Serville, 1828","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Sphecodes","Sphecodes Latreille, 1804","GENUS","Halictidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Sphex","Sphex Linnaeus, 1758","GENUS","Sphecidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Spialia","Spialia Swinhoe, 1912","GENUS","Hesperiidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Spilodes","Spilodes Guenée, 1849","GENUS","Crambidae","Insecta","EXACT",96,"direct",FALSE
+"Spilostethus","Spilostethus Stal, 1868","GENUS","Lygaeidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Stelopolybia","Stelopolybia Ducke, 1910","GENUS","Vespidae","Insecta","EXACT",96,"direct",FALSE
+"Stemorrhages","Stemorrhages Lederer, 1863","GENUS","Crambidae","Insecta","EXACT",96,"direct",FALSE
+"Stenobasipteron","Stenobasipteron Lichtwardt, 1910","GENUS","Nemestrinidae","Insecta","EXACT",96,"direct",FALSE
+"Stenurella","Stenurella Villiers, 1974","GENUS","Cerambycidae","Insecta","EXACT",96,"direct",FALSE
+"Stephanoxis","Stephanoxis Simon, 1897","GENUS","Trochilidae","Aves","EXACT",96,"direct",FALSE
+"Sterictiphora","Sterictiphora Billberg, 1820","GENUS","Argidae","Insecta","EXACT",96,"direct",FALSE
+"Stomorhina","Stomorhina Rondani, 1861","GENUS","Calliphoridae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Stomosis","Stomosis Melander, 1913","GENUS","Milichiidae","Insecta","EXACT",96,"direct",FALSE
+"Strangalia","Strangalia Audinet-Serville, 1835","GENUS","Cerambycidae","Insecta","EXACT",95,"direct",FALSE
+"Stratiomys","Stratiomys Geoffroy, 1762","GENUS","Stratiomyidae","Insecta","EXACT",96,"direct",FALSE
+"Strymon","Strymon Hübner, 1818","GENUS","Lycaenidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Svastrides","Svastrides Michener, LaBerge & Moure, 1955","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Swammerdamella","Swammerdamella Enderlein, 1912","GENUS","Scatopsidae","Insecta","EXACT",96,"direct",FALSE
+"Symmorphus","Symmorphus Wesmael, 1836","GENUS","Eumenidae","Insecta","EXACT",95,"direct",FALSE
+"Sympherta","Sympherta Förster, 1869","GENUS","Ichneumonidae","Insecta","EXACT",95,"direct",FALSE
+"Synectes","Syneches Walker, 1852","GENUS","Hybotidae","Insecta","VARIANT",80,"direct",FALSE
+"Syngrapha","Syngrapha Hübner","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Syritta","Syritta Lepeletier & Serville, 1828","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Syrphus","Syrphus Fabricius, 1775","GENUS","Syrphidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Tachina","Tachina Meigen, 1803","GENUS","Tachinidae","Insecta","EXACT",96,"direct",FALSE
+"Tachynomia","Tachynomyia Guérin-Méneville, 1842","GENUS","Tiphiidae","Insecta","VARIANT",85,"direct",FALSE
+"Telenomus","Telenomus Haliday, 1833","GENUS","Scelionidae","Insecta","EXACT",95,"direct",FALSE
+"Temnosoma","Temnosoma Smith, 1853","GENUS","Halictidae","Insecta","EXACT",96,"direct",FALSE
+"Temnothorax","Temnothorax Mayr, 1861","GENUS","Formicidae","Insecta","EXACT",96,"direct",FALSE
+"Tenthredo","Tenthredo Linnaeus, 1758","GENUS","Tenthredinidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Tenthredopsis","Tenthredopsis Costa, 1859","GENUS","Tenthredinidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Tetragoneura","Tetragoneura Winnertz, 1846","GENUS","Mycetophilidae","Insecta","EXACT",95,"direct",FALSE
+"Tetragonisca","Tetragonisca Moure, 1946","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Tetragonula","Tetragonula Moure, 1961","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Tetralonia","Tetralonia Spinola, 1838","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Tetraloniella","Tetraloniella Ashmead, 1900","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Tetrapedia","Tetrapedia Klug, 1810","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Tetrastichus","Tetrastichus Walker, 1844","GENUS","Eulophidae","Insecta","EXACT",95,"direct",FALSE
+"Thallophaga","Thallophaga Hulst, 1896","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Thalurania","Thalurania Gould, 1848","GENUS","Trochilidae","Aves","EXACT",96,"direct",FALSE
+"Theretra","Theretra Hübner","GENUS","Sphingidae","Insecta","EXACT",96,"direct",FALSE
+"Thinopteryx","Thinopteryx Butler, 1883","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Thrichostoma","Thrinchostoma Saussure, 1890","GENUS","Halictidae","Insecta","VARIANT",85,"direct",FALSE
+"Thricops","Thricops Rondani, 1856","GENUS","Muscidae","Insecta","EXACT",96,"direct",FALSE
+"Thrips","Thrips Linnaeus, 1758","GENUS","Thripidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Thygater","Thygater Holmberg, 1884","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Thymelicus","Thymelicus Hübner, 1819","GENUS","Hesperiidae","Insecta","EXACT",96,"direct",FALSE
+"Thynnoides","Thynnoides Guérin-Méneville, 1838","GENUS","Tiphiidae","Insecta","EXACT",96,"direct",FALSE
+"Thynnoturneria","Thynnoturneria Rohwer, 1910","GENUS","Tiphiidae","Insecta","EXACT",96,"direct",FALSE
+"Thysanoplusia","Thysanoplusia Ichinosé, 1973","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Tiphia","Tiphia J.C.Fabricius, 1775","GENUS","Tiphiidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Tipula","Tipula Linnaeus, 1758","GENUS","Tipulidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Torymus","Torymus Dalman, 1820","GENUS","Torymidae","Insecta","EXACT",95,"direct",FALSE
+"Townesia","Townesia Ozols, 1962","GENUS","Ichneumonidae","Insecta","EXACT",96,"direct",FALSE
+"Toxocampa","Toxocampa Guenée, 1841","GENUS","Erebidae","Insecta","EXACT",96,"direct",FALSE
+"Toxomerus","Toxomerus Macquart, 1855","GENUS","Syrphidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Trachysiphonella","Trachysiphonella Enderlain, 1936","GENUS","Chloropidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Trichiotinus","Trichiotinus Casey, 1915","GENUS","Scarabaeidae","Insecta","EXACT",96,"direct",FALSE
+"Trichius","Trichius Fabricius, 1775","GENUS","Scarabaeidae","Insecta","EXACT",96,"direct",FALSE
+"Trichocolletes","Trichocolletes Cockerell, 1912","GENUS","Colletidae","Insecta","EXACT",96,"direct",FALSE
+"Trichomalus","Trichomalus Thomson, 1878","GENUS","Pteromalidae","Insecta","EXACT",95,"direct",FALSE
+"Trichophtalma","Trichophthalma Westwood, 1835","GENUS","Nemestrinidae","Insecta","VARIANT",85,"direct",FALSE
+"Trichoplusia","Trichoplusia McDunnough, 1944","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Trichordestra","Trichordestra McCabe, 1980","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Trichosia","Trichosia Winnertz, 1867","GENUS","Sciaridae","Insecta","EXACT",96,"direct",FALSE
+"Tricimba","Tricimba Lioy, 1864","GENUS","Chloropidae","Insecta","EXACT",96,"direct",FALSE
+"Trigonopedia","Trigonopedia Moure, 1941","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
+"Triumala","Tirumala Moore","GENUS","Nymphalidae","Insecta","VARIANT",85,"direct",FALSE
+"Trogoderma","Trogoderma Dejean, 1821","GENUS","Dermestidae","Insecta","EXACT",95,"direct",FALSE
+"Tropidodynerus","Tropidodynerus Blüthgen, 1939","GENUS","Eumenidae","Insecta","EXACT",96,"direct",FALSE
+"Tropinota","Tropinota Mulsant, 1842","GENUS","Scarabaeidae","Insecta","EXACT",96,"direct",FALSE
+"Trychosis","Trychosis Förster, 1869","GENUS","Ichneumonidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Tycomarptes","Tycomarptes Fletcher, 1961","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Tyta","Tyta Billberg, 1820","GENUS","Erebidae","Insecta","EXACT",96,"direct",FALSE
+"Tytthaspis","Tytthaspis Crotch, 1874","GENUS","Coccinellidae","Insecta","EXACT",96,"direct",FALSE
+"Udea","Udea Guenée","GENUS","Crambidae","Insecta","EXACT",96,"direct",FALSE
+"Urbanus","Urbanus Hübner, 1807","GENUS","Hesperiidae","Insecta","EXACT",96,"direct",FALSE
+"Vacciniina","Vacciniina Tutt, 1909","GENUS","Lycaenidae","Insecta","EXACT",96,"direct",FALSE
+"Valgus","Valgus Scriba, 1790","GENUS","Scarabaeidae","Insecta","EXACT",96,"direct",FALSE
+"Vanessa","Vanessa Fabricius, 1807","GENUS","Nymphalidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Vehilius","Vehilius Godman, 1900","GENUS","Hesperiidae","Insecta","EXACT",96,"direct",FALSE
+"Vespa","Vespa Linnaeus, 1758","GENUS","Vespidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Vespula","Vespula Thomson, 1869","GENUS","Vespidae","Insecta","EXACT",94,"direct",FALSE
+"Vettius","Vettius Godman, 1901","GENUS","Hesperiidae","Insecta","EXACT",96,"direct",FALSE
+"Vietteania","Vietteania Rungs, 1955","GENUS","Noctuidae","Insecta","EXACT",96,"direct",FALSE
+"Vulgichneumon","Vulgichneumon Heinrich, 1961","GENUS","Ichneumonidae","Insecta","EXACT",95,"direct",FALSE
+"Xanthandrus","Xanthandrus Verrall, 1901","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
+"Xanthopan","Xanthopan Rothschild & Jordan, 1903","GENUS","Sphingidae","Insecta","EXACT",96,"direct",FALSE
+"Xanthorhoe","Xanthorhoe Hübner","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
+"Xylocopa","Xylocopa Latreille, 1802","GENUS","Apidae","Insecta","HIGHERRANK",95,"direct",FALSE
+"Xylophanes","Xylophanes Hübner","GENUS","Sphingidae","Insecta","EXACT",96,"direct",FALSE
+"Zapriothrica","Zapriothrica Wheeler, 1956","GENUS","Drosophilidae","Insecta","EXACT",96,"direct",FALSE
+"Zaraea","Zaraea Leach, 1817","GENUS","Cimbicidae","Insecta","EXACT",96,"direct",FALSE
+"Zaspilothynnus","Zaspilothynnus Ashmead, 1903","GENUS","Tiphiidae","Insecta","EXACT",96,"direct",FALSE
+"Zealandotachina","Zealandotachina Malloch, 1938","GENUS","Tachinidae","Insecta","EXACT",96,"direct",FALSE
+"Zeleboria","Zeleboria Saussure, 1867","GENUS","Tiphiidae","Insecta","EXACT",96,"direct",FALSE
+"Zeugodacus","Zeugodacus Hendel, 1927","GENUS","Tephritidae","Insecta","EXACT",95,"direct",FALSE
+"Zophomyia","Zophomyia Macquart, 1835","GENUS","Tachinidae","Insecta","EXACT",96,"direct",FALSE
+"Zosterops","Zosterops Vigors & Horsfield, 1827","GENUS","Zosteropidae","Aves","EXACT",96,"direct",FALSE
+"Zygomyia","Zygomyia Winnertz, 1863","GENUS","Mycetophilidae","Insecta","EXACT",96,"direct",FALSE
+"Zygoneura","Zygoneura Meigen, 1830","GENUS","Sciaridae","Insecta","EXACT",96,"direct",FALSE
+"Zygothrica","Zygothrica Wiedemann, 1830","GENUS","Drosophilidae","Insecta","EXACT",96,"direct",FALSE

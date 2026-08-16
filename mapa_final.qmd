@@ -17,7 +17,8 @@ lang: en
 ---
 
 <!--
-  This is the Quarto version of the original `mapa_final.rmd`. It uses Shiny
+  This is the Quarto version of the original `mapa_final.rmd` (now in
+  `_archive/`). It uses Shiny
   (`server: shiny` in the header above), so run it with **Run Document** in
   RStudio, or with `quarto preview mapa_final.qmd` in the terminal — not a plain
   static render, which cannot start the Shiny app at the end.

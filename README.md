@@ -43,7 +43,7 @@ master directly.
 
 | File | What it is |
 |---|---|
-| `Pollination_List_Thru_1 2024_merged26_08_13.xlsx` | **Master workbook** (sheet `species`) — the raw source of truth, hand-edited by the students |
+| `Pollination_List_MASTER.xlsx` | **Master workbook** (sheet `species`) — the raw source of truth, hand-edited by the students. Deliberately undated: it is updated in place, so the filename never changes |
 | `Pollination_List_pollinators_enriched.xlsx` | **Derived** — written by the wrangling doc. Five sheets: `species`, `pollinators_long`, `needs_review`, `pollinator_taxonomy`, `taxa_review`. Do not hand-edit; regenerate it |
 | `pollinators_wrangling.qmd` | Data prep. Also has an optional `rgbif` GBIF-backbone validation chunk |
 | `mapa_final.qmd` | Main analysis. Static Leaflet map, one map per subfamily, and a Shiny app with a subfamily filter and a pollinator drill-down (group → family → genus). Uses `server: shiny` |
@@ -51,6 +51,8 @@ master directly.
 | `pollinator_map.qmd` | Standalone Shiny search map with a linked DT table |
 | `coordinate_assignment_tracker.xlsx` | 14-week coordinate-collection plan for the three students, with an auto-tallying Progress tab |
 | `typo_corrections_changelog.csv` | The 105 pollinator-name corrections applied to the master |
+| `genus_corrections_changelog.csv` | **Derived** — the GBIF-confirmed genus spellings the wrangling doc applies automatically |
+| `gbif_genus_review.csv` | **Derived** — every pollinator genus checked against the GBIF backbone, with how it resolved |
 | `_archive/` | Superseded workbooks and backups — **local only, not in the repo** (see `.gitignore`) |
 | `PROGRESS.md` | Dated georeferencing snapshots |
 
