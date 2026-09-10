@@ -39,6 +39,13 @@ So after the master changes (e.g. new coordinates), re-run
 
 ## Files
 
+- The popup carries `compatibility` and `breeding_system` on **one** line, via
+  `join_traits()` beside `trait_row()`: SI/SC and chasmogamous / mixed mating /
+  autonomous selfing are one statement to a reader, and the popup was already
+  seven lines. `evidence for selfing` and `evidence for reward` are still
+  unused: both hold codes 1 and 2 whose meaning is not documented here, and
+  `is_present()` only accepts 1, so a 2 would vanish silently. Ask Raymond for
+  the Ackerman et al. 2023 definitions before wiring them in; do not guess.
 - `mapa_final.qmd` — main analysis (English, Quarto, `server: shiny`). Static
   Leaflet map, one static map per subfamily, and a Shiny app with a subfamily
   filter plus a **subfamily → pollinator group → family → genus** drill-down.
@@ -67,7 +74,15 @@ So after the master changes (e.g. new coordinates), re-run
   (likely name typos / mis-assignments). Do not hand-edit — regenerate it.
 - `coordinate_assignment_tracker.xlsx` — 14-week coordinate-collection plan for
   the three students (Naan, Natalia, Caleb), with source references per species
-  and an auto-tallying Progress tab.
+  and an auto-tallying Progress tab. This is also where their returned work is
+  merged back, so between merges it holds coordinates the master does not have.
+  See "Student coordinate returns" below before merging a new batch.
+- `coordinate_additions_changelog_2026-09-10.csv`: every coordinate written into
+  the master on 2026-09-10, with the master row, the student, and the source
+  exactly as given. The pre-write master is in `_archive/`.
+- `coordinate_review_2026-09-10.xlsx`: review of the first returned batch,
+  flagged records, shared coordinates, the reporting problems to raise with the
+  students, and a log of every date and precision cell repaired on merge.
 - `Global_Orchid_Pollinators.Rproj` — RStudio project file; open this first.
 - `_archive/` — superseded workbooks, old documents and backups. Local only:
   `.gitignore` keeps it out of the repo. `mapa_final.rmd` (the original Spanish
@@ -82,14 +97,53 @@ So after the master changes (e.g. new coordinates), re-run
 - Key columns: `species` (epithet only), `genus`, `subfamily`,
   `pollinator_type`, `pollinators` (free text), `locality`, `references`,
   `latitud`, `longitud`.
-- **171 rows currently have valid coordinates (167 distinct species, 49
-  genera)** — the rest await data entry. This is expected, not a bug.
-- Subfamily coverage (georeferenced species): Epidendroideae 123,
-  Cypripedioideae 34, Orchidoideae 6, Apostasioideae 4. **Vanilloideae has 60
-  species but none georeferenced yet** — that is why it is absent from the maps.
+- **228 rows currently have valid coordinates (221 distinct species, 62
+  genera)**, as of 2026-09-10 — the rest await data entry. This is expected, not
+  a bug.
+- **Subfamilies are always presented in phylogenetic order**: Apostasioideae,
+  Cypripedioideae, Vanilloideae, Orchidoideae, Epidendroideae. That order holds
+  in every table, figure, map series, menu and list, here and in the .qmd files,
+  the landing page and `PROGRESS.md`. Never fall back to alphabetical or to
+  descending count. Each .qmd defines `subfamily_order` and `order_subfamilies()`
+  next to `group_order` / `order_groups()`; use those rather than `sort()`, and
+  remember a ggplot y axis needs `rev(subfamily_order)` to read top-down.
+- Subfamily coverage (georeferenced species): Apostasioideae 4,
+  Cypripedioideae 34, Vanilloideae 36, Orchidoideae 12, Epidendroideae 135.
+  **Vanilloideae was absent from every map until 2026-09-10**, when Naan's first
+  batch gave it 36 of its 60 species.
+- A species with more than one locality gets **one row per locality, and only
+  the last row of the block carries the full record** (traits, `locality`,
+  `references`); the rows above it carry subfamily, genus, species and the
+  coordinates alone. *Cypripedium passerinum*, *Phragmipedium lindenii* and, as
+  of 2026-09-10, *Vanilla hartii* are built this way. Follow it: duplicating a
+  full record instead would double-count that species' trait flags in the
+  summary block at the foot of the sheet. `pollinators_wrangling.qmd` puts the
+  record back together at load time (see "Multi-locality blocks" in the `load`
+  chunk): within a run of consecutive rows for one species, the richest row is
+  the record and every other row **carrying coordinates** inherits its empty
+  cells, 78 cells across those three species. The coordinate test is what keeps
+  the continuation rows out, the ones holding nothing but a second
+  `Pollinator_type` (*Bletilla striata* 80 and 81, *Coelogyne rigida* 97,
+  *Calanthe alismaefolia* 115, *C. argento-striata* 118). Those are extra
+  pollinator types for the record above, not extra localities, and filling them
+  would duplicate records in `pollinators_long`.
+- **The summary block (rows ~3149 onward) holds 103 formulas whose ranges are
+  written out in full** (`=SUM(D2:D3147)`). openpyxl does not shift them when
+  rows are inserted, so re-point them by hand after any insertion, then recalc.
 - Pollinator group labels (full names, no contractions): Bees, Wasps, Diptera,
-  Coleoptera, Lepidoptera, Hemiptera, Aves, …; "Not reported" = no pollinator
-  recorded for that georeferenced record.
+  Coleoptera, Lepidoptera, Hemiptera, Aves, …
+- **"No pollinator in the source"** is the last group label, renamed from "Not
+  reported" on 2026-09-10 because that read as a gap in data entry. It is not.
+  Those records are in the database for a different reason: their paper studied
+  breeding system or reward and never named a visitor. Of 228 mapped points, 62
+  were of this kind, and **not one carries the `Pltr data` flag**, which is the
+  tell. *Cypripedium dickinsonianum* (Hágsater 1984) is an autonomous-selfing
+  record; the whole Cardoso-Gustavson et al. 2018 block of *Epidendrum* and
+  *Encyclia* is nectary anatomy. Do not treat these as missing data to chase.
+- A record whose free text names a group but no binomial is a **different**
+  case and is not in that bucket: 47 of the 166 mapped records with text give a
+  genus and `sp.`, a family (`DIPTERA: Drosophilidae`) or, in about four cases,
+  only the order. They keep their group and their colour.
 
 ### Known data issues / conventions
 
@@ -98,25 +152,133 @@ So after the master changes (e.g. new coordinates), re-run
   `order_recode` / `family_recode` / `genus_recode` maps (and a small vetted
   genus list) as a backstop. New variants: add to those maps rather than
   trusting free text.
-- `genus_recode` holds ONLY corrections GBIF confirmed without inference — both
-  spellings resolving to one accepted name, or one placed and the other
-  unplaceable. Corrections that rest on the family-consistency rule are held
-  back pending a specialist, and suprageneric or informal names (`Anthophorid`,
-  `Halictid`, `Meliponids`) are excluded on purpose: promoting them to a genus
-  asserts precision the source never gave.
-- `genus` and `subfamily` are written once and left blank on following rows;
-  the code fills them down (`tidyr::fill`) BEFORE any filtering, so row order
-  must stay intact. Full binomial = genus + epithet.
+- `genus_recode` holds corrections from two sources and no others: those GBIF
+  confirmed without inference (both spellings resolving to one accepted name, or
+  one placed and the other unplaceable), and those **J. D. Ackerman arbitrated
+  on 2026-08-18**, marked `# JDA`. Corrections resting on the
+  family-consistency rule are never applied unqualified — that rule assumes the
+  recorded family is right, and Ackerman rejected one of the ten on exactly that
+  ground (*Pontia*, not *Polia*). Suprageneric and informal names
+  (`Anthophorid`, `Halictid`, `Meliponids`, and `Augochlorini` at tribe rank via
+  `SUPRAGENERIC`) are excluded on purpose: promoting them to a genus asserts
+  precision the source never gave.
+- **Two family maps, and the distinction matters.** `family_recode` = the author
+  mistyped (`Aipdae` → Apidae). `family_current` = the author was right at the
+  time and the classification has since moved (`Ctenuchidae` → Erebidae, per
+  Ackerman). Never merge them; the second is not an error report. Six further
+  old circumscriptions (Arctiidae, Danaidae, Satyridae, Eumenidae, Otitidae,
+  Coerebidae) are deliberately left alone pending his ruling.
+- `genus` and `subfamily` **used to be** written once per block and left blank
+  on following rows. As of 2026-08-19 they are filled in on every row that
+  carries a species (2,111 genus + 2,722 subfamily cells; see
+  `filldown_changelog_2026-08-19.csv`). **Keep the `tidyr::fill` in the wrangling
+  doc anyway** — sixteen rows deliberately still have no genus (see below), and
+  new hand-entered rows will arrive blank. Row order must still stay intact.
+  Full binomial = genus + epithet.
+- Sixteen rows have neither genus nor species and were left blank on purpose:
+  rows 2081–2089 are empty spacers after *Zeuxine*, and rows 31, 32, 50, 51,
+  60, 61, 75 each carry a stray copy of the **next** species' pollinator text.
+  Those seven are still parsed as records at run time, which double-counts the
+  following species' pollinator list and, for row 75, credits *Calopogon
+  barbatus*'s pollinators to *Arundina*. Known, not yet fixed.
+- Do not use the `genus count` column as the genus-block marker. Three blocks
+  start without it (*Bipinnula* row 113, *Ceratostylis* 1027, *Porpax* 1062), so
+  the running total in row 3146 is short by three. Three genera are also split
+  across non-adjacent blocks — *Coelogyne* (83–100 and 187), *Bipinnula* (113
+  and 2018), *Schizochilus* (2942–2945 and 2958–2961) — which is why 426
+  markers, 428 name runs and 425 distinct genera all disagree. Fill down from
+  the nearest genus written above instead; that is correct in every case.
 - Subfamily junk values are cleaned in the wrangling: `2`→Epidendroideae
   (Bulbophyllum), `Orchidaceae`→Orchidoideae (Sirindhornia), `5`/`subfamily`→NA
-  (blank template rows). Valid subfamilies: Apostasioideae, Vanilloideae,
-  Cypripedioideae, Orchidoideae, Epidendroideae.
+  (blank template rows). Valid subfamilies: Apostasioideae, Cypripedioideae,
+  Vanilloideae, Orchidoideae, Epidendroideae. The two junk cells that sit in
+  the data (row 757 `2`, row 2962 `Orchidaceae`) were **left as written** by the
+  fill-down and were not used as a fill source, so neither propagated down its
+  block. Keep the recode — do not "tidy" those two cells away, since the recode
+  is the record that they were wrong.
 - The `pollinators` grammar: `ORDER:  Genus species, G. species (Family); …`.
   The parser splits orders, expands abbreviated genera, normalises `sp./spp.`,
   and recodes order/family typos. ~150 remaining name issues are flagged in the
   enriched `taxa_review` sheet; use the GBIF chunk to confirm before merging.
+- **The colon after an ORDER is optional** (fixed 2026-09-10). It used to be
+  required, and 34 cells written without one lost data three different ways: a
+  cell holding only `DIPTERA` fell through as `informal` with no order, so the
+  record read as having no pollinator at all (*Plocoglottis porphyrophylla*,
+  *Stelis hymenantha*); `COLEOPTERA Astylus trifasciatus (Melyridae).
+  HYMENOPTERA: …` dropped the beetle outright, since everything before the
+  first colon-marked order was ignored (*Bipinnula fimbriata*); and a leading
+  `DIPTERA. HYMENOPTERA: …` dropped the flies the same way. Making it optional
+  is safe **because every UPPERCASE run of four or more letters in this column
+  is an order name**, verified across all 3,164 rows, taxa and families being
+  Capitalised rather than upper case. If that ever stops being true, the marker
+  has to go back to a known-order list rather than back to requiring the colon.
+- An order named with nothing after it now yields a row of `rank = "order"`
+  rather than being skipped. "No pollinator in the source" is a claim about the
+  source and must stay reserved for records that make it.
+- That grammar closes a family with `;` or `.` **usually** — some records use a
+  `,` or a `:`. `parse_poll()` rewrites those to `;`, but only after a
+  parenthesis that actually names a family, so `(non-native),` and
+  `(Coelopid flies),` do not cut the segment. Do not simplify that test: before
+  the fix, 95 taxa carried a neighbouring segment's family (skippers filed as
+  swallowtails, *Ectemnius* in Formicidae, hummingbirds with no family at all).
+- Ackerman's marked-up review and the full record of what was done with each
+  verdict are in `Resolution_documents/`. Read
+  `Ackerman_review_resolution_2026-08-19.md` before revisiting any pollinator
+  name. One row is still open: *Tetralona nipponensis* on *Bletilla striata*.
+  The root-level `Ackerman_pollinator_name_review_2026-08-16.xlsx` is a stale
+  draft that predates the copy he was sent — use the `JDArev` file.
 - The sheet has three columns literally named `notes`; `read_excel` renames the
   duplicates automatically.
+
+## Student coordinate returns
+
+Each student edits their own copy of `coordinate_assignment_tracker.xlsx` and
+sends the whole workbook back, so every copy carries all three tabs and only one
+of them is current. First merge: 2026-09-10 (Naan 41 coordinates, Natalia 18;
+Caleb had not started). Pre-merge file in `_archive/`.
+
+Merging a batch:
+
+1. Take the copy whose own tab is filled and carry columns J:P (lat, lon,
+   source, precision, date, status, notes) into one workbook. Assert
+   species-by-species while doing it: columns A:I were byte-identical to the
+   original in every copy returned so far, and that check is what catches a
+   student who inserted or reordered rows.
+2. Drop the example row (*Cattleya coccinea*, source "Smith et al. 2019, Fig.2")
+   from every tab. Left in place it counts as `Done`.
+3. Rebuild the `All assignments` tab from the three student tabs, then update
+   the `$853` row bound in every `Progress` formula. The row count changes
+   whenever a student adds rows.
+4. Reset the Status data validation range, since deleting the example row
+   shifts it.
+
+Recurring entry problems, all seen in the first batch:
+
+- **Dates.** Students type dd/mm/yyyy. Excel converts what it can to US dates
+  (01/09/2026 becomes 9 January) and leaves the rest as text, so the column ends
+  up holding three formats. 117 cells needed repair. The swap-back is only safe
+  while every affected value has day <= 12; ask for yyyy-mm-dd instead.
+- **`Coordinate source`.** 28 of Naan's 41 rows said only "R", "r" or "google
+  earth" rather than the citation the README asks for. Do not guess what "R"
+  refers to. Natalia's "En el paper <cite>" is usable.
+- **`Precision`.** Used for place names instead of site/locality/region. Move
+  the place name into `Notes` and leave `Precision` blank rather than inventing
+  a level.
+- **Extra rows.** A species with several study sites comes back as one row per
+  site (*Vanilla hartii* became four Osa Peninsula rows). Keep them in the
+  tracker; the master takes one row per record, so which coordinate goes forward
+  is Raymond's call.
+- **Access, not absence.** 25 of the 48 `Cannot find` rows say the student could
+  not obtain the article. Those are recoverable and should be chased with PDFs
+  before any of them is treated as a dead end.
+
+QC on a returned batch: `global_land_mask` for the land test (1 km, so island
+records do not false-flag the way `maps::world` did) plus Natural Earth 50m
+polygons for country attribution, compared against the `Locality hint` string.
+That combination found the *Vanilla planifolia* point in Sichuan, the
+*V. humblotii* point 14 km out to sea, and five hint-versus-coordinate
+mismatches. R is not installed in the desktop VM, so this ran outside the
+`pollinators_wrangling.qmd` checks rather than reusing them.
 
 ## Working with the .qmd files
 

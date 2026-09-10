@@ -236,8 +236,10 @@ map_data <- data %>%
       legacy <- ifelse(is.na(legacy) & !is.na(v) & nzchar(v), str_to_title(v), legacy)
 
       out <- ifelse(!is.na(primary), primary, legacy)
-      # "Not reported" now means what it says: no pollinator recorded anywhere.
-      ifelse(is.na(out), "Not reported", out)
+      # This label says what is true: the source reported no pollinator. It is
+      # not a gap in data entry -- those records document breeding system or
+      # reward instead, and the trait lines in the popup carry that.
+      ifelse(is.na(out), "No pollinator in the source", out)
     },
 
     # Full scientific name = genus + epithet (genus was filled down above;
@@ -272,24 +274,39 @@ built, because the popups need it.
 group_colors <- c(Bees = "#E69F00", Diptera = "#56B4E9", Wasps = "#D55E00",
                   Coleoptera = "#009E73", Lepidoptera = "#CC79A7", Aves = "#0072B2",
                   Hemiptera = "#F0E442", "Hymenoptera (unassigned)" = "#8C6D31",
-                  "Not reported" = "#BBBBBB")
+                  "No pollinator in the source" = "#BBBBBB")
 
 # Fixed display order for the pollinator groups. Taxonomic rather than
 # frequency-based on purpose: an order derived from the data reshuffles the
 # legend every time a filter changes the counts, so the same group moves
 # position while the reader is looking at it. This vector does not move.
 # The three Hymenoptera categories stay adjacent, insects precede vertebrates,
-# and "Not reported" is pinned last so absence never sits between two real
+# and "No pollinator in the source" is pinned last so absence never sits between two real
 # groups. Any group not listed here falls to the end, alphabetically.
 group_order <- c("Bees", "Wasps", "Hymenoptera (unassigned)",
                  "Diptera", "Lepidoptera", "Coleoptera", "Hemiptera",
                  "Thysanoptera", "Orthoptera", "Arachnida",
                  "Aves", "Mammalia", "Reptilia",
-                 "Not reported")
+                 "No pollinator in the source")
 order_groups <- function(g) {
   g <- unique(g)
   known <- intersect(group_order, g)
   c(known, sort(setdiff(g, known)))
+}
+
+# Fixed display order for the subfamilies: the phylogeny of the family, from
+# the earliest-diverging lineage onward. Apostasioideae is sister to the rest,
+# then Cypripedioideae, then Vanilloideae, then the Orchidoideae plus
+# Epidendroideae pair. Every table, map series and menu here uses it, so the
+# reader moves through the family in the same sequence each time and can read
+# a gap in coverage as a position on the tree. Anything unlisted, including
+# "No subfamily", falls to the end.
+subfamily_order <- c("Apostasioideae", "Cypripedioideae", "Vanilloideae",
+                     "Orchidoideae", "Epidendroideae")
+order_subfamilies <- function(s) {
+  s <- unique(s)
+  known <- intersect(subfamily_order, s)
+  c(known, sort(setdiff(s, known)))
 }
 color_of <- function(g) unname(ifelse(g %in% names(group_colors), group_colors[g], "#999999"))
 
@@ -349,6 +366,16 @@ Finally, the popup content itself.
 trait_row <- function(label, value) ifelse(is.na(value), "",
   paste0("<b>", label, ":</b> ", value, "<br>"))
 
+# Compatibility and breeding system are one statement to a reader, so they
+# share a line rather than taking two. Either part may be missing.
+join_traits <- function(...) {
+  parts <- list(...)
+  out <- rep("", length(parts[[1]]))
+  for (p in parts)
+    out <- ifelse(is.na(p) | p == "", out, ifelse(out == "", p, paste(out, p, sep = "; ")))
+  ifelse(out == "", NA_character_, out)
+}
+
 # The multi-group line gets the same coloured dots as the family lines, so a
 # reader can match every group named in the popup to a colour on the map
 # without going back to the control box.
@@ -367,8 +394,7 @@ map_data <- map_data %>%
     "<b>Coordinates:</b> ", round(lat, 4), " , ", round(lon, 4), "<br>",
     trait_row("Growth form",     growth_form),
     trait_row("Climate",         climate),
-    trait_row("Compatibility",   compatibility),
-    trait_row("Breeding system", breeding_system),
+    trait_row("Breeding system", join_traits(compatibility, breeding_system)),
     trait_row("Reward",          reward),
     trait_row("Deception",       deception),
     ifelse(is.na(mycoheterotrophic), "", paste0("<b>", mycoheterotrophic, "</b><br>")),
@@ -378,7 +404,7 @@ map_data <- map_data %>%
            paste0("<b>Pollinator groups:</b> ", group_chips(pollinator_all), "<br>")),
     "<b>Pollinators:</b> ",
     ifelse(is.na(poll_species) | poll_species == "",
-           paste0(pollinator, " <span style='color:#888'>(no species recorded)</span>"),
+           paste0(pollinator, " <span style='color:#888'>(the source names none)</span>"),
            paste0("<br>", poll_species)),
     "</div>"
   ))
@@ -408,7 +434,7 @@ build_map <- function(df) {
     mutate(.grp = ifelse(is.na(pollinator_all) | pollinator_all == "",
                          pollinator, pollinator_all)) %>%
     tidyr::separate_rows(.grp, sep = "\\s*;\\s*") %>%
-    mutate(.grp = ifelse(is.na(.grp) | .grp == "", "Not reported", .grp))
+    mutate(.grp = ifelse(is.na(.grp) | .grp == "", "No pollinator in the source", .grp))
 
   # Two different orders, deliberately. Draw the commonest groups first so the
   # rarer ones land on top and are not buried under a pile of bees; but LIST
@@ -503,7 +529,7 @@ pollinator scheme as above, so the panels are directly comparable.
 ```{r}
 #| label: subfamily-maps
 htmltools::tagList(
-  lapply(sort(unique(map_data$subfamily_label)), function(sf) {
+  lapply(order_subfamilies(map_data$subfamily_label), function(sf) {
     htmltools::tagList(
       htmltools::h4(sf),
       build_map(filter(map_data, subfamily_label == sf))
@@ -523,8 +549,7 @@ counts given alongside.
 #| fig-width: 7.2
 #| fig-height: 2.5
 #| fig-alt: "Horizontal bar chart of georeferencing coverage by orchid subfamily. Each bar shows the percentage of that subfamily's records that carry coordinates, labelled with the count of georeferenced records over the total held."
-valid_sf <- c("Apostasioideae", "Vanilloideae", "Cypripedioideae",
-              "Orchidoideae", "Epidendroideae")
+valid_sf <- subfamily_order
 
 coverage <- data %>%
   mutate(sf = trimws(as.character(.data[[subf_col]]))) %>%
@@ -534,8 +559,8 @@ coverage <- data %>%
             georeferenced = sum(row %in% map_data$row),
             .groups = "drop") %>%
   mutate(pct = 100 * georeferenced / in_database) %>%
-  arrange(georeferenced) %>%
-  mutate(subfamily = factor(subfamily, levels = subfamily),
+  arrange(match(subfamily, subfamily_order)) %>%
+  mutate(subfamily = factor(subfamily, levels = rev(subfamily_order)),
          label = paste0(format(georeferenced, big.mark = ",", trim = TRUE), " / ",
                         format(in_database,   big.mark = ",", trim = TRUE)))
 
@@ -556,7 +581,7 @@ ggplot(coverage, aes(y = subfamily)) +
   geom_text(aes(x = 104, label = label), hjust = 0, size = 3.2, colour = "grey30") +
   scale_x_continuous(limits = c(0, 132), expand = c(0, 0)) +
   labs(x = NULL, y = NULL,
-       caption = "Bar length is the percentage of that subfamily's records carrying coordinates; the figures give georeferenced records over records held.") +
+       caption = "Subfamilies in phylogenetic order, Apostasioideae first. Bar length is the percentage of that subfamily's records carrying coordinates; the figures give georeferenced records over records held.") +
   theme_minimal(base_size = 12) +
   theme(panel.grid    = element_blank(),
         axis.text.x   = element_blank(),
@@ -570,9 +595,12 @@ Composition of the mapped records by pollinator group follows, in the same
 colours as the map points. A record with several groups — *Cypripedium reginae*
 is visited by bees, a syrphid and a scarab — is counted under **each** of them,
 exactly as it is drawn on the map, so the bars sum to more than the number of
-records. *Not reported* means no pollinator is recorded anywhere in that row,
-and *Hymenoptera (unassigned)* marks records whose free-text entry names an
-order but neither a family nor a genus the parser could resolve.
+records. *No pollinator in the source* means the paper behind that record
+named none, usually because it reported something else about the flower: a
+breeding-system experiment, or the presence of a reward. Those rows carry no
+`Pltr data` flag, and the trait lines in their popups are what the record
+actually contributes. *Hymenoptera (unassigned)* marks records whose free-text
+entry names an order but neither a family nor a genus the parser could resolve.
 
 ```{r}
 #| label: pollinator-composition
@@ -585,7 +613,7 @@ comp <- map_data %>%
   mutate(.grp = ifelse(is.na(pollinator_all) | pollinator_all == "",
                        pollinator, pollinator_all)) %>%
   tidyr::separate_rows(.grp, sep = "\\s*;\\s*") %>%
-  mutate(.grp = ifelse(is.na(.grp) | .grp == "", "Not reported", .grp)) %>%
+  mutate(.grp = ifelse(is.na(.grp) | .grp == "", "No pollinator in the source", .grp)) %>%
   count(pollinator = .grp, name = "records") %>%
   arrange(records) %>%
   mutate(pollinator = factor(pollinator, levels = pollinator))

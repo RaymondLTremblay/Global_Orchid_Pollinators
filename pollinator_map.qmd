@@ -73,10 +73,10 @@ prim <- lg %>% filter(!is.na(poll_group)) %>% count(row, poll_group) %>%
   transmute(row, primary_group = poll_group) %>% ungroup()
 geo <- geo %>% left_join(rich, by = "row") %>% left_join(prim, by = "row") %>%
   mutate(richness = ifelse(is.na(richness), 0, richness),
-         primary_group = ifelse(is.na(primary_group), "Not reported", primary_group))
+         primary_group = ifelse(is.na(primary_group), "No pollinator in the source", primary_group))
 
 # colourblind-friendly (Okabe–Ito) palette for the coarse pollinator groups.
-# "Not reported" = a georeferenced record with no pollinator group recorded yet
+# "No pollinator in the source" = a georeferenced record with no pollinator group recorded yet
 # (usually its `pollinators` cell is empty).
 group_colors <- c(Bees = "#E69F00", Wasps = "#D55E00",
                   "Hymenoptera (unassigned)" = "#8C6D31",
@@ -85,28 +85,43 @@ group_colors <- c(Bees = "#E69F00", Wasps = "#D55E00",
                   Thysanoptera = "#7F7F7F", Orthoptera = "#B07A2A",
                   Arachnida = "#8C8C8C", Aves = "#0072B2",
                   Mammalia = "#666666", Reptilia = "#4D4D4D",
-                  "Not reported" = "#BBBBBB")
+                  "No pollinator in the source" = "#BBBBBB")
 col_of <- function(g) unname(ifelse(g %in% names(group_colors), group_colors[g], "#999999"))
 
 # Fixed display order for the legend -- taxonomic, not frequency-based, so the
 # legend does not rearrange itself as the filters change the counts. The three
 # Hymenoptera categories stay adjacent, insects precede vertebrates, and
-# "Not reported" is pinned last. Unlisted groups fall to the end alphabetically.
+# "No pollinator in the source" is pinned last. Unlisted groups fall to the end alphabetically.
 group_order <- c("Bees", "Wasps", "Hymenoptera (unassigned)",
                  "Diptera", "Lepidoptera", "Coleoptera", "Hemiptera",
                  "Thysanoptera", "Orthoptera", "Arachnida",
                  "Aves", "Mammalia", "Reptilia",
-                 "Not reported")
+                 "No pollinator in the source")
 order_groups <- function(g) {
   g <- unique(g)
   known <- intersect(group_order, g)
   c(known, sort(setdiff(g, known)))
 }
+
+# Fixed display order for the subfamilies: the phylogeny of the family, from
+# the earliest-diverging lineage onward. Apostasioideae is sister to the rest,
+# then Cypripedioideae, then Vanilloideae, then the Orchidoideae plus
+# Epidendroideae pair. Every table, map series and menu here uses it, so the
+# reader moves through the family in the same sequence each time and can read
+# a gap in coverage as a position on the tree. Anything unlisted, including
+# "No subfamily", falls to the end.
+subfamily_order <- c("Apostasioideae", "Cypripedioideae", "Vanilloideae",
+                     "Orchidoideae", "Epidendroideae")
+order_subfamilies <- function(s) {
+  s <- unique(s)
+  known <- intersect(subfamily_order, s)
+  c(known, sort(setdiff(s, known)))
+}
 # The legend lists every group PRESENT IN THE DATA, not only those that happen
 # to be some record's commonest group -- Hemiptera is never a commonest group
 # and so used to be missing from the legend entirely.
 groups_present <- unique(c(grp$poll_group,
-                           geo$primary_group[geo$primary_group == "Not reported"]))
+                           geo$primary_group[geo$primary_group == "No pollinator in the source"]))
 pal_groups <- order_groups(intersect(names(group_colors), groups_present))
 
 # NOTE: do not build this legend with colorFactor(). Given a character domain it
@@ -118,7 +133,7 @@ legend_colors <- col_of(pal_groups)
 
 # choice vectors for the filters
 ch <- list(
-  subfamily = sort(unique(geo$subfamily)),
+  subfamily = order_subfamilies(geo$subfamily),
   ogenus    = sort(unique(geo$genus)),
   ospecies  = sort(unique(geo$orchid)),
   pgroup    = order_groups(na.omit(lg$poll_group)),   # same fixed order as the legend

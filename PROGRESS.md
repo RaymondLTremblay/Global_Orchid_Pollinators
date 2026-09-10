@@ -1,11 +1,11 @@
 # Progress — Global Orchid Pollinators
 
 Tracking how many orchid species have valid latitude/longitude in
-`Pollination List Thru_1 2024.xlsx` (sheet `species`).
+`Pollination_List_MASTER.xlsx` (sheet `species`).
 
 A "georeferenced species" is a distinct genus + epithet binomial with at
 least one row carrying numeric `latitud` and `longitud`. Counts replicate the
-`mapa_final.rmd` data-prep pipeline: column names trimmed/lowercased,
+`mapa_final.qmd` data-prep pipeline: column names trimmed/lowercased,
 `genus` and `subfamily` filled down, coordinates parsed with comma→dot.
 
 To regenerate a snapshot, rerun the count after new coordinates are entered
@@ -26,8 +26,8 @@ By subfamily (distinct species):
 |-----------------|---------|
 | Apostasioideae  | 4       |
 | Cypripedioideae | 34      |
-| Epidendroideae  | 96      |
 | Orchidoideae    | 6       |
+| Epidendroideae  | 96      |
 | **Total**       | **140** |
 
 No georeferenced records yet for Vanilloideae.
@@ -77,6 +77,15 @@ No georeferenced records yet for Vanilloideae.
 32. Phragmipedium boissierianum
 33. Phragmipedium lindenii
 34. Phragmipedium longifolium
+
+**Orchidoideae (6)**
+
+1. Anoectochilus longicalcaratus
+2. Cyclopogon prasophyllum
+3. Cystorchis aphylla
+4. Goodyera repens
+5. Goodyera striata
+6. Lepidogyne longifolia
 
 **Epidendroideae (96)**
 
@@ -177,15 +186,6 @@ No georeferenced records yet for Vanilloideae.
 95. Thunia alba
 96. Tipularia discolor
 
-**Orchidoideae (6)**
-
-1. Anoectochilus longicalcaratus
-2. Cyclopogon prasophyllum
-3. Cystorchis aphylla
-4. Goodyera repens
-5. Goodyera striata
-6. Lepidogyne longifolia
-
 ***
 
 ## Snapshot — 2026-08-13
@@ -198,10 +198,10 @@ By subfamily (distinct species):
 
 | Subfamily       | Species |
 |-----------------|---------|
-| Epidendroideae  | 123     |
+| Apostasioideae  | 4       |
 | Cypripedioideae | 34      |
 | Orchidoideae    | 6       |
-| Apostasioideae  | 4       |
+| Epidendroideae  | 123     |
 | **Total**       | **167** |
 
 Still no georeferenced records for Vanilloideae (60 species awaiting
@@ -258,6 +258,15 @@ replicate the `pollinators_wrangling.qmd` / `mapa_final.qmd` pipeline.
 32. Phragmipedium boissierianum
 33. Phragmipedium lindenii
 34. Phragmipedium longifolium
+
+**Orchidoideae (6)**
+
+1. Anoectochilus longicalcaratus
+2. Cyclopogon prasophyllum
+3. Cystorchis aphylla
+4. Goodyera repens
+5. Goodyera striata
+6. Lepidogyne longifolia
 
 **Epidendroideae (123)**
 
@@ -385,11 +394,179 @@ replicate the `pollinators_wrangling.qmd` / `mapa_final.qmd` pipeline.
 122. Tipularia discolor
 123. Zootrophion atropurpureum
 
+***
+
+## Note — 2026-08-19: master edited, counts unchanged
+
+Two structural passes over `Pollination_List_MASTER.xlsx` this week. **Neither
+touched a coordinate**, so the 2026-08-13 snapshot above still stands — but
+anyone diffing the workbook will see 4,849 changed cells and should know why.
+
+1. **Sixteen `pollinators` cells corrected** — the pollinator-name typos
+   J. D. Ackerman confirmed. Logged in `typo_corrections_changelog.csv`;
+   the full record is in `Resolution_documents/`.
+2. **`genus` and `subfamily` filled down** — 2,111 and 2,722 cells, on every
+   row that carries a species. Logged in `filldown_changelog_2026-08-19.csv`.
+   Sixteen rows with no species were deliberately left blank.
+
+Verified after both passes: 171 georeferenced records, 167 distinct species,
+49 genera — identical to the 2026-08-13 snapshot. The run-time filled view of
+`genus` and `subfamily` is unchanged for all 3,161 rows, so nothing downstream
+moves.
+
+The counting caveat, still true and still worth repeating: `genus count` is not
+a reliable marker of where a genus block starts. Three blocks begin without it
+and three genera sit in two non-adjacent places, so the tally in row 3146 is
+three short. Fill down from the nearest genus written above.
+
+***
+
+## Snapshot, 2026-09-10
+
+- **Georeferenced species: 221**
+- **Georeferenced records (mapped points): 228**
+- **Genera represented: 62**
+
+By subfamily (distinct species):
+
+| Subfamily       | Species | Change |
+|-----------------|---------|--------|
+| Apostasioideae  | 4       | 0      |
+| Cypripedioideae | 34      | 0      |
+| Vanilloideae    | 36      | +36    |
+| Orchidoideae    | 12      | +6     |
+| Epidendroideae  | 135     | +12    |
+| **Total**       | **221** | **+54** |
+
+**Vanilloideae is on the maps for the first time.** It had 60 species and not
+one georeferenced record, which is why the subfamily was absent from every map;
+36 of those 60 now have coordinates, all from Naan.
+
+The 54 species came from the first batch Naan and Natalia returned, written into
+`Pollination_List_MASTER.xlsx` on 2026-09-10. Cell-by-cell record in
+`coordinate_additions_changelog_2026-09-10.csv`; the pre-write master is
+`_archive/Pollination_List_MASTER_pre-coords_2026-09-10.xlsx`.
+
+*Vanilla hartii* accounts for the gap between 221 species and 228 records: it
+came back as four Osa Peninsula sites and now sits in four rows, following the
+*Cypripedium passerinum* pattern where the extra locality rows carry only
+subfamily, genus, species and coordinates, and the full record with its traits
+and references stays on the last row. Because of that, no trait or pollinator
+total in the summary block double-counts. The summary formulas at the foot of
+the sheet were re-pointed by hand for the three inserted rows.
+
+Two coordinates were held back and their rows are still blank:
+*Vanilla planifolia*, whose point landed in Sichuan from a master row whose
+reference cell reads only "Phaius", and *V. humblotii*, 14 km out to sea off the
+Comoros.
+
+**Re-run `pollinators_wrangling.qmd` before rendering any map**, and expect the
+`coord_review` sheet to report on 228 points now rather than 171.
+
+### What the students returned
+
+Merged from the two copies on 2026-09-10 (the pre-merge file is in `_archive/`):
+
+| | Coordinates | `Cannot find` | Weeks closed |
+|---|---|---|---|
+| Naan | 41 | 22 | 1 to 3, complete |
+| Natalia | 18 | 26 | 1 and 2 nearly, 3 begun |
+| Caleb | 0 | 0 | not started |
+
+- **59 new coordinates**, of which 57 were written to the master.
+- **48 rows marked `Cannot find`, but 25 of those are recoverable**: the note
+  says the student could not obtain the article, not that the locality is
+  missing. Twenty distinct references account for all of them, Soto Arenas &
+  Dressler 2010 alone blocking six *Vanilla*.
+Reviewed in `coordinate_review_2026-09-10.xlsx`, and how each was resolved:
+
+- **Two held out of the master.** *Vanilla planifolia* lands in Sichuan, China,
+  from a master row whose reference cell reads only "Phaius"; that reference
+  still needs fixing. *V. humblotii* falls 14 km out to sea off the Comoros.
+- **Five written in despite disagreeing with the `locality` hint**, because the
+  hint is the weaker side: three *Bulbophyllum* from Borba & Semir are hinted
+  São Paulo but sit in Minas Gerais, where those authors worked, and *Isotria
+  medeoloides* and *Cleistesiopsis divaricata* are hinted NC and West Virginia
+  but sit in Maine and North Carolina. The hints were left as written, so the
+  disagreement stays visible in `coord_review`.
+- **Three weak but not wrong points written in**: *Vanilla barbellata* and
+  *V. claviculata* share one inland Puerto Rico point with no locality recorded,
+  and *Bulbophyllum correae* is rounded to roughly 50 km.
+
+Checks used: `global_land_mask` for the land test, at 1 km, so island records
+do not false-flag the way `maps::world` did, plus Natural Earth 50m polygons
+for country attribution against the locality string.
+
+### Species added (54)
+
+The current set is the 2026-08-13 list plus these.
+
+**Vanilloideae (36)**
+
+1. Cleistes aphylla
+2. Cleistes bella
+3. Cleistes exilis
+4. Cleistes gracilis
+5. Cleistes paranaensis
+6. Cleistes pusilla
+7. Cleistes rosea
+8. Cleistes tenuis
+9. Cleistesiopsis bifaria
+10. Cleistesiopsis divaricata
+11. Cyrtosia septentrionalis
+12. Duckeella adolphii
+13. Epistephium sclerophyllum
+14. Isotria medeoloides
+15. Lecanorchis kiusiana
+16. Lecanorchis multiflora
+17. Pogonia japonica
+18. Pogonia minor
+19. Pogonia stricta
+20. Vanilla bahiana
+21. Vanilla barbellata
+22. Vanilla bicolor
+23. Vanilla bosseri
+24. Vanilla chamissonis
+25. Vanilla claviculata
+26. Vanilla edwallii
+27. Vanilla guianensis
+28. Vanilla hartii
+29. Vanilla mexicana
+30. Vanilla palmarum
+31. Vanilla paulista
+32. Vanilla phaeantha
+33. Vanilla pompona
+34. Vanilla ribeiroi
+35. Vanilla roscheri
+36. Vanilla siamensis
+
 **Orchidoideae (6)**
 
-1. Anoectochilus longicalcaratus
-2. Cyclopogon prasophyllum
-3. Cystorchis aphylla
-4. Goodyera repens
-5. Goodyera striata
-6. Lepidogyne longifolia
+1. Chloraea alpina
+2. Chloraea bletioides
+3. Chloraea gavilu
+4. Chloraea lamellata
+5. Chloraea membranacea
+6. Chloraea virescens
+
+**Epidendroideae (12)**
+
+1. Brasiliorchis picta
+2. Bulbophyllum adiamantinum
+3. Bulbophyllum correae
+4. Bulbophyllum epiphytum
+5. Bulbophyllum glutinosum
+6. Bulbophyllum involutum
+7. Bulbophyllum ipanemense
+8. Bulbophyllum mentosum
+9. Bulbophyllum mucronifolium
+10. Bulbophyllum rupicola
+11. Bulbophyllum weddellii
+12. Coryanthes kaiseriana
+
+Eight of these sit outside the Americas, all inside Naan's Vanilloideae block:
+*Vanilla bosseri* (Madagascar), *V. roscheri* (South Africa), *V. siamensis*
+(Thailand), *Cyrtosia septentrionalis*, *Lecanorchis kiusiana*, *Pogonia
+japonica* and *P. minor* (Japan), and *Lecanorchis multiflora* (Borneo). The
+Americas-first rule orders the assignment; it does not stop a subfamily block
+from being finished once it is opened.

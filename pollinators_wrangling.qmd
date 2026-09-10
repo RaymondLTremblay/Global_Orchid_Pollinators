@@ -99,6 +99,58 @@ data <- data %>% fill_down("genus") %>% fill_down("subfamily")
 data$orchid <- str_squish(paste(ifelse(is.na(data$genus), "", data$genus),
                                 ifelse(is.na(data$species), "", data$species)))
 data$.rowid <- seq_len(nrow(data))
+
+# --- Multi-locality blocks ---------------------------------------------------
+# A species recorded at several localities occupies several consecutive rows,
+# and by the workbook's convention only ONE of them carries the record: the
+# pollinators, the trait flags and the reference. The others hold the genus,
+# the epithet and a second set of coordinates, nothing else -- Cypripedium
+# passerinum, Phragmipedium lindenii, Vanilla hartii. Read literally, those
+# rows look like records whose source named no pollinator, and that is how they
+# used to map.
+#
+# So within a block of consecutive rows for one species, the richest row is the
+# record and every OTHER row that carries coordinates inherits from it, filling
+# only cells that are empty. Two conditions matter. Coordinates, because they
+# are what makes a row an extra locality: the workbook also holds continuation
+# rows that carry nothing but a second `Pollinator_type` (Bletilla striata,
+# Coelogyne rigida), and those are not localities and must stay as they are.
+# Empty cells only, so a row that states something of its own keeps it.
+#
+# The coordinates themselves are never copied, since they are the whole reason
+# the extra rows exist, nor are the genus-block counters, which mark where a
+# genus starts, nor the free-text notes, which belong to the row that holds
+# them. Rows with no species name never join a block, so the seven stray rows
+# that carry the NEXT species' pollinator text cannot spread it.
+block_cols <- setdiff(
+  names(data),
+  c("genus count", "spp", "spp w/data", "latitud", "longitud",
+    "genus", "species", "subfamily", "orchid", ".rowid",
+    grep("^notes", names(data), value = TRUE))
+)
+is_blank  <- function(x) is.na(x) | trimws(as.character(x)) == ""
+as_coord  <- function(x) suppressWarnings(as.numeric(gsub(",", ".", trimws(as.character(x)))))
+coord_row <- !is.na(as_coord(data$latitud)) & !is.na(as_coord(data$longitud))
+
+blk <- cumsum(c(TRUE, head(data$orchid, -1) != tail(data$orchid, -1)))
+blk <- ifelse(data$orchid == "", -data$.rowid, blk)
+
+filled_cells <- 0L
+for (b in unique(blk[duplicated(blk)])) {          # blocks of more than one row
+  idx  <- which(blk == b)
+  size <- vapply(idx, function(i) sum(!is_blank(unlist(data[i, block_cols]))), integer(1))
+  donor <- idx[which.max(size)]
+  for (i in setdiff(idx, donor)) {
+    if (!coord_row[i]) next
+    for (cl in block_cols) {
+      if (is_blank(data[[cl]][i]) && !is_blank(data[[cl]][donor])) {
+        data[[cl]][i] <- data[[cl]][donor]
+        filled_cells <- filled_cells + 1L
+      }
+    }
+  }
+}
+cat(filled_cells, "cells carried onto extra-locality rows\n")
 ```
 
 ## Species traits
@@ -170,12 +222,25 @@ family_recode <- c(
   Scatophagidae = "Scathophagidae", Chrysidae = "Chrysididae", Scolidae = "Scoliidae",
   Cullicidae = "Culicidae", Mycetophiilidae = "Mycetophilidae", Saturnidae = "Saturniidae",
   Tabinidae = "Tabanidae", Tenthredionidae = "Tenthredinidae", Erabidae = "Erebidae",
-  Zosteropsidae = "Zosteropidae", Ullidiidae = "Ulidiidae", Apidea = "Apidae")
+  Zosteropsidae = "Zosteropidae", Ullidiidae = "Ulidiidae", Apidea = "Apidae",
+  # Surfaced by the segment-delimiter fix in `parse_poll()` below, which exposed
+  # families that had previously been overwritten by a neighbouring segment's.
+  Syprphidae = "Syrphidae", Cerembicidae = "Cerambycidae")
+
+# A different kind of change: not a typo, but a family whose circumscription has
+# moved since the source paper was written. Ackerman confirmed (2026-08-18) that
+# Ctenuchidae, the family recorded for *Lymire edwardsii*, is an old
+# circumscription of Erebidae. Kept in its own map so the two are never
+# conflated: `family_recode` says the author mistyped a name, `family_current`
+# says the author was right at the time and the classification has since moved.
+family_current <- c(Ctenuchidae = "Erebidae")
 
 fix_order  <- function(o) { o <- toupper(o); ifelse(o %in% names(order_recode),
                                                     unname(order_recode[o]), o) }
-fix_family <- function(x) ifelse(!is.na(x) & x %in% names(family_recode),
-                                 unname(family_recode[x]), x)
+fix_family <- function(x) {
+  x <- ifelse(!is.na(x) & x %in% names(family_recode), unname(family_recode[x]), x)
+  ifelse(!is.na(x) & x %in% names(family_current), unname(family_current[x]), x)
+}
 
 # Coarse group, using full taxonomic names (no contractions). Whole orders
 # keep the order name; HYMENOPTERA is split into Bees vs. Wasps, because that
@@ -211,23 +276,40 @@ group_from <- function(order, family, genus = NA_character_) {
 }
 ```
 
-## Genus spellings confirmed by GBIF
+## Genus spellings confirmed by GBIF and by specialist review
 
 `order_recode` and `family_recode` above fix typos we identified by eye. This map
-does the same at genus rank, but every entry was confirmed against the GBIF
-backbone rather than judged here: in each case GBIF resolved both spellings to
-the same accepted name, or placed one spelling and could not place the other at
-all. No inference was involved, so these are applied automatically.
+does the same at genus rank. Entries come from two sources, and neither involves
+a judgement made here.
 
-Corrections that depended on *reasoning* — the family-consistency rule, which
-assumes the family a record was published under is correct — are deliberately
-**not** here. They are listed in the report under "Automatic corrections that
-overrode a real name" and are held until a specialist confirms them.
+**Confirmed by the GBIF backbone.** GBIF resolved both spellings to the same
+accepted name, or placed one spelling and could not place the other at all.
 
-Suprageneric and informal names are also excluded on purpose. `Anthophorid`,
+**Confirmed by J. D. Ackerman, 2026-08-18.** Corrections that depended on
+*reasoning* — chiefly the family-consistency rule, which assumes the family a
+record was published under is correct — were held back from this map and sent to
+him for arbitration. His verdicts are recorded in
+`Resolution_documents/Ackerman_pollinator_name_review_2026-08-16 JDArev.xlsx`
+and the entries he confirmed are now merged below, each marked `# JDA`. Two of
+his answers were *not* corrections and so appear nowhere in this map:
+
+- *Vespa* / *Vespula* and *Eristalis* / *Eristalinus* are both valid genera in
+  their family. They are separate animals, not spellings, and are left alone.
+- *Pontia deplidice* on *Anacamptis morio* is correctly *Pontia* (Pieridae).
+  Our family-consistency rule had wanted to "correct" it to *Polia* (Noctuidae),
+  which would have been wrong; the real fault was the parser reading a comma
+  after `(Pieridae)` as list punctuation rather than as the end of the family.
+  That is fixed in `parse_poll()` below, and the record now stands as published.
+
+One row of the review is still open: *Tetralona nipponensis* on *Bletilla
+striata*, where *Tetralonia* is the other candidate. Ackerman returned no
+verdict, so nothing is applied and the record stays exactly as published.
+
+Suprageneric and informal names are excluded on purpose. `Anthophorid`,
 `Halictid` and `Meliponids` mean "a bee of that family"; GBIF will happily
 resolve them to *Anthophora*, *Halictus* and so on, but recording them as a
-genus would assert precision the source never gave.
+genus would assert precision the source never gave. `Augochlorini` is the same
+case at tribe rank — see `SUPRAGENERIC` in the parser.
 
 ```{r genus-recode}
 genus_recode <- c(
@@ -257,22 +339,43 @@ genus_recode <- c(
   "Oedemeria" = "Oedemera", "Parabolybia" = "Parapolybia",
   "Parapoolybia" = "Parapolybia", "Paratetrapaedia" = "Paratetrapedia",
   "Peritichia" = "Peritrichia", "Procoeca" = "Prosoeca",
-  "Scatophagia" = "Scatophaga", "Syrrita" = "Syritta",
+  "Syrrita" = "Syritta",
   "Tachinia" = "Tachina", "Tetrpedia" = "Tetrapedia",
   "Thynoides" = "Thynnoides", "Trchoplusia" = "Trichoplusia",
-  "Xyphanes" = "Xylophanes", "Zasipilothynnus" = "Zaspilothynnus")
+  "Xyphanes" = "Xylophanes", "Zasipilothynnus" = "Zaspilothynnus",
+
+  # --- Confirmed by J. D. Ackerman, 2026-08-18 ------------------------------
+  # Spelling pairs GBIF could not choose between (review sheet 1).
+  "Mycomyia"    = "Mycomya",      # JDA: "spelling error"
+  "Oedemeronia" = "Oedemera",     # JDA: "synonym"
+  "Phaetornis"  = "Phaethornis",  # JDA: r+n misread as m in the source font
+  "Augochlorine" = "Augochlorini",# JDA: no error, but tribe rank -- see SUPRAGENERIC
+  # Scathophaga, not Scatophaga: JDA, "flies, not fishes for us". This replaces
+  # an earlier entry that had settled on the FISH genus by mistake.
+  "Scatophaga"  = "Scathophaga",  # JDA
+  "Scatophagia" = "Scathophaga",  # JDA
+  # Names our family-consistency rule had overridden, held back pending review;
+  # JDA confirmed each as a typo (review sheet 3).
+  "Bombis"      = "Bombus",       # JDA
+  "Chalicodima" = "Chalicodoma",  # JDA
+  "Proseca"     = "Prosoeca",     # JDA
+  "Agrostis"    = "Agrotis",      # JDA
+  "Scaria"      = "Sciara",       # JDA
+  "Megasella"   = "Megaselia")    # JDA
 
 fix_genus <- function(x) ifelse(!is.na(x) & x %in% names(genus_recode),
                                unname(genus_recode[x]), x)
-cat("Genus spellings corrected from GBIF:", length(genus_recode), "\n")
+cat("Genus spellings corrected (GBIF + specialist review):",
+    length(genus_recode), "\n")
 ```
 
 ## Parsing function
 
 `parse_poll()` takes **one** `pollinators` cell and returns a table with one
 row per taxon: order, family, genus, epithet, full binomial, the original text
-(`verbatim`), the rank reached (`taxon` / `genus` / `informal`) and the coarse
-group.
+(`verbatim`), the rank reached (`taxon` / `genus` / `suprageneric` / `order` /
+`informal`)
+and the coarse group.
 
 ```{r parser}
 # Common English words that are NOT scientific names (they prevent false
@@ -280,25 +383,74 @@ group.
 COMMON <- c("stingless","fruit","flies","bees","wasps","moths","beetles",
             "birds","ants","hawk","small","large")
 
+# Names that LOOK like a genus to the tokeniser but are not one.
+#
+# NOT_A_GENUS: "Sp." is the abbreviation for "species". Ackerman flagged this as
+# our bug rather than a taxonomic question -- the parser had been capturing it as
+# a genus for the two *Schizochilus* records. The family stays; only the genus
+# claim is dropped.
+#
+# SUPRAGENERIC: real names, but above genus rank. Recording them as a genus would
+# assert precision the source never gave, so they keep their family and their
+# verbatim text and get their own rank. Ackerman on Augochlorini: "ID'd only to
+# tribe level".
+NOT_A_GENUS  <- c("Sp","Spp")
+SUPRAGENERIC <- c("Augochlorini")
+
 parse_poll <- function(s) {
   if (is.na(s) || !nzchar(trimws(s))) return(tibble())
   s <- str_squish(s)
-  # ORDER markers: an UPPERCASE word (>=4 letters) followed by ':'
-  m <- str_locate_all(s, "[A-Z]{4,}\\s*:")[[1]]
+  # ORDER markers: an UPPERCASE word of >=4 letters, with or WITHOUT the colon.
+  #
+  # The colon used to be required, and an order written without one was lost.
+  # Three shapes suffered. A cell holding nothing but "DIPTERA" fell through as
+  # `informal` with no order at all, so the record read as having no pollinator
+  # (Plocoglottis porphyrophylla, Ridley 1896; Stelis hymenantha, Albores & Sosa
+  # 2006). A cell opening "COLEOPTERA Astylus trifasciatus (Melyridae).
+  # HYMENOPTERA: ..." lost the beetle outright, since everything before the
+  # first colon-marked order was ignored. And a leading "DIPTERA. HYMENOPTERA:
+  # small bee" dropped the flies the same way. 34 cells in the workbook are
+  # written like this.
+  #
+  # Making the colon optional is safe here: every UPPERCASE run of four or more
+  # letters in this column is an order name (checked across all 3,164 rows).
+  # Taxa are Capitalised, families are Capitalised, so nothing else can match.
+  m <- str_locate_all(s, "[A-Z]{4,}\\s*:?")[[1]]
   if (nrow(m) == 0)
     return(tibble(order = NA_character_, family = NA_character_, genus = NA_character_,
                   epithet = NA_character_, taxon = NA_character_, verbatim = s,
-                  rank = "informal"))
+                  rank = "informal", group = NA_character_))
   starts <- m[,1]; endc <- m[,2]
-  onames <- trimws(str_replace(str_sub(s, starts, endc), ":$", ""))
+  onames <- trimws(str_replace(str_sub(s, starts, endc), ":\\s*$", ""))
   bend <- c(starts[-1] - 1, nchar(s)); last_genus <- NA_character_; out <- list()
 
   for (i in seq_along(onames)) {
     order <- fix_order(onames[i])
     body  <- str_squish(str_sub(s, endc[i] + 1, bend[i]))
-    if (!nzchar(body)) next
+    # The order was named and nothing followed it, or only punctuation. The
+    # source did report a pollinator, at order rank, so record it as one rather
+    # than dropping the segment: "no pollinator in the source" is a different
+    # statement and must stay reserved for records that make it.
+    if (!str_detect(body, "[A-Za-z]")) {
+      out[[length(out) + 1]] <- tibble(order = order, family = NA_character_,
+                                       genus = NA_character_, epithet = NA_character_,
+                                       taxon = NA_character_, verbatim = onames[i],
+                                       rank = "order")
+      next
+    }
     # Each segment = one family. Cut after a ')' followed by ';' or '.', and
     # also on lone ';' (taxa with no family in parentheses).
+    #
+    # The sources are not consistent about that delimiter: some records close a
+    # family with a comma or a colon instead of a semicolon, and the segment then
+    # ran on and took the NEXT family for everything in it. That is how
+    # *Ectemnius* ended up in Formicidae, *Lymire* in Geometridae and *Pontia* in
+    # Noctuidae -- three of the queries Ackerman answered, all one bug. So before
+    # splitting, rewrite a ',' or ':' to ';' when it follows a parenthesis that
+    # actually NAMES a family. The family test matters: '(non-native),' and
+    # '(Coelopid flies),' are annotations, not segment ends, and must not cut.
+    body <- str_replace_all(body,
+              "(\\([^)]*[A-Z][a-z]+dae[^)]*\\))\\s*[,:]\\s*", "\\1; ")
     segs <- unlist(str_split(str_split(body, "(?<=\\))\\s*[;.]+\\s*")[[1]], ";"))
     for (seg in segs) {
       seg <- str_squish(str_replace(seg, "[\\.\\s]+$", ""))
@@ -316,7 +468,9 @@ parse_poll <- function(s) {
           genus <- last_genus                              # expand with the last full genus
           epithet <- str_extract(rest, "^[a-z][a-z-]+")
         } else if (str_detect(tok, "^[A-Z][a-z]+")) {      # full genus
-          genus <- fix_genus(str_extract(tok, "^[A-Z][a-z]+")); last_genus <- genus
+          genus <- fix_genus(str_extract(tok, "^[A-Z][a-z]+"))
+          # "Sp." must not become the genus a later "S. foo" expands to.
+          if (!(genus %in% NOT_A_GENUS)) last_genus <- genus
           rest  <- str_squish(str_replace(tok, "^[A-Z][a-z]+\\s*", ""))
           epithet <- str_extract(rest, "^[a-z][a-z-]+")
         } else rank <- "informal"
@@ -324,6 +478,13 @@ parse_poll <- function(s) {
         if (!is.na(epithet) && epithet %in% c("sp","spp","aff","cf","near")) epithet <- NA_character_
         if (!is.na(epithet) && epithet %in% COMMON) { epithet <- NA_character_; rank <- "informal" }
         if (!is.na(genus)   && tolower(genus) %in% COMMON) { genus <- NA_character_; rank <- "informal" }
+        # "Sp." is the abbreviation for "species", not a genus. Drop the genus
+        # claim but keep the family, so the record still counts at family rank.
+        if (!is.na(genus) && genus %in% NOT_A_GENUS) {
+          genus <- NA_character_; epithet <- NA_character_; rank <- "informal" }
+        # Tribe-rank names: keep the family, keep the verbatim, claim no genus.
+        if (!is.na(genus) && genus %in% SUPRAGENERIC) {
+          genus <- NA_character_; epithet <- NA_character_; rank <- "suprageneric" }
         if (is.na(genus) && rank == "taxon") rank <- "informal"
         if (rank == "taxon" && is.na(epithet)) rank <- "genus"
         taxon <- if (rank == "taxon") paste(genus, epithet) else if (rank == "genus") genus else NA_character_
@@ -335,7 +496,7 @@ parse_poll <- function(s) {
   }
   if (length(out) == 0)
     return(tibble(order = NA, family = NA, genus = NA, epithet = NA, taxon = NA,
-                  verbatim = s, rank = "informal"))
+                  verbatim = s, rank = "informal", group = NA_character_))
   bind_rows(out) %>% mutate(group = pmap_chr(list(order, family, genus), group_from))
 }
 ```
@@ -772,6 +933,38 @@ if (exists("gbif_genus_review")) {
 }
 ```
 
+### Specialist arbitration, 2026-08-18
+
+The names GBIF could not settle, together with every correction that rested on
+the family-consistency rule, were sent to J. D. Ackerman. His marked-up workbook
+is `Resolution_documents/Ackerman_pollinator_name_review_2026-08-16 JDArev.xlsx`;
+the table below is what was done with each verdict. All but one row is now
+closed, and the corrections themselves live in `genus_recode`, `family_current`
+and `parse_poll()` above rather than in this chunk.
+
+```{r ackerman-verdicts}
+ackerman <- tibble::tribble(
+  ~name,              ~verdict,                          ~applied_as,
+  "Mycomyia",         "spelling error -> Mycomya",       "genus_recode",
+  "Oedemeronia",      "synonym -> Oedemera",             "genus_recode",
+  "Scatophaga(ia)",   "-> Scathophaga; Scatophaga is a fish", "genus_recode",
+  "Phaetornis",       "-> Phaethornis (r+n misread as m)",    "genus_recode",
+  "Augochlorine",     "no error; tribe rank only",       "genus_recode + SUPRAGENERIC",
+  "Vespa / Vespula",  "both valid genera of Vespidae",   "no change",
+  "Eristalis / Eristalinus", "both valid genera of Syrphidae", "no change",
+  "Tetralona",        "no verdict returned",             "OPEN -- record unchanged",
+  "Ectemnius",        "Crabronidae",                     "parser fix + master typo fix",
+  "Lymire",           "Erebidae (old circumscription)",  "family_current",
+  "Sp.",              "our bug: 'sp.' is not a genus",   "NOT_A_GENUS",
+  "Bombis, Chalicodima, Proseca, Agrostis, Scaria, Megasella, Thynoides, Zasipilothynnus",
+                      "all confirmed typos",             "genus_recode",
+  "Pontia",           "NOT a typo -- Pontia is correct", "parser fix; no recode")
+
+knitr::kable(ackerman, caption = paste0(
+  "Ackerman's verdicts and where each one landed. ",
+  sum(ackerman$applied_as == "OPEN -- record unchanged"), " row still open."))
+```
+
 ## Coordinate sanity checks
 
 Coordinates are typed in by hand from the primary literature, so the failure
@@ -874,6 +1067,26 @@ if (!requireNamespace("maps", quietly = TRUE)) {
   }
 
   sea <- geo %>% filter(!on_land(lat, lon))
+
+  # A few islands are missing even from worldHires, and a record on one of them
+  # is reported as being far out to sea. Widening the tolerance is not a fix:
+  # the nearest mapped land to Mikura-jima is ~20 km away, and a tolerance that
+  # generous would also swallow the four Gulf of Thailand records, which really
+  # are wrong. So the exceptions are listed explicitly, each one checked against
+  # the Natural Earth 1:10m coastline (which does carry them) and named, so the
+  # exemption can be audited instead of taken on trust.
+  known_islands <- c(
+    "33.8764, 139.6042" = "Mikura-jima, Izu Islands, Japan"
+  )
+  key <- paste(round(sea$lat, 4), round(sea$lon, 4), sep = ", ")
+  if (any(key %in% names(known_islands))) {
+    hit <- key %in% names(known_islands)
+    cat("Exempted -- small islands the coastline file omits:\n")
+    cat(paste0("  row ", sea$row[hit], "  ", sea$orchid[hit], "  (",
+               known_islands[key[hit]], ")\n"), sep = "")
+    sea <- sea[!hit, , drop = FALSE]
+  }
+
   if (nrow(sea)) {
     sea$km_offshore <- mapply(km_offshore, sea$lat, sea$lon)
     flags$in_the_sea <- sea %>%
@@ -969,10 +1182,16 @@ if (!requireNamespace("maps", quietly = TRUE)) {
     if (is.null(hit)) return(NULL)
     allowed <- unique(unlist(lapply(hit, `[[`, 3)))
     here <- geo$country[i]
-    if (!is.na(here) && here %in% allowed) return(NULL)
+    # A point the coarse `world` outline cannot name is, to this test, a point
+    # at sea -- and the land test above already covers that, with a better
+    # coastline and the island exemptions. Reporting it here as well would
+    # re-flag every small-island record that test has just cleared: four
+    # Japanese and Korean island records came back as "falls in open water;
+    # the locality says Japan" long after the land test had stopped
+    # complaining about them.
+    if (is.na(here) || here %in% allowed) return(NULL)
     geo[i, ] %>% mutate(issue = paste0(
-      "point falls in ", ifelse(is.na(here), "open water", here),
-      "; the locality says ",
+      "point falls in ", here, "; the locality says ",
       paste(unique(vapply(hit, `[[`, "", 2)), collapse = " / ")))
   })
   wrong <- bind_rows(wrong)

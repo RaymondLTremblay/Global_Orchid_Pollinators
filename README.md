@@ -49,11 +49,15 @@ master directly.
 | `mapa_final.qmd` | Main analysis. Static Leaflet map, one map per subfamily, and a Shiny app with a subfamily filter and a pollinator drill-down (group → family → genus). Uses `server: shiny` |
 | `mapa_final_static.qmd` | Static, self-contained build of the above for sharing by email — no Shiny, one portable `.html` |
 | `pollinator_map.qmd` | Standalone Shiny search map with a linked DT table |
-| `coordinate_assignment_tracker.xlsx` | 14-week coordinate-collection plan for the three students, with an auto-tallying Progress tab |
-| `typo_corrections_changelog.csv` | The 105 pollinator-name corrections applied to the master |
+| `coordinate_assignment_tracker.xlsx` | 14-week coordinate-collection plan for the three students, with an auto-tallying Progress tab. Also where their returned work is merged back, so it holds coordinates the master does not have yet |
+| `typo_corrections_changelog.csv` | Every pollinator-name correction applied to the master — the original 105, plus the 16 Ackerman confirmed in August 2026 |
+| `filldown_changelog_2026-08-19.csv` | The 4,833 `genus` and `subfamily` cells filled down on 2026-08-19, one row per cell |
 | `genus_corrections_changelog.csv` | **Derived** — the GBIF-confirmed genus spellings the wrangling doc applies automatically |
 | `gbif_genus_review.csv` | **Derived** — every pollinator genus checked against the GBIF backbone, with how it resolved |
 | `coordinate_errors_2026-08-16.xlsx` | Coordinates flagged by the land check, for the students to re-check against the source papers |
+| `coordinate_review_2026-09-10.xlsx` | Review of the first batch returned by the students: flagged records, shared coordinates, the reporting problems to fix, and a cell-by-cell log of the date and precision values that had to be repaired on merge |
+| `coordinate_additions_changelog_2026-09-10.csv` | Every coordinate written into the master on 2026-09-10, with the master row, the student, and the source exactly as they gave it |
+| `Resolution_documents/` | Specialist review of the disputed pollinator names — the workbook sent to J. D. Ackerman, his marked-up reply, a record of what was done with each verdict, and the follow-up note |
 | `_archive/` | Superseded workbooks and backups — **local only, not in the repo** (see `.gitignore`) |
 | `PROGRESS.md` | Dated georeferencing snapshots |
 
@@ -65,19 +69,47 @@ Single sheet `species`, ~3,161 rows (3,127 real species), ~69 columns.
   numbers with Spanish free-text notes from the students (`no encuentro la
   flor`, `no especifica lugar`, …). Always coerce with `as.numeric()`; a naive
   type check will report hundreds of phantom differences.
-- **171 rows currently have valid coordinates** (167 distinct species, 49
-  genera). The rest await data entry — that is expected, not a bug.
+- **228 rows currently have valid coordinates** (221 distinct species, 62
+  genera), as of 2026-09-10. The rest await data entry — that is expected, not a
+  bug.
+- **Subfamilies appear in phylogenetic order everywhere**: Apostasioideae,
+  Cypripedioideae, Vanilloideae, Orchidoideae, Epidendroideae. That holds for
+  every table, figure, per-subfamily map and menu, and for the landing page and
+  `PROGRESS.md`, so a reader moves through the family in the same sequence each
+  time and can read a gap in coverage as a position on the tree. Each document
+  defines `subfamily_order` and `order_subfamilies()` for it, beside the
+  equivalent pair for pollinator groups; a ggplot y axis takes
+  `rev(subfamily_order)` so it reads top-down.
+- **Vanilloideae joined the maps on 2026-09-10**: 36 of its 60 species now have
+  coordinates, from the first batch Naan and Natalia returned. Two records from
+  that batch were deliberately left blank, and *Vanilla hartii* now occupies
+  four rows, one per Osa Peninsula site. `PROGRESS.md` has the detail;
+  `coordinate_additions_changelog_2026-09-10.csv` has the cell-by-cell record.
 - **Coordinates are sanity-checked two ways.** The wrangling doc tests every
   georeferenced point against a coastline (an orchid is not a marine plant) and
   against the `locality` the record already carries (`C Am` cannot be in
   Brazil), and also flags latitude identical to longitude and coordinates
-  shared across genera. Of the current 171 points, 11 fall in open water and 20
-  contradict their locality — 25 records once the overlap is removed. Results
-  go to the `coord_review` sheet of the enriched workbook. The check only
-  reports; it never edits the master.
-- `genus` and `subfamily` are written once and left blank on the following
-  rows. The code fills them down with `tidyr::fill()` **before** any filtering,
-  so row order must stay intact. Full binomial = `genus` + epithet.
+  shared across genera. Of the 171 points present in August 2026, 11 fell in
+  open water and 20 contradicted their locality — 25 records once the overlap
+  was removed. Those figures predate the 2026-09-10 additions and will change
+  the next time the doc is run over all 228 points. Results go to the
+  `coord_review` sheet of the enriched workbook. The check only reports; it
+  never edits the master.
+- `genus` and `subfamily` **used to be** written once per block and left blank
+  on the following rows. Since 2026-08-19 both are written on every row that
+  carries a species. The code still fills them down with `tidyr::fill()`
+  **before** any filtering, and should keep doing so — sixteen rows are blank on
+  purpose (below) and new hand-entered rows arrive blank. Row order must stay
+  intact. Full binomial = `genus` + epithet.
+- **Sixteen rows have neither genus nor species, and were left that way.** Nine
+  are empty spacers after *Zeuxine*; the other seven carry a stray copy of the
+  *next* species' pollinator text. They are still parsed as records at run time,
+  so the following species' pollinator list is counted twice and one row credits
+  *Calopogon barbatus*'s pollinators to *Arundina*. Known; not yet fixed.
+- **Do not use `genus count` to find where a genus block starts.** Three blocks
+  begin without that marker, so the running total in row 3146 is three short,
+  and three genera (*Coelogyne*, *Bipinnula*, *Schizochilus*) appear in two
+  non-adjacent places. Take the nearest genus written above instead.
 - Column names have inconsistent casing and trailing spaces; the code trims and
   lowercases on load, then finds columns by name pattern so the order can change
   safely.
@@ -90,6 +122,34 @@ Single sheet `species`, ~3,161 rows (3,127 real species), ~69 columns.
   expands abbreviated genera, normalises `sp.`/`spp.`, and recodes order and
   family typos. Remaining name issues are flagged in the enriched
   `taxa_review` sheet.
+- **A family is usually closed with `;` or `.` — but not always.** Some records
+  use a comma or a colon, and until August 2026 the parser read those as list
+  punctuation, so every taxon in the segment inherited the *next* family named.
+  Ninety-five taxa carried the wrong family: skippers filed as swallowtails,
+  *Lasioglossum* as apidae, hummingbirds with no family at all. `parse_poll()`
+  now treats `,` and `:` as segment ends, but **only** after a parenthesis that
+  actually names a family — `(non-native),` is an annotation and must not cut.
+  Don't simplify that test.
+
+## Pollinator names
+
+Name disputes the GBIF backbone could not settle were sent to J. D. Ackerman and
+arbitrated in August 2026. `Resolution_documents/` holds his marked-up workbook
+and a record of what was done with each verdict; read it before revisiting any
+pollinator name. Three principles came out of it and are worth stating here:
+
+- **A synonym is not a typo, and an old family is not an error.** Corrections go
+  in `genus_recode` / `family_recode`; superseded circumscriptions go in
+  `family_current`. The master keeps what was published in both cases.
+- **The family-consistency rule is a heuristic, not evidence.** It assumes the
+  family a record was published under is correct, so when the family is wrong it
+  launders the error into a name change. Ackerman rejected one of ten
+  corrections on exactly that ground — *Pontia*, a pierid, would have become the
+  noctuid *Polia*.
+- **Suprageneric names stay suprageneric.** `Augochlorini` is a tribe and
+  `Sp.` is an abbreviation; neither is promoted to a genus.
+
+One question is still open: *Tetralona nipponensis* on *Bletilla striata*.
 
 ## Running the documents
 

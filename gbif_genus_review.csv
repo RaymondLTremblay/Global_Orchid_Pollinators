@@ -3,8 +3,6 @@
 "Andrenidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
 "Anthomyiidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
 "Anthophorini",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
-"Augochlorine",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
-"Augochlorini",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
 "Bracnoidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
 "Braconidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
 "Calliphoridae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
@@ -71,7 +69,6 @@
 "Unidentified",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
 "Vespidae",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
 "Zygopilothynnus",NA,NA,NA,NA,NA,NA,"unresolved",TRUE
-"Agrostis","Agrostes Marshall, 1944","GENUS","Curculionidae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
 "Alastor","Alastor Lepeletier de Saint Fargeau, 1841","GENUS","Eumenidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
 "Anaitis","Anatis Mulsant, 1846","GENUS","Coccinellidae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
 "Anaspis","Anaspis Geoffroy, 1762","GENUS","Scraptiidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
@@ -82,11 +79,9 @@
 "Astylus","Astylus Laporte, 1836","GENUS","Melyridae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
 "Bassania","Bassania Walker, 1860","GENUS","Geometridae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
 "Biio","Bibio Geoffroy, 1762","GENUS","Bibionidae","Insecta","DISAMBIGUATED",3,"disambiguated (several candidate families)",TRUE
-"Bombis","Bombia Warren, 1906","GENUS","Geometridae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
 "Cabro","Carbo Lacepède, 1799","GENUS","Phalacrocoracidae","Aves","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
 "Cantharis","Cantharis Linnaeus, 1758","GENUS","Cantharidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
 "Ceratina","Ceratina Latreille, 1802","GENUS","Apidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
-"Chalicodima","Chalcomima Meyrick, 1929","GENUS","Gelechiidae","Insecta","DISAMBIGUATED",60,"disambiguated (several candidate families)",TRUE
 "Coenonymha","Coenonycha Horn, 1876","GENUS","Scarabaeidae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
 "Colias","Colias Fabricius, 1807","GENUS","Pieridae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
 "Corynura","Corynura Spinola, 1851","GENUS","Halictidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
@@ -134,7 +129,6 @@
 "Polistes","Polistes Latreille, 1802","GENUS","Eumenidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
 "Polyommatus","Polyommatus Latreille, 1804","GENUS","Lycaenidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
 "Pontia","Pontia Fabricius, 1807","GENUS","Pieridae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
-"Proseca","Promeca Brunner von Wattenwyl, 1895","GENUS","Tettigoniidae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
 "Pteris","Pieris Hübner, 1819","GENUS","Pieridae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
 "Pyrgus","Pyrgus Hübner, 1819","GENUS","Hesperiidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
 "Rhinophora","Rhinophora Robineau-Desvoidy, 1830","GENUS","Calliphoridae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
@@ -143,7 +137,6 @@
 "Scymnus","Scymnus Kugelann, 1794","GENUS","Coccinellidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
 "Siona","Siona Duponchel, 1829","GENUS","Geometridae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
 "Sioona","Simona Moulds, 2012","GENUS","Cicadidae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
-"Sp","Lutzomiops Sp.","GENUS","Corethrellidae","Insecta","DISAMBIGUATED",-6,"disambiguated (several candidate families)",TRUE
 "Sphaerophata","Sphaerophora Zetterstedt, 1849","GENUS","Sphaeroceridae","Insecta","DISAMBIGUATED",59,"disambiguated (several candidate families)",TRUE
 "Sphinx","Sphinx Linnaeus, 1758","GENUS","Sphingidae","Insecta","DISAMBIGUATED",95,"disambiguated (several candidate families)",TRUE
 "Synagris","Synargis Hübner, 1819","GENUS","Riodinidae","Insecta","DISAMBIGUATED",80,"disambiguated (several candidate families)",TRUE
@@ -639,7 +632,6 @@
 "Megacampsomeris","Megacampsomeris Betrem, 1928","GENUS","Scoliidae","Insecta","EXACT",96,"direct",FALSE
 "Megachile","Megachile Latreille, 1802","GENUS","Megachilidae","Insecta","HIGHERRANK",95,"direct",FALSE
 "Megaselia","Megaselia Rondani, 1856","GENUS","Phoridae","Insecta","EXACT",96,"direct",FALSE
-"Megasella","Megasella Paetel, 1875","GENUS","Terebratellidae","Rhynchonellata","EXACT",96,"direct",FALSE
 "Melanagromyza","Melanagromyza Hendel, 1920","GENUS","Agromyzidae","Insecta","EXACT",96,"direct",FALSE
 "Melanargia","Melanargia Meigen, 1828","GENUS","Nymphalidae","Insecta","EXACT",96,"direct",FALSE
 "Melangyna","Melangyna Verrall, 1901","GENUS","Syrphidae","Insecta","EXACT",96,"direct",FALSE
@@ -678,7 +670,6 @@
 "Musca","Musca Linnaeus, 1758","GENUS","Muscidae","Insecta","HIGHERRANK",95,"direct",FALSE
 "Mycetophila","Mycetophila Meigen, 1803","GENUS","Mycetophilidae","Insecta","EXACT",95,"direct",FALSE
 "Mycomya","Mycomya Rondani, 1856","GENUS","Mycetophilidae","Insecta","EXACT",96,"direct",FALSE
-"Mycomyia","Mycomyia Edwards","GENUS","Mycetophilidae","Insecta","EXACT",94,"direct",FALSE
 "Mycteromia","Mycteromyia Philippi, 1865","GENUS","Tabanidae","Insecta","VARIANT",80,"direct",FALSE
 "Myopa","Myopa Fabricius, 1775","GENUS","Conopidae","Insecta","EXACT",96,"direct",FALSE
 "Myrmica","Myrmica Latreille, 1804","GENUS","Formicidae","Insecta","EXACT",95,"direct",FALSE
@@ -709,7 +700,6 @@
 "Odontopera","Odontopera Stephens, 1831","GENUS","Geometridae","Insecta","EXACT",95,"direct",FALSE
 "Odynerus","Odynerus Latreille, 1802","GENUS","Vespidae","Insecta","HIGHERRANK",95,"direct",FALSE
 "Oedemera","Oedemera Olivier, 1789","GENUS","Oedemeridae","Insecta","EXACT",96,"direct",FALSE
-"Oedemeronia","Oedemeronia Seidlitz, 1899","GENUS","Oedemeridae","Insecta","EXACT",96,"direct",FALSE
 "Oidaematophorus","Oidaematophorus Wallengren, 1862","GENUS","Pterophoridae","Insecta","EXACT",96,"direct",FALSE
 "Oligographa","Oligographa Rothschild & Jordan, 1903","GENUS","Sphingidae","Insecta","EXACT",96,"direct",FALSE
 "Omphale","Omphale Haliday, 1833","GENUS","Eulophidae","Insecta","EXACT",96,"direct",FALSE
@@ -760,7 +750,6 @@
 "Peritrichia","Peritrichia Burmeister, 1844","GENUS","Scarabaeidae","Insecta","EXACT",96,"direct",FALSE
 "Perizoma","Perizoma Hübner","GENUS","Geometridae","Insecta","EXACT",96,"direct",FALSE
 "Phaethornis","Phaethornis Swainson, 1827","GENUS","Trochilidae","Aves","EXACT",95,"direct",FALSE
-"Phaetornis","Phaetornis Cuvier, 1829","GENUS","Trochilidae","Aves","EXACT",96,"direct",FALSE
 "Phaonia","Phaonia Robineau-Desvoidy, 1830","GENUS","Muscidae","Insecta","HIGHERRANK",95,"direct",FALSE
 "Philaethria","Philaethria Billberg, 1820","GENUS","Nymphalidae","Insecta","EXACT",96,"direct",FALSE
 "Philodromus","Philodromus Walckenaer, 1826","GENUS","Philodromidae","Arachnida","EXACT",95,"direct",FALSE
@@ -856,9 +845,7 @@
 "Scaptia","Scaptia","GENUS","Tabanidae","Insecta","EXACT",95,"direct",FALSE
 "Scaptodrosophila","Scaptodrosophila Fallén, 1823","GENUS","Drosophilidae","Insecta","EXACT",95,"direct",FALSE
 "Scaptotrigona","Scaptotrigona Moure, 1942","GENUS","Apidae","Insecta","EXACT",96,"direct",FALSE
-"Scaria","Scaria Bolívar, 1887","GENUS","Tetrigidae","Insecta","EXACT",96,"direct",FALSE
 "Scathophaga","Scathophaga Meigen, 1803","GENUS","Scathophagidae","Insecta","EXACT",95,"direct",FALSE
-"Scatophaga","Scatophaga Meigen, 1803","GENUS","Scathophagidae","Insecta","EXACT",95,"direct",FALSE
 "Sceliphron","Sceliphron Klug, 1801","GENUS","Sphecidae","Insecta","EXACT",95,"direct",FALSE
 "Sciara","Sciara Meigen, 1803","GENUS","Sciaridae","Insecta","HIGHERRANK",95,"direct",FALSE
 "Scolid","Scolia J.C.Fabricius, 1775","GENUS","Scoliidae","Insecta","HIGHERRANK",80,"direct",FALSE

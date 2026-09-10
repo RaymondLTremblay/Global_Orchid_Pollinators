@@ -1,0 +1,58 @@
+species,master_row,latitud,longitud,student,coordinate_source_as_given,precision,student_notes,action
+Bulbophyllum adiamantinum,654,-14.075556,-47.516944,Natalia,En el paper Rodrigues & Borba 2023,locality,,coordinate written to existing row
+Bulbophyllum correae,677,-2.5,-60,Natalia,En el paper Braga 1977,site,,coordinate written to existing row
+Bulbophyllum epiphytum,690,-22.818417,-47.064722,Natalia,Google Earth ,site,,coordinate written to existing row
+Bulbophyllum glutinosum,695,-22.818417,-47.064722,Natalia,Google Earth ,site,,coordinate written to existing row
+Bulbophyllum involutum,707,-19.325,-43.563889,Natalia,"Borba & Semir 1998, Borba et al. 1999,",site,,coordinate written to existing row
+Bulbophyllum ipanemense,708,-21.334722,-43.575,Natalia,"Borba & Semir 1998, Borba et al. 1999,",site,,coordinate written to existing row
+Bulbophyllum mentosum,721,-13.070556,-41.896389,Natalia,En el paper Rodrigues & Borba 2023,site,,coordinate written to existing row
+Bulbophyllum mucronifolium,723,-18.206722,-43.566111,Natalia,En el paper Rodrigues & Borba 2024,site,,coordinate written to existing row
+Bulbophyllum rupicola,747,-21.978611,-46.370833,Natalia,En el paper Rodrigues & Borba 2023,,,coordinate written to existing row
+Bulbophyllum weddellii,767,-19.247222,-43.511111,Natalia,En el paper Borba & Semir 1998,site,,coordinate written to existing row
+Brasiliorchis picta,1724,-23.183333,-46.866667,Natalia,En el paper Cocucci 1999b; Pansarin et al. 2022,locality,,coordinate written to existing row
+Coryanthes kaiseriana,1866,9.438056,-83.948333,Natalia,En el paper Gerlach & Dressler 2003,site,,coordinate written to existing row
+Chloraea alpina,2019,-41.2,-71.316667,Natalia,En el paper Quintero et al. 2015,site,,coordinate written to existing row
+Chloraea bletioides,2020,-35.218778,-72.282583,Natalia,En el paper Monzon &al 2019,site,Este paper es el Monzon &al 2019?,coordinate written to existing row
+Chloraea gavilu,2025,-35.703583,-71.112222,Natalia,En el paper Monzon &al 2019,site,Este paper es el Monzon &al 2019?,coordinate written to existing row
+Chloraea lamellata,2026,-39.781547,-72.521872,Natalia,Google Earth ,region,,coordinate written to existing row
+Chloraea membranacea,2027,-34.544444,-58.440278,Natalia,En el paper Sanguinetti et al. 2012,site,,coordinate written to existing row
+Chloraea virescens,2030,-42.09,-71.59,Natalia,En el paper Sanguinetti & Singer 2014,site,,coordinate written to existing row
+Cleistes aphylla,3085,-13.77896,-47.26689,Naan,R,,"Teresina de Goias, GO",coordinate written to existing row
+Cleistes bella,3086,-19.21157,-43.56198,Naan,R,,"Serra do Cipo, MG",coordinate written to existing row
+Cleistes exilis,3090,-13.77896,-47.26689,Naan,R,,"Teresina de Goias, GO",coordinate written to existing row
+Cleistes gracilis,3091,-23.11774,-46.55479,Naan,R,,"Atibaia, SP",coordinate written to existing row
+Cleistes paranaensis,3096,-18.24409,-43.60065,Naan,R,,"Diamantina, MG",coordinate written to existing row
+Cleistes pusilla,3097,-18.24409,-43.60065,Naan,R,,"Diamantina, MG",coordinate written to existing row
+Cleistes rosea,3099,-13.77896,-47.26689,Naan,R,,"Teresina de Goias, GO",coordinate written to existing row
+Cleistes tenuis,3100,-13.90678,-47.41612,Naan,R,,"Chapada dos Veadeiros, GO",coordinate written to existing row
+Cleistesiopsis divaricata,3102,34.06243,-78.24434,Naan,r,,"Brunswick County, North Carolina",coordinate written to existing row
+Cleistesiopsis bifaria,3103,39.12512,-80.02797,Naan,r,,"esta especie se encuentra en: Barbour County, West Virginia y Brunswick County, North Carolina; Barbour County, West Virginia",coordinate written to existing row
+Duckeella adolphii,3104,-2.053336,-60.023747,Naan,Google Earth,,"Presidente Figuereido, AM",coordinate written to existing row
+Isotria medeoloides,3105,45.7091,-68.85902,Naan,R,,"Maine, USA",coordinate written to existing row
+Pogonia japonica,3107,35.057486,135.76939,Naan,Google earth,,"Site-Mizoerogaike pond, Japan",coordinate written to existing row
+Pogonia minor,3108,34.91011,135.2083,Naan,R,,"Aino, Sanda City, Hyogo Prefecture Japan",coordinate written to existing row
+Pogonia stricta,3110,5.583333,-61.716667,Naan,Articulo ,locality,,coordinate written to existing row
+Cyrtosia septentrionalis,3111,35.1163,136.1977,Naan,google earth,,"google earth Gochi city, Higashi ohmi city; Gochi City, Higachi-Ohmi city, Japan",coordinate written to existing row
+Epistephium sclerophyllum,3113,-12.82773,-41.42771,Naan,R,,"Chapada Diamantina, Brazil",coordinate written to existing row
+Lecanorchis kiusiana,3115,34.48744,136.7093,Naan,R,,"Site- Ise Shrine forest, en Ise City, Prefectura de Mie, Japon",coordinate written to existing row
+Lecanorchis multiflora,3116,1.429783,113.7091,Naan,R,,"Borneo Island, Malaysia",coordinate written to existing row
+Vanilla bahiana,3117,-12.916667,-38.316667,Naan,Articulo ,locality,,coordinate written to existing row
+Vanilla barbellata,3118,18.077881,-66.904103,Naan,google earth,,,coordinate written to existing row
+Vanilla bicolor,3119,-12.55755,-70.121867,Naan,Articulo ,locality,,coordinate written to existing row
+Vanilla bosseri,3120,-20.057439,44.627414,Naan,Google earth,region,kirindy forest in Madagascar,coordinate written to existing row
+Vanilla chamissonis,3121,-21.166667,-47.8,Naan,Articulo ,site,,coordinate written to existing row
+Vanilla claviculata,3122,18.077881,-66.904103,Naan,Google earth,region,esta es una localidad que comparte con barbellata,coordinate written to existing row
+Vanilla edwallii,3125,-23.183333,-46.866667,Naan,Articulo ,locality,,coordinate written to existing row
+Vanilla guianensis,3126,-11.6277,-70.775375,Naan,google earth,locality,"Madre de Dios, Peru",coordinate written to existing row
+Vanilla hartii,3128,8.5267,-83.3254,Naan,Articulo Watteyn,site,"Bambu, Osa Peninsula, Costa Rica",new locality row inserted
+Vanilla hartii,3129,8.6767,-83.5195,Naan,Articulo Watteyn,site,"Bangeas, Osa Peninsula, Costa Rica",new locality row inserted
+Vanilla hartii,3130,9.7331,-83.4119,Naan,Articulo Watteyn,site,"Los Mogos, Osa Peninsula, Costa Rica",new locality row inserted
+Vanilla hartii,3131,8.4102,-83.3307,Naan,Articulo Watteyn,site,"Piro, Osa Peninsula , Costa Rica",coordinate written to existing row
+Vanilla mexicana,3133,16.075547,-61.6663353,Naan,google earth,region,"BasseTerre, Guadeloupe",coordinate written to existing row
+Vanilla palmarum,3135,-11.6277,-70.775375,Naan,google earth,locality,"Madre de Dios, Peru",coordinate written to existing row
+Vanilla paulista,3136,-23.183333,-46.866667,Naan,Articulo,site,"Serra do Japi, city of Jundiai",coordinate written to existing row
+Vanilla phaeantha,3137,-2.590756,-45.36237,Naan,Articulo / R,region,"Presidente Sarney, Maranhao",coordinate written to existing row
+Vanilla pompona,3140,-14.13048,-47.51002,Naan,Articulo Pansarin 2021 / R,region,"Alto Paraiso de Goias, Goias",coordinate written to existing row
+Vanilla ribeiroi,3141,-6.418453,-49.92908,Naan,R,region,"Serra dos Carajas, Para",coordinate written to existing row
+Vanilla roscheri,3142,-28.50383,30.8875,Naan,R,locality,"KwaZulu-Natal Coastal Forest, South Africa",coordinate written to existing row
+Vanilla siamensis,3143,13.1041889,102.1945329,Naan,Articulo,locality,"Khao Soi Dao, Chanthaburi, Thailand",coordinate written to existing row
