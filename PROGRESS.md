@@ -570,3 +570,65 @@ Eight of these sit outside the Americas, all inside Naan's Vanilloideae block:
 japonica* and *P. minor* (Japan), and *Lecanorchis multiflora* (Borneo). The
 Americas-first rule orders the assignment; it does not stop a subfamily block
 from being finished once it is opened.
+
+***
+
+## Snapshot, 2026-09-15
+
+- **Georeferenced species: 233**
+- **Georeferenced records (mapped points): 245**
+- **Genera represented: 63**
+
+By subfamily (distinct species):
+
+| Subfamily       | Species | Change |
+|-----------------|---------|--------|
+| Apostasioideae  | 4       | 0      |
+| Cypripedioideae | 34      | 0      |
+| Vanilloideae    | 37      | +1     |
+| Orchidoideae    | 12      | 0      |
+| Epidendroideae  | 146     | +11    |
+| **Total**       | **233** | **+12** |
+
+The 12 species came from the second batch Naan and Natalia returned, merged
+into the tracker and written into `Pollination_List_MASTER.xlsx` on 2026-09-15.
+Cell-by-cell record in `coordinate_additions_changelog_2026-09-15.csv`; review
+in `coordinate_review_2026-09-15.xlsx`; the pre-write master is
+`_archive/Pollination_List_MASTER_pre-coords_2026-09-15.xlsx`.
+
+Four species came back with more than one site and follow the multi-locality
+pattern (extra rows carry only subfamily, genus, species and coordinates):
+*Acianthera johannensis* (3), *A. ochreata* (2), *Coryanthes speciosa* (2) and
+*Elleanthus crinipes* (2). Five rows were inserted, and the summary formulas
+were re-pointed and recalculated; every cached summary value is unchanged.
+
+*Vanilla humblotii*, held back on 2026-09-10 because its point was at sea, now
+has a point on Mayotte. *Elleanthus* is a new genus on the maps.
+
+Held back: *Acianthera luteola* (longitude typed without its decimal point, and
+the latitude puts the point in São Paulo state rather than Curitiba), the Serra
+da Calçada point of *A. limae* (about 200 km west of Nova Lima, named in the
+note) and the cultivated-plant point of *A. sonderana*. *Vanilla planifolia*
+remains held.
+
+**Re-run `pollinators_wrangling.qmd` before rendering any map.**
+
+### Species added (12)
+
+**Vanilloideae (1)**
+
+1. Vanilla humblotii
+
+**Epidendroideae (11)**
+
+1. Acianthera aphthosa
+2. Acianthera hygrophila
+3. Acianthera johannensis
+4. Acianthera limae
+5. Acianthera ochreata
+6. Acianthera sonderana
+7. Coryanthes seegeri
+8. Coryanthes speciosa
+9. Elleanthus brasiliensis
+10. Elleanthus crinipes
+11. Elleanthus glaucophyllus

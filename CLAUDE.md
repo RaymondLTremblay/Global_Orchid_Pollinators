@@ -80,6 +80,11 @@ So after the master changes (e.g. new coordinates), re-run
 - `coordinate_additions_changelog_2026-09-10.csv`: every coordinate written into
   the master on 2026-09-10, with the master row, the student, and the source
   exactly as given. The pre-write master is in `_archive/`.
+- `coordinate_additions_changelog_2026-09-15.csv` and
+  `coordinate_review_2026-09-15.xlsx`: the same pair for the second batch. The
+  changelog also lists the three coordinates held back (`HELD`).
+- `correo_*.md`: messages to the students, in Spanish. Listed in `.gitignore`
+  because they name the students; the repo is public.
 - `coordinate_review_2026-09-10.xlsx`: review of the first returned batch,
   flagged records, shared coordinates, the reporting problems to raise with the
   students, and a log of every date and precision cell repaired on merge.
@@ -97,8 +102,8 @@ So after the master changes (e.g. new coordinates), re-run
 - Key columns: `species` (epithet only), `genus`, `subfamily`,
   `pollinator_type`, `pollinators` (free text), `locality`, `references`,
   `latitud`, `longitud`.
-- **228 rows currently have valid coordinates (221 distinct species, 62
-  genera)**, as of 2026-09-10 — the rest await data entry. This is expected, not
+- **245 rows currently have valid coordinates (233 distinct species, 63
+  genera)**, as of 2026-09-15 — the rest await data entry. This is expected, not
   a bug.
 - **Subfamilies are always presented in phylogenetic order**: Apostasioideae,
   Cypripedioideae, Vanilloideae, Orchidoideae, Epidendroideae. That order holds
@@ -108,14 +113,15 @@ So after the master changes (e.g. new coordinates), re-run
   next to `group_order` / `order_groups()`; use those rather than `sort()`, and
   remember a ggplot y axis needs `rev(subfamily_order)` to read top-down.
 - Subfamily coverage (georeferenced species): Apostasioideae 4,
-  Cypripedioideae 34, Vanilloideae 36, Orchidoideae 12, Epidendroideae 135.
+  Cypripedioideae 34, Vanilloideae 37, Orchidoideae 12, Epidendroideae 146.
   **Vanilloideae was absent from every map until 2026-09-10**, when Naan's first
   batch gave it 36 of its 60 species.
 - A species with more than one locality gets **one row per locality, and only
   the last row of the block carries the full record** (traits, `locality`,
   `references`); the rows above it carry subfamily, genus, species and the
-  coordinates alone. *Cypripedium passerinum*, *Phragmipedium lindenii* and, as
-  of 2026-09-10, *Vanilla hartii* are built this way. Follow it: duplicating a
+  coordinates alone. *Cypripedium passerinum*, *Phragmipedium lindenii*, *Vanilla hartii* (2026-09-10) and, as of
+  2026-09-15, *Acianthera johannensis*, *A. ochreata*, *Coryanthes speciosa* and
+  *Elleanthus crinipes* are built this way. Follow it: duplicating a
   full record instead would double-count that species' trait flags in the
   summary block at the foot of the sheet. `pollinators_wrangling.qmd` puts the
   record back together at load time (see "Multi-locality blocks" in the `load`
@@ -127,8 +133,8 @@ So after the master changes (e.g. new coordinates), re-run
   *Calanthe alismaefolia* 115, *C. argento-striata* 118). Those are extra
   pollinator types for the record above, not extra localities, and filling them
   would duplicate records in `pollinators_long`.
-- **The summary block (rows ~3149 onward) holds 103 formulas whose ranges are
-  written out in full** (`=SUM(D2:D3147)`). openpyxl does not shift them when
+- **The summary block (rows ~3154 onward since 2026-09-15) holds 103 formulas
+  whose ranges are written out in full** (`=SUM(D2:D3152)`). openpyxl does not shift them when
   rows are inserted, so re-point them by hand after any insertion, then recalc.
 - Pollinator group labels (full names, no contractions): Bees, Wasps, Diptera,
   Coleoptera, Lepidoptera, Hemiptera, Aves, …
@@ -225,8 +231,10 @@ So after the master changes (e.g. new coordinates), re-run
   verdict are in `Resolution_documents/`. Read
   `Ackerman_review_resolution_2026-08-19.md` before revisiting any pollinator
   name. One row is still open: *Tetralona nipponensis* on *Bletilla striata*.
-  The root-level `Ackerman_pollinator_name_review_2026-08-16.xlsx` is a stale
-  draft that predates the copy he was sent — use the `JDArev` file.
+  The stale draft that predates the copy he was sent,
+  `Ackerman_pollinator_name_review_2026-08-16.xlsx`, was moved to `_archive/`
+  on 2026-09-15; use the `JDArev` file. The first email to him now sits in
+  `Resolution_documents/` beside the follow-up.
 - The sheet has three columns literally named `notes`; `read_excel` renames the
   duplicates automatically.
 
@@ -236,6 +244,13 @@ Each student edits their own copy of `coordinate_assignment_tracker.xlsx` and
 sends the whole workbook back, so every copy carries all three tabs and only one
 of them is current. First merge: 2026-09-10 (Naan 41 coordinates, Natalia 18;
 Caleb had not started). Pre-merge file in `_archive/`.
+Second merge: 2026-09-15 (one shared copy carrying both tabs; Naan +12
+rows / 7 species in *Acianthera*, Natalia +7 rows / 5 species in *Coryanthes*
+and *Elleanthus*; *Vanilla humblotii* re-done on land; Caleb still 0). Review
+and repairs log in `coordinate_review_2026-09-15.xlsx`; pre-merge file in
+`_archive/`. Written to the master the same day (17 records, 12 species);
+*Acianthera luteola*, the Serra da Calçada point of *A. limae* and the
+cultivated-plant point of *A. sonderana* were held back.
 
 Merging a batch:
 
@@ -247,7 +262,7 @@ Merging a batch:
 2. Drop the example row (*Cattleya coccinea*, source "Smith et al. 2019, Fig.2")
    from every tab. Left in place it counts as `Done`.
 3. Rebuild the `All assignments` tab from the three student tabs, then update
-   the `$853` row bound in every `Progress` formula. The row count changes
+   the row bound in every `Progress` formula (`$863` as of 2026-09-15). The row count changes
    whenever a student adds rows.
 4. Reset the Status data validation range, since deleting the example row
    shifts it.

@@ -55,9 +55,10 @@ master directly.
 | `genus_corrections_changelog.csv` | **Derived** — the GBIF-confirmed genus spellings the wrangling doc applies automatically |
 | `gbif_genus_review.csv` | **Derived** — every pollinator genus checked against the GBIF backbone, with how it resolved |
 | `coordinate_errors_2026-08-16.xlsx` | Coordinates flagged by the land check, for the students to re-check against the source papers |
+| `coordinate_review_2026-09-15.xlsx`, `coordinate_additions_changelog_2026-09-15.csv` | The same pair for the second batch, returned 2026-09-15; the changelog also lists the coordinates held back |
 | `coordinate_review_2026-09-10.xlsx` | Review of the first batch returned by the students: flagged records, shared coordinates, the reporting problems to fix, and a cell-by-cell log of the date and precision values that had to be repaired on merge |
 | `coordinate_additions_changelog_2026-09-10.csv` | Every coordinate written into the master on 2026-09-10, with the master row, the student, and the source exactly as they gave it |
-| `Resolution_documents/` | Specialist review of the disputed pollinator names — the workbook sent to J. D. Ackerman, his marked-up reply, a record of what was done with each verdict, and the follow-up note |
+| `Resolution_documents/` | Specialist review of the disputed pollinator names — the first email to J. D. Ackerman, his marked-up reply, a record of what was done with each verdict, and the follow-up note |
 | `_archive/` | Superseded workbooks and backups — **local only, not in the repo** (see `.gitignore`) |
 | `PROGRESS.md` | Dated georeferencing snapshots |
 
