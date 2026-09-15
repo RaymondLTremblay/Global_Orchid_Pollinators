@@ -212,7 +212,7 @@ species, all in the Americas); restored the *Cremastra appendiculata* (Japan)
 record — the first Asian point; corrected 105 pollinator-name typos in the
 master workbook; built the wrangling → enriched-workbook → maps pipeline (now
 all Quarto and English); and set up a 14-week coordinate-collection assignment
-for Naan, Natalia, and Caleb (`coordinate_assignment_tracker.xlsx`). Counts now
+for Naan, Natalia, and Caleb (`private/coordinate_assignment_tracker.xlsx`). Counts now
 replicate the `pollinators_wrangling.qmd` / `mapa_final.qmd` pipeline.
 
 **Apostasioideae (4)**
@@ -444,7 +444,7 @@ one georeferenced record, which is why the subfamily was absent from every map;
 
 The 54 species came from the first batch Naan and Natalia returned, written into
 `Pollination_List_MASTER.xlsx` on 2026-09-10. Cell-by-cell record in
-`coordinate_additions_changelog_2026-09-10.csv`; the pre-write master is
+`private/coordinate_additions_changelog_2026-09-10.csv`; the pre-write master is
 `_archive/Pollination_List_MASTER_pre-coords_2026-09-10.xlsx`.
 
 *Vanilla hartii* accounts for the gap between 221 species and 228 records: it
@@ -478,7 +478,7 @@ Merged from the two copies on 2026-09-10 (the pre-merge file is in `_archive/`):
   says the student could not obtain the article, not that the locality is
   missing. Twenty distinct references account for all of them, Soto Arenas &
   Dressler 2010 alone blocking six *Vanilla*.
-Reviewed in `coordinate_review_2026-09-10.xlsx`, and how each was resolved:
+Reviewed in `private/coordinate_review_2026-09-10.xlsx`, and how each was resolved:
 
 - **Two held out of the master.** *Vanilla planifolia* lands in Sichuan, China,
   from a master row whose reference cell reads only "Phaius"; that reference
@@ -592,8 +592,8 @@ By subfamily (distinct species):
 
 The 12 species came from the second batch Naan and Natalia returned, merged
 into the tracker and written into `Pollination_List_MASTER.xlsx` on 2026-09-15.
-Cell-by-cell record in `coordinate_additions_changelog_2026-09-15.csv`; review
-in `coordinate_review_2026-09-15.xlsx`; the pre-write master is
+Cell-by-cell record in `private/coordinate_additions_changelog_2026-09-15.csv`; review
+in `private/coordinate_review_2026-09-15.xlsx`; the pre-write master is
 `_archive/Pollination_List_MASTER_pre-coords_2026-09-15.xlsx`.
 
 Four species came back with more than one site and follow the multi-locality

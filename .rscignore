@@ -25,23 +25,13 @@ pollinators_wrangling.qmd
 PROGRESS.md
 README.md
 CLAUDE.md
-correo_estudiantes_coordenadas.md
-correo_correccion_coordenadas.md
-correo_integracion_coordenadas_2026-09-10.md
-correo_integracion_coordenadas_2026-09-10.html
-correo_revision_coordenadas_2026-09-15.md
 
 # --- data and reports the app does not read ---------------------------------
 _archive
-coordinate_assignment_tracker.xlsx
+private
 typo_corrections_changelog.csv
 genus_corrections_changelog.csv
 gbif_genus_review.csv
 filldown_changelog_2026-08-19.csv
-coordinate_errors_2026-08-16.xlsx
-coordinate_review_2026-09-10.xlsx
-coordinate_review_2026-09-15.xlsx
-coordinate_additions_changelog_2026-09-10.csv
-coordinate_additions_changelog_2026-09-15.csv
 Resolution_documents
 Pollination_List_MASTER.xlsx

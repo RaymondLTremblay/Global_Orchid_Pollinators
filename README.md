@@ -49,15 +49,16 @@ master directly.
 | `mapa_final.qmd` | Main analysis. Static Leaflet map, one map per subfamily, and a Shiny app with a subfamily filter and a pollinator drill-down (group → family → genus). Uses `server: shiny` |
 | `mapa_final_static.qmd` | Static, self-contained build of the above for sharing by email — no Shiny, one portable `.html` |
 | `pollinator_map.qmd` | Standalone Shiny search map with a linked DT table |
-| `coordinate_assignment_tracker.xlsx` | 14-week coordinate-collection plan for the three students, with an auto-tallying Progress tab. Also where their returned work is merged back, so it holds coordinates the master does not have yet |
+| `private/` | Student assignments, batch reviews, coordinate changelogs and correspondence: **local only, not in the repo** (see `.gitignore`). The files below marked `private/` live there |
+| `private/coordinate_assignment_tracker.xlsx` | 14-week coordinate-collection plan for the three students, with an auto-tallying Progress tab. Also where their returned work is merged back, so it holds coordinates the master does not have yet |
 | `typo_corrections_changelog.csv` | Every pollinator-name correction applied to the master — the original 105, plus the 16 Ackerman confirmed in August 2026 |
 | `filldown_changelog_2026-08-19.csv` | The 4,833 `genus` and `subfamily` cells filled down on 2026-08-19, one row per cell |
 | `genus_corrections_changelog.csv` | **Derived** — the GBIF-confirmed genus spellings the wrangling doc applies automatically |
 | `gbif_genus_review.csv` | **Derived** — every pollinator genus checked against the GBIF backbone, with how it resolved |
-| `coordinate_errors_2026-08-16.xlsx` | Coordinates flagged by the land check, for the students to re-check against the source papers |
-| `coordinate_review_2026-09-15.xlsx`, `coordinate_additions_changelog_2026-09-15.csv` | The same pair for the second batch, returned 2026-09-15; the changelog also lists the coordinates held back |
-| `coordinate_review_2026-09-10.xlsx` | Review of the first batch returned by the students: flagged records, shared coordinates, the reporting problems to fix, and a cell-by-cell log of the date and precision values that had to be repaired on merge |
-| `coordinate_additions_changelog_2026-09-10.csv` | Every coordinate written into the master on 2026-09-10, with the master row, the student, and the source exactly as they gave it |
+| `private/coordinate_errors_2026-08-16.xlsx` | Coordinates flagged by the land check, for the students to re-check against the source papers |
+| `private/coordinate_review_2026-09-15.xlsx`, `private/coordinate_additions_changelog_2026-09-15.csv` | The same pair for the second batch, returned 2026-09-15; the changelog also lists the coordinates held back |
+| `private/coordinate_review_2026-09-10.xlsx` | Review of the first batch returned by the students: flagged records, shared coordinates, the reporting problems to fix, and a cell-by-cell log of the date and precision values that had to be repaired on merge |
+| `private/coordinate_additions_changelog_2026-09-10.csv` | Every coordinate written into the master on 2026-09-10, with the master row, the student, and the source exactly as they gave it |
 | `Resolution_documents/` | Specialist review of the disputed pollinator names — the first email to J. D. Ackerman, his marked-up reply, a record of what was done with each verdict, and the follow-up note |
 | `_archive/` | Superseded workbooks and backups — **local only, not in the repo** (see `.gitignore`) |
 | `PROGRESS.md` | Dated georeferencing snapshots |
@@ -85,7 +86,7 @@ Single sheet `species`, ~3,161 rows (3,127 real species), ~69 columns.
   coordinates, from the first batch Naan and Natalia returned. Two records from
   that batch were deliberately left blank, and *Vanilla hartii* now occupies
   four rows, one per Osa Peninsula site. `PROGRESS.md` has the detail;
-  `coordinate_additions_changelog_2026-09-10.csv` has the cell-by-cell record.
+  `private/coordinate_additions_changelog_2026-09-10.csv` has the cell-by-cell record.
 - **Coordinates are sanity-checked two ways.** The wrangling doc tests every
   georeferenced point against a coastline (an orchid is not a marine plant) and
   against the `locality` the record already carries (`C Am` cannot be in

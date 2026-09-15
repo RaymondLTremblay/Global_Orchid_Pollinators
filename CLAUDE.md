@@ -72,20 +72,23 @@ So after the master changes (e.g. new coordinates), re-run
   `pollinators_long` (one pollinator taxon per row), `needs_review`,
   `pollinator_taxonomy` (present order→family→genus repository), `taxa_review`
   (likely name typos / mis-assignments). Do not hand-edit — regenerate it.
-- `coordinate_assignment_tracker.xlsx` — 14-week coordinate-collection plan for
+- `private/coordinate_assignment_tracker.xlsx` — 14-week coordinate-collection plan for
   the three students (Naan, Natalia, Caleb), with source references per species
   and an auto-tallying Progress tab. This is also where their returned work is
   merged back, so between merges it holds coordinates the master does not have.
   See "Student coordinate returns" below before merging a new batch.
-- `coordinate_additions_changelog_2026-09-10.csv`: every coordinate written into
+- `private/coordinate_additions_changelog_2026-09-10.csv`: every coordinate written into
   the master on 2026-09-10, with the master row, the student, and the source
   exactly as given. The pre-write master is in `_archive/`.
-- `coordinate_additions_changelog_2026-09-15.csv` and
-  `coordinate_review_2026-09-15.xlsx`: the same pair for the second batch. The
+- `private/coordinate_additions_changelog_2026-09-15.csv` and
+  `private/coordinate_review_2026-09-15.xlsx`: the same pair for the second batch. The
   changelog also lists the three coordinates held back (`HELD`).
-- `correo_*.md`: messages to the students, in Spanish. Listed in `.gitignore`
-  because they name the students; the repo is public.
-- `coordinate_review_2026-09-10.xlsx`: review of the first returned batch,
+- `private/` (in `.gitignore`, never pushed): everything that names the
+  students or reports on their work, because the repo is public. It holds the
+  tracker, the batch reviews, the coordinate changelogs, the coordinate error
+  list and the `correo_*.md` messages to the students (Spanish). New files of
+  that kind go here.
+- `private/coordinate_review_2026-09-10.xlsx`: review of the first returned batch,
   flagged records, shared coordinates, the reporting problems to raise with the
   students, and a log of every date and precision cell repaired on merge.
 - `Global_Orchid_Pollinators.Rproj` — RStudio project file; open this first.
@@ -240,14 +243,14 @@ So after the master changes (e.g. new coordinates), re-run
 
 ## Student coordinate returns
 
-Each student edits their own copy of `coordinate_assignment_tracker.xlsx` and
+Each student edits their own copy of `private/coordinate_assignment_tracker.xlsx` and
 sends the whole workbook back, so every copy carries all three tabs and only one
 of them is current. First merge: 2026-09-10 (Naan 41 coordinates, Natalia 18;
 Caleb had not started). Pre-merge file in `_archive/`.
 Second merge: 2026-09-15 (one shared copy carrying both tabs; Naan +12
 rows / 7 species in *Acianthera*, Natalia +7 rows / 5 species in *Coryanthes*
 and *Elleanthus*; *Vanilla humblotii* re-done on land; Caleb still 0). Review
-and repairs log in `coordinate_review_2026-09-15.xlsx`; pre-merge file in
+and repairs log in `private/coordinate_review_2026-09-15.xlsx`; pre-merge file in
 `_archive/`. Written to the master the same day (17 records, 12 species);
 *Acianthera luteola*, the Serra da Calçada point of *A. limae* and the
 cultivated-plant point of *A. sonderana* were held back.

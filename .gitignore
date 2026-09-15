@@ -37,10 +37,8 @@ rsconnect/
 # worth ~5 MB of binary .xlsx in the repo.
 _archive/
 
-# --- Internal correspondence -----------------------------------------------
-# The repo is public; this one names the students and their assignments.
-correo_estudiantes_coordenadas.md
-correo_correccion_coordenadas.md
-correo_integracion_coordenadas_2026-09-10.md
-correo_integracion_coordenadas_2026-09-10.html
-correo_revision_coordenadas_2026-09-15.md
+# --- Student-related files -------------------------------------------------
+# The repo is public. private/ holds everything that names the students or
+# reports on their work: the assignment tracker, the batch reviews, the
+# coordinate changelogs, the coordinate error list and the emails to them.
+private/
